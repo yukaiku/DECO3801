@@ -88,7 +88,7 @@
                 <div class="col-lg-3">
                     <ul class="navbar-nav px-3">
                         <li class="nav-item text-nowrap">
-                            <button type="button" class="btn btn-primary">Primary</button>
+                            <a type="button" class="btn btn-primary" href="teacherAdd.php">Add Class</a>
                         </li>
                     </ul></div>
             </div>
