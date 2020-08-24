@@ -78,7 +78,7 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="row" id="schoolName">
-            <h1><b>School: </b> U Q HI</h1>
+                <h1><b>School: </b> U Q HI</h1>
             </div>
             <div class="row" id="searchbar-row">
                 <div class="col-lg-6">
