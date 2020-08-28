@@ -24,32 +24,16 @@
         ?>
         <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="row" id="schoolName">
-                <h1><b>School: </b> U Q HI</h1>
+                <h1>Game Name</h1>
             </div>
-            <div class="row" id="searchbar-row">
-                <div class="col-lg-6">
-                    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-                </div>
-                <div class="col-lg-3"></div>
-                <div class="col-lg-3">
-                    <ul class="navbar-nav px-3">
-                        <li class="nav-item text-nowrap">
-                            <a type="button" class="btn btn-primary" href="teacherAdd.php">Add Class</a>
-                        </li>
-                    </ul></div>
-            </div>
-
-
-            <h2>Section title</h2>
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
                     <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                        <th>Header</th>
+                        <th>Grade</th>
+                        <th>Class</th>
+                        <th>Progress</th>
+                        <th>Total Score</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -58,14 +42,12 @@
                         <td>Lorem</td>
                         <td>ipsum</td>
                         <td>dolor</td>
-                        <td>sit</td>
                     </tr>
                     <tr>
                         <td>1,001</td>
                         <td>Lorem</td>
                         <td>ipsum</td>
                         <td>dolor</td>
-                        <td>sit</td>
                     </tr>
                     </tbody>
                 </table>
