@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0b5da013-e431-4701-b5a1-50caae3c0e54" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/teacher.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/teacher.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacherAdd.php" beforeDir="false" afterPath="$PROJECT_DIR$/teacherAdd.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacherMain.php" beforeDir="false" afterPath="$PROJECT_DIR$/teacherMain.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teacherClass.php" beforeDir="false" afterPath="$PROJECT_DIR$/teacherClass.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +30,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -44,7 +47,7 @@
       <updated>1598230488691</updated>
       <workItem from="1598230491349" duration="1926000" />
       <workItem from="1598588245966" duration="98000" />
-      <workItem from="1598588357083" duration="1536000" />
+      <workItem from="1598588357083" duration="2049000" />
     </task>
     <servers />
   </component>
