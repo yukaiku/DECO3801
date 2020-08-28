@@ -26,14 +26,18 @@
             <div class="row" id="gameName">
                 <h1>Game Name</h1>
             </div>
+            <div class="row" id="className">
+                <h1>Class: x x</h1>
+            </div>
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
                     <thead>
                     <tr>
-                        <th>Grade</th>
-                        <th>Class</th>
+                        <th>Username</th>
+                        <th>first Name</th>
                         <th>Progress</th>
-                        <th>Total Score</th>
+                        <th>Score</th>
+                        <th>Rank</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -42,11 +46,13 @@
                         <td>Lorem</td>
                         <td>ipsum</td>
                         <td>dolor</td>
+                        <td>dolor</td>
                     </tr>
                     <tr>
                         <td>1,001</td>
                         <td>Lorem</td>
                         <td>ipsum</td>
+                        <td>dolor</td>
                         <td>dolor</td>
                     </tr>
                     </tbody>
