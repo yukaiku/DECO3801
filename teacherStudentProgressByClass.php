@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Teacher Home</title>
+    <title>Teacher Student Progress by Class</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -17,7 +17,6 @@
 </head>
 
 <body>
-
 <div class="container-fluid">
     <div class="row">
         <?php
@@ -25,7 +24,7 @@
         ?>
         <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="row" id="schoolName">
-            <h1><b>School: </b> U Q HI</h1>
+                <h1><b>School: </b> U Q HI</h1>
             </div>
             <div class="row" id="searchbar-row">
                 <div class="col-lg-6">
@@ -70,6 +69,9 @@
                     </tr>
                     </tbody>
                 </table>
+            </div>
+            <div id="mainFooter" style="bottom:0; position: fixed;">
+                <a class="btn btn-primary mb-2" style="text-align: center" href="javascript:history.back()">Back</a>
             </div>
         </div>
     </div>
