@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0b5da013-e431-4701-b5a1-50caae3c0e54" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/teacher.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/teacher.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/teacherAdd.php" beforeDir="false" afterPath="$PROJECT_DIR$/teacherAdd.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/teacherMain.php" beforeDir="false" afterPath="$PROJECT_DIR$/teacherMain.php" afterDir="false" />
     </list>
@@ -42,6 +43,8 @@
       <option name="presentableId" value="Default" />
       <updated>1598230488691</updated>
       <workItem from="1598230491349" duration="1926000" />
+      <workItem from="1598588245966" duration="98000" />
+      <workItem from="1598588357083" duration="1536000" />
     </task>
     <servers />
   </component>
@@ -53,5 +56,13 @@
       <screen x="0" y="23" width="1440" height="829" />
     </state>
     <state x="538" y="368" key="NewPhpFileDialog/0.23.1440.829@0.23.1440.829" timestamp="1598232019235" />
+    <state x="397" y="270" key="com.intellij.ide.util.TipDialog" timestamp="1598588356756">
+      <screen x="0" y="23" width="1440" height="829" />
+    </state>
+    <state x="397" y="270" key="com.intellij.ide.util.TipDialog/0.23.1440.829@0.23.1440.829" timestamp="1598588356756" />
+    <state x="385" y="176" width="670" height="676" key="search.everywhere.popup" timestamp="1598589749980">
+      <screen x="0" y="23" width="1440" height="829" />
+    </state>
+    <state x="385" y="176" width="670" height="676" key="search.everywhere.popup/0.23.1440.829@0.23.1440.829" timestamp="1598589749980" />
   </component>
 </project>

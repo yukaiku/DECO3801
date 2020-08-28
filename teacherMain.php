@@ -76,7 +76,7 @@
 
         </nav>
 
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="row" id="schoolName">
             <h1><b>School: </b> U Q HI</h1>
             </div>
@@ -124,7 +124,7 @@
                     </tbody>
                 </table>
             </div>
-        </main>
+        </div>
     </div>
 </div>
 
