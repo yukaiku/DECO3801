@@ -33,6 +33,7 @@ public class TimerUtility : MonoBehaviour
     public void clickTimer()
     {
         timerActive = !timerActive;
+        Debug.Log(string.Format("Timer has been clicked"));
     }
 
     public void updateTimer()
