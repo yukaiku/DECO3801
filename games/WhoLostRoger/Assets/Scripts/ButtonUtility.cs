@@ -12,7 +12,7 @@ public class ButtonUtility : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
-    public void doExit()
+    public void doQuit()
     {
         Debug.Log("Game quit.");
         Application.Quit();

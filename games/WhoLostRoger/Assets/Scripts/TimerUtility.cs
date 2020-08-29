@@ -11,24 +11,23 @@ public class TimerUtility : MonoBehaviour
         nothing = 0,
         jumpScene = 1,
     }
-    public float timeStart;
-    public float timeout;
+    public float timeStart;        // time provided to start count down
     public TimeoutOptions timeoutOptions;
     public string sceneName;        // jump to other scene when timeout, if provided
 
-    private float timeStartBk;
+    private float timeStartSave;        // back up the start time
     private bool timerActive = false;
 
     public void startTimer()
     {
-        timeStartBk = timeStart;
+        timeStartSave = timeStart;
         timerActive = true;
     }
 
     public void resetTimer()
     {
         timerActive = false;
-        timeStart = timeStartBk;
+        timeStart = timeStartSave;
     }
 
     public void clickTimer()
@@ -38,15 +37,16 @@ public class TimerUtility : MonoBehaviour
 
     public void updateTimer()
     {
-        if ((timerActive) && (timeStart <= timeout))
+        if ((timerActive) && (timeStart >= 0))
         {
-            timeStart += Time.deltaTime;
-            if (timeStart >= timeout)
+            timeStart -= Time.deltaTime;
+            if (timeStart <= 0)
             {
                 // do something when timeout
                 switch (timeoutOptions)
                 {
                     case TimeoutOptions.nothing:
+                        doNothing();
                         break;
                     case TimeoutOptions.jumpScene:
                         doJumpScene();
@@ -58,14 +58,23 @@ public class TimerUtility : MonoBehaviour
         }
     }
 
-    // jump to other scene when timeout
-    public void doJumpScene()
+    // do nothing when timeout
+    private void doNothing()
     {
-        Debug.Log(string.Format("Object '{0}' timer timeout", this.gameObject.ToString()));
-        if (sceneName != null)
+        Debug.Log(string.Format("Timeout : Object '{0}' timer", this.gameObject.ToString()));
+    }
+
+    // jump to other scene when timeout
+    private void doJumpScene()
+    {
+        if ((sceneName != null) && (SceneManager.GetSceneByName(sceneName) != null))
         {
-            Debug.Log(string.Format("Timeout load to '{0}' scene", sceneName));
+            Debug.Log(string.Format("Timeout : load to '{0}' scene", sceneName));
             SceneManager.LoadScene(sceneName);
+        }
+        else
+        {
+            Debug.Log(string.Format("Timeout : no such scene name"));
         }
     }
 
