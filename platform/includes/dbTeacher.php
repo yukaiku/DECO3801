@@ -15,14 +15,14 @@ function getTeacher($like = "") {
     }
 }
 
-function getAllTeacher($orderby = "") {
-    $orderby = strlen($orderby) > 0 ? "ORDER BY {$orderby}" : "";
-    return getTeacherBySql("SELECT * FROM {$GLOBALS['table_teacher']} WHERE status = 0 {$orderby}");
+function getAllTeacher($orderBy = "") {
+    $orderBy = strlen($orderBy) > 0 ? "ORDER BY {$orderBy}" : "";
+    return getTeacherBySql("SELECT * FROM {$GLOBALS['table_teacher']} WHERE status = 0 {$orderBy}");
 }
 
-function getAllTeachers($orderby = "") {
-    $orderby = strlen($orderby) > 0 ? "ORDER BY {$orderby}" : "";
-    return getTeacherBySql("SELECT * FROM {$GLOBALS['table_teacher']} {$orderby}");
+function getAllTeachers($orderBy = "") {
+    $orderBy = strlen($orderBy) > 0 ? "ORDER BY {$orderBy}" : "";
+    return getTeacherBySql("SELECT * FROM {$GLOBALS['table_teacher']} {$orderBy}");
 }
 
 function getByIdTeacher($id = 0) { //get all the rows where record id = current id

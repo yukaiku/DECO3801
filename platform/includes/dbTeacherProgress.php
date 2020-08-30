@@ -6,14 +6,14 @@ $table_teacherProgress = "teacher_progress";
 $dbFields_teacherProgress = ["id", "game","teacher", "percentage", "score", "status"];
 $pk_teacherProgress = "id";
 
-function getAllteacherProgress($orderby = "") { //get all non deleted rows
-    $orderby = strlen($orderby) > 0 ? "ORDER BY {$orderby}" : "";
-    return getTeacherProgressBySql("SELECT * FROM {$GLOBALS['table_teacherProgress']} WHERE status = 0 {$orderby}");
+function getAllTeacherProgress($orderBy = "") { //get all non deleted rows
+    $orderBy = strlen($orderBy) > 0 ? "ORDER BY {$orderBy}" : "";
+    return getTeacherProgressBySql("SELECT * FROM {$GLOBALS['table_teacherProgress']} WHERE status = 0 {$orderBy}");
 }
 
-function getAllteacherProgresss($orderby = "") { //get all rows
-    $orderby = strlen($orderby) > 0 ? "ORDER BY {$orderby}" : "";
-    return getTeacherProgressBySql("SELECT * FROM {$GLOBALS['table_teacherProgress']} {$orderby}");
+function getAllTeacherProgresss($orderBy = "") { //get all rows
+    $orderBy = strlen($orderBy) > 0 ? "ORDER BY {$orderBy}" : "";
+    return getTeacherProgressBySql("SELECT * FROM {$GLOBALS['table_teacherProgress']} {$orderBy}");
 }
 
 function getByIdTeacherProgress($id = 0) { //get all the rows where record id = current id and not deleted
@@ -21,7 +21,7 @@ function getByIdTeacherProgress($id = 0) { //get all the rows where record id = 
     return !empty($result_array) ? array_shift($result_array) : false;
 }
 
-function getByIdteacherProgresss($id = 0) { //get all the rows where record id = current id
+function getByIdTeacherProgresss($id = 0) { //get all the rows where record id = current id
     $result_array = getTeacherProgressBySql("SELECT * FROM {$GLOBALS['table_teacherProgress']} WHERE id= {$id} LIMIT 1 ");
     return !empty($result_array) ? array_shift($result_array) : false;
 }
@@ -45,7 +45,7 @@ function setTeacherProgressAttributes($infoArr) { //set the fields //Gets the po
     return $newRecord;
 }
 
-function createteacherProgress($infoArr = array()) {
+function createTeacherProgress($infoArr = array()) {
     foreach ($infoArr as $field => $value) {
         $updateStrArr[] = "'{$value}'";
         $updateStrArrField[] = "{$field}";
@@ -61,10 +61,9 @@ function createteacherProgress($infoArr = array()) {
     }
 }
 
-function updateteacherProgress($infoArr = array()) {
+function updateTeacherProgress($infoArr = array()) {
     if (array_key_exists($GLOBALS['pk_teacherProgress'], $infoArr)) {
         $pkStr = "{$GLOBALS['pk_teacherProgress']} = '{$infoArr[$GLOBALS['pk_teacherProgress']]}'";
-
         unset($infoArr[$GLOBALS['pk_teacherProgress']]);
         $updateStrArr = array();
         foreach ($infoArr as $field => $value) {
