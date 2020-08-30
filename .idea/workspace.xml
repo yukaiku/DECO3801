@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b5da013-e431-4701-b5a1-50caae3c0e54" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/platform/includes/dbStudentProgress.php" beforeDir="false" afterPath="$PROJECT_DIR$/platform/includes/dbStudentProgress.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/platform/includes/dbTeacher.php" beforeDir="false" afterPath="$PROJECT_DIR$/platform/includes/dbTeacher.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/platform/includes/dbTeacherProgress.php" beforeDir="false" afterPath="$PROJECT_DIR$/platform/includes/dbTeacherProgress.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform/includes/dbGame.php" beforeDir="false" afterPath="$PROJECT_DIR$/platform/includes/dbGame.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +51,7 @@
       <workItem from="1598588245966" duration="98000" />
       <workItem from="1598588357083" duration="4269000" />
       <workItem from="1598760720439" duration="1886000" />
-      <workItem from="1598789044868" duration="1487000" />
+      <workItem from="1598789044868" duration="1788000" />
     </task>
     <servers />
   </component>
