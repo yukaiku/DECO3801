@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-// using the EventTrigger component for sprite objects
 public class ButtonUtility : MonoBehaviour
 {
     public void doLoadScene(string sceneName)
@@ -18,6 +17,9 @@ public class ButtonUtility : MonoBehaviour
         Application.Quit();
     }
 
+    /* ********************************************************************************* *
+     * ****************************** CUSTOM STUFFS ABOVE ****************************** *
+     * ********************************************************************************* */
 
     // Start is called before the first frame update
     void Start()

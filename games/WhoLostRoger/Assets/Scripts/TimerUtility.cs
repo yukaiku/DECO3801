@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-// using the EventTrigger component for sprite objects
 public class TimerUtility : MonoBehaviour
 {
     public enum TimeoutOptions
@@ -11,11 +10,11 @@ public class TimerUtility : MonoBehaviour
         nothing = 0,
         jumpScene = 1,
     }
-    public float timeStart;        // time provided to start count down
+    public float timeStart;                  // time provided to start count down
     public TimeoutOptions timeoutOptions;
-    public string sceneName;        // jump to other scene when timeout, if provided
+    public string sceneName;                 // jump to other scene when timeout, if provided
 
-    private float timeStartSave;        // back up the start time
+    private float timeStartSave;             // back up the start time
     private bool timerActive = false;
 
     public void startTimer()
@@ -62,13 +61,14 @@ public class TimerUtility : MonoBehaviour
     // do nothing when timeout
     private void doNothing()
     {
-        Debug.Log(string.Format("Timeout : Object '{0}' timer", this.gameObject.ToString()));
+        Debug.Log(string.Format("Timeout : Object '{0}' timer",
+            this.gameObject.ToString()));
     }
 
     // jump to other scene when timeout
     private void doJumpScene()
     {
-        if ((sceneName != null) && (SceneManager.GetSceneByName(sceneName) != null))
+        if ((sceneName != null)&& (SceneManager.GetSceneByName(sceneName) != null))
         {
             Debug.Log(string.Format("Timeout : load to '{0}' scene", sceneName));
             SceneManager.LoadScene(sceneName);
@@ -79,6 +79,9 @@ public class TimerUtility : MonoBehaviour
         }
     }
 
+    /* ********************************************************************************* *
+     * ****************************** CUSTOM STUFFS ABOVE ****************************** *
+     * ********************************************************************************* */
 
     // Start is called before the first frame update
     void Start()
