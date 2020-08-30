@@ -35,14 +35,14 @@ function getTeacherProgressBySql($sql = "") {
     return $resultArray;
 }
 
-function setteacherProgressAttributes($infoArr) { //set the fields //Gets the post data $infoArr is all the post data, [$fieldname] is the post names
-    $newteacherProgress = array();
+function setTeacherProgressAttributes($infoArr) { //set the fields //Gets the post data $infoArr is all the post data, [$fieldname] is the post names
+    $newRecord = array();
     foreach ($GLOBALS['dbFields_teacherProgress'] as $fieldName) {
         if (isset($infoArr[$fieldName])) { //if field name matchs posts name
-            $newteacherProgress[$fieldName] = escape_value($infoArr[$fieldName]); //remove special characters.
+            $newRecord[$fieldName] = escape_value($infoArr[$fieldName]); //remove special characters.
         }
     }
-    return $newteacherProgress;
+    return $newRecord;
 }
 
 function createteacherProgress($infoArr = array()) {
