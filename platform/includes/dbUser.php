@@ -1,5 +1,7 @@
 <?php
-
+/*
+ * This is dummy file with all functions you would typically need for database, refer to this doc when creating a new db file
+ * */
 require_once 'dbFunction.php';
 
 $table_User = "user";

@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b5da013-e431-4701-b5a1-50caae3c0e54" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/platform/includes/dbGame.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/platform/includes/dbSchool.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/platform/includes/dbStudent.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/platform/includes/dbStudentProgress.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/platform/includes/dbTeacher.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/platform/includes/dbTeacherProgress.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform/includes/dbUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/platform/includes/dbUser.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +37,9 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/platform" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -47,6 +57,7 @@
       <workItem from="1598230491349" duration="1926000" />
       <workItem from="1598588245966" duration="98000" />
       <workItem from="1598588357083" duration="4269000" />
+      <workItem from="1598760720439" duration="1886000" />
     </task>
     <servers />
   </component>
@@ -54,14 +65,22 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="538" y="368" key="NewPhpFileDialog" timestamp="1598592080362">
+    <state x="184" y="99" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598762302977">
       <screen x="0" y="23" width="1440" height="829" />
     </state>
-    <state x="538" y="368" key="NewPhpFileDialog/0.23.1440.829@0.23.1440.829" timestamp="1598592080362" />
-    <state x="397" y="270" key="com.intellij.ide.util.TipDialog" timestamp="1598588356756">
+    <state x="184" y="99" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.829@0.23.1440.829" timestamp="1598762302977" />
+    <state x="538" y="368" key="NewPhpFileDialog" timestamp="1598762374153">
       <screen x="0" y="23" width="1440" height="829" />
     </state>
-    <state x="397" y="270" key="com.intellij.ide.util.TipDialog/0.23.1440.829@0.23.1440.829" timestamp="1598588356756" />
+    <state x="538" y="368" key="NewPhpFileDialog/0.23.1440.829@0.23.1440.829" timestamp="1598762374153" />
+    <state x="397" y="270" key="com.intellij.ide.util.TipDialog" timestamp="1598761132972">
+      <screen x="0" y="23" width="1440" height="829" />
+    </state>
+    <state x="397" y="270" key="com.intellij.ide.util.TipDialog/0.23.1440.829@0.23.1440.829" timestamp="1598761132972" />
+    <state x="503" y="374" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1598762923429">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="503" y="374" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1598762923429" />
     <state x="385" y="176" width="670" height="676" key="search.everywhere.popup" timestamp="1598589749980">
       <screen x="0" y="23" width="1440" height="829" />
     </state>
