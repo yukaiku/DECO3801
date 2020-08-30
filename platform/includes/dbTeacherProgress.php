@@ -47,29 +47,14 @@ function setteacherProgressAttributes($infoArr) { //set the fields //Gets the po
 
 function createteacherProgress($infoArr = array()) {
     foreach ($infoArr as $field => $value) {
-        if ($value != "") {
-            if ($field != 'password') {
-                $updateStrArr[] = "'{$value}'";
-                $updateStrArrField[] = "{$field}";
-            } else {
-                $updateStrArr[] = "AES_ENCRYPT('{$value}','infs3202')";
-                $updateStrArrField[] = "{$field}";
-                $updateStrArr[] = rand(100,999);
-                $updateStrArrField[] = "status";
-                $updateStrArr[] = "0";
-                $updateStrArrField[] = "teacherProgressType";
-            }
-        } else {
-            $updateStrArr[] = "'{$value}'";
-            $updateStrArrField[] = "{$field}";
-        }
+        $updateStrArr[] = "'{$value}'";
+        $updateStrArrField[] = "{$field}";
     }
     $updateStr = join(", ", array_values($updateStrArr));
     $updateStrField = join(", ", array_values($updateStrArrField));
     $sql = "INSERT INTO {$GLOBALS['table_teacherProgress']} ";
     $sql .= "({$updateStrField}) VALUES ({$updateStr})";
     if (query($sql)) {
-
         return insert_id();
     } else {
         return false;
@@ -84,15 +69,10 @@ function updateteacherProgress($infoArr = array()) {
         $updateStrArr = array();
         foreach ($infoArr as $field => $value) {
             if ($value != "") {
-                if ($field != 'password') {
-                    $updateStrArr[] = "{$field}='{$value}'";
-                } else {
-                    $updateStrArr[] = "{$field}=AES_ENCRYPT('{$value}','infs3202')";
-                }
+                $updateStrArr[] = "{$field}='{$value}'";
             }
         }
         $updateStr = join(", ", array_values($updateStrArr));
-
         $sql = "UPDATE {$GLOBALS['table_teacherProgress']} ";
         $sql .= "SET {$updateStr} ";
         $sql .= "WHERE {$pkStr}";
