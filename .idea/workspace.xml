@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b5da013-e431-4701-b5a1-50caae3c0e54" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/platform/includes/dbGame.php" beforeDir="false" afterPath="$PROJECT_DIR$/platform/includes/dbGame.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/platform/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/platform/studentMain.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/platform/studentSideBar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform/css/teacher.css" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,11 +18,20 @@
       <executable />
     </execution>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1gWVlm6IZ5DwJ9voYiQFZrERb6f" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -28,6 +41,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/platform" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -52,6 +66,7 @@
       <workItem from="1598588357083" duration="4269000" />
       <workItem from="1598760720439" duration="1886000" />
       <workItem from="1598789044868" duration="1788000" />
+      <workItem from="1598833066251" duration="5040000" />
     </task>
     <servers />
   </component>
@@ -59,13 +74,15 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="184" y="99" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598762302977">
-      <screen x="0" y="23" width="1440" height="829" />
+    <state x="164" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598837758893">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
+    <state x="164" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1598837758893" />
     <state x="184" y="99" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.829@0.23.1440.829" timestamp="1598762302977" />
-    <state x="538" y="368" key="NewPhpFileDialog" timestamp="1598762374153">
-      <screen x="0" y="23" width="1440" height="829" />
+    <state x="478" y="283" key="NewPhpFileDialog" timestamp="1598834123159">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
+    <state x="478" y="283" key="NewPhpFileDialog/0.0.1280.680@0.0.1280.680" timestamp="1598834123159" />
     <state x="538" y="368" key="NewPhpFileDialog/0.23.1440.829@0.23.1440.829" timestamp="1598762374153" />
     <state x="397" y="268" key="com.intellij.ide.util.TipDialog" timestamp="1598789061505">
       <screen x="0" y="0" width="1440" height="900" />
