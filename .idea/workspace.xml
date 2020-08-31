@@ -3,6 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="0b5da013-e431-4701-b5a1-50caae3c0e54" name="Default Changelist" comment="">
 <<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/platform/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform/studentMain.php" beforeDir="false" afterPath="$PROJECT_DIR$/platform/studentMain.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform/teacherMain.php" beforeDir="false" afterPath="$PROJECT_DIR$/platform/teacherMain.php" afterDir="false" />
+=======
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/platform/loginHandler.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platform/includes/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/platform/includes/config.php" afterDir="false" />
@@ -15,6 +21,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platform/css/teacher.css" beforeDir="false" />
 >>>>>>> origin/student_platform
+>>>>>>> 9291a1ff8b6687020fd3a360af4f5ee8e2e5d527
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
