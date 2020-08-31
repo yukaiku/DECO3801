@@ -80,6 +80,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="js/jquery-3.5.0.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/collapsibleSideBar.js"></script>
 
 </body>
 </html>

@@ -1,29 +1,17 @@
-<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+<nav class="col-md-2 d-none d-md-block bg-light ">
     <div class="sidebar-sticky">
         <ul>
             <h1>Hi ....</h1>
         </ul>
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link active" href="#">
-                    <span data-feather="home"></span>
-                    Dashboard <span class="sr-only">(current)</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="file"></span>
-                    Orders
-                </a>
 
-        </ul>
-
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-            <span>Saved reports</span>
-            <a class="d-flex align-items-center text-muted" href="#">
-                <span data-feather="plus-circle"></span>
-            </a>
-        </h6>
+        <button class="collapsible">English</button>
+        <div class="content">
+            <p>Who Lost Roger?</p>
+        </div>
+        <button class="collapsible">Mathematics</button>
+        <div class="content">
+            <p>Puzzle Master</p>
+        </div>
         <ul class="nav flex-column mb-2">
             <li class="nav-item">
                 <a class="nav-link" href="#">

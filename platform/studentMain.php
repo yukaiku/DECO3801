@@ -80,22 +80,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="js/jquery-3.5.0.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script>
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
-
-    for (i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            if (content.style.maxHeight){
-                content.style.maxHeight = null;
-            } else {
-                content.style.maxHeight = content.scrollHeight + "px";
-            }
-        });
-    }
-</script>
+<script src="js/collapsibleSideBar.js"></script>
 
 </body>
 </html>
