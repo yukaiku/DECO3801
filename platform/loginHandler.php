@@ -45,7 +45,7 @@ if (!mysqli_connect_errno()) { // connection to database is successful
                 header('Location: index.php?welcomeMessage=Welcome '. $row['firstName']); // redirect to the homepage.
             } else {
                 mysqli_close($connection); // close database connection
-                header('Location: login.php?error=Invalid username or password'); // redirect to the login page.
+                header('Location: index.php?error=Invalid username or password'); // redirect to the login page.
             }
         }
     }else{ //does not have record of student will go try teacher login
