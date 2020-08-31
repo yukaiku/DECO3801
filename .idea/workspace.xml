@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b5da013-e431-4701-b5a1-50caae3c0e54" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/platform/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/platform/studentMain.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/platform/studentSideBar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/platform/css/teacher.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/platform/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform/studentMain.php" beforeDir="false" afterPath="$PROJECT_DIR$/platform/studentMain.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform/teacherMain.php" beforeDir="false" afterPath="$PROJECT_DIR$/platform/teacherMain.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
