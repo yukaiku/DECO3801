@@ -1,7 +1,6 @@
 <?php
 
 require_once 'config.php';
-
 function open_connection() {
     global $connection;
 
