@@ -1,22 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class ButtonUtility : MonoBehaviour
+public class IsResult : MonoBehaviour
 {
-    public void doLoadScene(string sceneName)
+    public GameObject nounPanel;
+
+    private void checkNounPanel()
     {
-        SceneManager.LoadScene(sceneName);
+        if (nounPanel == null)
+        {
+            IsResult component = this.gameObject.GetComponent<IsResult>();
+            Destroy(component);
 
-        Debug.Log(string.Format("Load '{0}' scene", sceneName));
-    }
-
-    public void doQuit()
-    {
-        Application.Quit();
-
-        Debug.Log("Game quit.");
+            Debug.Log(string.Format("Null noun panel assigned and the component won't work"));
+        }
     }
 
     /* ********************************************************************************* *
@@ -26,12 +24,12 @@ public class ButtonUtility : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        checkNounPanel();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 }

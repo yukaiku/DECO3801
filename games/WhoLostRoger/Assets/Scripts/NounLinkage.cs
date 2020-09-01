@@ -5,40 +5,30 @@ using UnityEngine.UI;
 
 public class NounLinkage : MonoBehaviour
 {
-    public GameObject nounPanel;
-    public string nounName;
+    public Text nounText;
 
-    private GameObject nounObject;
-    private Text[] allNounTexts;
-    private Text nounText;
-
-    private void getNounText()
+    private void checkNounText()
     {
-        nounObject = this.gameObject;
-        allNounTexts = nounPanel.GetComponentsInChildren<Text>(true);
-        for (int i = 0; i < allNounTexts.Length; ++i)
-        {
-            if (allNounTexts[i].text.Equals(nounName))
-            {
-                nounText = allNounTexts[i];
-                Debug.Log(string.Format("A corresponding noun '{0}' text '{1}' found",
-                        nounObject.name, nounText.text));
-                break;
-            }
-        }
-
         if (nounText == null)
         {
-            Debug.Log(string.Format("No such noun text found"));
+            NounLinkage component = this.gameObject.GetComponent<NounLinkage>();
+            Destroy(component);
+
+            Debug.Log(string.Format("No corresponding noun text : the component won't work"));
         }
     }
 
-    private void doDisableNounText()
+    private void clickNounObject()
     {
-        if ((nounText != null) &&(nounText.gameObject.activeSelf))
+        if (nounText.gameObject.activeSelf)
         {
+            // save player score here
+            PlayerData.saveScore(PlayerData.getScore() + 1);
+
             nounText.gameObject.SetActive(false);
-            Debug.Log(string.Format("Disable noun '{0}' text successful", nounObject.name));
+
+            Debug.Log(string.Format("Disable noun '{0}' text '{1}' successful",
+                this.gameObject.name, nounText.text));
         }
     }
 
@@ -48,13 +38,13 @@ public class NounLinkage : MonoBehaviour
 
     private void OnMouseDown()
     {
-        doDisableNounText();
+        clickNounObject();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        getNounText();
+        checkNounText();
     }
 
     // Update is called once per frame

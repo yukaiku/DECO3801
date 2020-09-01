@@ -1,32 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class TimerUtility : MonoBehaviour
 {
-    public enum TimeoutOptions
-    {
-        nothing = 0,
-        jumpScene = 1,
-    }
     public float timeStart;                  // time provided to start count down
-    public TimeoutOptions timeoutOptions;
-    public string sceneName;                 // jump to other scene when timeout, if provided
+    public Text timeShow;                    // show current time left
 
     private float timeStartSave;             // back up the start time
     private bool timerActive = false;
 
-    public void startTimer()
-    {
-        timeStartSave = timeStart;
-        timerActive = true;
-    }
-
     public void resetTimer()
     {
-        timerActive = false;
+        timerActive = true;
         timeStart = timeStartSave;
+        if (timeShow != null)
+        {
+            timeShow.text = Mathf.Round(timeStart).ToString();
+        }
     }
 
     public void clickTimer()
@@ -35,47 +28,37 @@ public class TimerUtility : MonoBehaviour
         Debug.Log(string.Format("Timer has been clicked"));
     }
 
-    public void updateTimer()
+    private void startTimer()
+    {
+        timeStartSave = timeStart;
+        timerActive = true;
+        if (timeShow != null)
+        {
+            timeShow.text = Mathf.Round(timeStart).ToString();
+        } else
+        {
+            Debug.Log(string.Format("Null timer : won't show time text"));
+        }
+    }
+
+    private void updateTimer()
     {
         if ((timerActive) && (timeStart >= 0))
         {
             timeStart -= Time.deltaTime;
             if (timeStart <= 0)
             {
-                // do something when timeout
-                switch (timeoutOptions)
-                {
-                    case TimeoutOptions.nothing:
-                        doNothing();
-                        break;
-                    case TimeoutOptions.jumpScene:
-                        doJumpScene();
-                        break;
-                    default:
-                        break;
-                }
+                timerActive = false;
+                timeStart = 0;
             }
         }
     }
 
-    // do nothing when timeout
-    private void doNothing()
+    private void showTime()
     {
-        Debug.Log(string.Format("Timeout : Object '{0}' timer",
-            this.gameObject.ToString()));
-    }
-
-    // jump to other scene when timeout
-    private void doJumpScene()
-    {
-        if ((sceneName != null)&& (SceneManager.GetSceneByName(sceneName) != null))
+        if (timeShow != null)
         {
-            Debug.Log(string.Format("Timeout : load to '{0}' scene", sceneName));
-            SceneManager.LoadScene(sceneName);
-        }
-        else
-        {
-            Debug.Log(string.Format("Timeout : no such scene name"));
+            timeShow.text = Mathf.Round(timeStart).ToString();
         }
     }
 
@@ -93,5 +76,6 @@ public class TimerUtility : MonoBehaviour
     void Update()
     {
         updateTimer();
+        showTime();
     }
 }
