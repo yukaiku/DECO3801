@@ -1,4 +1,8 @@
-
+<?php
+include_once 'includes/checkLoginStatus.php';
+include_once 'includes/dbGame.php';
+include_once 'includes/dbTeacher.php';
+?>
 <!doctype html>
 <html lang="en">
 <head>
