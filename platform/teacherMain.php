@@ -2,6 +2,8 @@
 include_once 'includes/checkLoginStatusForTeacher.php';
 include_once 'includes/dbGame.php';
 include_once 'includes/dbTeacher.php';
+include_once  'includes/dbSchool.php';
+$schoolInfo = getByIdSchool($user['school']);
 ?>
 <!doctype html>
 <html lang="en">
@@ -28,50 +30,34 @@ include_once 'includes/dbTeacher.php';
         include_once("teacherSideBar.php");
         ?>
         <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-            <div class="row">
-            <h1><b>School: </b> U Q HI</h1>
-            </div>
             <div class="row" id="searchbar-row">
                 <div class="col-lg-6">
-                    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+                    <input id='searchClass' name='search_name' class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
                 </div>
                 <div class="col-lg-3"></div>
                 <div class="col-lg-3">
-                    <ul class="navbar-nav px-3">
-                        <li class="nav-item text-nowrap">
                             <a type="button" class="btn btn-primary" href="teacherAdd.php">Add Class</a>
-                        </li>
-                    </ul></div>
+                </div>
             </div>
-
-
-            <h2>Section title</h2>
+            <div class="row">
+                <?php echo "<h1>{$schoolInfo['name']}</h1>" ?>
+            </div>
+            <div class = "row">
+                <div class="col-lg-3">
+                    <a type="button" class="btn btn-danger" id="deleteClass">Delete Class</a>
+                </div>
+            </div>
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
                     <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                        <th>Header</th>
+                        <th>Select All</th>
+                        <th>Grade</th>
+                        <th>Class</th>
+                        <th>Edit</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <td>1,001</td>
-                        <td>Lorem</td>
-                        <td>ipsum</td>
-                        <td>dolor</td>
-                        <td>sit</td>
-                    </tr>
-                    <tr>
-                        <td>1,001</td>
-                        <td>Lorem</td>
-                        <td>ipsum</td>
-                        <td>dolor</td>
-                        <td>sit</td>
-                    </tr>
+                    <tbody id="classTableBody">
                     </tbody>
                 </table>
             </div>
@@ -85,6 +71,53 @@ include_once 'includes/dbTeacher.php';
 <script src="js/jquery-3.5.0.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/collapsibleSideBar.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        var search = "";
+        var html = "";
+        refreshData();
+        $('input[name=search_name]').on('input',function(e){
+            search = $(this).val();
+            refreshData();
+        });
+
+        function refreshData(){
+            $.post("ajax/classSearchFilter.php",
+                {
+                    search: search,
+                },
+                function(result){
+                    console.log(result);
+                    var result = $.parseJSON(result);
+                    var string = "";
+                    $("#classTableBody").empty();
+                    for(var i = 1; i <= result.length; i++){
+                        string += "<tr>";
+
+                        string += "<td>";
+                        string += '<input type="checkbox" class="categoryIds" id="check1" name="category" value="' + result[i-1].id + '">';
+                        string += "</td>";
+
+                        string += "<td>";
+                        string += result[i-1].grade ;
+                        string += "</td>";
+                        string += "<td>";
+                        string += result[i-1].class ;
+                        string += "</td>";
+                        string += "<td>";
+                        string += "<a href='teacherClass.php?grade="+ result[i-1].grade + "&class=" + result[i-1].class + "'>Edit</a>";
+                        string += "</td>";
+                        string += "</tr>";
+                    }
+                    $("#classTableBody").append(string);
+                    console.log(string);
+
+                });
+        }
+
+    });
+</script>
 
 </body>
 </html>

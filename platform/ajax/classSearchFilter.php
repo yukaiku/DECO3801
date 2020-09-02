@@ -9,7 +9,7 @@ if($searchItem != ""){
     $whereSql .= " and (firstname LIKE '%". $searchItem . "%' OR lastname LIKE '%". $searchItem . "%' )";
 }
 
-$sql = "Select grade, class from student ". $whereSql . " group by grade, class order by grade, class desc";
+$sql = "Select id, grade, class from student ". $whereSql . " group by grade, class order by grade, class desc";
 $resultSet = query($sql);
 $resultArray = array();
 while ($row = fetch_array($resultSet)) {
