@@ -36,9 +36,9 @@ if (!mysqli_connect_errno()) { // connection to database is successful
             if ($row = mysqli_fetch_array($result)) { // fetch the record
                 $_SESSION['user'] = $row; // put the record into the session
                 if(isset($_POST['rememberMe']) && $_POST['rememberMe'] != ""){
-                    setcookie("user", json_encode($row), time() + (86400 * 30), "/");
+                    setcookie("student", json_encode($row), time() + (86400 * 30), "/");
                 }else{
-                    setcookie("user", json_encode(""), time()-3600, "/");
+                    setcookie("student", json_encode(""), time()-3600, "/");
                 }
                 mysqli_close($connection); // close database connection
                 header('Location: studentMain.php?welcomeMessage=Welcome '. $row['firstName']); // redirect to the homepage.
@@ -73,9 +73,9 @@ if (!mysqli_connect_errno()) { // connection to database is successful
                 if ($row = mysqli_fetch_array($result)) { // fetch the record
                     $_SESSION['user'] = $row; // put the record into the session
                     if(isset($_POST['rememberMe']) && $_POST['rememberMe'] != ""){
-                        setcookie("user", json_encode($row), time() + (86400 * 30), "/");
+                        setcookie("teacher", json_encode($row), time() + (86400 * 30), "/");
                     }else{
-                        setcookie("user", json_encode(""), time()-3600, "/");
+                        setcookie("teacher", json_encode(""), time()-3600, "/");
                     }
                     mysqli_close($connection); // close database connection
                     header('Location: teacherMain.php?welcomeMessage=Welcome '. $row['firstName']); // redirect to the homepage.
