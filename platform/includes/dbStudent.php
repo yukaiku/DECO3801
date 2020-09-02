@@ -61,7 +61,7 @@ function createStudent($infoArr = array()) {
                 $updateStrArr[] = "'{$value}'";
                 $updateStrArrField[] = "{$field}";
             } else {
-                $updateStrArr[] = "AES_ENCRYPT('{$value}','deco2800')";
+                $updateStrArr[] = "AES_ENCRYPT('{$value}','deco3801')";
                 $updateStrArrField[] = "{$field}";
                 $updateStrArr[] = "0";
                 $updateStrArrField[] = "status";
@@ -93,7 +93,7 @@ function updateStudent($infoArr = array()) {
                 if ($field != 'pwd') {
                     $updateStrArr[] = "{$field}='{$value}'";
                 } else {
-                    $updateStrArr[] = "{$field}=AES_ENCRYPT('{$value}','deco2800')";
+                    $updateStrArr[] = "{$field}=AES_ENCRYPT('{$value}','deco3801')";
                 }
             }
         }

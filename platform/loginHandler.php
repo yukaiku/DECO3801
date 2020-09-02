@@ -16,7 +16,7 @@ if (!mysqli_connect_errno()) { // connection to database is successful
         "SELECT * " .
         "FROM student A " .
         "WHERE A.username = '{$username}' AND " .
-        "A.pwd = AES_ENCRYPT('{$password}','deco2800') ";
+        "A.pwd = AES_ENCRYPT('{$password}','deco3801') ";
 
     $result = mysqli_query ($connection, $sqlQueryStr); // execute the SQL query
     $row = mysqli_fetch_array($result);
