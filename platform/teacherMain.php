@@ -29,8 +29,12 @@ $schoolInfo = getByIdSchool($user['school']);
         <?php
         include_once("teacherSideBar.php");
         ?>
+
         <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-            <div class="row" id="searchbar-row">
+            <div class="row" style="position: absolute; top: 75px">
+                <?php echo "<h1>{$schoolInfo['name']}</h1>" ?>
+            </div>
+            <div class="row" id="searchbar-row" style="position: absolute; top: 100px; width: 67%">
                 <div class="col-lg-6">
                     <input id='searchClass' name='search_name' class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
                 </div>
@@ -39,15 +43,13 @@ $schoolInfo = getByIdSchool($user['school']);
                             <a type="button" class="btn btn-primary" href="teacherAdd.php">Add Class</a>
                 </div>
             </div>
-            <div class="row">
-                <?php echo "<h1>{$schoolInfo['name']}</h1>" ?>
-            </div>
-            <div class = "row">
+
+            <div class = "row" style="position: absolute; top: 250px; width: 67%">
                 <div class="col-lg-3">
                     <a type="button" class="btn btn-danger" id="deleteClass">Delete Class</a>
                 </div>
             </div>
-            <div class="table-responsive">
+            <div class="table-responsive" style="position: absolute; top: 300px; width: 75%">
                 <table class="table table-striped table-sm">
                     <thead>
                     <tr>
@@ -86,6 +88,7 @@ $schoolInfo = getByIdSchool($user['school']);
             $.post("ajax/classSearchFilter.php",
                 {
                     search: search,
+                    school: <?php echo $schoolInfo['id']; ?>
                 },
                 function(result){
                     console.log(result);
@@ -106,7 +109,7 @@ $schoolInfo = getByIdSchool($user['school']);
                         string += result[i-1].class ;
                         string += "</td>";
                         string += "<td>";
-                        string += "<a href='teacherClass.php?grade="+ result[i-1].grade + "&class=" + result[i-1].class + "'>Edit</a>";
+                        string += "<a href='teacherClass.php?grade="+ result[i-1].grade + "&class=" + result[i-1].class + "&school=" + result[i-1].school + "'>Edit</a>";
                         string += "</td>";
                         string += "</tr>";
                     }

@@ -1,22 +1,25 @@
 <?php
 require_once "../includes/dbStudent.php";
 $searchItem = isset($_POST['search']) ? $_POST['search'] : "";
+$class = isset($_POST['class']) ? $_POST['class'] : "";
+$grade = isset($_POST['grade']) ? $_POST['grade'] : "";
 $school = isset($_POST['school']) ? $_POST['school'] : "";
-$whereSql = "Where status = 0 and school = {$school}";
+$whereSql = "Where status = 0 and grade ='{$grade}' and school ={$school} and class = '{$class}' ";
 
 if($searchItem != ""){
     $whereSql .= " and (firstname LIKE '%". $searchItem . "%' OR lastname LIKE '%". $searchItem . "%' )";
 }
 
-$sql = "Select id, grade, class, school from student ". $whereSql . " group by grade, class order by grade, class desc";
+$sql = "Select id, firstname, lastname, username from student ". $whereSql . " order by firstname, lastname desc";
+
 $resultSet = query($sql);
 $resultArray = array();
 while ($row = fetch_array($resultSet)) {
     array_push($resultArray,array(
         "id"=>$row['id'],
-        "grade"=>$row['grade'],
-        "class"=>$row['class'],
-        "school"=>$row['school']
+        "firstname"=>$row['firstname'],
+        "lastname"=>$row['lastname'],
+        "username"=>$row['username']
     ));
 }
 $resultJSON = json_encode($resultArray);
