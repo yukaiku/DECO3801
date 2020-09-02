@@ -71,7 +71,7 @@ if (!mysqli_connect_errno()) { // connection to database is successful
                     "A.pwd = AES_ENCRYPT('{$password}','deco3801') ";
                 $result = mysqli_query ($connection, $sqlQueryStr); // execute the SQL query
                 if ($row = mysqli_fetch_array($result)) { // fetch the record
-                    $_SESSION['user'] = $row; // put the record into the session
+                    $_SESSION['teacher'] = $row; // put the record into the session
                     if(isset($_POST['rememberMe']) && $_POST['rememberMe'] != ""){
                         setcookie("teacher", json_encode($row), time() + (86400 * 30), "/");
                     }else{

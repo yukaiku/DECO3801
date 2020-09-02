@@ -8,8 +8,12 @@ $( document ).ready(function() {
             var content = this.nextElementSibling;
             if (content.style.maxHeight){
                 content.style.maxHeight = null;
+                content.style.padding = "0 18px";
             } else {
-                content.style.maxHeight = content.scrollHeight + "px";
+                //content.style.maxHeight = content.scrollHeight + "px";
+                content.style.maxHeight = "20%";
+                content.style.paddingTop = "10%";
+                content.style.paddingBottom = "10%";
             }
         });
     }

@@ -1,25 +1,34 @@
+<?php
+$games = getAllGame('subject');
+?>
 <nav class="col-md-2 d-none d-md-block bg-light ">
     <div class="sidebar-sticky">
         <ul>
-            <h1>Hi ....</h1>
+            <h2>Hi <?= $user['firstname']; ?></h2>
         </ul>
+        <?php
+        $subject = "";
+        $loopCount = 0;
+        foreach($games as $row => $rowDetails ){
+            if($rowDetails['subject'] != $subject){
+                $subject = $rowDetails['subject'];
+                echo "<button class='collapsible'>{$rowDetails['subject']}</button>";
+            }
+            echo '<div class="content" style ="background-color: darkgrey;">';
+            echo "<a href='gameInfo.php?gameId={$rowDetails['id']}'>{$rowDetails['name']}</a>";
+            echo '</div>';
 
-        <button class="collapsible">English</button>
-        <div class="content">
-            <p>Who Lost Roger?</p>
-        </div>
-        <button class="collapsible">Mathematics</button>
-        <div class="content">
-            <p>Puzzle Master</p>
-        </div>
-        <ul class="nav flex-column mb-2">
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="file-text"></span>
-                    Current month
-                </a>
-            </li>
-        </ul>
+        }
+        ?>
+<!--        <button class="collapsible">English</button>-->
+<!--        <div class="content">-->
+<!--            <p>Who Lost Roger?</p>-->
+<!--        </div>-->
+<!--        <button class="collapsible">Mathematics</button>-->
+<!--        <div class="content">-->
+<!--            <p>Puzzle Master</p>-->
+<!--        </div>-->
+
         <ul>
             <div class="row bottom-navbar">
                 <div class="col-lg-3">
