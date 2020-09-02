@@ -33,7 +33,7 @@
                         Status
                     </div>
                     <div clas="row">
-                        Chat   |  <a href="index.php">Log Out</a>
+                        Chat   |  <a href="logoutHandler.php">Log Out</a>
                     </div>
                 </div>
             </div>
