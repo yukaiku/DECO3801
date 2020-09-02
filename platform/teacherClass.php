@@ -2,6 +2,12 @@
 include_once 'includes/checkLoginStatusForTeacher.php';
 include_once 'includes/dbGame.php';
 include_once 'includes/dbTeacher.php';
+$grade = isset($_GET['grade']) ? $_GET['grade'] : '';
+$class = isset($_GET['class']) ? $_GET['class'] : '';
+if($grade == "" || $class == ""){
+    header('Location: teacherMain.php'); // redirect to the login page.
+}
+$studentsRecord = getByGradeClassStudent($grade,$class);
 ?>
 <!doctype html>
 <html lang="en">
