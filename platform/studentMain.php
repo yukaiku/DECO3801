@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Teacher Home</title>
+    <title>Student Home</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -27,7 +27,7 @@
             <div class="row">
                 <h1><b>Who Lost Roger?</b></h1>
             </div>
-            <div class="row" id="searchbar-row">
+            <div class="row" id="sub-heading">
                 <h4>Subject: English</h4>
             </div>
 

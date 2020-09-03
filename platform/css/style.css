@@ -179,3 +179,22 @@ body {
     transition: max-height 0.2s ease-out;
     background-color: #f1f1f1;
 }
+
+#sub-heading{
+    padding: 3% 0 3% 0;
+}
+
+.profile-heading{
+    padding-bottom: 15%;
+}
+
+.body-content{
+    margin-top: 2%;
+    height:22%;
+}
+
+#box {
+    float: left;
+    width: 11%;
+    height: auto;
+}

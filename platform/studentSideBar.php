@@ -5,7 +5,7 @@
         </ul>
 
         <button class="collapsible">English</button>
-        <div class="content">
+        <div class="content" onclick="location.href='studentMain.php'">
             <p>Who Lost Roger?</p>
         </div>
         <button class="collapsible">Mathematics</button>
@@ -15,11 +15,13 @@
         <ul>
             <div class="row bottom-navbar">
                 <div class="col-lg-3">
-                    <img src="thmisds">
+                    <img src="#">
                 </div>
                 <div class="col-lg-9">
                     <div clas="row">
-                        Name
+                        <a type="button" class="btn" href="studentProfile.php">
+                            <b>Name</b>
+                        </a>
                     </div>
                     <div clas="row">
                         Status

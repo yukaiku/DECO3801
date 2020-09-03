@@ -3,10 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="0b5da013-e431-4701-b5a1-50caae3c0e54" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/platform/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platform/studentMain.php" beforeDir="false" afterPath="$PROJECT_DIR$/platform/studentMain.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platform/studentSideBar.php" beforeDir="false" afterPath="$PROJECT_DIR$/platform/studentSideBar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/platform/teacherMain.php" beforeDir="false" afterPath="$PROJECT_DIR$/platform/teacherMain.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/platform/teacherSideBar.php" beforeDir="false" afterPath="$PROJECT_DIR$/platform/teacherSideBar.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +53,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/platform" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../infs3202_project" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
@@ -87,7 +86,7 @@
       <workItem from="1599106182112" duration="148000" />
       <workItem from="1599106340049" duration="41000" />
       <workItem from="1599106391627" duration="342000" />
-      <workItem from="1599106747182" duration="4771000" />
+      <workItem from="1599106747182" duration="21715000" />
     </task>
     <servers />
   </component>
@@ -100,14 +99,18 @@
     </state>
     <state x="164" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1598837758893" />
     <state x="184" y="99" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.829@0.23.1440.829" timestamp="1598762302977" />
+    <state x="421" y="99" key="FileChooserDialogImpl" timestamp="1599120916855">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="421" y="99" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1599120916855" />
     <state x="453" y="176" key="NewPhpClassDialog" timestamp="1599116261288">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="453" y="176" key="NewPhpClassDialog/0.0.1280.680@0.0.1280.680" timestamp="1599116261288" />
-    <state x="478" y="283" key="NewPhpFileDialog" timestamp="1599116276982">
+    <state x="478" y="283" key="NewPhpFileDialog" timestamp="1599135622349">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="478" y="283" key="NewPhpFileDialog/0.0.1280.680@0.0.1280.680" timestamp="1599116276982" />
+    <state x="478" y="283" key="NewPhpFileDialog/0.0.1280.680@0.0.1280.680" timestamp="1599135622349" />
     <state x="538" y="368" key="NewPhpFileDialog/0.23.1440.829@0.23.1440.829" timestamp="1598762374153" />
     <state x="69" y="0" key="SettingsEditor" timestamp="1599107707214">
       <screen x="0" y="0" width="1280" height="680" />
@@ -122,6 +125,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="503" y="374" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1598762923429" />
+    <state x="339" y="96" width="602" height="488" key="find.popup" timestamp="1599134785047">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="339" y="96" width="602" height="488" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1599134785047" />
     <state x="342" y="126" width="672" height="555" key="search.everywhere.popup" timestamp="1599107696609">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
