@@ -37,7 +37,8 @@
                         <li class="nav-item text-nowrap">
                             <a type="button" class="btn btn-primary" href="teacherAdd.php">Add Class</a>
                         </li>
-                    </ul></div>
+                    </ul>
+                </div>
             </div>
 
 

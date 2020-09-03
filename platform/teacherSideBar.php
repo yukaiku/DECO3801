@@ -10,11 +10,14 @@
                     Dashboard <span class="sr-only">(current)</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="file"></span>
-                    Orders
-                </a>
+            <button class="collapsible">English</button>
+            <div class="content">
+                <p>Who Lost Roger?</p>
+            </div>
+            <button class="collapsible">Mathematics</button>
+            <div class="content">
+                <p>Puzzle Master</p>
+            </div>
 
         </ul>
 

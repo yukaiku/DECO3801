@@ -12,14 +12,6 @@
         <div class="content">
             <p>Puzzle Master</p>
         </div>
-        <ul class="nav flex-column mb-2">
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="file-text"></span>
-                    Current month
-                </a>
-            </li>
-        </ul>
         <ul>
             <div class="row bottom-navbar">
                 <div class="col-lg-3">
