@@ -242,6 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nounText: {fileID: 247737809}
+  resultTrigger: {fileID: 1532971770}
 --- !u!61 &166976394
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -524,7 +525,7 @@ GameObject:
   - component: {fileID: 661938776}
   - component: {fileID: 661938775}
   m_Layer: 5
-  m_Name: NounsText
+  m_Name: NounsHeader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -537,7 +538,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 661938773}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -787,7 +788,7 @@ GameObject:
   - component: {fileID: 1136296826}
   - component: {fileID: 1136296830}
   m_Layer: 5
-  m_Name: TimeShow
+  m_Name: Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1038,6 +1039,7 @@ GameObject:
   - component: {fileID: 1532971767}
   - component: {fileID: 1532971769}
   - component: {fileID: 1532971768}
+  - component: {fileID: 1532971770}
   m_Layer: 5
   m_Name: NounPanel
   m_TagString: Untagged
@@ -1104,6 +1106,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1532971766}
   m_CullTransparentMesh: 0
+--- !u!114 &1532971770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532971766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 447bd5fce4e60894bb39b7680f2d53d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nounPanel: {fileID: 1532971766}
+  options: 1
+  sceneName: ResultScene
 --- !u!1 &1759706445
 GameObject:
   m_ObjectHideFlags: 0
@@ -1173,9 +1190,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Cloud
-
-    ff'
+  m_Text: Cloud
 --- !u!222 &1759706448
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1324,7 +1339,7 @@ PrefabInstance:
     - target: {fileID: 88983082585585947, guid: 59bfdb60678bd674abcb53faf2ffa4a7,
         type: 3}
       propertyPath: m_Name
-      value: Noun Object 2
+      value: Noun Object Cloud
       objectReference: {fileID: 0}
     - target: {fileID: 88983082585585949, guid: 59bfdb60678bd674abcb53faf2ffa4a7,
         type: 3}
@@ -1383,6 +1398,52 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59bfdb60678bd674abcb53faf2ffa4a7, type: 3}
+--- !u!1 &88983082163370682 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 88983082585585947, guid: 59bfdb60678bd674abcb53faf2ffa4a7,
+    type: 3}
+  m_PrefabInstance: {fileID: 88983082163370681}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &88983082163370683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88983082163370682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c6ffdf74dcf0914a9ebdec84e864743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nounText: {fileID: 1759706447}
+  resultTrigger: {fileID: 1532971770}
+--- !u!61 &88983082163370684
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88983082163370682}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1001 &254423999572918936
 PrefabInstance:
   m_ObjectHideFlags: 0

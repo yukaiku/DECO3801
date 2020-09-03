@@ -14,9 +14,9 @@ public class IsGameover : MonoBehaviour
 
     public TimerUtility timer;
     public TimeoutOptions timeoutOptions;
-    [Tooltip("used for jumping to other scene")]
+    [ChoiceList(new[] { "ResultScene", "GameoverScene" })]
     public string sceneName;
-    private bool trigger = true;
+    private bool trigger = false;
 
     private void checkTimer()
     {
@@ -29,44 +29,48 @@ public class IsGameover : MonoBehaviour
         }
     }
 
-    // do something when timeout
-    private void doSomething()
+    private void isTimeout()
     {
-        if (trigger && (timer.timeStart <= 0))
+        if (!trigger && timer.timeStart <= 0)
         {
-            // save player time spent here
-            PlayerData.saveTime(timer.timeStart);
+            trigger = true;
 
-            switch (timeoutOptions)
+            if (trigger)
             {
-                case TimeoutOptions.nothing:
-                    doNothing();
-                    break;
-                case TimeoutOptions.jumpScene:
-                    doJumpScene();
-                    break;
-                default:
-                    break;
+                // save player time spent
+                PlayerData.saveTime(timer.timeStart);
+                // do something when timeout
+                doSomething();
             }
-
-            trigger = false;
         }
     }
 
-    // do nothing when timeout
+    private void doSomething()
+    {
+        switch (timeoutOptions)
+        {
+            case TimeoutOptions.nothing:
+                doNothing();
+                break;
+            case TimeoutOptions.jumpScene:
+                doJumpScene();
+                break;
+            default:
+                break;
+        }
+    }
+
     private void doNothing()
     {
         Debug.Log(string.Format("Timeout : Object '{0}' timer",
             this.gameObject.ToString()));
     }
 
-    // jump to other scene when timeout
     private void doJumpScene()
     {
         if ((sceneName != null) && (SceneManager.GetSceneByName(sceneName) != null))
         {
             SceneManager.LoadScene(sceneName);
-
             Debug.Log(string.Format("Timeout : load to '{0}' scene", sceneName));
         }
         else
@@ -88,6 +92,6 @@ public class IsGameover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        doSomething();
+        isTimeout();
     }
 }

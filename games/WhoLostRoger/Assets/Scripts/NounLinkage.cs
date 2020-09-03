@@ -5,11 +5,14 @@ using UnityEngine.UI;
 
 public class NounLinkage : MonoBehaviour
 {
+    [Tooltip("The corresponding noun text")]
     public Text nounText;
+    [Tooltip("assign to the noun text panel")]
+    public IsResult resultTrigger;
 
-    private void checkNounText()
+    private void isNullArgs()
     {
-        if (nounText == null)
+        if (nounText == null || resultTrigger == null)
         {
             NounLinkage component = this.gameObject.GetComponent<NounLinkage>();
             Destroy(component);
@@ -26,9 +29,10 @@ public class NounLinkage : MonoBehaviour
             PlayerData.saveScore(PlayerData.getScore() + 1);
 
             nounText.gameObject.SetActive(false);
-
             Debug.Log(string.Format("Disable noun '{0}' text '{1}' successful",
                 this.gameObject.name, nounText.text));
+
+            resultTrigger.isAllNounClicked();
         }
     }
 
@@ -44,7 +48,7 @@ public class NounLinkage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        checkNounText();
+        isNullArgs();
     }
 
     // Update is called once per frame
