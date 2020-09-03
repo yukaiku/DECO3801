@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Teacher Home</title>
+    <title>Student Home</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -25,51 +25,37 @@
         ?>
         <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="row">
-                <h1><b>School: </b> U Q HI</h1>
+                <h1><b>Who Lost Roger?</b></h1>
             </div>
-            <div class="row" id="searchbar-row">
-                <div class="col-lg-6">
-                    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-                </div>
-                <div class="col-lg-3"></div>
-                <div class="col-lg-3">
-                    <ul class="navbar-nav px-3">
-                        <li class="nav-item text-nowrap">
-                            <a type="button" class="btn btn-primary" href="teacherAdd.php">Add Class</a>
-                        </li>
-                    </ul></div>
+            <div class="row" id="sub-heading">
+                <h4>Subject: English</h4>
             </div>
 
-
-            <h2>Section title</h2>
-            <div class="table-responsive">
-                <table class="table table-striped table-sm">
-                    <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>1,001</td>
-                        <td>Lorem</td>
-                        <td>ipsum</td>
-                        <td>dolor</td>
-                        <td>sit</td>
-                    </tr>
-                    <tr>
-                        <td>1,001</td>
-                        <td>Lorem</td>
-                        <td>ipsum</td>
-                        <td>dolor</td>
-                        <td>sit</td>
-                    </tr>
-                    </tbody>
-                </table>
+            <div>
+                <h4>Description:</h4>
+                <p>
+                    <h6>
+                    Your name is Roger ... that's all you know. You wake up in an unknown room, and you don't know who you are,
+                    or where you came from. The house you are in has a weird vibe, and you need to find out who you are, and
+                    escape the house before it's too late ...
+                    </h6>
+                </p>
+                <p><h7>Genre: Thriller, Hidden Objects <br/>Grade: 6</h7></p>
+                <ul class="navbar-nav" style="padding:1% 0 1% 0">
+                    <li class="nav-item text-nowrap">
+                        <a type="button" class="btn btn-success" href="#">Play</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav" style="padding:1% 0 1% 0">
+                    <li class="nav-item text-nowrap">
+                        <a type="button" class="btn btn-primary" href="studentLeaderboard.php">Leaderboard</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav" style="padding:1% 0 1% 0">
+                    <li class="nav-item text-nowrap">
+                        <a type="button" class="btn btn-primary" href="#.php">Achievements</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

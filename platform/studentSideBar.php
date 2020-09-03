@@ -5,29 +5,23 @@
         </ul>
 
         <button class="collapsible">English</button>
-        <div class="content">
+        <div class="content" onclick="location.href='studentMain.php'">
             <p>Who Lost Roger?</p>
         </div>
         <button class="collapsible">Mathematics</button>
         <div class="content">
             <p>Puzzle Master</p>
         </div>
-        <ul class="nav flex-column mb-2">
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="file-text"></span>
-                    Current month
-                </a>
-            </li>
-        </ul>
         <ul>
             <div class="row bottom-navbar">
                 <div class="col-lg-3">
-                    <img src="thmisds">
+                    <img src="#">
                 </div>
                 <div class="col-lg-9">
                     <div clas="row">
-                        Name
+                        <a type="button" class="btn" href="studentProfile.php">
+                            <b>Name</b>
+                        </a>
                     </div>
                     <div clas="row">
                         Status

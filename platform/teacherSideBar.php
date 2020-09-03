@@ -6,6 +6,7 @@ $games = getAllGame('subject');
         <ul>
             <h2>Hi <?= $user['firstname']; ?></h2>
         </ul>
+<<<<<<< HEAD
         <?php
         $subject = "";
         $loopCount = 0;
@@ -17,6 +18,23 @@ $games = getAllGame('subject');
             echo '<div class="content" style ="background-color: darkgrey;">';
             echo "<a href='gameInfo.php?gameId={$rowDetails['id']}'>{$rowDetails['name']}</a>";
             echo '</div>';
+=======
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">
+                    <span data-feather="home"></span>
+                    Dashboard <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <button class="collapsible">English</button>
+            <div class="content">
+                <p>Who Lost Roger?</p>
+            </div>
+            <button class="collapsible">Mathematics</button>
+            <div class="content">
+                <p>Puzzle Master</p>
+            </div>
+>>>>>>> origin/student_platform
 
         }
         ?>
