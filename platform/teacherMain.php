@@ -41,11 +41,6 @@ $schoolInfo = getByIdSchool($user['school']);
                 <div class="col-lg-3"></div>
                 <div class="col-lg-3">
                             <a type="button" class="btn btn-primary" href="teacherAdd.php">Add Class</a>
-<<<<<<< HEAD
-=======
-                        </li>
-                    </ul>
->>>>>>> origin/student_platform
                 </div>
             </div>
 
