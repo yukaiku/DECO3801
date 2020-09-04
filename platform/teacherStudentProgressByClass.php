@@ -1,7 +1,17 @@
 <?php
 include_once 'includes/checkLoginStatusForTeacher.php';
 include_once 'includes/dbGame.php';
+include_once 'includes/dbStudent.php';
+include_once 'includes/dbStudentProgress.php';
 include_once 'includes/dbTeacher.php';
+$gameId = isset($_GET['gameId']) ? $_GET['gameId'] : "1";
+$gameInfo = getByIdGame($gameId);
+$gameName = $gameInfo['name'];
+$gameSubject = $gameInfo['subject'];
+$gameDescription = $gameInfo['description'];
+$gameGrade = $gameInfo['grade'];
+$gameGenre = $gameInfo['genre'];
+$classRecords = getClassRecordsByGameIdStudentProgress($gameId, $user['school']);
 ?>
 <!doctype html>
 <html lang="en">
@@ -28,7 +38,7 @@ include_once 'includes/dbTeacher.php';
         ?>
         <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="row" id="gameName">
-                <h1>Game Name</h1>
+                <h1><?=$gameName?></h1>
             </div>
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
@@ -38,21 +48,34 @@ include_once 'includes/dbTeacher.php';
                         <th>Class</th>
                         <th>Progress</th>
                         <th>Total Score</th>
+                        <th>View</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <td>1,001</td>
-                        <td>Lorem</td>
-                        <td>ipsum</td>
-                        <td>dolor</td>
-                    </tr>
-                    <tr>
-                        <td>1,001</td>
-                        <td>Lorem</td>
-                        <td>ipsum</td>
-                        <td>dolor</td>
-                    </tr>
+                    <tbody id="tableBodyStudentProgressByClass">
+                    <?php
+                    foreach ($classRecords as $class => $record){
+
+                        echo "<tr>";
+
+                        echo "<td>";
+                        echo $record['grade'];
+                        echo "</td>";
+                        echo "<td>";
+                        echo $record['class'];
+                        echo "</td>";
+                        echo "<td>";
+                        echo $record['percentage'];
+                        echo "</td>";
+                        echo "<td>";
+                        echo $record['percentage'];
+                        echo "</td>";
+                        echo "<td><a href= 'teacherStudentProgressBySelectedClass.php?grade={$record['grade']}&class={$record['class']}'>";
+                        echo "View</a></td>";
+
+                        echo "</tr>";
+
+                    }
+                    ?>
                     </tbody>
                 </table>
             </div>

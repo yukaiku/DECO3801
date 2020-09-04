@@ -2,6 +2,11 @@
 include_once 'includes/checkLoginStatusForTeacher.php';
 include_once 'includes/dbGame.php';
 include_once 'includes/dbTeacher.php';
+$gameId = isset($_GET['gameId']) ? $_GET['gameId'] : "1";
+$class = isset($_GET['class']) ? $_GET['class'] : "1";
+$grade = isset($_GET['grade']) ? $_GET['grade'] : "A";
+$studentRecords = getByGameIdStudentProgress($gameId, $user['school'], $class, $grade);
+print_r($studentRecords);
 ?>
 <!doctype html>
 <html lang="en">
