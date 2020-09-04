@@ -1,5 +1,5 @@
 <?php
-include_once 'includes/checkLoginStatusForTeacher.php';
+include_once 'includes/checkLoginStatusForBoth.php';
 include_once 'includes/dbGame.php';
 include_once 'includes/dbStudent.php';
 include_once 'includes/dbStudentProgress.php';
@@ -11,7 +11,7 @@ $gameSubject = $gameInfo['subject'];
 $gameDescription = $gameInfo['description'];
 $gameGrade = $gameInfo['grade'];
 $gameGenre = $gameInfo['genre'];
-$classRecords = getClassRecordsByGameIdStudentProgress($gameId, $user['school']);
+$classRecords = getClassRecordsProgress($gameId, $user['school']);
 ?>
 <!doctype html>
 <html lang="en">
@@ -34,7 +34,7 @@ $classRecords = getClassRecordsByGameIdStudentProgress($gameId, $user['school'])
 <div class="container-fluid">
     <div class="row">
         <?php
-        include_once("teacherSideBar.php");
+        include_once("sideBar.php");
         ?>
         <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="row" id="gameName">

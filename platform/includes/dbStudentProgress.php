@@ -25,15 +25,13 @@ function getAllStudentProgresss($orderBy = "") {
     return getStudentProgressBySql("SELECT * FROM {$GLOBALS['table_studentProgress']} {$orderBy}");
 }
 
-function getByGameIdStudentProgress($game = 1, $school = "", $class = "", $grade = "") { //get all the rows where record id = current id
-    $whereBySchool = strlen($class) > 0 ? " AND s.school = {$school}" : "";
-    $whereByClass = strlen($class) > 0 ? " AND s.class = '{$class}' " : "";
-    $whereByGrade = strlen($grade) > 0 ? " AND s.grade = {$grade} " : "";
-    $result_array = getStudentProgressBySql("SELECT * FROM {$GLOBALS['table_studentProgress']} as sp , {$GLOBALS['table_student']} as s  WHERE sp.game={$game} and sp.student = s.id {$whereBySchool} {$whereByClass} {$whereByGrade} AND s.status = 0 group by sp.student ");
+function getClassRecordsProgress($game = 1, $school = "") {
+    $whereBySchool = strlen($school) > 0 ? " AND s.school = {$school}" : "";
+    $result_array = getStudentProgressBySql("SELECT sum(score) as 'score', AVG(percentage) as 'percentage', grade, class FROM {$GLOBALS['table_studentProgress']} as sp , {$GLOBALS['table_student']} as s  WHERE sp.game={$game} and sp.student = s.id {$whereBySchool}  AND s.status = 0 group by s.grade, s.class ");
     return $result_array;
 }
 
-function getClassRecordsByGameIdStudentProgress($game = 1, $school = "", $class = "", $grade = "") { //get all the rows where record id = current id
+function getStudentRecordsProgress($game = 1, $school = "", $class = "", $grade = "") {
     $whereBySchool = strlen($class) > 0 ? " AND s.school = {$school}" : "";
     $whereByClass = strlen($class) > 0 ? " AND s.class = '{$class}' " : "";
     $whereByGrade = strlen($grade) > 0 ? " AND s.grade = {$grade} " : "";

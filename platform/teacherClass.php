@@ -1,5 +1,5 @@
 <?php
-include_once 'includes/checkLoginStatusForTeacher.php';
+include_once 'includes/checkLoginStatusForBoth.php';
 include_once 'includes/dbGame.php';
 include_once 'includes/dbTeacher.php';
 include_once 'includes/dbStudent.php';
@@ -33,26 +33,29 @@ $studentsRecord = getByGradeClassStudent($grade, $class, $school);
 <div class="container-fluid">
     <div class="row">
         <?php
-        include_once("teacherSideBar.php");
+        include_once("sideBar.php");
         ?>
         <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="row" id="schoolName" style="position: absolute; top: 75px">
                 <?php echo "<h1>Class {$grade}{$class} </h1>"?>
             </div>
-            <div class="row" id="searchbar-row" style="position: absolute; top: 100px; width: 100%">
+            <div class="row" id="searchbar-row" style="position: absolute; top: 100px; width: 80%">
                 <div class="col-lg-6">
                     <input id='searchClass' name='search_name' class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
                 </div>
             </div>
-            <div class="row" style=" overflow-y: auto; max-height: 30%; width: 80%; position:absolute; top:250px;">
+            <div class="row" style="position: absolute; top: 250px; width: fit-content;">
+                <button class="btn btn-primary" style="text-align: center" id="deleteStudentButton" >Delete</button>
+            </div>
+            <div class="row" style=" overflow-y: auto; max-height: 30%; width: 80%; position:absolute; top:300px;">
                     <table class="table table-striped table-sm">
                         <thead>
                         <tr>
                             <th>
-                                <input type="checkbox" id="checkAll" name="selectAll" value="1">
-                                Select All
+                                Select
                             </th>
                             <th>Username</th>
+                            <th>Password</th>
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Edit</th>
@@ -65,7 +68,7 @@ $studentsRecord = getByGradeClassStudent($grade, $class, $school);
             </div>
 
 
-            <div class="row" style="position: absolute; top: 500px;">
+            <div class="row" style="position: absolute; top: 520px; width: 80%">
                 <hr>
                 <h2>Add new class member</h2>
                 <form action="addNewStudent.php" method="post">
@@ -73,20 +76,20 @@ $studentsRecord = getByGradeClassStudent($grade, $class, $school);
                         <input type="hidden" name="school" value ="<?php $school ?>">
                         <div class="col-lg-3">
                             Username:
-                            <input type="text" class="text-input--underbar width-half" name="username" placeholder="Username" value="">
+                            <input type="text" class="text-input--underbar width-half" name="username" id="usernameInput" placeholder="Username" value="">
                         </div>
                     </div>
                     <div class="form-row row">
                         <div class="col-lg-3">
                             First Name:
-                            <input type="text" class="text-input--underbar width-half" name="firstName" placeholder="First" value="">
+                            <input type="text" class="text-input--underbar width-half" name="firstName" id="firstnameInput" placeholder="First" value="">
                         </div>
                         <div class="col-lg-3">
                             Last Name:
-                            <input type="text" class="text-input--underbar width-half" name="lastName" placeholder="Last" value="" style="border-width-left: 1px">
+                            <input type="text" class="text-input--underbar width-half" name="lastName" id="lastnameInput" placeholder="Last" value="" style="border-width-left: 1px">
                         </div>
                         <div class="col-lg-3">
-                            <button type="submit" class="btn btn-primary mb-2" style="text-align: center">Confirm</button>
+                            <button type="submit" class="btn btn-primary mb-2" style="text-align: center" id="addStudentButton">Confirm</button>
                         </div>
                     </div>
                     <hr>
@@ -107,6 +110,7 @@ $studentsRecord = getByGradeClassStudent($grade, $class, $school);
 <script type="text/javascript">
 
     $(document).ready(function() {
+        $('form').submit(false);
         var search = "";
         var html = "";
         refreshData();
@@ -115,11 +119,65 @@ $studentsRecord = getByGradeClassStudent($grade, $class, $school);
             refreshData();
         });
 
+        $("#addStudentButton").click(function(){
+            var username = $('#usernameInput').val();
+            var firstname = $('#firstnameInput').val();
+            var lastname = $('#lastnameInput').val();
+
+            if(username != "" && lastname != "" && firstname != ""){
+                addClass(username,firstname,lastname);
+            }else{
+                alert("Please key in all the fields");
+            }
+
+        });
+
+        $("#deleteStudentButton").click(function(){
+            var deleteArray = []
+                $("input:checkbox[name=students]:checked").each(function(){
+                    deleteArray.push($(this).val());
+            });
+            deleteClass(deleteArray);
+        });
+
+        function deleteClass(deleteArray){
+            $.post("ajax/deleteStudent.php",
+                {
+                    deleteArray: deleteArray
+                },
+                function(result){
+                    alert(result);
+                    refreshData();
+                });
+        }
+
+        function addClass(username,firstname,lastname){
+            var username = username;
+            var lastname = lastname;
+            var password = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+            $.post("ajax/addStudent.php",
+                {
+                    grade: '<?= $grade?>',
+                    class: '<?= $class?>',
+                    school: <?= $school?>,
+                    username: username,
+                    lastname: lastname,
+                    firstname: firstname,
+                    pwd: password,
+                    profileImage: "dummy.jpg"
+                },
+                function(result){
+                    //console.log(result);
+                    alert(result)
+                    refreshData();
+                });
+        }
+
         function refreshData(){
             $.post("ajax/studentSearchFilter.php",
                 {
                     search: search,
-                    grade: <?= $grade?>,
+                    grade: '<?= $grade?>',
                     class: '<?= $class?>',
                     school: <?= $school?>
 
@@ -133,11 +191,14 @@ $studentsRecord = getByGradeClassStudent($grade, $class, $school);
                         string += "<tr>";
 
                         string += "<td>";
-                        string += '<input type="checkbox" class="categoryIds" id="check1" name="category" value="' + result[i-1].id + '">';
+                        string += '<input type="checkbox" class="categoryIds" id="check1" name="students" value="' + result[i-1].id + '">';
                         string += "</td>";
 
                         string += "<td>";
                         string += result[i-1].username ;
+                        string += "</td>";
+                        string += "<td>";
+                        string += result[i-1].password ;
                         string += "</td>";
                         string += "<td>";
                         string += result[i-1].firstname ;
@@ -146,7 +207,7 @@ $studentsRecord = getByGradeClassStudent($grade, $class, $school);
                         string += result[i-1].lastname ;
                         string += "</td>";
                         string += "<td>";
-                        string += "<a href='teacherClass.php?grade="+ result[i-1].grade + "&class=" + result[i-1].class + "&school=" + result[i-1].school + "'>Edit</a>";
+                        string += "<a href='teacherStudent.php?id="+ result[i-1].id +"'>Edit</a>";
                         string += "</td>";
                         string += "</tr>";
                     }

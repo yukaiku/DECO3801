@@ -25,7 +25,7 @@ $gameId = isset($_GET['gameId']) ? $_GET['gameId'] : "1";
 <div class="container-fluid">
     <div class="row">
         <?php
-        include_once("teacherSideBar.php");
+        include_once("sideBar.php");
         include_once("gameInfoContent.php");
         ?>
 
