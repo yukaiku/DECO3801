@@ -2,30 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b5da013-e431-4701-b5a1-50caae3c0e54" name="Default Changelist" comment="">
-<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platform/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/platform/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platform/studentMain.php" beforeDir="false" afterPath="$PROJECT_DIR$/platform/studentMain.php" afterDir="false" />
-<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/platform/teacherMain.php" beforeDir="false" afterPath="$PROJECT_DIR$/platform/teacherMain.php" afterDir="false" />
-=======
-<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/platform/loginHandler.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platform/includes/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/platform/includes/config.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platform/includes/dbFunction.php" beforeDir="false" afterPath="$PROJECT_DIR$/platform/includes/dbFunction.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platform/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/platform/index.php" afterDir="false" />
-=======
       <change afterPath="$PROJECT_DIR$/platform/css/style.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/platform/studentMain.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/platform/studentSideBar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/platform/css/teacher.css" beforeDir="false" />
->>>>>>> origin/student_platform
->>>>>>> 9291a1ff8b6687020fd3a360af4f5ee8e2e5d527
-=======
       <change beforePath="$PROJECT_DIR$/platform/studentSideBar.php" beforeDir="false" afterPath="$PROJECT_DIR$/platform/studentSideBar.php" afterDir="false" />
->>>>>>> origin/student_platform
+    <list default="true" id="b3b47b77-9888-4f41-b7f6-5df054193214" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/platform/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform/studentFriends.php" beforeDir="false" afterPath="$PROJECT_DIR$/platform/studentFriends.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform/studentLeaderboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/platform/studentLeaderboard.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,21 +96,15 @@
       <workItem from="1598588357083" duration="4269000" />
       <workItem from="1598760720439" duration="1886000" />
       <workItem from="1598789044868" duration="1788000" />
-<<<<<<< HEAD
       <workItem from="1598833609823" duration="6000" />
       <workItem from="1598834375301" duration="2086000" />
-=======
       <workItem from="1598833066251" duration="5040000" />
-<<<<<<< HEAD
->>>>>>> origin/student_platform
-=======
       <workItem from="1599105345765" duration="248000" />
       <workItem from="1599105607987" duration="558000" />
       <workItem from="1599106182112" duration="148000" />
       <workItem from="1599106340049" duration="41000" />
       <workItem from="1599106391627" duration="342000" />
       <workItem from="1599106747182" duration="21715000" />
->>>>>>> origin/student_platform
     </task>
     <servers />
   </component>
@@ -127,22 +117,17 @@
     </state>
     <state x="164" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1598837758893" />
     <state x="184" y="99" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.829@0.23.1440.829" timestamp="1598762302977" />
-<<<<<<< HEAD
-<<<<<<< HEAD
     <state x="538" y="375" key="NewPhpFileDialog" timestamp="1598834910533">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="538" y="375" key="NewPhpFileDialog/0.0.1440.900@0.0.1440.900" timestamp="1598834910533" />
-=======
     <state x="478" y="283" key="NewPhpFileDialog" timestamp="1598834123159">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="478" y="283" key="NewPhpFileDialog/0.0.1280.680@0.0.1280.680" timestamp="1598834123159" />
->>>>>>> origin/student_platform
     <state x="538" y="368" key="NewPhpFileDialog/0.23.1440.829@0.23.1440.829" timestamp="1598762374153" />
     <state x="397" y="270" key="com.intellij.ide.util.TipDialog" timestamp="1598834375678">
       <screen x="0" y="23" width="1440" height="829" />
-=======
     <state x="421" y="99" key="FileChooserDialogImpl" timestamp="1599120916855">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -151,10 +136,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="453" y="176" key="NewPhpClassDialog/0.0.1280.680@0.0.1280.680" timestamp="1599116261288" />
-    <state x="478" y="283" key="NewPhpFileDialog" timestamp="1599135622349">
+    <state x="478" y="283" key="NewPhpFileDialog" timestamp="1599223226142">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="478" y="283" key="NewPhpFileDialog/0.0.1280.680@0.0.1280.680" timestamp="1599135622349" />
+    <state x="478" y="283" key="NewPhpFileDialog/0.0.1280.680@0.0.1280.680" timestamp="1599223226142" />
     <state x="538" y="368" key="NewPhpFileDialog/0.23.1440.829@0.23.1440.829" timestamp="1598762374153" />
     <state x="69" y="0" key="SettingsEditor" timestamp="1599107707214">
       <screen x="0" y="0" width="1280" height="680" />
@@ -162,7 +147,6 @@
     <state x="69" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1599107707214" />
     <state x="397" y="268" key="com.intellij.ide.util.TipDialog" timestamp="1598789061505">
       <screen x="0" y="0" width="1440" height="900" />
->>>>>>> origin/student_platform
     </state>
     <state x="397" y="268" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1598789061505" />
     <state x="397" y="270" key="com.intellij.ide.util.TipDialog/0.23.1440.829@0.23.1440.829" timestamp="1598834375678" />

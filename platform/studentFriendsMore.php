@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Student Profile</title>
+    <title>Student Home</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -23,16 +23,16 @@
 <body>
 <div class="container-fluid">
     <div class="row">
-        <?php
-        include_once("studentSideBar.php");
-        ?>
+    <?php
+    include_once("studentSideBar.php");
+    ?>
         <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="row">
-                <b style="float:left;width:80%"><h4>You have 3 friends.</h4></b>
+                <b style="float:left;width:80%"><h4>Friends</h4></b>
                 <a type="button" style="float:right; width:auto;font-size: 15px;" class="btn btn-outline-dark" href="#">Chat (1 online)</a>
             </div>
             <div class="body-content">
-                <h6>Friends</h6>
+                <h6>Class 6E</h6>
                 <div id="box">
                     <img src="#"/><br/>
                     fortnite3
@@ -44,42 +44,6 @@
                 <div id="box">
                     <img src="#"/><br/>
                     bobbyBOB
-                </div>
-            </div>
-            <a style="font-size: 10px;" href="studentFriendsMore.php">See More...</a><br/>
-            <div class="body-content">
-                <h6>Classmates</h6>
-                <div id="box">
-                    <img src="#"/><br/>
-                    fortnite3
-                </div>
-                <div id="box">
-                    <img src="#"/><br/>
-                    sunshinegal08
-                </div>
-                <div id="box">
-                    <img src="#"/><br/>
-                    bobbyBOB
-                </div>
-                <div id="box">
-                    <img src="#"/><br/>
-                    schoolsux111
-                </div>
-                <div id="box">
-                    <img src="#"/><br/>
-                    ihatevapour
-                </div>
-                <div id="box">
-                    <img src="#"/><br/>
-                    mercyHEALPLS
-                </div>
-            </div>
-            <a style="font-size: 10px;" href="#">See More...</a><br/>
-            <div class="body-content">
-                <h6>Teachers</h6>
-                <div id="box">
-                    <img src="#"/><br/>
-                    mrsapplepie
                 </div>
             </div>
             <div id="mainFooter" style="bottom:0; position: fixed;">
@@ -89,3 +53,4 @@
     </div>
 </div>
 </body>
+</html>
