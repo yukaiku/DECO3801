@@ -27,7 +27,7 @@ $schoolInfo = getByIdSchool($user['school']);
 <div class="container-fluid">
     <div class="row">
         <?php
-        include_once("teacherSideBar.php");
+        include_once("sideBar.php");
         ?>
 
         <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
@@ -40,7 +40,8 @@ $schoolInfo = getByIdSchool($user['school']);
                 </div>
                 <div class="col-lg-3"></div>
                 <div class="col-lg-3">
-                            <a type="button" class="btn btn-primary" href="teacherAdd.php">Add Class</a>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addClassModal">Add Class</button>
+<!--                            <a type="button" class="btn btn-primary" href="teacherAdd.php">Add Class</a>-->
                 </div>
             </div>
 
@@ -66,6 +67,60 @@ $schoolInfo = getByIdSchool($user['school']);
         </div>
     </div>
 </div>
+<!-- Modal -->
+<div id="addClassModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add Class</h4>
+            </div>
+            <div class="modal-body">
+                <form method="get" action="teacherAdd.php">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label for="selectClass">Grade</label>
+                            <select class="form-control" name="grade" id="selectClass">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                <option>11</option>
+                                <option>12</option>
+                            </select>
+                        </div>
+                        <br>
+                        <label for="selectClass">Class</label>
+                        <select class="form-control" name="class" id="selectClass">
+                            <option>A</option>
+                            <option>B</option>
+                            <option>C</option>
+                            <option>D</option>
+                            <option>E</option>
+                            <option>F</option>
+                            <option>G</option>
+                            <option>H</option>
+                            <option>I</option>
+                            <option>J</option>
+                            <option>K</option>
+                        </select>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
@@ -91,7 +146,6 @@ $schoolInfo = getByIdSchool($user['school']);
                     school: <?php echo $schoolInfo['id']; ?>
                 },
                 function(result){
-                    console.log(result);
                     var result = $.parseJSON(result);
                     var string = "";
                     $("#classTableBody").empty();

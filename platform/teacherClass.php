@@ -33,7 +33,7 @@ $studentsRecord = getByGradeClassStudent($grade, $class, $school);
 <div class="container-fluid">
     <div class="row">
         <?php
-        include_once("teacherSideBar.php");
+        include_once("sideBar.php");
         ?>
         <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="row" id="schoolName" style="position: absolute; top: 75px">
@@ -73,20 +73,20 @@ $studentsRecord = getByGradeClassStudent($grade, $class, $school);
                         <input type="hidden" name="school" value ="<?php $school ?>">
                         <div class="col-lg-3">
                             Username:
-                            <input type="text" class="text-input--underbar width-half" name="username" placeholder="Username" value="">
+                            <input type="text" class="text-input--underbar width-half" name="username" id="usernameInput" placeholder="Username" value="">
                         </div>
                     </div>
                     <div class="form-row row">
                         <div class="col-lg-3">
                             First Name:
-                            <input type="text" class="text-input--underbar width-half" name="firstName" placeholder="First" value="">
+                            <input type="text" class="text-input--underbar width-half" name="firstName" id="firstnameInput" placeholder="First" value="">
                         </div>
                         <div class="col-lg-3">
                             Last Name:
-                            <input type="text" class="text-input--underbar width-half" name="lastName" placeholder="Last" value="" style="border-width-left: 1px">
+                            <input type="text" class="text-input--underbar width-half" name="lastName" id="lastnameInput" placeholder="Last" value="" style="border-width-left: 1px">
                         </div>
                         <div class="col-lg-3">
-                            <button type="submit" class="btn btn-primary mb-2" style="text-align: center">Confirm</button>
+                            <button type="submit" class="btn btn-primary mb-2" style="text-align: center" id="addStudentButton">Confirm</button>
                         </div>
                     </div>
                     <hr>
@@ -107,6 +107,7 @@ $studentsRecord = getByGradeClassStudent($grade, $class, $school);
 <script type="text/javascript">
 
     $(document).ready(function() {
+        $('form').submit(false);
         var search = "";
         var html = "";
         refreshData();
@@ -115,11 +116,46 @@ $studentsRecord = getByGradeClassStudent($grade, $class, $school);
             refreshData();
         });
 
+        $("#addStudentButton").click(function(){
+            var username = $('#usernameInput').val();
+            var firstname = $('#firstnameInput').val();
+            var lastname = $('#lastnameInput').val();
+
+            if(username != "" && lastname != "" && firstname != ""){
+                addClass(username,firstname,lastname);
+            }else{
+                alert("Please key in all the fields");
+            }
+
+        });
+
+        function addClass(username,firstname,lastname){
+            var username = username;
+            var lastname = lastname;
+            var password = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+            $.post("ajax/addStudent.php",
+                {
+                    grade: '<?= $grade?>',
+                    class: '<?= $class?>',
+                    school: <?= $school?>,
+                    username: username,
+                    lastname: lastname,
+                    firstname: firstname,
+                    pwd: password,
+                    profileImage: "dummy.jpg"
+                },
+                function(result){
+                    //console.log(result);
+                    alert(result)
+                    refreshData();
+                });
+        }
+
         function refreshData(){
             $.post("ajax/studentSearchFilter.php",
                 {
                     search: search,
-                    grade: <?= $grade?>,
+                    grade: '<?= $grade?>',
                     class: '<?= $class?>',
                     school: <?= $school?>
 

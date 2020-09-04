@@ -2,7 +2,7 @@
 require_once 'dbFunction.php';
 
 $table_student = "student";
-$dbFields_student = ["id","school", "firstname", "lastname", "username", "nickname", "pwd", "grade", "class", "status"];
+$dbFields_student = ["id","school", "firstname", "lastname", "username", "nickname","profileImage", "pwd", "grade", "class", "status"];
 $pk_student = "id";
 
 function getStudent($like = "") {
