@@ -10,7 +10,7 @@ if($searchItem != ""){
     $whereSql .= " and (firstname LIKE '%". $searchItem . "%' OR lastname LIKE '%". $searchItem . "%' )";
 }
 
-$sql = "Select id, firstname, lastname, username from student ". $whereSql . " order by firstname, lastname desc";
+$sql = "Select id, firstname, lastname, username, AES_DECRYPT(pwd, 'deco3801') as password from student ". $whereSql . " order by firstname, lastname desc";
 
 $resultSet = query($sql);
 $resultArray = array();
@@ -19,7 +19,8 @@ while ($row = fetch_array($resultSet)) {
         "id"=>$row['id'],
         "firstname"=>$row['firstname'],
         "lastname"=>$row['lastname'],
-        "username"=>$row['username']
+        "username"=>$row['username'],
+        "password"=>$row['password']
     ));
 }
 $resultJSON = json_encode($resultArray);

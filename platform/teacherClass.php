@@ -39,20 +39,23 @@ $studentsRecord = getByGradeClassStudent($grade, $class, $school);
             <div class="row" id="schoolName" style="position: absolute; top: 75px">
                 <?php echo "<h1>Class {$grade}{$class} </h1>"?>
             </div>
-            <div class="row" id="searchbar-row" style="position: absolute; top: 100px; width: 100%">
+            <div class="row" id="searchbar-row" style="position: absolute; top: 100px; width: 80%">
                 <div class="col-lg-6">
                     <input id='searchClass' name='search_name' class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
                 </div>
             </div>
-            <div class="row" style=" overflow-y: auto; max-height: 30%; width: 80%; position:absolute; top:250px;">
+            <div class="row" style="position: absolute; top: 250px; width: fit-content;">
+                <button class="btn btn-primary" style="text-align: center" id="deleteClassButton" >Delete</button>
+            </div>
+            <div class="row" style=" overflow-y: auto; max-height: 30%; width: 80%; position:absolute; top:300px;">
                     <table class="table table-striped table-sm">
                         <thead>
                         <tr>
                             <th>
-                                <input type="checkbox" id="checkAll" name="selectAll" value="1">
-                                Select All
+                                Select
                             </th>
                             <th>Username</th>
+                            <th>Password</th>
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Edit</th>
@@ -65,7 +68,7 @@ $studentsRecord = getByGradeClassStudent($grade, $class, $school);
             </div>
 
 
-            <div class="row" style="position: absolute; top: 500px;">
+            <div class="row" style="position: absolute; top: 520px; width: 80%">
                 <hr>
                 <h2>Add new class member</h2>
                 <form action="addNewStudent.php" method="post">
@@ -129,6 +132,25 @@ $studentsRecord = getByGradeClassStudent($grade, $class, $school);
 
         });
 
+        $("#deleteClassButton").click(function(){
+            var deleteArray = []
+                $("input:checkbox[name=students]:checked").each(function(){
+                    deleteArray.push($(this).val());
+                    deleteClass(deleteArray);
+            });
+        });
+
+        function deleteClass(deleteArray){
+            $.post("ajax/deleteStudent.php",
+                {
+                    deleteArray: deleteArray
+                },
+                function(result){
+                    alert(result)
+                    refreshData();
+                });
+        }
+
         function addClass(username,firstname,lastname){
             var username = username;
             var lastname = lastname;
@@ -169,11 +191,14 @@ $studentsRecord = getByGradeClassStudent($grade, $class, $school);
                         string += "<tr>";
 
                         string += "<td>";
-                        string += '<input type="checkbox" class="categoryIds" id="check1" name="category" value="' + result[i-1].id + '">';
+                        string += '<input type="checkbox" class="categoryIds" id="check1" name="students" value="' + result[i-1].id + '">';
                         string += "</td>";
 
                         string += "<td>";
                         string += result[i-1].username ;
+                        string += "</td>";
+                        string += "<td>";
+                        string += result[i-1].password ;
                         string += "</td>";
                         string += "<td>";
                         string += result[i-1].firstname ;

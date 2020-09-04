@@ -3,9 +3,11 @@ include_once 'includes/checkLoginStatusForBoth.php';
 include_once 'includes/dbGame.php';
 include_once 'includes/dbTeacher.php';
 include_once 'includes/dbStudent.php';
+include_once 'includes/dbSchool.php';
 $grade = isset($_GET['grade']) ? $_GET['grade'] : '';
 $class = isset($_GET['class']) ? $_GET['class'] : '';
 $school = $user['school'];
+$schoolInfo = getByIdSchool($user['school']);
 $studentsRecord = getByGradeClassStudent($grade,$class,$school);
 ?>
 <!doctype html>
@@ -33,10 +35,10 @@ $studentsRecord = getByGradeClassStudent($grade,$class,$school);
         include_once("sideBar.php");
         ?>
         <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-            <div class="row" id="schoolName">
-                <h1><b>School: </b> U Q HI</h1>
+            <div class="row" style="position: absolute; top: 50px">
+                <?php echo "<h1>{$schoolInfo['name']}</h1>" ?>
             </div>
-            <form>
+            <form style="position: absolute; top: 100px; width: 80%;">
                 <div class="form-row row">
                     <div class="col-lg-6">
                         Username:
@@ -55,19 +57,19 @@ $studentsRecord = getByGradeClassStudent($grade,$class,$school);
                 </div>
                 <hr>
             </form>
-            <div clas="form-row" style="text-align: center">
+            <div clas="form-row" style="position: absolute; top: 225px; width: 80%; text-align: center;">
                 <button  id="addStudentButton" class="btn btn-primary mb-2" style="text-align: center">Confirm</button>
             </div>
 
-            <div class="table-responsive">
+            <div class="table-responsive" style="position: absolute; top: 300px; max-height: 30%; width: 80%;">
                 <table class="table table-striped table-sm">
                     <thead>
                     <tr>
                         <th>
-                            <input type="checkbox" id="checkAll" name="selectAll" value="1">
-                            Select All
+                            Select
                         </th>
                         <th>Username</th>
+                        <th>Password</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Edit</th>
@@ -153,6 +155,9 @@ $studentsRecord = getByGradeClassStudent($grade,$class,$school);
 
                         string += "<td>";
                         string += result[i-1].username ;
+                        string += "</td>";
+                        string += "<td>";
+                        string += result[i-1].password ;
                         string += "</td>";
                         string += "<td>";
                         string += result[i-1].firstname ;
