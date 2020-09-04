@@ -11,7 +11,7 @@ $gameSubject = $gameInfo['subject'];
 $gameDescription = $gameInfo['description'];
 $gameGrade = $gameInfo['grade'];
 $gameGenre = $gameInfo['genre'];
-$classRecords = getClassRecordsByGameIdStudentProgress($gameId, $user['school']);
+$classRecords = getClassRecordsProgress($gameId, $user['school']);
 ?>
 <!doctype html>
 <html lang="en">

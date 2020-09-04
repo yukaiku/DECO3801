@@ -13,7 +13,7 @@ $gameGrade = $gameInfo['grade'];
 $gameGenre = $gameInfo['genre'];
 $class = isset($_GET['class']) ? $_GET['class'] : "1";
 $grade = isset($_GET['grade']) ? $_GET['grade'] : "A";
-$studentRecords = getClassRecordsByGameIdStudentProgress($gameId, $user['school'], $class, $grade);
+$studentRecords = getStudentRecordsProgress($gameId, $user['school'], $class, $grade);
 ?>
 <!doctype html>
 <html lang="en">
@@ -43,7 +43,7 @@ $studentRecords = getClassRecordsByGameIdStudentProgress($gameId, $user['school'
                 <h1><?=$gameName?></h1>
             </div>
             <div class="row" id="className">
-                <h1>Class: <?=$grade ?>: <?=$class ?></h1>
+                <h1>Class: <?=$grade ?><?=$class ?></h1>
             </div>
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
