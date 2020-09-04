@@ -136,8 +136,8 @@ $studentsRecord = getByGradeClassStudent($grade, $class, $school);
             var deleteArray = []
                 $("input:checkbox[name=students]:checked").each(function(){
                     deleteArray.push($(this).val());
-                    deleteClass(deleteArray);
             });
+            deleteClass(deleteArray);
         });
 
         function deleteClass(deleteArray){
@@ -146,7 +146,7 @@ $studentsRecord = getByGradeClassStudent($grade, $class, $school);
                     deleteArray: deleteArray
                 },
                 function(result){
-                    alert(result)
+                    alert(result);
                     refreshData();
                 });
         }
