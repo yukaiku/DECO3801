@@ -50,13 +50,13 @@ $schoolInfo = getByIdSchool($user['school']);
 
                 <div style="margin-top:3%; font-size:16px;">
                     <div class="form-row">
+                        <b>Full Name</b><br/>
+                        <?= $user['firstname'].' '.$user['lastname']; ?><br/>
+                    </div>
+                    <div class="form-row">
                         <b>Nickname</b>
                         <a type="button" style="font-size: 12px;" class="btn btn-outline-dark" href="#">Change</a><br/>
                         <?= $user['nickname']; ?><br/>
-                    </div>
-                    <div class="form-row">
-                        <b>Full Name</b><br/>
-                        <?= $user['firstname']." ".$user['lastname']; ?><br/>
                     </div>
                     <div class="form-row">
                         <b>Grade</b><br/>

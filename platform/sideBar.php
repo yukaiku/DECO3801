@@ -46,7 +46,11 @@ $games = getAllGame('subject');
                     <img src="thmisds">
                 </div>
                 <div class="col-lg-9">
-                    <a type="button" class="btn" href="studentProfile.php">
+                    <?php if ($status == "student"){
+                        echo '<a type="button" class="btn" href="studentProfile.php">';
+                    }else{
+                        echo '<a type="button" class="btn" href="teacherProfile.php">';
+                    }?>
                         <b>Name</b>
                     </a>
                     <div clas="row">
