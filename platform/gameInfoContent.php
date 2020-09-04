@@ -28,9 +28,9 @@ $gameGenre = $gameInfo['genre'];
     </div>
     <?php
     if($status == "teacher"){
-        echo '<a class="btn btn-primary mb-2" style="text-align: center" href="teacherStudentProgressByClass.php">Student\'s Progress</a>';
+        echo '<a class="btn btn-primary mb-2" style="text-align: center" href="teacherStudentProgressByClass.php?gameId='.$gameId.'">Student\'s Progress</a>';
     }elseif($status == "student"){
-        echo '<a class="btn btn-primary mb-2" style="text-align: center" href="game.php">Play</a>';
+        echo '<a class="btn btn-primary mb-2" style="text-align: center" href="game.php?gameId='.$gameId.'">Play</a>';
     }
     ?>
     <div id="mainFooter" style="bottom:0; position: fixed;">
