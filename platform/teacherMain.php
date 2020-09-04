@@ -47,7 +47,7 @@ $schoolInfo = getByIdSchool($user['school']);
 
             <div class = "row" style="position: absolute; top: 200px; width: 80%">
                 <div class="col-lg-3">
-                    <a type="button" class="btn btn-danger" id="deleteClass">Delete Class</a>
+                    <a type="button" class="btn btn-danger" id="deleteClassButton">Delete Class</a>
                 </div>
             </div>
             <div class="table-responsive" style="position: absolute; max-height: 30%; top: 250px; width: 80%">
@@ -139,6 +139,25 @@ $schoolInfo = getByIdSchool($user['school']);
             refreshData();
         });
 
+        $("#deleteClassButton").click(function(){
+            var deleteArray = []
+            $("input:checkbox[name=classes]:checked").each(function(){
+                deleteArray.push($(this).val());
+            });
+            deleteClass(deleteArray);
+        });
+
+        function deleteClass(deleteArray){
+            $.post("ajax/deleteClass.php",
+                {
+                    deleteArray: deleteArray
+                },
+                function(result){
+                    alert(result);
+                    refreshData();
+                });
+        }
+
         function refreshData(){
             $.post("ajax/classSearchFilter.php",
                 {
@@ -153,7 +172,7 @@ $schoolInfo = getByIdSchool($user['school']);
                         string += "<tr>";
 
                         string += "<td>";
-                        string += '<input type="checkbox" class="categoryIds" id="check1" name="category" value="' + result[i-1].id + '">';
+                        string += '<input type="checkbox" class="categoryIds" id="check1" name="classes" value="' + result[i-1].id + '">';
                         string += "</td>";
 
                         string += "<td>";

@@ -45,7 +45,7 @@ $studentsRecord = getByGradeClassStudent($grade, $class, $school);
                 </div>
             </div>
             <div class="row" style="position: absolute; top: 250px; width: fit-content;">
-                <button class="btn btn-primary" style="text-align: center" id="deleteClassButton" >Delete</button>
+                <button class="btn btn-primary" style="text-align: center" id="deleteStudentButton" >Delete</button>
             </div>
             <div class="row" style=" overflow-y: auto; max-height: 30%; width: 80%; position:absolute; top:300px;">
                     <table class="table table-striped table-sm">
@@ -132,7 +132,7 @@ $studentsRecord = getByGradeClassStudent($grade, $class, $school);
 
         });
 
-        $("#deleteClassButton").click(function(){
+        $("#deleteStudentButton").click(function(){
             var deleteArray = []
                 $("input:checkbox[name=students]:checked").each(function(){
                     deleteArray.push($(this).val());
