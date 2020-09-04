@@ -8,13 +8,6 @@ public class PlayerData
     static private float timeLeft;
     static private int scorePoint;
 
-    public static void resetPlayerData()
-    {
-        currentLevel = 0;
-        timeLeft = 0;
-        scorePoint = 0;
-    }
-
     public static void saveLevel(int level)
     {
         currentLevel = level;

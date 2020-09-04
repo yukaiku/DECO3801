@@ -13,6 +13,7 @@ public class IsResult : MonoBehaviour
     }
 
     public GameObject nounPanel;
+    public TimerUtility timer;
     public Options options;
     [ChoiceList(new[] { "ResultScene", "GameoverScene" })]
     public string sceneName;
@@ -20,14 +21,14 @@ public class IsResult : MonoBehaviour
     private Text[] nounTextList;
     private bool trigger = false;
 
-    private void checkNounPanel()
+    private void isArgsNull()
     {
-        if (nounPanel == null)
+        if (nounPanel == null || timer == null)
         {
             IsResult component = this.gameObject.GetComponent<IsResult>();
             Destroy(component);
 
-            Debug.Log(string.Format("Null noun panel assigned and the component won't work"));
+            Debug.Log(string.Format("Null arguments assigned and the component won't work"));
         }
     }
 
@@ -50,8 +51,7 @@ public class IsResult : MonoBehaviour
                     count++;
                 }
 
-                // extra one is for noun text header
-                if (count + 1 == nounTextList.Length)
+                if (count == nounTextList.Length)
                 {
                     trigger = true;
                     Debug.Log(string.Format("All nouns clicked."));
@@ -60,12 +60,14 @@ public class IsResult : MonoBehaviour
 
             if (trigger)
             {
+                // save player time spent
+                PlayerData.saveTime(timer.timeStart);
+                // do something when triggered
                 doSomething();
             }
         }
     }
 
-    // do something when triggered
     private void doSomething()
     {
         switch (options)
@@ -81,24 +83,22 @@ public class IsResult : MonoBehaviour
         }
     }
 
-    // do nothing when timeout
     private void doNothing()
     {
         Debug.Log(string.Format("Do nothing when all nouns clicked",
             this.gameObject.ToString()));
     }
 
-    // jump to other scene when timeout
     private void doJumpScene()
     {
         if ((sceneName != null) && (SceneManager.GetSceneByName(sceneName) != null))
         {
             SceneManager.LoadScene(sceneName);
-            Debug.Log(string.Format("All nouns found : load to '{0}' scene", sceneName));
+            Debug.Log(string.Format("Load to '{0}' scene", sceneName));
         }
         else
         {
-            Debug.Log(string.Format("All nouns found : no such scene name"));
+            Debug.Log(string.Format("No such scene name"));
         }
     }
 
@@ -109,7 +109,7 @@ public class IsResult : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        checkNounPanel();
+        isArgsNull();
         getNounTextList();
     }
 

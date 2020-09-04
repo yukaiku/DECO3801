@@ -18,7 +18,7 @@ public class IsGameover : MonoBehaviour
     public string sceneName;
     private bool trigger = false;
 
-    private void checkTimer()
+    private void isTimerNull()
     {
         if (timer == null)
         {
@@ -86,7 +86,7 @@ public class IsGameover : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        checkTimer();
+        isTimerNull();
     }
 
     // Update is called once per frame

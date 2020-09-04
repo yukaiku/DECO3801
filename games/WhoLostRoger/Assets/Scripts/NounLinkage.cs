@@ -10,7 +10,7 @@ public class NounLinkage : MonoBehaviour
     [Tooltip("assign to the noun text panel")]
     public IsResult resultTrigger;
 
-    private void isNullArgs()
+    private void isArgsNull()
     {
         if (nounText == null || resultTrigger == null)
         {
@@ -48,7 +48,7 @@ public class NounLinkage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        isNullArgs();
+        isArgsNull();
     }
 
     // Update is called once per frame
