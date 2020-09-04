@@ -7,6 +7,15 @@ $games = getAllGame('subject');
             <h2>Hi <?= $user['firstname']; ?></h2>
         </ul>
         <?php
+        if($status == "teacher"){
+            echo '<ul style="background-color: grey; padding-top: 10%; padding-bottom: 10%; margin-bottom: 0">
+                        <a href="teacherMain.php" style="color:white !important;">DashBoard</a>
+                  </ul>';
+        }
+        ?>
+
+
+        <?php
         $subject = "";
         $loopCount = 0;
         foreach($games as $row => $rowDetails ){
@@ -21,14 +30,14 @@ $games = getAllGame('subject');
 
         }
         ?>
-<!--        <button class="collapsible">English</button>-->
-<!--        <div class="content">-->
-<!--            <p>Who Lost Roger?</p>-->
-<!--        </div>-->
-<!--        <button class="collapsible">Mathematics</button>-->
-<!--        <div class="content">-->
-<!--            <p>Puzzle Master</p>-->
-<!--        </div>-->
+        <!--        <button class="collapsible">English</button>-->
+        <!--        <div class="content">-->
+        <!--            <p>Who Lost Roger?</p>-->
+        <!--        </div>-->
+        <!--        <button class="collapsible">Mathematics</button>-->
+        <!--        <div class="content">-->
+        <!--            <p>Puzzle Master</p>-->
+        <!--        </div>-->
 
         <ul>
             <div class="row bottom-navbar">
