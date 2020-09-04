@@ -1,5 +1,5 @@
 <?php
-include_once 'includes/checkLoginStatusForTeacher.php';
+include_once 'includes/checkLoginStatusForBoth.php';
 include_once 'includes/dbGame.php';
 include_once 'includes/dbTeacher.php';
 include_once  'includes/dbSchool.php';
