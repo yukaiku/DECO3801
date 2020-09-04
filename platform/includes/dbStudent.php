@@ -2,7 +2,7 @@
 require_once 'dbFunction.php';
 
 $table_student = "student";
-$dbFields_student = ["id","school", "firstname", "lastname", "username", "nickname", "pwd", "grade", "class", "status"];
+$dbFields_student = ["id","school", "firstname", "lastname", "username", "nickname","profileImage", "pwd", "grade", "class", "status"];
 $pk_student = "id";
 
 function getStudent($like = "") {
@@ -27,6 +27,11 @@ function getAllStudents($orderBy = "") {
 
 function getByIdStudent($id = 0) { //get all the rows where record id = current id
     $result_array = getStudentBySql("SELECT * FROM {$GLOBALS['table_student']} WHERE {$GLOBALS['pk_student']}= {$id} AND status = 0 LIMIT 1 ");
+    return !empty($result_array) ? array_shift($result_array) : false;
+}
+
+function getByGradeClassStudent($grade, $class, $school) { //get all the rows by class
+    $result_array = getStudentBySql("SELECT * FROM {$GLOBALS['table_student']} WHERE grade = '{$grade}' AND class = '{$class}' AND school = {$school} AND status = 0 order by username, firstname, lastname ");
     return !empty($result_array) ? array_shift($result_array) : false;
 }
 
@@ -61,7 +66,7 @@ function createStudent($infoArr = array()) {
                 $updateStrArr[] = "'{$value}'";
                 $updateStrArrField[] = "{$field}";
             } else {
-                $updateStrArr[] = "AES_ENCRYPT('{$value}','deco2800')";
+                $updateStrArr[] = "AES_ENCRYPT('{$value}','deco3801')";
                 $updateStrArrField[] = "{$field}";
                 $updateStrArr[] = "0";
                 $updateStrArrField[] = "status";
@@ -93,7 +98,7 @@ function updateStudent($infoArr = array()) {
                 if ($field != 'pwd') {
                     $updateStrArr[] = "{$field}='{$value}'";
                 } else {
-                    $updateStrArr[] = "{$field}=AES_ENCRYPT('{$value}','deco2800')";
+                    $updateStrArr[] = "{$field}=AES_ENCRYPT('{$value}','deco3801')";
                 }
             }
         }

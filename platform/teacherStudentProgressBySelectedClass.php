@@ -1,4 +1,20 @@
-
+<?php
+include_once 'includes/checkLoginStatusForBoth.php';
+include_once 'includes/dbGame.php';
+include_once 'includes/dbTeacher.php';
+include_once 'includes/dbStudent.php';
+include_once 'includes/dbStudentProgress.php';
+$gameId = isset($_GET['gameId']) ? $_GET['gameId'] : "1";
+$gameInfo = getByIdGame($gameId);
+$gameName = $gameInfo['name'];
+$gameSubject = $gameInfo['subject'];
+$gameDescription = $gameInfo['description'];
+$gameGrade = $gameInfo['grade'];
+$gameGenre = $gameInfo['genre'];
+$class = isset($_GET['class']) ? $_GET['class'] : "1";
+$grade = isset($_GET['grade']) ? $_GET['grade'] : "A";
+$studentRecords = getStudentRecordsProgress($gameId, $user['school'], $class, $grade);
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,21 +29,21 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/teacher.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
 <div class="container-fluid">
     <div class="row">
         <?php
-        include_once("teacherSideBar.php");
+        include_once("sideBar.php");
         ?>
         <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="row" id="gameName">
-                <h1>Game Name</h1>
+                <h1><?=$gameName?></h1>
             </div>
             <div class="row" id="className">
-                <h1>Class: x x</h1>
+                <h1>Class: <?=$grade ?><?=$class ?></h1>
             </div>
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
@@ -41,20 +57,32 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1,001</td>
-                        <td>Lorem</td>
-                        <td>ipsum</td>
-                        <td>dolor</td>
-                        <td>dolor</td>
-                    </tr>
-                    <tr>
-                        <td>1,001</td>
-                        <td>Lorem</td>
-                        <td>ipsum</td>
-                        <td>dolor</td>
-                        <td>dolor</td>
-                    </tr>
+                    <?php
+                    $rank = 1;
+                    foreach ($studentRecords as $student => $record){
+
+                        echo "<tr>";
+
+                        echo "<td>";
+                        echo $record['username'];
+                        echo "</td>";
+                        echo "<td>";
+                        echo $record['firstname'];
+                        echo "</td>";
+                        echo "<td>";
+                        echo $record['percentage'];
+                        echo "</td>";
+                        echo "<td>";
+                        echo $record['score'];
+                        echo "</td>";
+                        echo "<td>";
+                        echo $rank;
+                        echo "</td>";
+
+                        echo "</tr>";
+                        $rank +=1;
+                    }
+                    ?>
                     </tbody>
                 </table>
             </div>
@@ -70,6 +98,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="js/jquery-3.5.0.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/collapsibleSideBar.js"></script>
 
 </body>
 </html>
