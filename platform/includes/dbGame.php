@@ -2,7 +2,7 @@
 require_once 'dbFunction.php';
 
 $table_game = "game";
-$dbFields_game = ["id","name", "status"];
+$dbFields_game = ["id","name","subject", "description", "genre", "grade", "status"];
 $pk_game = "id";
 
 function getGame($like = "") {
