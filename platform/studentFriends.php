@@ -1,3 +1,7 @@
+<?php
+include_once 'includes/checkLoginStatusForBoth.php';
+include_once 'includes/dbGame.php';
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,6 +11,10 @@
     <meta name="author" content="">
 
     <title>Student Profile</title>
+
+    <script src="js/jquery-3.5.0.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/collapsibleSideBar.js"></script>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -89,3 +97,4 @@
     </div>
 </div>
 </body>
+</html>
