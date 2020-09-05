@@ -33,7 +33,14 @@ public class NounLinkage : MonoBehaviour
 
                 nounText.transform.position =  new Vector3(-5000, -5000,0);
                 this.transform.position =  new Vector3(-5000, -5000,0);
-            }
+            }else{
+                if (! global.selectedNoun.Equals("") & ! global.selectedNounObject.Equals("")){
+                    global.selectedNoun = "";
+                    global.selectedNounObject = "";
+                    Debug.Log("Current Select noun:"+ global.selectedNoun);
+                    Debug.Log("Current Select noun Object:" + global.selectedNounObject);
+                }
+            } 
         });
     }
 
@@ -52,6 +59,13 @@ public class NounLinkage : MonoBehaviour
 
                 nounText.transform.position =  new Vector3(-5000, -5000,0);
                 this.transform.position =  new Vector3(-5000, -5000,0);
+            }else{
+                if (! global.selectedNoun.Equals("") & ! global.selectedNounObject.Equals("")){
+                    global.selectedNoun = "";
+                    global.selectedNounObject = "";
+                    Debug.Log("Current Select noun:"+nounText.name);
+                    Debug.Log("Current Select noun Object:" + nounText.name);
+                }
             }
         }
     }
