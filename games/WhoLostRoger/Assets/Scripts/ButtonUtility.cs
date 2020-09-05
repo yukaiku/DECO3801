@@ -17,6 +17,17 @@ public class ButtonUtility : MonoBehaviour
         Debug.Log("Game quit.");
     }
 
+    public void doResetNewLevel(int level)
+    {
+        DataSystem.resetNewLevel(level);
+    }
+
+    public void doNextLevel()
+    {
+        int currentLevel = DataStorage.getCurrentLevel();
+        DataSystem.resetNewLevel(currentLevel + 1);
+    }
+
     /* ********************************************************************************* *
      * ****************************** CUSTOM STUFFS ABOVE ****************************** *
      * ********************************************************************************* */

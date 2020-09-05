@@ -14,7 +14,7 @@ public class IsGameover : MonoBehaviour
 
     public TimerUtility timer;
     public TimeoutOptions timeoutOptions;
-    [ChoiceList(new[] { "ResultScene", "GameoverScene" })]
+    [ChoiceList(new[] { "LoadingScene" })]
     public string sceneName;
     private bool trigger = false;
 
@@ -38,7 +38,7 @@ public class IsGameover : MonoBehaviour
             if (trigger)
             {
                 // save player time spent
-                PlayerData.saveTime(timer.timeStart);
+                DataSystem.saveTimeLeft(timer.timeStart);
                 // do something when timeout
                 doSomething();
             }

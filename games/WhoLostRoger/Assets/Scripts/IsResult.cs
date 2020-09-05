@@ -12,10 +12,11 @@ public class IsResult : MonoBehaviour
         jumpScene = 1,
     }
 
+    [Tooltip("the panel contains nouns text")]
     public GameObject nounPanel;
     public TimerUtility timer;
     public Options options;
-    [ChoiceList(new[] { "ResultScene", "GameoverScene" })]
+    [ChoiceList(new[] { "ResultScene" })]
     public string sceneName;
 
     private Text[] nounTextList;
@@ -38,7 +39,7 @@ public class IsResult : MonoBehaviour
         Debug.Log(string.Format("In total '{0}' noun text box in this panel'", nounTextList.Length));
     }
 
-    // trigger this event when noun object is clicked
+    // trigger this event when a noun object is clicked
     public void isAllNounClicked()
     {
         if (!trigger)
@@ -61,7 +62,7 @@ public class IsResult : MonoBehaviour
             if (trigger)
             {
                 // save player time spent
-                PlayerData.saveTime(timer.timeStart);
+                DataSystem.saveTimeLeft(timer.timeStart);
                 // do something when triggered
                 doSomething();
             }

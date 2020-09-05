@@ -244,6 +244,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nounText: {fileID: 247737809}
   resultTrigger: {fileID: 1532971770}
+  timer: {fileID: 1136296826}
+  timeBonus: 1
 --- !u!61 &166976394
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -831,7 +833,6 @@ GameObject:
   - component: {fileID: 1136296828}
   - component: {fileID: 1136296827}
   - component: {fileID: 1136296826}
-  - component: {fileID: 1136296830}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -852,7 +853,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeStart: 150
-  timeShow: {fileID: 1136296827}
+  timeBox: {fileID: 1136296827}
 --- !u!114 &1136296827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -913,21 +914,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 215}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1136296830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1136296825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31c350ea5ab41c04a9b1e6788c1542ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timer: {fileID: 1136296826}
-  timeoutOptions: 1
-  sceneName: GameoverScene
 --- !u!1 &1225894378
 GameObject:
   m_ObjectHideFlags: 0
@@ -1085,6 +1071,7 @@ GameObject:
   - component: {fileID: 1532971769}
   - component: {fileID: 1532971768}
   - component: {fileID: 1532971770}
+  - component: {fileID: 1532971771}
   m_Layer: 5
   m_Name: NounPanel
   m_TagString: Untagged
@@ -1166,6 +1153,21 @@ MonoBehaviour:
   timer: {fileID: 1136296826}
   options: 1
   sceneName: ResultScene
+--- !u!114 &1532971771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532971766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31c350ea5ab41c04a9b1e6788c1542ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: {fileID: 1136296826}
+  timeoutOptions: 1
+  sceneName: LoadingScene
 --- !u!1 &1759706445
 GameObject:
   m_ObjectHideFlags: 0
@@ -1507,6 +1509,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nounText: {fileID: 1759706447}
   resultTrigger: {fileID: 1532971770}
+  timer: {fileID: 1136296826}
+  timeBonus: 1
 --- !u!61 &88983082163370684
 BoxCollider2D:
   m_ObjectHideFlags: 0

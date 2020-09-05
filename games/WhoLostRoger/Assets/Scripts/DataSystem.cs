@@ -2,28 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DataSystem : MonoBehaviour
+public static class DataSystem
 {
-    public void resetPlayerData()
+    public static void resetNewLevel(int currentLevel)
     {
-        PlayerData.saveLevel(0);
-        PlayerData.saveTime(0);
-        PlayerData.saveScore(0);
+        DataStorage.setCurrentLevel(currentLevel);
+        DataStorage.setTimeLeft(0);
+        DataStorage.setScorePoint(0);
+
+        Debug.Log(string.Format("Reset with new level."));
     }
 
-    /* ********************************************************************************* *
-     * ****************************** CUSTOM STUFFS ABOVE ****************************** *
-     * ********************************************************************************* */
-
-    // Start is called before the first frame update
-    void Start()
+    public static void scoreUp(int increment)
     {
-        
+        DataStorage.setScorePoint(DataStorage.getScorePoint() + increment);
     }
 
-    // Update is called once per frame
-    void Update()
+    public static void saveTimeLeft(float time)
     {
-        
+        DataStorage.setTimeLeft(time);
+    }
+
+    public static void resetDefault()
+    {
+        resetNewLevel(0);
+        Debug.Log(string.Format("Reset by default all 0."));
+    }
+
+    public static void sendToServer()
+    {
+        return;
+    }
+
+    public static void getFromServer()
+    {
+        return;
     }
 }

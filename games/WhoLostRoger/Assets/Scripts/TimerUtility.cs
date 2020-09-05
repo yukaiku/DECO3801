@@ -2,25 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class TimerUtility : MonoBehaviour
 {
     public float timeStart;                  // time provided to start count down
-    public Text timeShow;                    // show current time left
-
+    [Tooltip("optional")]
+    public Text timeBox;                     // show current time left
     private float timeStartSave;             // back up the start time
-    private bool timerActive = false;
-
-    public void resetTimer()
-    {
-        timerActive = true;
-        timeStart = timeStartSave;
-        if (timeShow != null)
-        {
-            timeShow.text = Mathf.Round(timeStart).ToString();
-        }
-    }
+    private bool timerActive;
 
     public void clickTimer()
     {
@@ -28,20 +17,35 @@ public class TimerUtility : MonoBehaviour
         Debug.Log(string.Format("Timer has been clicked"));
     }
 
-    private void startTimer()
+    public void resetDefault()
     {
-        timeStartSave = timeStart;
         timerActive = true;
-        if (timeShow != null)
-        {
-            timeShow.text = Mathf.Round(timeStart).ToString();
-        } else
-        {
-            Debug.Log(string.Format("Null timer : won't show time text"));
-        }
+        timeStart = timeStartSave;
+        if (timeBox != null)
+            timeBox.text = Mathf.Round(timeStart).ToString();
     }
 
-    private void updateTimer()
+    public void resetNew(float timeStart)
+    {
+        timeStartSave = timeStart;
+        resetDefault();
+    }
+
+    public void timeUp(int increment)
+    {
+        if (timeStart + increment >= timeStartSave)
+            timeStart = timeStartSave;
+        else
+            timeStart += increment;
+    }
+
+    private void isTimeBoxNull()
+    {
+        if (timeBox == null)
+            Debug.Log(string.Format("No time box assigned, and timer still working"));
+    }
+
+    private void updateTime()
     {
         if ((timerActive) && (timeStart >= 0))
         {
@@ -56,10 +60,8 @@ public class TimerUtility : MonoBehaviour
 
     private void showTime()
     {
-        if (timeShow != null)
-        {
-            timeShow.text = Mathf.Round(timeStart).ToString();
-        }
+        if (timeBox != null)
+            timeBox.text = Mathf.Round(timeStart).ToString();
     }
 
     /* ********************************************************************************* *
@@ -69,13 +71,14 @@ public class TimerUtility : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startTimer();
+        isTimeBoxNull();
+        resetNew(timeStart);
     }
 
     // Update is called once per frame
     void Update()
     {
-        updateTimer();
+        updateTime();
         showTime();
     }
 }

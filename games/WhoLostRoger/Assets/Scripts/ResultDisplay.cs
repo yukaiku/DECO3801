@@ -31,13 +31,13 @@ public class ResultDisplay : MonoBehaviour
         switch (options)
         {
             case Options.currentLevel:
-                textBox.text = "Current Level : " + PlayerData.getLevel().ToString();
+                textBox.text = "Current Level : " + DataStorage.getCurrentLevel().ToString();
                 break;
             case Options.TimeLeft:
-                textBox.text = "Time Left : " + Mathf.Round(PlayerData.getTime()).ToString();
+                textBox.text = "Time Left : " + Mathf.Round(DataStorage.getTimeLeft()).ToString();
                 break;
             case Options.ScorePoint:
-                textBox.text = "Score Point : " + PlayerData.getScore().ToString();
+                textBox.text = "Score Point : " + DataStorage.getScorePoint().ToString();
                 break;
         }
     }

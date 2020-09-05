@@ -583,9 +583,9 @@ MonoBehaviour:
           m_StringArgument: SelectionScene
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2504237768525606186}
-        m_MethodName: resetPlayerData
-        m_Mode: 1
+      - m_Target: {fileID: 516838460}
+        m_MethodName: doResetNewLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -908,13 +908,13 @@ MonoBehaviour:
           m_StringArgument: LoadingScene
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2504237768525606186}
-        m_MethodName: resetPlayerData
-        m_Mode: 1
+      - m_Target: {fileID: 860080801}
+        m_MethodName: doResetNewLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1568,8 +1568,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2504237768525606186}
-        m_MethodName: resetPlayerData
+      - m_Target: {fileID: 1542330995}
+        m_MethodName: doNextLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1577,6 +1577,17 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1542330995}
+        m_MethodName: doLoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: NounScene
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1542330997
@@ -1760,84 +1771,3 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!1001 &2504237768525606185
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5836683686757756188, guid: 745529eed00fba342ab5a1d0d5c4fb91,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 489.05145
-      objectReference: {fileID: 0}
-    - target: {fileID: 5836683686757756188, guid: 745529eed00fba342ab5a1d0d5c4fb91,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 241.92412
-      objectReference: {fileID: 0}
-    - target: {fileID: 5836683686757756188, guid: 745529eed00fba342ab5a1d0d5c4fb91,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -19.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5836683686757756188, guid: 745529eed00fba342ab5a1d0d5c4fb91,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5836683686757756188, guid: 745529eed00fba342ab5a1d0d5c4fb91,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5836683686757756188, guid: 745529eed00fba342ab5a1d0d5c4fb91,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5836683686757756188, guid: 745529eed00fba342ab5a1d0d5c4fb91,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5836683686757756188, guid: 745529eed00fba342ab5a1d0d5c4fb91,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5836683686757756188, guid: 745529eed00fba342ab5a1d0d5c4fb91,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5836683686757756188, guid: 745529eed00fba342ab5a1d0d5c4fb91,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5836683686757756188, guid: 745529eed00fba342ab5a1d0d5c4fb91,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8395592867728036926, guid: 745529eed00fba342ab5a1d0d5c4fb91,
-        type: 3}
-      propertyPath: m_Name
-      value: DataSystem
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 745529eed00fba342ab5a1d0d5c4fb91, type: 3}
---- !u!114 &2504237768525606186 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8823710744681742136, guid: 745529eed00fba342ab5a1d0d5c4fb91,
-    type: 3}
-  m_PrefabInstance: {fileID: 2504237768525606185}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 711ec56c0cc731e49a7dbd29f14da4ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
