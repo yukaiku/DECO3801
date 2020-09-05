@@ -19,20 +19,40 @@ public class NounLinkage : MonoBehaviour
 
             Debug.Log(string.Format("No corresponding noun text : the component won't work"));
         }
+
+        nounText.GetComponent<Button>().onClick.AddListener(() => {
+            global.selectedNoun = nounText.name;    
+            Debug.Log("Current Select noun:"+nounText.name);
+            if(nounText.name.Equals(global.selectedNounObject)){
+                // save player score here
+                PlayerData.saveScore(PlayerData.getScore() + 1);
+
+                nounText.gameObject.SetActive(false);
+                Debug.Log(string.Format("Disable noun '{0}' text '{1}' successful",
+                    this.gameObject.name, nounText.text));
+
+                nounText.transform.position =  new Vector3(-5000, -5000,0);
+                this.transform.position =  new Vector3(-5000, -5000,0);
+            }
+        });
     }
 
     private void clickNounObject()
     {
         if (nounText.gameObject.activeSelf)
-        {
-            // save player score here
-            PlayerData.saveScore(PlayerData.getScore() + 1);
+        {   global.selectedNounObject = nounText.name;
+            Debug.Log("Current Select noun Object:" + nounText.name);
+            if(nounText.name.Equals(global.selectedNoun)){
+               // save player score here
+               PlayerData.saveScore(PlayerData.getScore() + 1);
 
-            nounText.gameObject.SetActive(false);
-            Debug.Log(string.Format("Disable noun '{0}' text '{1}' successful",
-                this.gameObject.name, nounText.text));
+               nounText.gameObject.SetActive(false);
+               Debug.Log(string.Format("Disable noun '{0}' text '{1}' successful",
+                   this.gameObject.name, nounText.text));
 
-            resultTrigger.isAllNounClicked();
+                nounText.transform.position =  new Vector3(-5000, -5000,0);
+                this.transform.position =  new Vector3(-5000, -5000,0);
+            }
         }
     }
 
@@ -54,6 +74,6 @@ public class NounLinkage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       resultTrigger.isAllNounClicked(); 
     }
 }
