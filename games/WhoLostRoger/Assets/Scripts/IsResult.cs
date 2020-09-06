@@ -19,7 +19,7 @@ public class IsResult : MonoBehaviour
     [ChoiceList(new[] { "ResultScene" })]
     public string sceneName;
 
-    private Text[] nounTextList;
+    public Text[] nounTextList;
     private bool trigger = false;
 
     private void isArgsNull()

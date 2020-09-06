@@ -10,10 +10,15 @@ public class IsGameover : MonoBehaviour
     {
         nothing = 0,
         jumpScene = 1,
+        showGameOver = 2
     }
 
     public TimerUtility timer;
     public TimeoutOptions timeoutOptions;
+
+    public GameObject menuToShow;
+    private GameObject newMenu;
+
     [ChoiceList(new[] { "LoadingScene" })]
     public string sceneName;
     private bool trigger = false;
@@ -55,6 +60,9 @@ public class IsGameover : MonoBehaviour
             case TimeoutOptions.jumpScene:
                 doJumpScene();
                 break;
+            case TimeoutOptions.showGameOver:
+                doShowGameOver();
+                break;
             default:
                 break;
         }
@@ -77,6 +85,19 @@ public class IsGameover : MonoBehaviour
         {
             Debug.Log(string.Format("Timeout : no such scene name"));
         }
+    }
+
+    private void doShowGameOver()
+    {
+      if (menuToShow != null)
+      {
+        // CODE-TO-ADD: Making the GameOverMenu spawn in center of screen. (Camera/Screen pos, maybe?)
+
+        newMenu = Instantiate(menuToShow, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+        Debug.Log(string.Format("Created Menu: '{0}'", newMenu));
+      } else {
+        Debug.Log(string.Format("Failed to create Menu"));
+      }
     }
 
     /* ********************************************************************************* *
