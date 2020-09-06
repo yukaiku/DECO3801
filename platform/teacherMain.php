@@ -80,7 +80,7 @@ $schoolInfo = getByIdSchool($user['school']);
                     <div class="form-group">
                         <div class="form-group">
                             <label for="selectClass">Grade</label>
-                            <select class="form-control" name="grade" id="selectClass">
+                            <select class="form-control" name="grade" id="selectGrade">
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
