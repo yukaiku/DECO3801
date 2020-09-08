@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 
 public class IsResult : MonoBehaviour
 {
@@ -12,19 +13,17 @@ public class IsResult : MonoBehaviour
         jumpScene = 1,
     }
 
-    [Tooltip("the panel contains nouns text")]
-    public GameObject nounPanel;
     public TimerUtility timer;
     public Options options;
     [ChoiceList(new[] { "ResultScene" })]
     public string sceneName;
 
-    public Text[] nounTextList;
+    private Text[] nounTextList;        // namely noun tag list
     private bool trigger = false;
 
     private void isArgsNull()
     {
-        if (nounPanel == null || timer == null)
+        if (timer == null)
         {
             IsResult component = this.gameObject.GetComponent<IsResult>();
             Destroy(component);
@@ -35,7 +34,16 @@ public class IsResult : MonoBehaviour
 
     private void getNounTextList()
     {
-        nounTextList = nounPanel.GetComponentsInChildren<Text>(true);
+        List<Text> nounTagList = new List<Text>();
+        foreach (NounTagUtility nounTag in Resources.FindObjectsOfTypeAll(typeof(NounTagUtility)) as NounTagUtility[])
+        {
+            if (!EditorUtility.IsPersistent(nounTag.transform.root.gameObject)
+                    && !(nounTag.hideFlags == HideFlags.NotEditable
+                    || nounTag.hideFlags == HideFlags.HideAndDontSave))
+                nounTagList.Add(nounTag.gameObject.GetComponent<Text>());
+        }
+        nounTextList = nounTagList.ToArray();
+
         Debug.Log(string.Format("In total '{0}' noun text box in this panel'", nounTextList.Length));
     }
 

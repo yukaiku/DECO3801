@@ -26,6 +26,11 @@ public class NounLinkage : MonoBehaviour
         }
     }
 
+    public void setGlobalNounObject()
+    {
+        DataStorage.setSelectedNounTag(nounText.text);
+    }
+
     private void clickNounObject()
     {
         if (nounTag.activeSelf)

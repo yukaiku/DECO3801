@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6662252677968319070}
   - component: {fileID: 5262708904427963346}
   - component: {fileID: 6929689403982556469}
+  - component: {fileID: 1728811072024781952}
   - component: {fileID: 5621353116944956577}
   m_Layer: 5
   m_Name: ui_NounTag
@@ -79,6 +80,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 0
   m_Text: '[Insert Noun Name Here]'
+--- !u!114 &1728811072024781952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8755094664014486626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26fcb7ae4cf175948a700d6cb1b88cce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5621353116944956577
 MonoBehaviour:
   m_ObjectHideFlags: 0

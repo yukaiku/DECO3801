@@ -9,6 +9,8 @@ public static class DataSystem
         DataStorage.setCurrentLevel(currentLevel);
         DataStorage.setTimeLeft(0);
         DataStorage.setScorePoint(0);
+        DataStorage.setSelectedNounTag("");
+        DataStorage.setSelectedNounObject("");
 
         Debug.Log(string.Format("Reset with new level."));
     }
@@ -36,6 +38,12 @@ public static class DataSystem
 
     public static void getFromServer()
     {
+        return;
+    }
+
+    public static void onResize()
+    {
+        // resize when window.resize()
         return;
     }
 }
