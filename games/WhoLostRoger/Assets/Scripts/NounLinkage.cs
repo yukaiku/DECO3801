@@ -5,16 +5,18 @@ using UnityEngine.UI;
 
 public class NounLinkage : MonoBehaviour
 {
-    [Tooltip("the corresponding noun text")]
-    public Text nounText;
-    [Tooltip("assign with IsResult component")]
+    [Tooltip("The corresponding Noun Tag.")]
+    public GameObject nounTag;
+    private Text nounText;
+    [Tooltip("Assign with IsResult Component")]
     public IsResult resultTrigger;
-    [Tooltip("assign with TimerUtility component")]
+    [Tooltip("Assign with TimerUtility Component")]
     public TimerUtility timer;
     public int timeBonus;
 
     private void isArgsNull()
     {
+        nounText = nounTag.GetComponent<Text>();
         if (nounText == null || resultTrigger == null || timer == null)
         {
             NounLinkage component = this.gameObject.GetComponent<NounLinkage>();
@@ -26,9 +28,9 @@ public class NounLinkage : MonoBehaviour
 
     private void clickNounObject()
     {
-        if (nounText.gameObject.activeSelf)
+        if (nounTag.activeSelf)
         {
-            nounText.gameObject.SetActive(false);
+            nounTag.SetActive(false);
             Debug.Log(string.Format("Disable noun '{0}' text '{1}' successful",
                 this.gameObject.name, nounText.text));
 
@@ -62,6 +64,6 @@ public class NounLinkage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

@@ -13,12 +13,16 @@ public class IsGameover : MonoBehaviour
         showGameOver = 2
     }
 
+    // vars for Timer
     public TimerUtility timer;
     public TimeoutOptions timeoutOptions;
 
+    // vars for GameOverMenu
     public GameObject menuToShow;
+    public Transform parent;
     private GameObject newMenu;
 
+    // vars for SceneChange
     [ChoiceList(new[] { "LoadingScene" })]
     public string sceneName;
     private bool trigger = false;
@@ -93,7 +97,9 @@ public class IsGameover : MonoBehaviour
       {
         // CODE-TO-ADD: Making the GameOverMenu spawn in center of screen. (Camera/Screen pos, maybe?)
 
-        newMenu = Instantiate(menuToShow, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+        newMenu = Instantiate(menuToShow, transform.position, transform.rotation) as GameObject;
+        newMenu.transform.SetParent(parent);
+        newMenu.transform.position -= Vector3.up * 10.0f;
         Debug.Log(string.Format("Created Menu: '{0}'", newMenu));
       } else {
         Debug.Log(string.Format("Failed to create Menu"));
