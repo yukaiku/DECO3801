@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEditor;
+#if UNITY_EDITOR
+    using UnityEditor;
+#endif
 
 public class IsResult : MonoBehaviour
 {
@@ -34,6 +36,7 @@ public class IsResult : MonoBehaviour
 
     private void getNounTextList()
     {
+        /*=== EditorUtility not working during the build ===
         List<Text> nounTagList = new List<Text>();
         foreach (NounTagUtility nounTag in Resources.FindObjectsOfTypeAll(typeof(NounTagUtility)) as NounTagUtility[])
         {
@@ -41,6 +44,18 @@ public class IsResult : MonoBehaviour
                     && !(nounTag.hideFlags == HideFlags.NotEditable
                     || nounTag.hideFlags == HideFlags.HideAndDontSave))
                 nounTagList.Add(nounTag.gameObject.GetComponent<Text>());
+        }
+        nounTextList = nounTagList.ToArray();
+        */
+
+        List<Text> nounTagList = new List<Text>();
+        foreach (NounTagUtility nounTag in Object.FindObjectsOfType<NounTagUtility>())
+        {
+            Text tagText = nounTag.gameObject.GetComponent<Text>();
+            if (tagText != null)
+            {
+                nounTagList.Add(tagText);
+            }
         }
         nounTextList = nounTagList.ToArray();
 

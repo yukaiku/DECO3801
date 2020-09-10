@@ -8,6 +8,7 @@ public class DataStorage
     /*** Game Data ***/
     static private int screenWidth = Screen.width;
     static private int screenHeight = Screen.height;
+    static private float screenRatio = screenWidth / screenHeight;
     static private int currentLevel;
 
     // the feature variables for player manual match (if implements)
@@ -30,6 +31,12 @@ public class DataStorage
     public static void setScreenHeight(int height)
     {
         screenHeight = height;
+    }
+
+    public static void setScreenRatio(float ratio)
+    {
+        // ratio = width : height
+        screenRatio = ratio;
     }
 
     public static void setCurrentLevel(int level)
@@ -72,6 +79,11 @@ public class DataStorage
     public static int getScreenHeight()
     {
         return screenHeight;
+    }
+
+    public static float getScreenRatio()
+    {
+        return screenRatio;
     }
 
     public static int getCurrentLevel()
