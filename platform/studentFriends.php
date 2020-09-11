@@ -3,7 +3,9 @@ include_once 'includes/checkLoginStatusForBoth.php';
 include_once 'includes/dbGame.php';
 include_once 'includes/dbFriends.php';
 include_once 'includes/dbStudent.php';
-$Friendships = getByIdFriendship($id = 19);
+$StudentFriendInfo = getByIdFriendship($user['id']);
+$classmates = getClassmates($user['id'],$user['grade'],$user['class']);
+$teachers = getTeacher($user['id']);
 ?>
 <!doctype html>
 <html lang="en">
@@ -44,50 +46,29 @@ $Friendships = getByIdFriendship($id = 19);
             </div>
             <div class="body-content">
                 <h6>Friends</h6>
-                <?php foreach ($Friendships as $friendship => $record){
-                    echo '
-                    <div id="box">
-                        <img src="#"/>';
-                        echo '<br/>';
-                        $record['friend'];
-                    echo '</div>';
-                } ?>
+                    <?php foreach ($StudentFriendInfo as $studentFriend){
+                        echo '<div id="box"><img src=""/><br/>';
+                        echo $studentFriend['username'];
+                        echo '</div>';
+                    }?>
             </div>
             <a style="font-size: 10px;" href="studentFriendsMore.php">See More...</a><br/>
             <div class="body-content">
                 <h6>Classmates</h6>
-                <div id="box">
-                    <img src="#"/><br/>
-                    fortnite3
-                </div>
-                <div id="box">
-                    <img src="#"/><br/>
-                    sunshinegal08
-                </div>
-                <div id="box">
-                    <img src="#"/><br/>
-                    bobbyBOB
-                </div>
-                <div id="box">
-                    <img src="#"/><br/>
-                    schoolsux111
-                </div>
-                <div id="box">
-                    <img src="#"/><br/>
-                    ihatevapour
-                </div>
-                <div id="box">
-                    <img src="#"/><br/>
-                    mercyHEALPLS
-                </div>
+                <?php foreach ($classmates as $classmates){
+                    echo '<div id="box"><img src="#"/><br/>';
+                    echo $classmates['username'];
+                    echo '</div>';
+                }?>
             </div>
             <a style="font-size: 10px;" href="#">See More...</a><br/>
             <div class="body-content">
                 <h6>Teachers</h6>
-                <div id="box">
-                    <img src="#"/><br/>
-                    mrsapplepie
-                </div>
+                <?php foreach ($teachers as $teachers){
+                    echo '<div id="box"><img src="#"/><br/>';
+                    echo $teachers['username'];
+                    echo '</div>';
+                }?>
             </div>
             <div id="mainFooter" style="bottom:0; position: fixed;">
                 <a class="btn btn-primary mb-2" style="text-align: center" href="javascript:history.back()">Back</a>
