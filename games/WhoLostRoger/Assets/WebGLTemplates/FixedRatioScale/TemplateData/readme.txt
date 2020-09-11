@@ -1,5 +1,5 @@
 (Important) Steps
-1. WebGL build with player settings
+1. After WebGL build with player settings
 2. Rename "index.html" with ".php" format
 3. Append the following php codes into the file
 
@@ -7,12 +7,10 @@
 
 (Optional) Customized Settings
 Enter colour in the "Background" field
-Enter "false" in the "Scale to fit" field to disable scaling
-Enter "true" in the "Optimize for pixel art" field to use CSS more appropriate for pixel art
 
 /*=========================== Divider ===========================*/
 
-(PHP Codes) Appends
+(PHP Codes) Appends --- not completed yet
 
 <?php
 	session_start();

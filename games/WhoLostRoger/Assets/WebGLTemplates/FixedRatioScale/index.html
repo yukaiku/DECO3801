@@ -5,34 +5,33 @@
         <meta charset="utf-8">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>%UNITY_WEB_NAME%</title>
-        <link rel="stylesheet" href="TemplateData/style.css">
-        <script src="TemplateData/UnityProgress.js"></script>
         <script src="%UNITY_WEBGL_LOADER_URL%"></script>
-        <script type="text/javascript">
-            var unityInstance = UnityLoader.instantiate("unityContainer", "%UNITY_WEBGL_BUILD_URL%", {onProgress: UnityProgress});
-
-            function onResize() {
-                unityInstance.SendMessage("DataStorage", "setScreenWidth", window.innerWidth);
-                unityInstance.SendMessage("DataStorage", "setScreenHeight", window.innerHeight);
-                unityInstance.SendMessage("DataSystem", "onResize");
-            }
-            window.addEventListener("resize", onResize);
-        </script>
         <style>
         	html, body {
-        		background: rgba(255,255,255,1);
-        		background: %UNITY_CUSTOM_BACKGROUND%;
-        		width: 100%;
-        		height: 100%;
         		margin: 0;
         		padding: 0;
+                width: 100%;
+                height: 100%;
+                box-sizing: border-box;
+                background: rgba(255,255,255,1);
+                background: %UNITY_CUSTOM_BACKGROUND%;
         	}
 
+            .webgl-content {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                border: 0;
+                transform: translate(-50%, -50%);
+                -webkit-transform: translate(-50%, -50%);
+            }
+
         	.webgl-content .onfullscreen {
-        		position: absolute;
+        		position: fixed;
         		right: 0%;
         		bottom: 0%;
         		background: transparent center no-repeat;
+                background-image: url('./TemplateData/fullscreen.png');
         		width: 38px;
         		height: 38px;
         	}
@@ -44,5 +43,36 @@
             <div id="unityContainer" style="width: %UNITY_WIDTH%px; height: %UNITY_HEIGHT%px;"></div>
             <div class="onfullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
         </div>
+
+        <script type="application/javascript">
+            var unityInstance = UnityLoader.instantiate("unityContainer", "%UNITY_WEBGL_BUILD_URL%");
+
+            function onResizeUnity() {
+                unityInstance.SendMessage("DataStorage", "setScreenWidth", window.innerWidth);
+                unityInstance.SendMessage("DataStorage", "setScreenHeight", window.innerHeight);
+                unityInstance.SendMessage("DataSystem", "onResize");
+            }
+
+            function onResizeCanvas() {
+                var canvas = unityInstance.Module.canvas;
+                var container = unityInstance.container;
+                var width = window.innerWidth;
+                var height = window.innerHeight;
+                var ratio = %UNITY_WIDTH% / %UNITY_HEIGHT%;
+
+                if (height * ratio > width) {
+                    height = Math.min(height, Math.ceil(width / ratio));
+                }
+                width = Math.floor(height * ratio);
+
+                canvas.style.width = width + "px";
+                canvas.style.height = height + "px";
+                container.style.width = width + "px";
+                container.style.height = height + "px";
+            }
+
+            window.addEventListener("resize", onResizeCanvas);
+            onResizeCanvas();
+        </script>
     </body>
 </html>
