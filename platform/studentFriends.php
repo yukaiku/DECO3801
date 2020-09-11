@@ -1,6 +1,9 @@
 <?php
 include_once 'includes/checkLoginStatusForBoth.php';
 include_once 'includes/dbGame.php';
+include_once 'includes/dbFriends.php';
+include_once 'includes/dbStudent.php';
+$Friendships = getByIdFriendship($id = 19);
 ?>
 <!doctype html>
 <html lang="en">
@@ -41,18 +44,14 @@ include_once 'includes/dbGame.php';
             </div>
             <div class="body-content">
                 <h6>Friends</h6>
-                <div id="box">
-                    <img src="#"/><br/>
-                    fortnite3
-                </div>
-                <div id="box">
-                    <img src="#"/><br/>
-                    sunshinegal08
-                </div>
-                <div id="box">
-                    <img src="#"/><br/>
-                    bobbyBOB
-                </div>
+                <?php foreach ($Friendships as $friendship => $record){
+                    echo '
+                    <div id="box">
+                        <img src="#"/>';
+                        echo '<br/>';
+                        $record['friend'];
+                    echo '</div>';
+                } ?>
             </div>
             <a style="font-size: 10px;" href="studentFriendsMore.php">See More...</a><br/>
             <div class="body-content">
