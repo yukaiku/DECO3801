@@ -9,6 +9,8 @@ public static class DataSystem
         DataStorage.setCurrentLevel(currentLevel);
         DataStorage.setTimeLeft(0);
         DataStorage.setScorePoint(0);
+        DataStorage.setSelectedNounTag("");
+        DataStorage.setSelectedNounObject("");
 
         Debug.Log(string.Format("Reset with new level."));
     }
@@ -27,6 +29,23 @@ public static class DataSystem
     {
         resetNewLevel(0);
         Debug.Log(string.Format("Reset by default all 0."));
+    }
+
+    public static void onResize()
+    {
+        // game window resize when browser window resize : keep same ratio
+        float ratio = DataStorage.getScreenRatio();
+        int browserWidth = DataStorage.getScreenWidth();
+        int browserHeight = DataStorage.getScreenHeight();
+
+        if (browserHeight * ratio > browserWidth)
+        {
+            browserHeight = Mathf.Min(browserHeight, Mathf.CeilToInt(browserWidth / ratio));
+        }
+        browserWidth = Mathf.FloorToInt(browserHeight * ratio);
+
+        Screen.SetResolution(browserWidth, browserHeight, false);
+        return;
     }
 
     public static void sendToServer()
