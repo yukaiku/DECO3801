@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="a50b9b59-28fe-4607-8ad7-42c24414a008" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+=======
+    <list default="true" id="0b5da013-e431-4701-b5a1-50caae3c0e54" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/platform/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform/studentMain.php" beforeDir="false" afterPath="$PROJECT_DIR$/platform/studentMain.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform/teacherMain.php" beforeDir="false" afterPath="$PROJECT_DIR$/platform/teacherMain.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/platform/loginHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform/includes/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/platform/includes/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform/includes/dbFunction.php" beforeDir="false" afterPath="$PROJECT_DIR$/platform/includes/dbFunction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/platform/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/platform/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/platform/studentMain.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/platform/studentSideBar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform/css/teacher.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform/studentSideBar.php" beforeDir="false" afterPath="$PROJECT_DIR$/platform/studentSideBar.php" afterDir="false" />
+    <list default="true" id="b3b47b77-9888-4f41-b7f6-5df054193214" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/platform/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform/studentFriends.php" beforeDir="false" afterPath="$PROJECT_DIR$/platform/studentFriends.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform/studentLeaderboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/platform/studentLeaderboard.php" afterDir="false" />
+    </list>
+    <list default="true" id="a50b9b59-28fe-4607-8ad7-42c24414a008" name="Default Changelist" comment="" />
+>>>>>>> master
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1gWVlm6IZ5DwJ9voYiQFZrERb6f" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../infs3202_project" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/platform" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a50b9b59-28fe-4607-8ad7-42c24414a008" name="Default Changelist" comment="" />
+      <created>1598230488691</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1598230488691</updated>
+      <workItem from="1598230491349" duration="1926000" />
+      <workItem from="1598588245966" duration="98000" />
+      <workItem from="1598588357083" duration="4269000" />
+      <workItem from="1598760720439" duration="1886000" />
+      <workItem from="1598789044868" duration="1788000" />
+      <workItem from="1598833609823" duration="6000" />
+      <workItem from="1598834375301" duration="2086000" />
+      <workItem from="1598833066251" duration="5040000" />
+      <workItem from="1599105345765" duration="248000" />
+      <workItem from="1599105607987" duration="558000" />
+      <workItem from="1599106182112" duration="148000" />
+      <workItem from="1599106340049" duration="41000" />
+      <workItem from="1599106391627" duration="342000" />
+      <workItem from="1599106747182" duration="21715000" />
+      <workItem from="1599228604377" duration="527000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="164" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598837758893">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="164" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1598837758893" />
+    <state x="184" y="99" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.829@0.23.1440.829" timestamp="1598762302977" />
+    <state x="538" y="375" key="NewPhpFileDialog" timestamp="1598834910533">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="538" y="375" key="NewPhpFileDialog/0.0.1440.900@0.0.1440.900" timestamp="1598834910533" />
+    <state x="478" y="283" key="NewPhpFileDialog" timestamp="1598834123159">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="478" y="283" key="NewPhpFileDialog/0.0.1280.680@0.0.1280.680" timestamp="1598834123159" />
+    <state x="538" y="368" key="NewPhpFileDialog/0.23.1440.829@0.23.1440.829" timestamp="1598762374153" />
+    <state x="397" y="270" key="com.intellij.ide.util.TipDialog" timestamp="1598834375678">
+      <screen x="0" y="23" width="1440" height="829" />
+    <state x="421" y="99" key="FileChooserDialogImpl" timestamp="1599120916855">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="421" y="99" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1599120916855" />
+    <state x="453" y="176" key="NewPhpClassDialog" timestamp="1599116261288">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="453" y="176" key="NewPhpClassDialog/0.0.1280.680@0.0.1280.680" timestamp="1599116261288" />
+    <state x="478" y="283" key="NewPhpFileDialog" timestamp="1599223226142">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="478" y="283" key="NewPhpFileDialog/0.0.1280.680@0.0.1280.680" timestamp="1599223226142" />
+    <state x="538" y="368" key="NewPhpFileDialog/0.23.1440.829@0.23.1440.829" timestamp="1598762374153" />
+    <state x="69" y="0" key="SettingsEditor" timestamp="1599107707214">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="69" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1599107707214" />
+    <state x="397" y="268" key="com.intellij.ide.util.TipDialog" timestamp="1598789061505">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="397" y="268" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1598789061505" />
+    <state x="397" y="270" key="com.intellij.ide.util.TipDialog/0.23.1440.829@0.23.1440.829" timestamp="1598834375678" />
+    <state x="503" y="374" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1598762923429">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="503" y="374" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1598762923429" />
+    <state x="339" y="96" width="602" height="488" key="find.popup" timestamp="1599134785047">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="339" y="96" width="602" height="488" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1599134785047" />
+    <state x="342" y="126" width="672" height="555" key="search.everywhere.popup" timestamp="1599107696609">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="342" y="126" width="672" height="555" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1599107696609" />
+    <state x="385" y="176" width="670" height="676" key="search.everywhere.popup/0.23.1440.829@0.23.1440.829" timestamp="1598589749980" />
+  </component>
+</project>
