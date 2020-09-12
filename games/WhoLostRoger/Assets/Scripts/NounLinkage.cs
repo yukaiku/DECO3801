@@ -42,6 +42,9 @@ public class NounLinkage : MonoBehaviour
 
             // time bonus
             timer.timeUp(timeBonus);
+
+            // destroy self
+            Destroy(gameObject);
         }
     }
 
