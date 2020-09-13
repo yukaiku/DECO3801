@@ -13,7 +13,7 @@ $schoolInfo = getByIdSchool($user['school']);
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Student Profile</title>
+    <title>Profile</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -31,12 +31,12 @@ $schoolInfo = getByIdSchool($user['school']);
         ?>
         <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div style="float:left">
-                <img width="135" height="150" src="#"/><br/>
+                <img width="135" height="150" src="img/<?= $user['profileImage']; ?>"/><br/>
                 <a style="font-size: 12px;" href="includes/uploadImageFunction.php">Change Profile Picture</a>
             </div>
             <div style="padding-left:18%">
                 <h4><?= $user['username']; ?></h4>
-                <a type="button" style="font-size: 12px;" class="btn btn-outline-dark" href="#">Change Username</a><br/>
+                <button style="font-size: 12px;" class="btn btn-outline-dark" href="#" id="updateDetails" data-toggle="modal" data-target="#updateDetailsModal">Change Username</button><br/>
                 <div style="margin:1% 0 0 0; font-size:15px;">
                     <label for="selectStatus"><b>Status: </b></label>
                     <select  name="class" id="selectStatus">
@@ -68,6 +68,8 @@ $schoolInfo = getByIdSchool($user['school']);
 <script src="js/jquery-3.5.0.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/collapsibleSideBar.js"></script>
-
+<?php
+include "updateTeacherModal.php";
+?>
 </body>
 </html>
