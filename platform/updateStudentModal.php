@@ -1,7 +1,7 @@
 <div class="modal fade" id="updateDetailsModal" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form class ="form-horizontal" action="updateDetailsHandler.php" method="post" enctype="multipart/form-data">
+            <form class ="form-horizontal" action="updateStudentHandler.php" method="post" enctype="multipart/form-data">
                 <div class="modal-header">
                     <h4>Update Details</h4>
                 </div>
@@ -9,7 +9,8 @@
 
 
                     <div class="form-group">
-                        <input type="hidden" name="id" value="<?=$studentInfo['id']?>">
+                        <input type="hidden" name="id" value="<?=$studentInfo['id'];?>">
+                        <input type="hidden" name="statustype" value="<?=$status?>">
                     </div>
                     <div class="form-group">
 

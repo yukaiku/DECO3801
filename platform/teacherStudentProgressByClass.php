@@ -71,7 +71,7 @@ $classRecords = getClassRecordsProgress($gameId, $user['school']);
                         echo $record['score'];
                         echo "</td>";
                         echo "<td>";
-                        echo round($record['percentage'],2);
+                        echo round($record['percentage'],2) . "%";
                         echo "</td>";
                         echo "<td><a href= 'teacherStudentProgressBySelectedClass.php?grade={$record['grade']}&class={$record['class']}'>";
                         echo "View</a></td>";

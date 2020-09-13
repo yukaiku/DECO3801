@@ -70,7 +70,7 @@ $studentRecords = getStudentRecordsProgress($gameId, $user['school'], $class, $g
                         echo $record['firstname'];
                         echo "</td>";
                         echo "<td>";
-                        echo round($record['percentage'],2) + "%";
+                        echo round($record['percentage'],2) . "%";
                         echo "</td>";
                         echo "<td>";
                         echo $record['score'];
