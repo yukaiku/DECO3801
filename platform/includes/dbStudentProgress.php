@@ -35,7 +35,7 @@ function getStudentRecordsProgress($game = 1, $school = "", $class = "", $grade 
     $whereBySchool = strlen($class) > 0 ? " AND s.school = {$school}" : "";
     $whereByClass = strlen($class) > 0 ? " AND s.class = '{$class}' " : "";
     $whereByGrade = strlen($grade) > 0 ? " AND s.grade = {$grade} " : "";
-    $result_array = getStudentProgressBySql("SELECT  s.username, s.firstname, sum(score) as 'score', AVG(percentage) as 'percentage', grade, class  FROM {$GLOBALS['table_studentProgress']} as sp , {$GLOBALS['table_student']} as s  WHERE sp.game={$game} and sp.student = s.id {$whereBySchool} {$whereByClass} {$whereByGrade} AND s.status = 0 group by sp.student ");
+    $result_array = getStudentProgressBySql("SELECT  s.username, s.firstname, s.lastname, sum(score) as 'score', AVG(percentage) as 'percentage', grade, class  FROM {$GLOBALS['table_studentProgress']} as sp , {$GLOBALS['table_student']} as s  WHERE sp.game={$game} and sp.student = s.id {$whereBySchool} {$whereByClass} {$whereByGrade} AND s.status = 0 group by sp.student order by score desc ");
     return $result_array;
 }
 

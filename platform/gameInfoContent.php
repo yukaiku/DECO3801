@@ -31,7 +31,7 @@ $gameGenre = $gameInfo['genre'];
         echo '<a class="btn btn-primary mb-2" style="text-align: center" href="teacherStudentProgressByClass.php?gameId='.$gameId.'">Student\'s Progress</a>';
     }elseif($status == "student"){
         echo '<a class="btn btn-success mb-2" style="text-align: center" href="gameInfo.php?gameId='.$gameId.'">Play</a><br/>';
-        echo '<a class="btn btn-primary mb-2" style="text-align: center" href="studentLeaderboard.php">Leaderboard</a><br/>';
+        echo '<a class="btn btn-primary mb-2" style="text-align: center" href="studentLeaderboard.php?gameId='.$gameId.'">Leaderboard</a><br/>';
         echo '<a class="btn btn-primary mb-2" style="text-align: center" href="gameInfo.php?gameId='.$gameId.'">Achievements</a>';
     }
     ?>

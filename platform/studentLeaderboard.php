@@ -1,4 +1,11 @@
-
+<?php
+include_once 'includes/checkLoginStatusForBoth.php';
+include_once 'includes/dbGame.php';
+include_once 'includes/dbStudent.php';
+include_once 'includes/dbStudentProgress.php';
+$gameId = isset($_GET['gameId']) ? $_GET['gameId'] : "1";
+$studentRecords = getStudentRecordsProgress($gameId, $user['school']);
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Student Home</title>
+    <title>Leaderboard</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -34,24 +41,35 @@
                     <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Current Level</th>
+                        <th>Percentage</th>
                         <th>Total Score</th>
                         <th>Rank</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1,001</td>
-                        <td>Lorem</td>
-                        <td>ipsum</td>
-                        <td>dolor</td>
-                    </tr>
-                    <tr>
-                        <td>1,001</td>
-                        <td>Lorem</td>
-                        <td>ipsum</td>
-                        <td>dolor</td>
-                    </tr>
+                    <?php
+                    $rank = 1;
+                    foreach ($studentRecords as $student => $record){
+
+                        echo "<tr>";
+
+                        echo "<td>";
+                        echo $record['firstname'] . " " . $record['lastname'];
+                        echo "</td>";
+                        echo "<td>";
+                        echo round($record['percentage'],2) . "%";
+                        echo "</td>";
+                        echo "<td>";
+                        echo $record['score'];
+                        echo "</td>";
+                        echo "<td>";
+                        echo $rank;
+                        echo "</td>";
+
+                        echo "</tr>";
+                        $rank +=1;
+                    }
+                    ?>
                     </tbody>
                 </table>
             </div>
@@ -60,5 +78,11 @@
             </div>
         </div>
     </div>
+    <!-- Bootstrap core JavaScript
+================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery-3.5.0.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/collapsibleSideBar.js"></script>
 </body>
 </html>
