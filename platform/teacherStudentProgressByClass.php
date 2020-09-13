@@ -46,8 +46,9 @@ $classRecords = getClassRecordsProgress($gameId, $user['school']);
                     <tr>
                         <th>Grade</th>
                         <th>Class</th>
-                        <th>Progress</th>
+<!--                        <th>Average Score</th>-->
                         <th>Total Score</th>
+                        <th>Progress</th>
                         <th>View</th>
                     </tr>
                     </thead>
@@ -63,11 +64,14 @@ $classRecords = getClassRecordsProgress($gameId, $user['school']);
                         echo "<td>";
                         echo $record['class'];
                         echo "</td>";
+//                        echo "<td>";
+//                        echo round($record['averageScore']);
+//                        echo "</td>";
                         echo "<td>";
-                        echo $record['percentage'];
+                        echo $record['score'];
                         echo "</td>";
                         echo "<td>";
-                        echo $record['percentage'];
+                        echo round($record['percentage'],2);
                         echo "</td>";
                         echo "<td><a href= 'teacherStudentProgressBySelectedClass.php?grade={$record['grade']}&class={$record['class']}'>";
                         echo "View</a></td>";
