@@ -26,7 +26,7 @@ function getAllStudents($orderBy = "") {
 }
 
 function getByIdStudent($id = 0) { //get all the rows where record id = current id
-    $result_array = getStudentBySql("SELECT * FROM {$GLOBALS['table_student']} WHERE {$GLOBALS['pk_student']}= {$id} AND status = 0 LIMIT 1 ");
+    $result_array = getStudentBySql("SELECT *, aes_decrypt(pwd, 'deco3801') as password FROM {$GLOBALS['table_student']} WHERE {$GLOBALS['pk_student']}= {$id} AND status = 0 LIMIT 1 ");
     return !empty($result_array) ? array_shift($result_array) : false;
 }
 

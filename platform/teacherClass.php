@@ -207,7 +207,7 @@ $studentsRecord = getByGradeClassStudent($grade, $class, $school);
                         string += result[i-1].lastname ;
                         string += "</td>";
                         string += "<td>";
-                        string += "<a href='teacherStudent.php?id="+ result[i-1].id +"'>Edit</a>";
+                        string += "<a href='studentProfile.php?id="+ result[i-1].id +"'>Edit</a>";
                         string += "</td>";
                         string += "</tr>";
                     }

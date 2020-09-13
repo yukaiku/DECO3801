@@ -39,7 +39,7 @@ $games = getAllGame('subject');
                 </div>
                 <div class="col-lg-9">
                     <?php if ($status == "student"){
-                        echo '<a type="button" class="btn" href="studentProfile.php">';
+                        echo '<a type="button" class="btn" href="studentProfile.php?id='.$user['id'].'">';
                     }else{
                         echo '<a type="button" class="btn" href="teacherProfile.php">';
                     }?>

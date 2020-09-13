@@ -9,29 +9,28 @@
 
 
                     <div class="form-group">
-                        <input type="hidden" name="id" value="<?=$user['id']?>">
+                        <input type="hidden" name="id" value="<?=$studentInfo['id']?>">
                     </div>
                     <div class="form-group">
 
-                        <label for ="username" class="col-lg-2 control-label">
-                            Username:
+                        <label for ="name" class="col-lg-2 control-label">
+                            Nickname:
                         </label>
                         <div class="col-lg-10">
 
-                            <input type="text" class="form-control" id="contact-name" placeholder="Username" name="username" value="<?= $user['username']; ?>">
+                            <input type="text" class="form-control" id="contact-name" placeholder="nick name" name="nickname" value="<?= $studentInfo['nickname']; ?>">
 
                         </div>
 
                     </div>
-
                     <div class="form-group">
 
-                        <label for ="password" class="col-lg-2 control-label">
+                        <label for ="name" class="col-lg-2 control-label">
                             Password:
                         </label>
                         <div class="col-lg-10">
 
-                            <input type="text" class="form-control" id="contact-name" placeholder="Password" name="password" value="<?= $user['password']; ?>">
+                            <input type="text" class="form-control" id="contact-name" placeholder="password" name="pwd" value="<?= $studentInfo['password']; ?>">
 
                         </div>
 

@@ -4,6 +4,16 @@ include_once 'includes/dbGame.php';
 include_once 'includes/dbStudent.php';
 include_once  'includes/dbSchool.php';
 $schoolInfo = getByIdSchool($user['school']);
+$studentId = isset($_GET['id']) ? $_GET['id'] : 0;
+$string = "";
+if($studentId == 0){
+    echo "<script type='text/javascript'>history.back();</script>";
+}
+//prevents student from going other profiles
+if($status == "student" and $user['id'] != $studentId){
+    echo "<script type='text/javascript'>history.back();</script>";
+}
+$studentInfo = getByIdStudent($studentId);
 ?>
 <!doctype html>
 <html lang="en">
@@ -31,12 +41,11 @@ $schoolInfo = getByIdSchool($user['school']);
         ?>
         <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
                 <div style="float:left">
-                    <img width="135" height="150" src="#"/><br/>
-                    <a style="font-size: 12px;" href="includes/uploadImageFunction.php">Change Profile Picture</a>
+                    <img width="150" height="150" src="img/<?=$studentInfo['profileImage'];?>"/><br/>
+                    <button style="font-size: 12px;" class="btn btn-outline-dark updateDetails" data-toggle="modal" data-target="#updateDetailsModal">Change Profile Image</button><br/>
                 </div>
                 <div style="padding-left:18%">
-                    <h4><?= $user['username']; ?></h4>
-                    <a type="button" style="font-size: 12px;" class="btn btn-outline-dark" href="#">Change Username</a><br/>
+                    <h4><?= $studentInfo['username']; ?></h4>
                     <div style="margin:1% 0 0 0; font-size:15px;">
                         <label for="selectStatus"><b>Status: </b></label>
                         <select  name="class" id="selectStatus">
@@ -50,25 +59,28 @@ $schoolInfo = getByIdSchool($user['school']);
 
                 <div style="margin-top:3%; font-size:16px;">
                     <div class="form-row">
+                        <br>
                         <b>Full Name</b><br/>
-                        <?= $user['firstname'].' '.$user['lastname']; ?><br/>
+                        <?= $studentInfo['firstname'].' '.$studentInfo['lastname']; ?><br/>
                     </div>
                     <div class="form-row">
                         <b>Nickname</b>
-                        <a type="button" style="font-size: 12px;" class="btn btn-outline-dark" href="#">Change</a><br/>
-                        <?= $user['nickname']; ?><br/>
+                        <?= $studentInfo['nickname']; ?><br/>
                     </div>
                     <div class="form-row">
                         <b>Grade</b><br/>
-                        <?= $user['grade']; ?><br/>
+                        <?= $studentInfo['grade']; ?><br/>
                     </div>
                     <div class="form-row">
                         <b>Class</b><br/>
-                        <?= $user['class']; ?><br/>
+                        <?= $studentInfo['class']; ?><br/>
                     </div>
                     <div class="form-row">
                         <b>School</b><br/>
                         <?= $schoolInfo['name']; ?><br/>
+                    </div>
+                    <div class="form-row">
+                        <button style="font-size: 12px;" class="btn btn-outline-dark updateDetails" data-toggle="modal" data-target="#updateDetailsModal">Update Details</button><br/>
                     </div>
                 </div>
         </div>
@@ -81,6 +93,8 @@ $schoolInfo = getByIdSchool($user['school']);
 <script src="js/jquery-3.5.0.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/collapsibleSideBar.js"></script>
-
+<?php
+include "updateStudentModal.php";
+?>
 </body>
 </html>
