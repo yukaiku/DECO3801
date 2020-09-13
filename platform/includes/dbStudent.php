@@ -2,7 +2,7 @@
 require_once 'dbFunction.php';
 
 $table_student = "student";
-$dbFields_student = ["id","school", "firstname", "lastname", "username", "nickname","profileImage", "pwd", "grade", "class", "status"];
+$dbFields_student = ["id","school", "firstname", "lastname", "username", "nickname","profileImage", "pwd", "grade", "class","lastactivity", "status"];
 $pk_student = "id";
 
 function getStudent($like = "") {
@@ -70,6 +70,8 @@ function createStudent($infoArr = array()) {
                 $updateStrArrField[] = "{$field}";
                 $updateStrArr[] = "0";
                 $updateStrArrField[] = "status";
+                $updateStrArr[] = "now()";
+                $updateStrArrField[] = "lastactivity";
             }
         } else {
             $updateStrArr[] = "'{$value}'";

@@ -31,19 +31,11 @@ $games = getAllGame('subject');
 
         }
         ?>
-        <!--        <button class="collapsible">English</button>-->
-        <!--        <div class="content">-->
-        <!--            <p>Who Lost Roger?</p>-->
-        <!--        </div>-->
-        <!--        <button class="collapsible">Mathematics</button>-->
-        <!--        <div class="content">-->
-        <!--            <p>Puzzle Master</p>-->
-        <!--        </div>-->
 
         <ul>
             <div class="row bottom-navbar">
                 <div class="col-lg-3">
-                    <img src="thmisds">
+                    <img src="img/<?=$user['profileImage'];?>" style="width: 50px; height: 50px;" >
                 </div>
                 <div class="col-lg-9">
                     <?php if ($status == "student"){

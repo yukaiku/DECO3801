@@ -128,7 +128,7 @@ $studentsRecord = getByGradeClassStudent($grade,$class,$school);
                     profileImage: "dummy.jpg"
                 },
                 function(result){
-                    alert(result)
+                    alert(result);
                     refreshData();
                 });
         }
