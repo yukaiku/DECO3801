@@ -1,11 +1,34 @@
 <?php
+
+session_start();
+
 $gameInfo = getByIdGame($gameId);
 $gameName = $gameInfo['name'];
 $gameSubject = $gameInfo['subject'];
 $gameDescription = $gameInfo['description'];
 $gameGrade = $gameInfo['grade'];
 $gameGenre = $gameInfo['genre'];
+
+$wholostroger_url = '../games/GameExecutables/WhoLostRoger_v0.3/index.php';
+
+require_once('./includes/dbFunction.php');
+open_connection();
+$player_id = $user['id'];
+$game_id = $gameId;
+$query = 'select * from student_progress where id=$player_id and game=$game_id';
+$result = query($query);
+if (!isset($result)) header("Location: ./index.php");
+$row = fetch_array($query);
+if (!isset($row)) header("Location: ./index.php");
+$highest_level = $row['level'];
+close_connection();
+
+$_SESSION['player_id'] = $player_id;
+$_SESSION['game_id'] = $game_id;
+$_SESSION['highest_level'] = $highest_level;
+
 ?>
+
 <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
     <div class="row" id="gameName">
         <h1><?= $gameName;?></h1>
@@ -30,7 +53,7 @@ $gameGenre = $gameInfo['genre'];
     if($status == "teacher"){
         echo '<a class="btn btn-primary mb-2" style="text-align: center" href="teacherStudentProgressByClass.php?gameId='.$gameId.'">Student\'s Progress</a>';
     }elseif($status == "student"){
-        echo '<a class="btn btn-success mb-2" style="text-align: center" href="../games/GameExecutables/WhoLostRoger_v0.3/index.php?id='.$user['id'].'&gameId='.$gameId.'">Play</a><br/>';
+        echo '<a class="btn btn-success mb-2" style="text-align: center" href="' . $wholostroger_url . '">Play</a><br/>';
         echo '<a class="btn btn-primary mb-2" style="text-align: center" href="studentLeaderboard.php?gameId='.$gameId.'">Leaderboard</a><br/>';
         echo '<a class="btn btn-primary mb-2" style="text-align: center" href="gameInfo.php?gameId='.$gameId.'">Achievements</a>';
     }
