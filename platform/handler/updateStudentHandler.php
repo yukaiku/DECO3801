@@ -1,7 +1,7 @@
 <?php
-require_once 'includes/checkLoginStatusForBoth.php';
-require_once 'includes/uploadImageFunction.php';
-require_once 'includes/dbStudent.php';
+require_once '../includes/checkLoginStatusForBoth.php';
+require_once '../includes/uploadImageFunction.php';
+require_once '../includes/dbStudent.php';
 if (isset($_POST["update"])) {
     $id = $_POST['id'];
     $profileImage = $_FILES['profileImage'];
@@ -14,7 +14,7 @@ if (isset($_POST["update"])) {
             $studentDetails = getByIdStudent($id);
             $updatingImage = 1;
         }else{
-            header("Location: studentProfile.php?id={$id}&error=Upload {$uploadResult} failed");
+            header("Location: ../studentProfile.php?id={$id}&error=Upload {$uploadResult} failed");
         }
     }
     $updateResult = updateStudent($updateDetails);
@@ -26,14 +26,14 @@ if (isset($_POST["update"])) {
         if (file_exists("img/" . $studentDetails['profileImage']) && $updatingImage == 1) {
             unlink("img/" . $studentDetails['profileImage']);
         }
-        header("Location: studentProfile.php?id={$id}");
+        header("Location: ../studentProfile.php?id={$id}");
     }else{
-        header("Location: studentProfile.php?id={$id}&error=Update Failed");
+        header("Location: ../studentProfile.php?id={$id}&error=Update Failed");
     }
 
 } else {
     $id = $_POST['id'];
-    header("Location: studentProfile.php?id={$id}&error=Update Failed");
+    header("Location: ../studentProfile.php?id={$id}&error=Update Failed");
 }
 
 

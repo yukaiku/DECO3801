@@ -17,7 +17,7 @@
 </head>
 
 <body class="text-center">
-<form class="form-signin" action="loginHandler.php" method="post">
+<form class="form-signin" action="handler/loginHandler.php" method="post">
     <img class="mb-4" src="img/logo.png" alt="" width="300" height="200">
 <!--    <h1 class="h3 mb-3 font-weight-normal">CatsEG</h1>-->
     <label for="inputUsername" class="sr-only" name="username">Username</label>

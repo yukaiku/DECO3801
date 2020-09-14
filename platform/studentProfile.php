@@ -42,7 +42,7 @@ $studentInfo = getByIdStudent($studentId);
         <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
                 <div style="float:left">
                     <img width="150" height="150" src="img/<?=$studentInfo['profileImage'];?>"/><br/>
-                    <button style="font-size: 12px;" class="btn btn-outline-dark updateDetails" data-toggle="modal" data-target="#updateDetailsModal">Change Profile Image</button><br/>
+                    <br>
                 </div>
                 <div style="padding-left:18%">
                     <h4><?= $studentInfo['username']; ?></h4>
@@ -67,6 +67,11 @@ $studentInfo = getByIdStudent($studentId);
                         <b>Nickname</b>
                         <?= $studentInfo['nickname']; ?><br/>
                     </div>
+                    <?php
+                    if($status == "teacher"){
+                        echo "<div class='form-row'><b>Password</b><br/>{$studentInfo["password"]}<br/></div>";
+                    }
+                    ?>
                     <div class="form-row">
                         <b>Grade</b><br/>
                         <?= $studentInfo['grade']; ?><br/>
@@ -80,7 +85,12 @@ $studentInfo = getByIdStudent($studentId);
                         <?= $schoolInfo['name']; ?><br/>
                     </div>
                     <div class="form-row">
-                        <button style="font-size: 12px;" class="btn btn-outline-dark updateDetails" data-toggle="modal" data-target="#updateDetailsModal">Update Details</button><br/>
+                        <button style="font-size: 12px;" class="btn btn-outline-dark updateDetails" data-toggle="modal" data-target="#updateDetailsModal">Update Details</button>
+                        <?php
+                        if($status == "teacher"){
+                            echo '<button style="font-size: 12px;" class="btn btn-outline-dark resetPassword" data-toggle="modal" data-target="#resetStudentPasswordModal">Reset Password</button><br/>';
+                        }
+                        ?>
                     </div>
                 </div>
         </div>
@@ -95,6 +105,7 @@ $studentInfo = getByIdStudent($studentId);
 <script src="js/collapsibleSideBar.js"></script>
 <?php
 include "updateStudentModal.php";
+include "resetStudentPasswordModal.php";
 ?>
 </body>
 </html>

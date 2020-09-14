@@ -32,19 +32,20 @@ $schoolInfo = getByIdSchool($user['school']);
         <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div style="float:left">
                 <img width="150" height="150" src="img/<?= $user['profileImage']; ?>"/><br/>
-                <button style="font-size: 12px;" class="btn btn-outline-dark updateDetails" data-toggle="modal" data-target="#updateDetailsModal">Change Profile Picture</button>
+                <br>
             </div>
             <div style="padding-left:18%">
                 <h4><?= $user['username']; ?></h4>
-                <button style="font-size: 12px;" class="btn btn-outline-dark updateDetails" data-toggle="modal" data-target="#updateDetailsModal">Change Username</button><br/>
                 <div style="margin:1% 0 0 0; font-size:15px;">
                     <label for="selectStatus"><b>Status: </b></label>
                     <select  name="class" id="selectStatus">
                         <option>Online</option>
                         <option>Idle</option>
                         <option>Invisible</option>
-                    </select><br/><br/><br>
+                    </select><br><br>
                 </div>
+                <button style="font-size: 12px;" class="btn btn-outline-dark updateDetails" data-toggle="modal" data-target="#updateDetailsModal">Update Details</button><br><br><br>
+
             </div>
 
             <div style="margin-top:3%; font-size:16px;">

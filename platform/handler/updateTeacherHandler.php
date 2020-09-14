@@ -1,6 +1,6 @@
 <?php
-require_once 'includes/checkLoginStatusForBoth.php';
-require_once 'includes/uploadImageFunction.php';
+require_once '../includes/checkLoginStatusForBoth.php';
+require_once '../includes/uploadImageFunction.php';
 if($status == "teacher"){
     require_once 'includes/dbTeacher.php';
     if (isset($_POST["update"])) {
@@ -16,7 +16,7 @@ if($status == "teacher"){
                 $teacherDetails = getByIdTeacher($id);
                 $updatingImage = 1;
             }else{
-                header("Location: teacherProfile.php?error=Upload {$uploadResult} failed");
+                header("Location: ../teacherProfile.php?error=Upload {$uploadResult} failed");
             }
         }
         $updateResult = updateTeacher($updateDetails);
@@ -26,13 +26,13 @@ if($status == "teacher"){
             if (file_exists("img/" . $teacherDetails['profileImage']) && $updatingImage == 1) {
                 unlink("img/" . $teacherDetails['profileImage']);
             }
-            header("Location: teacherProfile.php");
+            header("Location: ../teacherProfile.php");
         }else{
-            header("Location: teacherProfile.php?error=Update Failed");
+            header("Location: ../teacherProfile.php?error=Update Failed");
         }
 
     } else {
-        header("Location: teacherProfile.php?error=Update Failed");
+        header("Location: ../teacherProfile.php?error=Update Failed");
     }
 }
 
