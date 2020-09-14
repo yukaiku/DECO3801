@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 $gameInfo = getByIdGame($gameId);
 $gameName = $gameInfo['name'];
 $gameSubject = $gameInfo['subject'];
@@ -11,16 +9,20 @@ $gameGenre = $gameInfo['genre'];
 
 $wholostroger_url = '../games/GameExecutables/WhoLostRoger_v0.3/index.php';
 
-require_once('./includes/dbFunction.php');
 open_connection();
 $player_id = $user['id'];
 $game_id = $gameId;
-$query = 'select * from student_progress where id=$player_id and game=$game_id';
-$result = query($query);
-if (!isset($result)) header("Location: ./index.php");
-$row = fetch_array($query);
-if (!isset($row)) header("Location: ./index.php");
-$highest_level = $row['level'];
+$query = "select * from student_progress where id={$player_id} and game={$game_id}";
+$result = mysqli_query($connection,$query);
+$row = mysqli_fetch_array($result);
+if ($row != ""){
+    $highest_level = $row['level'];
+
+}else{
+    $highest_level = 1;
+}
+
+
 close_connection();
 
 $_SESSION['player_id'] = $player_id;
