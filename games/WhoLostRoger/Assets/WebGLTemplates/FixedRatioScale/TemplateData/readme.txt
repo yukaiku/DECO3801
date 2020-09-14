@@ -15,16 +15,24 @@ Enter colour in the "Background" field
 <?php
 	session_start();
 
-	function isGameLogin() {
-		$game_login = FALSE;
-		if (isset($_SESSION["login-account"] 
-				&& $GLOBALS["game_login"] != null) {
-			$game_login = TRUE;
-		} else {
-			header("Location: " . $_SERVER["DOCUMENT_ROOT"] . "index.php" 
-					. "?error=invalid_login");
-		}
+	if (!isset($_SESSION['student'])) {
+		$root_url = ((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://';
+		$server_url = $root . $_SERVER['SERVER_NAME'] . '/';
+		$location = $server_url . 'cats/platform/index.php';
+		header('Location: $location');
 	}
 
-	isGameLogin();
+	$game_id = $_SESSION['game_id'];
+	$player_id = $_SESSION['player_id'];
+	$highest_level = $_SESSION['highest_level'];
+
+	if (!isset($game_id) || !isset($player_id) || !isset($highest_level)) {
+		$root_url = ((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://';
+		$server_url = $root . $_SERVER['SERVER_NAME'] . '/';
+		$location = $server_url . 'cats/platform/index.php';
+		header('Location: $location');
+	}
+
+	// got this student progress here
+	// going to send into the game
 ?>
