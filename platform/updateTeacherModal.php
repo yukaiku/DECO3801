@@ -1,7 +1,7 @@
 <div class="modal fade" id="updateDetailsModal" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form class ="form-horizontal" action="handler/updateTeacherHandler.php" method="post" enctype="multipart/form-data">
+            <form class ="form-horizontal" action="updateTeacherHandler.php" method="post" enctype="multipart/form-data">
                 <div class="modal-header">
                     <h4>Update Details</h4>
                 </div>
@@ -31,7 +31,7 @@
                         </label>
                         <div class="col-lg-10">
 
-                            <input type="text" class="form-control" id="contact-name" placeholder="Password" name="password" value="<?= $user['password']; ?>">
+                            <input type="text" class="form-control" id="contact-name" placeholder="Password" name="pwd" value="<?= $user['password']; ?>">
 
                         </div>
 

@@ -1,7 +1,7 @@
 <div class="modal fade" id="updateDetailsModal" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form class ="form-horizontal" action="handler/updateStudentHandler.php" method="post" enctype="multipart/form-data">
+            <form class ="form-horizontal" action="updateStudentHandler.php" method="post" enctype="multipart/form-data">
                 <div class="modal-header">
                     <h4>Update Details</h4>
                 </div>

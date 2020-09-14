@@ -43,14 +43,14 @@ $games = getAllGame('subject');
                     }else{
                         echo '<a type="button" class="btn" href="teacherProfile.php">';
                     }
-                    echo "<b>{$user['firstname']}</b>";
+                    echo "<b>{$user['username']}</b>";
                     ?>
                     </a>
                     <div clas="row">
                         Status
                     </div>
                     <div clas="row">
-                        Chat   |  <a href="handler/logoutHandler.php">Log Out</a>
+                        Chat   |  <a href="logoutHandler.php">Log Out</a>
                     </div>
                 </div>
             </div>

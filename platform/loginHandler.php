@@ -5,7 +5,7 @@ session_start();
 session_destroy();
 session_start();
 // require the dbfunction.php file
-require_once "../includes/dbFunction.php";
+require_once "includes/dbFunction.php";
 
 
 $username  = $_POST['username']; // retrieve the id from login form
@@ -24,7 +24,7 @@ if (!mysqli_connect_errno()) { // connection to database is successful
     if($row != ""){ //has record of student
         $status = $row['status'];
         if($status != 0 ){ //user needs to verify account
-            header('Location: ../verifyAccount.php?id='.$row['id'].'&username='.$username.'&pwd='.$password); // redirect to the verification page.
+            header('Location: verifyAccount.php?id='.$row['id'].'&username='.$username.'&pwd='.$password); // redirect to the verification page.
         }else{
             $sqlQueryStr =
                 "SELECT id, school, firstname, lastname, username, nickname, AES_DECRYPT(pwd,'deco3801') as password, profileImage, grade, class, status " .
@@ -41,10 +41,10 @@ if (!mysqli_connect_errno()) { // connection to database is successful
                     setcookie("student", json_encode(""), time()-3600, "/");
                 }
                 mysqli_close($connection); // close database connection
-                header('Location: ../studentMain.php?welcomeMessage=Welcome '. $row['firstName']); // redirect to the homepage.
+                header('Location: studentMain.php?welcomeMessage=Welcome '. $row['firstName']); // redirect to the homepage.
             } else {
                 mysqli_close($connection); // close database connection
-                header('Location: ../index.php?error=Invalid username or password for student'); // redirect to the login page.
+                header('Location: index.php?error=Invalid username or password for student'); // redirect to the login page.
             }
         }
         /*====================================TEACHER LOGIN HANDLER=============================================*/
@@ -61,7 +61,7 @@ if (!mysqli_connect_errno()) { // connection to database is successful
         if($row != ""){ //has record of teacher
             $status = $row['status'];
             if($status != 0 ){ //user needs to verify account
-                header('Location: ../verifyAccount.php?id='.$row['id'].'&username='.$username.'&pwd='.$password); // redirect to the verification page.
+                header('Location: verifyAccount.php?id='.$row['id'].'&username='.$username.'&pwd='.$password); // redirect to the verification page.
             }else{
                 $sqlQueryStr =
                     "SELECT id, school, firstname, lastname, username, profileImage, AES_DECRYPT(pwd,'deco3801') as password, status " .
@@ -78,14 +78,14 @@ if (!mysqli_connect_errno()) { // connection to database is successful
                         setcookie("teacher", json_encode(""), time()-3600, "/");
                     }
                     mysqli_close($connection); // close database connection
-                    header('Location: ../teacherMain.php?welcomeMessage=Welcome '. $row['firstName']); // redirect to the homepage.
+                    header('Location: teacherMain.php?welcomeMessage=Welcome '. $row['firstName']); // redirect to the homepage.
                 } else {
                     mysqli_close($connection); // close database connection
-                    header('Location: ../index.php?error=Invalid username or password teacher'); // redirect to the login page.
+                    header('Location: index.php?error=Invalid username or password teacher'); // redirect to the login page.
                 }
             }
         }else{
-            header('Location: ../index.php?error=No record of user exists in database'); // redirect to the login page.
+            header('Location: index.php?error=No record of user exists in database'); // redirect to the login page.
         }
     }
 
