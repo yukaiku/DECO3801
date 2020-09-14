@@ -7,7 +7,7 @@ $gameDescription = $gameInfo['description'];
 $gameGrade = $gameInfo['grade'];
 $gameGenre = $gameInfo['genre'];
 
-$wholostroger_url = '../games/GameExecutables/WhoLostRoger_v0.3/index.php';
+$wholostroger_url = '../games/GameExecutables/WhoLostRoger/index.php';
 
 open_connection();
 $player_id = $user['id'];
