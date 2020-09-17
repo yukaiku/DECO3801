@@ -16,11 +16,6 @@ $teachers = getTeacher($user['id']);
     <meta name="author" content="">
 
     <title>Student Profile</title>
-
-    <script src="js/jquery-3.5.0.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/collapsibleSideBar.js"></script>
-
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -75,6 +70,12 @@ $teachers = getTeacher($user['id']);
             </div>
         </div>
     </div>
+    <script src="js/jquery-3.5.0.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/collapsibleSideBar.js"></script>
+    <?php
+    include_once "lastActivity.php";
+    ?>
 </div>
 </body>
 </html>
