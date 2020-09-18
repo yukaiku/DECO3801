@@ -59,8 +59,11 @@ public class NounLinkage : MonoBehaviour
 
     private void OnMouseDown()
     {
-        clickNounObject();
-        resultTrigger.isAllNounClicked();
+        if(global.isPause == false){
+            clickNounObject();
+            resultTrigger.isAllNounClicked();
+        }
+        
     }
 
     // Start is called before the first frame update
