@@ -1,7 +1,6 @@
 (Important) Steps
 1. After WebGL build with player settings
-2. Rename "index.html" with ".php" format
-3. Append the following php codes into the file
+2. Run the "index.php" for the game, not "index.html"
 
 /*=========================== Divider ===========================*/
 
@@ -10,29 +9,12 @@ Enter colour in the "Background" field
 
 /*=========================== Divider ===========================*/
 
-(PHP Codes) Appends --- not completed yet
+(For Testing) Steps
+If deploying the game, comment out the followings in the "index.php" file
+If testing the game locally, uncomment out the followings in the "index.php" file
 
-<?php
-	session_start();
-
-	if (!isset($_SESSION['student'])) {
-		$root_url = ((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://';
-		$server_url = $root . $_SERVER['SERVER_NAME'] . '/';
-		$location = $server_url . 'cats/platform/index.php';
-		header('Location: $location');
-	}
-
-	$game_id = $_SESSION['game_id'];
-	$player_id = $_SESSION['player_id'];
-	$highest_level = $_SESSION['highest_level'];
-
-	if (!isset($game_id) || !isset($player_id) || !isset($highest_level)) {
-		$root_url = ((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://';
-		$server_url = $root . $_SERVER['SERVER_NAME'] . '/';
-		$location = $server_url . 'cats/platform/index.php';
-		header('Location: $location');
-	}
-
-	// got this student progress here
-	// going to send into the game
-?>
+	// faked data for testing functionality
+	$_SESSION['student'] = 1;
+	$_SESSION['player_id'] = 1;
+	$_SESSION['game_id'] = 1;
+	$_SESSION['highest_level'] = 1;

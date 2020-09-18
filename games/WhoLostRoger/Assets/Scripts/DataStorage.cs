@@ -9,6 +9,7 @@ public class DataStorage
     static private int screenWidth = Screen.width;
     static private int screenHeight = Screen.height;
     static private float screenRatio = screenWidth / screenHeight;
+    static private int gameId;
     static private int currentLevel;
 
     // the feature variables for player manual match (if implements)
@@ -16,6 +17,8 @@ public class DataStorage
     static private string selectedNounObject = "";
 
     /*** Player Data ***/
+    static private int playerId;
+    static private int highestLevel;
     static private float timeLeft;
     static private int scorePoint;
 
@@ -39,10 +42,27 @@ public class DataStorage
         screenRatio = ratio;
     }
 
+    public static void setGameId(int id)
+    {
+        gameId = id;
+    }
+
     public static void setCurrentLevel(int level)
     {
         currentLevel = level;
         Debug.Log(string.Format("PlayerData current Level '{0}'", currentLevel));
+    }
+
+    public static void setPlayerId(int id)
+    {
+        playerId = id;
+        Debug.Log(string.Format("PlayerData player id '{0}'", playerId));
+    }
+
+    public static void setHighestLevel(int level)
+    {
+        highestLevel = level;
+        Debug.Log(string.Format("PlayerData current highest Level '{0}'", highestLevel));
     }
 
     public static void setTimeLeft(float time)
@@ -86,9 +106,24 @@ public class DataStorage
         return screenRatio;
     }
 
+    public static int getGameId()
+    {
+        return gameId;
+    }
+
     public static int getCurrentLevel()
     {
         return currentLevel;
+    }
+
+    public static int getPlayerId()
+    {
+        return playerId;
+    }
+
+    public static int getHighestLevel()
+    {
+        return highestLevel;
     }
 
     public static float getTimeLeft()
