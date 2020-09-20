@@ -18,6 +18,7 @@ $teachers = getTeacher($user['id']);
     <title>Student Profile</title>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/jquery-ui.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
@@ -73,6 +74,7 @@ $teachers = getTeacher($user['id']);
     <script src="js/jquery-3.5.0.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/collapsibleSideBar.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
     <?php
     include_once "lastActivity.php";
     ?>

@@ -1,3 +1,4 @@
+<div id="user_model_details"></div>
 <div id= "chatListModal" class="modal fade" role="dialog">
     <div class="modal-dialog" style="overflow-y: scroll; max-height:85%;  margin-top: 50px; margin-bottom:50px;" >
         <div class="modal-content">
@@ -22,7 +23,7 @@
     }
 </style>
 <script type="text/javascript">
-//display chat box stuff
+    //display chat box stuff
     $(document).ready(function(){
         function make_chat_dialog_box(to_user_id, to_user_name)
         {
@@ -35,7 +36,8 @@
             modal_content+= '<button type="button" name="send_chat" id="'+to_user_id+'" class="btn btn-info send_chat">Send</button></div></div>';
             $('#user_model_details').html(modal_content);
         }
-        $(document).on('click', '.start_chat', function(){
+        $(document).on('click', '.chatButton', function(){
+            $('#chatListModal').modal('hide');
             var to_user_id = $(this).data('touserid');
             var to_user_name = $(this).data('tousername');
             make_chat_dialog_box(to_user_id, to_user_name);
@@ -46,8 +48,19 @@
             $('#user_dialog_'+to_user_id).dialog('open');
         });
 
-    //updating last activity and retrieving it stuff.
-    //Updates user activity every 5 seconds.
+        function displayOnlineUsers(onlineUsers){
+            var string = "";
+            for(var i = 1; i <= onlineUsers.length; i++){
+                string += "<div class='row'>";
+                string += "<div class='col-lg-9' style='margin-top: 3px'>Name: " + onlineUsers[i-1].firstname + " " + onlineUsers[i-1].lastname + " </div>";
+                string += "<div class='col-lg-3'><button data-touserid='"+ onlineUsers[i-1].id + "' data-tousername='"+ onlineUsers[i-1].username + "' class='btn btn-outline-dark chatButton'>chat</button></div>";
+                string += "</div><hr>";
+            }
+            $('.chatListModalBody').html(string);
+        }
+
+        //updating last activity and retrieving it stuff.
+        //Updates user activity every 5 seconds.
 
         fetch_user();
 
@@ -64,14 +77,7 @@
                     var result = $.parseJSON(result);
                     console.log(result.length);
                     $('#onlineButton').html("Chat (" + result.length + " Online)");
-                    var string = "";
-                    for(var i = 1; i <= result.length; i++){
-                        string += "<div class='row'>";
-                        string += "<div class='col-lg-9' style='margin-top: 3px'>Name: " + result[i-1].firstname + " " + result[i-1].lastname + " </div>";
-                        string += "<div class='col-lg-3'><button class='btn btn-outline-dark'>chat</button></div>";
-                        string += "</div><hr>";
-                    }
-                    $('.chatListModalBody').html(string);
+                    displayOnlineUsers(result)
                 });
         }
 
