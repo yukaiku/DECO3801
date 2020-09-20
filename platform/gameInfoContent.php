@@ -9,25 +9,8 @@ $gameGenre = $gameInfo['genre'];
 
 $wholostroger_url = '../games/GameExecutables/WhoLostRoger/index.php';
 
-open_connection();
-$player_id = $user['id'];
-$game_id = $gameId;
-$query = "select * from student_progress where id={$player_id} and game={$game_id}";
-$result = mysqli_query($connection,$query);
-$row = mysqli_fetch_array($result);
-if ($row != ""){
-    $highest_level = $row['level'];
-
-}else{
-    $highest_level = 1;
-}
-
-
-close_connection();
-
-$_SESSION['player_id'] = $player_id;
-$_SESSION['game_id'] = $game_id;
-$_SESSION['highest_level'] = $highest_level;
+$_SESSION['player_id'] = $user['id'];
+$_SESSION['game_id'] = $gameId;
 
 ?>
 
