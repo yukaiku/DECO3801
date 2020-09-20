@@ -25,17 +25,8 @@
 <script type="text/javascript">
     //display chat box stuff
     $(document).ready(function(){
-        function make_chat_dialog_box(to_user_id, to_user_name)
-        {
-            var modal_content = '<div id="user_dialog_'+to_user_id+'" class="user_dialog" title="You have chat with '+to_user_name+'">';
-            modal_content += '<div style="height:400px; border:1px solid #ccc; overflow-y: scroll; margin-bottom:24px; padding:16px;" class="chat_history" data-touserid="'+to_user_id+'" id="chat_history_'+to_user_id+'">';
-            modal_content += '</div>';
-            modal_content += '<div class="form-group">';
-            modal_content += '<textarea name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" class="form-control"></textarea>';
-            modal_content += '</div><div class="form-group" align="right">';
-            modal_content+= '<button type="button" name="send_chat" id="'+to_user_id+'" class="btn btn-info send_chat">Send</button></div></div>';
-            $('#user_model_details').html(modal_content);
-        }
+
+        //onclick stuff
         $(document).on('click', '.chatButton', function(){
             $('#chatListModal').modal('hide');
             var to_user_id = $(this).data('touserid');
@@ -48,6 +39,33 @@
             $('#user_dialog_'+to_user_id).dialog('open');
         });
 
+        $(document).on('click', '.send_chat', function(){
+            var to_user_id = $(this).attr('id');
+            var chat_message = $('#chat_message_'+to_user_id).val();
+            $.ajax({
+                url:"ajax/insertChat.php",
+                method:"POST",
+                data:{to_user_id:to_user_id, chat_message:chat_message},
+                success:function(data)
+                {
+                    $('#chat_message_'+to_user_id).val('');
+                    $('#chat_history_'+to_user_id).html(data);
+                }
+            })
+        });
+
+        function make_chat_dialog_box(to_user_id, to_user_name)
+        {
+            var modal_content = '<div id="user_dialog_'+to_user_id+'" class="user_dialog" title="You have chat with '+to_user_name+'">';
+            modal_content += '<div style="height:400px; border:1px solid #ccc; overflow-y: scroll; margin-bottom:24px; padding:16px;" class="chat_history" data-touserid="'+to_user_id+'" id="chat_history_'+to_user_id+'">';
+            modal_content += '</div>';
+            modal_content += '<div class="form-group">';
+            modal_content += '<textarea name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" class="form-control"></textarea>';
+            modal_content += '</div><div class="form-group" align="right">';
+            modal_content+= '<button type="button" name="send_chat" id="'+to_user_id+'" class="btn btn-info send_chat">Send</button></div></div>';
+            $('#user_model_details').html(modal_content);
+        }
+
         function displayOnlineUsers(onlineUsers){
             var string = "";
             for(var i = 1; i <= onlineUsers.length; i++){
@@ -59,16 +77,29 @@
             $('.chatListModalBody').html(string);
         }
 
+        //chat messages functions
+        function update_chat_history_data()
+        {
+            $('.chat_history').each(function(){
+                var to_user_id = $(this).data('touserid');
+                fetchUserChatHistory(to_user_id);
+            });
+        }
+
+        function fetchUserChatHistory(to_user_id)
+        {
+            $.ajax({
+                url:"ajax/fetchUserChatHistory.php",
+                method:"POST",
+                data:{to_user_id:to_user_id},
+                success:function(data){
+                    $('#chat_history_'+to_user_id).html(data);
+                }
+            })
+        }
+
         //updating last activity and retrieving it stuff.
         //Updates user activity every 5 seconds.
-
-        fetch_user();
-
-        setInterval(function(){
-            update_last_activity();
-            fetch_user();
-        }, 5000);
-
         function fetch_user()
         {
             $.post("ajax/fetchOnline.php",
@@ -92,5 +123,12 @@
             })
         }
 
+        fetch_user();
+
+        setInterval(function(){
+            update_last_activity();
+            fetch_user();
+            update_chat_history_data();
+        }, 5000);
     });
 </script>
