@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	require("connectDB.php");
 
 	$platform_path = 'cats/platform/index.php';
 
@@ -11,18 +12,29 @@
 
 	if (!isset($_SESSION['student'])) {
 		$root_url = ((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://';
-		$server_url = $root . $_SERVER['SERVER_NAME'] . '/';
+		$server_url = $root_url . $_SERVER['SERVER_NAME'] . '/';
 		$location = $server_url . $platform_path;
 		header('Location: $location');
 	}
 
-	$game_id = $_SESSION['game_id'];
+   	$game_id = $_SESSION['game_id'];
 	$player_id = $_SESSION['player_id'];
-	$highest_level = $_SESSION['highest_level'];
+	$highest_level = 1;
+
+	$database = new MySQLDatabase();
+    $database->connect();
+    $query = "select * from student_progress where id={$player_id} and game={$game_id}";
+    $result = $database->query($query);
+	$row = mysqli_fetch_array($result);
+	if ($row != ""){
+	    $highest_level = $row['level'];
+
+	}
+    $database->disconnect();
 
 	if (!isset($game_id) || !isset($player_id) || !isset($highest_level)) {
 		$root_url = ((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://';
-		$server_url = $root . $_SERVER['SERVER_NAME'] . '/';
+		$server_url = $root_url . $_SERVER['SERVER_NAME'] . '/';
 		$location = $server_url . $platform_path;
 		header('Location: $location');
 	}
