@@ -49,6 +49,15 @@ function getStudentBySql($sql = "") {
     return $resultArray;
 }
 
+function fetchStudentLastActivity($id)
+{
+    $resultSet = getStudentBySql("SELECT * FROM student WHERE id = '$id' ORDER BY lastactivity DESC LIMIT 1");
+    foreach($resultSet as $row)
+    {
+        return $row['lastactivity'];
+    }
+}
+
 function setStudentAttributes($infoArr) { //set the fields //Gets the post data $infoArr is all the post data, [$fieldname] is the post names
     $newRecord = array();
     foreach ($GLOBALS['dbFields_student'] as $fieldName) {

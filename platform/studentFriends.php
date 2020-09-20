@@ -35,9 +35,9 @@ $teachers = getTeacher($user['id']);
         include_once("sideBar.php");
         ?>
         <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-            <div class="row">
+            <div class="row" id="friendsRow">
                 <b style="float:left;width:80%"><h4>You have 3 friends.</h4></b>
-                <a type="button" style="float:right; width:auto;font-size: 15px;" class="btn btn-outline-dark" href="#">Chat (1 online)</a>
+                <button data-toggle="modal" data-target="#chatListModal" style="float:right; width:auto;font-size: 15px;" class="btn btn-outline-dark" id="onlineButton">Chat (1 online)</button>
             </div>
             <div class="body-content">
                 <h6>Friends</h6>

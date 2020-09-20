@@ -1,30 +1,27 @@
 <?php
-
-//fetchOnline.php
-session_start();
-if (isset($_SESSION['student'])) { // basicinfo exist in session // from handle login
-    $user = $_SESSION['student']; // get basicinfo from session
-    $status = "student";
-}else{
-    $status = "teacher";
-}
 include('../includes/dbStudent.php');
+session_start();
+$status = "";
+if (isset($_SESSION['student'])) { // basicinfo exist in session // from handle login
+    $status = "student";
+}
+
 
 date_default_timezone_set("Australia/Brisbane");
 
-$sql = "SELECT * FROM student ";
+$sql = "SELECT id, firstname, lastname, username FROM student ";
 If ($status == "student"){
     $sql .= " WHERE id != '".$_SESSION["student"]["id"]."' ";
 }
 $result = query($sql);
 
-$returnArray = [];
+$returnArray = array();
 foreach($result as $row)
 {
     $status = '';
     $current_timestamp = strtotime(date("Y-m-d H:i:s") . '- 30 second');
     $current_timestamp = date('Y-m-d H:i:s', $current_timestamp);
-    $user_last_activity = fetchUserLastActivity($row['id']);
+    $user_last_activity = fetchStudentLastActivity($row['id']);
     if($user_last_activity > $current_timestamp)
     {
         array_push($returnArray,$row);
@@ -32,23 +29,5 @@ foreach($result as $row)
     }
 }
 
-
-function fetchUserLastActivity($id)
-{
-    $sql = "
- SELECT * FROM student 
- WHERE id = '$id' 
- ORDER BY lastactivity DESC 
- LIMIT 1
- ";
-    $result = query($sql);
-    foreach($result as $row)
-    {
-        return $row['lastactivity'];
-    }
-}
-
-print_r($returnArray);
-
-
-?>
+$resultJSON = json_encode($returnArray);
+print_r($resultJSON);
