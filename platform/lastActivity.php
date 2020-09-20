@@ -16,6 +16,8 @@
                 method:"POST",
                 success:function(data){
                     //$('#user_details').html(data);
+                    console.log("online users");
+                    console.log(data);
                 }
             })
         }

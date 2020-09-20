@@ -12,27 +12,23 @@ include('../includes/dbStudent.php');
 
 date_default_timezone_set("Australia/Brisbane");
 
-
+$sql = "SELECT * FROM student ";
 If ($status == "student"){
-    $sql = "
-SELECT * FROM student 
-WHERE id != '".$_SESSION["student"]["id"]."' 
-";
-}else{
-    $sql = "SELECT * FROM student ";
+    $sql .= " WHERE id != '".$_SESSION["student"]["id"]."' ";
 }
-$result = $query($sql);
+$result = query($sql);
 
 $returnArray = [];
 foreach($result as $row)
 {
     $status = '';
-    $current_timestamp = strtotime(date("Y-m-d H:i:s") . '- 10 second');
+    $current_timestamp = strtotime(date("Y-m-d H:i:s") . '- 30 second');
     $current_timestamp = date('Y-m-d H:i:s', $current_timestamp);
-    $user_last_activity = fetch_user_last_activity($row['id']);
+    $user_last_activity = fetchUserLastActivity($row['id']);
     if($user_last_activity > $current_timestamp)
     {
         array_push($returnArray,$row);
+
     }
 }
 
@@ -42,17 +38,17 @@ function fetchUserLastActivity($id)
     $sql = "
  SELECT * FROM student 
  WHERE id = '$id' 
- ORDER BY last_activity DESC 
+ ORDER BY lastactivity DESC 
  LIMIT 1
  ";
     $result = query($sql);
     foreach($result as $row)
     {
-        return $row['last_activity'];
+        return $row['lastactivity'];
     }
 }
 
-echo $returnArray;
+print_r($returnArray);
 
 
 ?>
