@@ -38,7 +38,7 @@ $teachers = getTeacher($user['id']);
         <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="row" id="friendsRow">
                 <b style="float:left;width:80%"><h4>You have 3 friends.</h4></b>
-                <button data-toggle="modal" data-target="#chatListModal" style="float:right; width:auto;font-size: 15px;" class="btn btn-outline-dark" id="onlineButton">Chat (1 online)</button>
+                <button class="onlineButton" style="float:right; width:auto;font-size: 15px;" class="btn btn-outline-dark" id="onlineButton">Chat (1 online)</button>
             </div>
             <div class="body-content">
                 <h6>Friends</h6>

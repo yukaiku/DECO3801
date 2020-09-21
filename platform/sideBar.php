@@ -50,7 +50,8 @@ $games = getAllGame('subject');
                         Status
                     </div>
                     <div clas="row">
-                        Chat   |  <a href="logoutHandler.php">Log Out</a>
+                        <button data-toggle="modal" data-target="#chatListModal" style="float:right; width:auto;font-size: 15px;" class="btn btn-outline-dark" id="onlineButton">Chat (1 online)</button>
+                          <a href="logoutHandler.php">Log Out</a>
                     </div>
                 </div>
             </div>
