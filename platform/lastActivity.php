@@ -135,7 +135,7 @@
             string += '<div class="modal-body">';
             for(var i = 1; i <= onlineUsers.length; i++){
                 string += "<div class='row'>";
-                string += "<div class='col-lg-9' style='margin-top: 3px'>Name: " + onlineUsers[i-1].firstname + " " + onlineUsers[i-1].lastname + " </div>";
+                string += "<div class='col-lg-9' style='margin-top: 3px'>Name: " + onlineUsers[i-1].username + " </div>";
                 string += "<div class='col-lg-3'><button data-touserid='"+ onlineUsers[i-1].id + "' data-tousername='"+ onlineUsers[i-1].username + "' class='btn btn-outline-dark chatButton'>chat</button></div>";
                 string += "</div><hr>";
             }
@@ -153,7 +153,7 @@
             string += '<div class="modal-body">';
             for(var i = 1; i <= offlineUsers.length; i++){
                 string += "<div class='row'>";
-                string += "<div class='col-lg-9' style='margin-top: 3px'>Name: " + offlineUsers[i-1].firstname + " " + offlineUsers[i-1].lastname + " </div>";
+                string += "<div class='col-lg-9' style='margin-top: 3px'>Name: " + offlineUsers[i-1].username + " </div>";
                 string += "<div class='col-lg-3' style='margin-top: 3px'><button data-touserid='"+ offlineUsers[i-1].id + "' data-tousername='"+ offlineUsers[i-1].username + "' class='btn btn-outline-dark chatButton'>chat</button></div>";
                 string += "</div><hr>";
             }

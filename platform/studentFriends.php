@@ -41,19 +41,30 @@ $teachers = getBySchoolTeacher($user['school']);
             </div>
             <div class="body-content">
                 <h6>Friends</h6>
-                    <?php foreach ($StudentFriendInfo as $studentFriend){
+                    <?php
+                    $friendsLoop = 0;
+                    foreach ($StudentFriendInfo as $studentFriend){
                         echo '<div id="box"><img src=""/><br/>';
                         echo $studentFriend['username'];
                         echo '</div>';
+                        if($friendsLoop > 3){
+                            break;
+                        }
                     }?>
             </div>
             <a style="font-size: 10px;" href="studentFriendsMore.php">See More...</a><br/>
             <div class="body-content">
                 <h6>Classmates</h6>
-                <?php foreach ($classmates as $classmates){
+                <?php
+                $classmateLoop = 0;
+                foreach ($classmates as $classmates){
                     echo '<div id="box"><img src="#"/><br/>';
                     echo $classmates['username'];
                     echo '</div>';
+                    $classmateLoop ++;
+                    if($classmateLoop > 3){
+                        break;
+                    }
                 }?>
             </div>
             <a style="font-size: 10px;" href="#">See More...</a><br/>
