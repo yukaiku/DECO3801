@@ -48,13 +48,15 @@ public static class DataSystem
         return;
     }
 
-    public static void sendToServer()
+    public static int calculateTotalScore(int timeLeft, int scorePoint, int timePerScore)
     {
-        return;
+        int total = scorePoint + Mathf.RoundToInt(timeLeft / timePerScore);
+        return total;
     }
 
-    public static void getFromServer()
+    public static int calculateNounPercentage(int totalNounCount, int scorePoint, int scorePerNoun)
     {
-        return;
+        int percentage = Mathf.RoundToInt(((scorePoint / scorePerNoun) / totalNounCount) * 100);
+        return percentage;
     }
 }

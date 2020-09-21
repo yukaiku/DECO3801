@@ -17,20 +17,24 @@
 		header('Location: $location');
 	}
 
-   	$game_id = $_SESSION['game_id'];
+	$game_id = $_SESSION['game_id'];
 	$player_id = $_SESSION['player_id'];
 	$highest_level = 1;
 
 	$database = new MySQLDatabase();
-    $database->connect();
-    $query = "select * from student_progress where id={$player_id} and game={$game_id}";
-    $result = $database->query($query);
-	$row = mysqli_fetch_array($result);
-	if ($row != ""){
-	    $highest_level = $row['level'];
-
+	$database->connect();
+	$query = "SELECT * FROM who_lost_orger WHERE studentid={$player_id} ORDER BY level DESC LIMIT 1";
+	$result = $database->query($query);
+	if (!$reuslt) {
+		$database->disconnect();
+		die("sql statement query fail");
 	}
-    $database->disconnect();
+
+	$row = mysqli_fetch_array($result);
+	if ($row != NULL){
+		$highest_level = $row['level'];
+	}
+	$database->disconnect();
 
 	if (!isset($game_id) || !isset($player_id) || !isset($highest_level)) {
 		$root_url = ((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://';
