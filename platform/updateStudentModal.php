@@ -19,7 +19,7 @@
                         </label>
                         <div class="col-lg-10">
 
-                            <input type="text" class="form-control" id="contact-name" placeholder="nick name" name="nickname" value="<?= $studentInfo['nickname']; ?>">
+                            <input type="text" class="form-control" placeholder="nick name" name="nickname" value="<?= $studentInfo['nickname']; ?>">
 
                         </div>
 
@@ -31,7 +31,7 @@
                         </label>
                         <div class="col-lg-10">
 
-                            <input type="text" class="form-control" id="contact-name" placeholder="password" name="pwd" value="<?= $studentInfo['password']; ?>">
+                            <input type="text" class="form-control" placeholder="password" name="pwd" value="<?= $studentInfo['password']; ?>">
 
                         </div>
 

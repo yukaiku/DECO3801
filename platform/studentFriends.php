@@ -16,12 +16,9 @@ $teachers = getTeacher($user['id']);
     <meta name="author" content="">
 
     <title>Student Profile</title>
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/jquery-ui.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet">
+    <?php
+    include 'css.php';
+    ?>
     <style>
         img{
             width:60px;
@@ -71,13 +68,9 @@ $teachers = getTeacher($user['id']);
             </div>
         </div>
     </div>
-    <script src="js/jquery-3.5.0.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/collapsibleSideBar.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <?php
-    include_once "lastActivity.php";
-    ?>
 </div>
+<?php
+include "lastActivity.php";
+?>
 </body>
 </html>

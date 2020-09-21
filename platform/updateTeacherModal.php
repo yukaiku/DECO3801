@@ -18,7 +18,7 @@
                         </label>
                         <div class="col-lg-10">
 
-                            <input type="text" class="form-control" id="contact-name" placeholder="Username" name="username" value="<?= $user['username']; ?>">
+                            <input type="text" class="form-control" placeholder="Username" name="username" value="<?= $user['username']; ?>">
 
                         </div>
 
@@ -31,7 +31,7 @@
                         </label>
                         <div class="col-lg-10">
 
-                            <input type="text" class="form-control" id="contact-name" placeholder="Password" name="pwd" value="<?= $user['password']; ?>">
+                            <input type="text" class="form-control" placeholder="Password" name="pwd" value="<?= $user['password']; ?>">
 
                         </div>
 

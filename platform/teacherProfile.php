@@ -15,11 +15,9 @@ $schoolInfo = getByIdSchool($user['school']);
 
     <title>Profile</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet">
+    <?php
+    include 'css.php';
+    ?>
 </head>
 
 <body>
@@ -65,10 +63,8 @@ $schoolInfo = getByIdSchool($user['school']);
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="js/jquery-3.5.0.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/collapsibleSideBar.js"></script>
 <?php
+include 'lastActivity.php';
 include "updateTeacherModal.php";
 ?>
 </body>

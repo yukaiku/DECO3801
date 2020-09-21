@@ -1,3 +1,8 @@
+<script src="js/jquery-3.5.0.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/collapsibleSideBar.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<!--ALL JS SCRIPTS -->
 <div id="chatListModal"></div> <!-- MODAL FOR CHATLIST -->
 <div id="chatBoxModal"></div> <!-- MODAL FOR CHATBOX -->
 <style type="text/css">
@@ -19,14 +24,15 @@
             makeOnlineDialogBox();
             $("#chatListModal").dialog({
                 autoOpen:false,
-                width:400
+                width:400,
+                title: "Friends List"
             });
             $("#chatListModal").dialog('open');
         });
 
         function makeOnlineDialogBox()
         {
-            var modal_content = '<div id= "chatListModal" class="user_dialog" title="Friends Chat">';
+            var modal_content = '<div id= "chatListModal" class="user_dialog">';
             modal_content += ' <div class="" style="overflow-y: scroll; max-height:100%;  margin-top: 50px; margin-bottom:50px;" >';
             modal_content += '<div class="chatListModalBody">';
             modal_content += '</div>';

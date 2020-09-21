@@ -11,11 +11,9 @@ include_once "includes/checkLoginStatusForBoth.php";
 
     <title>Student Home</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet">
+    <?php
+    include 'css.php';
+    ?>
     <style>
         img{
             width:60px;
@@ -32,7 +30,7 @@ include_once "includes/checkLoginStatusForBoth.php";
         <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="row">
                 <b style="float:left;width:80%"><h4>Friends</h4></b>
-                <a type="button" style="float:right; width:auto;font-size: 15px;" class="btn btn-outline-dark" href="#">Chat (1 online)</a>
+                <button class="onlineButton" style="float:right; width:auto;font-size: 15px;" class="btn btn-outline-dark" id="onlineButton">Chat (1 online)</button>
             </div>
             <div class="body-content">
                 <h6>Class 6E</h6>
@@ -55,5 +53,8 @@ include_once "includes/checkLoginStatusForBoth.php";
         </div>
     </div>
 </div>
+<?php
+include 'lastActivity.php';
+?>
 </body>
 </html>
