@@ -77,6 +77,20 @@
             $('.chatListModalBody').html(string);
         }
 
+        function displayOfflineUsers(offlineUsers){
+            var string = "";
+            string += '<div class="modal-header">\n' +
+                '                <h3 class="modal-title">Offline Users</h3>\n' +
+                '            </div>';
+            for(var i = 1; i <= offlineUsers.length; i++){
+                string += "<div class='row'>";
+                string += "<div class='col-lg-9' style='margin-top: 3px'>Name: " + offlineUsers[i-1].firstname + " " + offlineUsers[i-1].lastname + " </div>";
+                string += "<div class='col-lg-3'><button data-touserid='"+ offlineUsers[i-1].id + "' data-tousername='"+ offlineUsers[i-1].username + "' class='btn btn-outline-dark chatButton'>chat</button></div>";
+                string += "</div><hr>";
+            }
+            $('.chatListModalBody').append(string);
+        }
+
         //chat messages functions
         function update_chat_history_data()
         {
@@ -112,6 +126,17 @@
                 });
         }
 
+        function fetch_user_offline()
+        {
+            $.post("ajax/fetchOffline.php",
+                {
+                },function(result){
+                    var result = $.parseJSON(result);
+                    console.log(result.length);
+                    displayOfflineUsers(result)
+                });
+        }
+
         function update_last_activity()
         {
             $.ajax({
@@ -124,10 +149,12 @@
         }
 
         fetch_user();
+        fetch_user_offline();
 
         setInterval(function(){
             update_last_activity();
             fetch_user();
+            fetch_user_offline();
             update_chat_history_data();
         }, 5000);
     });
