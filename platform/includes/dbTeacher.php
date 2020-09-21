@@ -25,6 +25,10 @@ function getAllTeachers($orderBy = "") {
     return getTeacherBySql("SELECT * FROM {$GLOBALS['table_teacher']} {$orderBy}");
 }
 
+function getBySchoolTeacher($school = 0) { //get all the rows where record id = current id
+    return getTeacherBySql("SELECT *, aes_decrypt(pwd, 'deco3801') as password FROM {$GLOBALS['table_teacher']} WHERE school = {$school} AND status = 0 ");
+}
+
 function getByIdTeacher($id = 0) { //get all the rows where record id = current id
     $result_array = getTeacherBySql("SELECT *, aes_decrypt(pwd, 'deco3801') as password FROM {$GLOBALS['table_teacher']} WHERE {$GLOBALS['pk_teacher']}= {$id} AND status = 0 LIMIT 1 ");
     return !empty($result_array) ? array_shift($result_array) : false;

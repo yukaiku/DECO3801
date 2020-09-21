@@ -8,7 +8,6 @@ $grade = isset($_GET['grade']) ? $_GET['grade'] : '';
 $class = isset($_GET['class']) ? $_GET['class'] : '';
 $school = $user['school'];
 $schoolInfo = getByIdSchool($user['school']);
-$studentsRecord = getByGradeClassStudent($grade,$class,$school);
 ?>
 <!doctype html>
 <html lang="en">

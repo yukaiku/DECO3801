@@ -9,7 +9,6 @@ $school = isset($_GET['school']) ? $_GET['school'] : '';
 if($grade == "" || $class == "" || $school == ""){
     header('Location: teacherMain.php'); // redirect to the login page.
 }
-$studentsRecord = getByGradeClassStudent($grade, $class, $school);
 ?>
 <!doctype html>
 <html lang="en">

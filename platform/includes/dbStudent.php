@@ -31,8 +31,8 @@ function getByIdStudent($id = 0) { //get all the rows where record id = current 
 }
 
 function getByGradeClassStudent($grade, $class, $school) { //get all the rows by class
-    $result_array = getStudentBySql("SELECT * FROM {$GLOBALS['table_student']} WHERE grade = '{$grade}' AND class = '{$class}' AND school = {$school} AND status = 0 order by username, firstname, lastname ");
-    return !empty($result_array) ? array_shift($result_array) : false;
+    return getStudentBySql("SELECT * FROM {$GLOBALS['table_student']} WHERE grade = '{$grade}' AND class = '{$class}' AND school = {$school} AND status = 0 order by username, firstname, lastname ");
+
 }
 
 function getByIdStudents($id = 0) { //get all the rows where record id = current id

@@ -3,9 +3,11 @@ include_once 'includes/checkLoginStatusForBoth.php';
 include_once 'includes/dbGame.php';
 include_once 'includes/dbFriends.php';
 include_once 'includes/dbStudent.php';
-$StudentFriendInfo = getByIdFriendship($user['id']);
-$classmates = getClassmates($user['id'],$user['grade'],$user['class']);
-$teachers = getTeacher($user['id']);
+$StudentFriendInfo = getByUserIdFriendship($user['id']);
+$classmates = getByGradeClassStudent($user['grade'],$user['class'],$user['school']);
+//$classmates = getClassmates($user['id'],$user['grade'],$user['class']);
+//$teachers = getStudentTeacher($user['id']);
+$teachers = getBySchoolTeacher($user['school']);
 ?>
 <!doctype html>
 <html lang="en">
@@ -59,7 +61,9 @@ $teachers = getTeacher($user['id']);
                 <h6>Teachers</h6>
                 <?php foreach ($teachers as $teachers){
                     echo '<div id="box"><img src="#"/><br/>';
-                    echo $teachers['username'];
+                    echo $teachers['firstname'];
+                    echo " ";
+                    echo $teachers['lastname'];
                     echo '</div>';
                 }?>
             </div>
