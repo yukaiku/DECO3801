@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class IsGameover : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public class IsGameover : MonoBehaviour
     [ChoiceList(new[] { "LoadingScene" })]
     public string sceneName;
     private bool trigger = false;
+    private Text[] nounTextList;        // namely noun tag list
+    private SendingData sender;
 
     private void isTimerNull()
     {
@@ -36,6 +39,23 @@ public class IsGameover : MonoBehaviour
 
             Debug.Log(string.Format("Null timer assigned and the component won't work"));
         }
+        sender = gameObject.AddComponent<SendingData>();
+    }
+
+    private void getNounTextList()
+    {
+        List<Text> nounTagList = new List<Text>();
+        foreach (NounTagUtility nounTag in Object.FindObjectsOfType<NounTagUtility>())
+        {
+            Text tagText = nounTag.gameObject.GetComponent<Text>();
+            if (tagText != null)
+            {
+                nounTagList.Add(tagText);
+            }
+        }
+        nounTextList = nounTagList.ToArray();
+
+        Debug.Log(string.Format("In total '{0}' noun text box in this panel'", nounTextList.Length));
     }
 
     private void isTimeout()
@@ -48,6 +68,8 @@ public class IsGameover : MonoBehaviour
             {
                 // save player time spent
                 DataSystem.saveTimeLeft(timer.timeStart);
+                // send data to database in server side
+                sender.sendData(nounTextList.Length);
                 // do something when timeout
                 doSomething();
             }
@@ -114,6 +136,7 @@ public class IsGameover : MonoBehaviour
     void Start()
     {
         isTimerNull();
+        getNounTextList();
     }
 
     // Update is called once per frame

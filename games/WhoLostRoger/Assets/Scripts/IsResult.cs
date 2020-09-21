@@ -22,6 +22,7 @@ public class IsResult : MonoBehaviour
 
     private Text[] nounTextList;        // namely noun tag list
     private bool trigger = false;
+    private SendingData sender;
 
     private void isArgsNull()
     {
@@ -32,6 +33,7 @@ public class IsResult : MonoBehaviour
 
             Debug.Log(string.Format("Null arguments assigned and the component won't work"));
         }
+        sender = gameObject.AddComponent<SendingData>();
     }
 
     private void getNounTextList()
@@ -86,6 +88,10 @@ public class IsResult : MonoBehaviour
             {
                 // save player time spent
                 DataSystem.saveTimeLeft(timer.timeStart);
+                // save player highest level
+                DataSystem.saveHighestLevel(DataStorage.getCurrentLevel());
+                // send data to database in server side
+                sender.sendData(nounTextList.Length);
                 // do something when triggered
                 doSomething();
             }

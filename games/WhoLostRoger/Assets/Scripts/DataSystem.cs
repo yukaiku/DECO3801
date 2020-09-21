@@ -12,7 +12,7 @@ public static class DataSystem
         DataStorage.setSelectedNounTag("");
         DataStorage.setSelectedNounObject("");
 
-        Debug.Log(string.Format("Reset with new level."));
+        Debug.Log(string.Format("Reset with new level {0}.", currentLevel));
     }
 
     public static void scoreUp(int increment)
@@ -23,6 +23,15 @@ public static class DataSystem
     public static void saveTimeLeft(float time)
     {
         DataStorage.setTimeLeft(time);
+    }
+
+    public static void saveHighestLevel(int level)
+    {
+        int highest_level = DataStorage.getHighestLevel();
+        if (level > highest_level)
+        {
+            DataStorage.setHighestLevel(level);
+        }
     }
 
     public static void resetDefault()
