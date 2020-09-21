@@ -1,14 +1,7 @@
 <div id="user_model_details"></div>
 <div id= "chatListModal" class="modal fade" role="dialog">
     <div class="modal-dialog" style="overflow-y: scroll; max-height:85%;  margin-top: 50px; margin-bottom:50px;" >
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Online Users</h3>
-            </div>
-            <div class="modal-body chatListModalBody"></div>
-            <div class="modal-footer">
-                <a class="btn btn-default" data-dismiss ="modal">Close</a>
-            </div>
+        <div class="modal-content chatListModalBody">
         </div>
     </div>
 </div>
@@ -25,7 +18,7 @@
 <script type="text/javascript">
     //display chat box stuff
     $(document).ready(function(){
-
+//============================================================== CHAT BOX STUFF =================================================/
         //onclick stuff
         $(document).on('click', '.chatButton', function(){
             $('#chatListModal').modal('hide');
@@ -38,6 +31,18 @@
             });
             $('#user_dialog_'+to_user_id).dialog('open');
         });
+
+        function make_chat_dialog_box(to_user_id, to_user_name)
+        {
+            var modal_content = '<div id="user_dialog_'+to_user_id+'" class="user_dialog" title="You have chat with '+to_user_name+'">';
+            modal_content += '<div style="height:400px; border:1px solid #ccc; overflow-y: scroll; margin-bottom:24px; padding:16px;" class="chat_history" data-touserid="'+to_user_id+'" id="chat_history_'+to_user_id+'">';
+            modal_content += '</div>';
+            modal_content += '<div class="form-group">';
+            modal_content += '<textarea name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" class="form-control"></textarea>';
+            modal_content += '</div><div class="form-group" align="right">';
+            modal_content+= '<button type="button" name="send_chat" id="'+to_user_id+'" class="btn btn-info send_chat">Send</button></div></div>';
+            $('#user_model_details').html(modal_content);
+        }
 
         $(document).on('click', '.send_chat', function(){
             var to_user_id = $(this).attr('id');
@@ -53,43 +58,6 @@
                 }
             })
         });
-
-        function make_chat_dialog_box(to_user_id, to_user_name)
-        {
-            var modal_content = '<div id="user_dialog_'+to_user_id+'" class="user_dialog" title="You have chat with '+to_user_name+'">';
-            modal_content += '<div style="height:400px; border:1px solid #ccc; overflow-y: scroll; margin-bottom:24px; padding:16px;" class="chat_history" data-touserid="'+to_user_id+'" id="chat_history_'+to_user_id+'">';
-            modal_content += '</div>';
-            modal_content += '<div class="form-group">';
-            modal_content += '<textarea name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" class="form-control"></textarea>';
-            modal_content += '</div><div class="form-group" align="right">';
-            modal_content+= '<button type="button" name="send_chat" id="'+to_user_id+'" class="btn btn-info send_chat">Send</button></div></div>';
-            $('#user_model_details').html(modal_content);
-        }
-
-        function displayOnlineUsers(onlineUsers){
-            var string = "";
-            for(var i = 1; i <= onlineUsers.length; i++){
-                string += "<div class='row'>";
-                string += "<div class='col-lg-9' style='margin-top: 3px'>Name: " + onlineUsers[i-1].firstname + " " + onlineUsers[i-1].lastname + " </div>";
-                string += "<div class='col-lg-3'><button data-touserid='"+ onlineUsers[i-1].id + "' data-tousername='"+ onlineUsers[i-1].username + "' class='btn btn-outline-dark chatButton'>chat</button></div>";
-                string += "</div><hr>";
-            }
-            $('.chatListModalBody').html(string);
-        }
-
-        function displayOfflineUsers(offlineUsers){
-            var string = "";
-            string += '<div class="modal-header">\n' +
-                '                <h3 class="modal-title">Offline Users</h3>\n' +
-                '            </div>';
-            for(var i = 1; i <= offlineUsers.length; i++){
-                string += "<div class='row'>";
-                string += "<div class='col-lg-9' style='margin-top: 3px'>Name: " + offlineUsers[i-1].firstname + " " + offlineUsers[i-1].lastname + " </div>";
-                string += "<div class='col-lg-3'><button data-touserid='"+ offlineUsers[i-1].id + "' data-tousername='"+ offlineUsers[i-1].username + "' class='btn btn-outline-dark chatButton'>chat</button></div>";
-                string += "</div><hr>";
-            }
-            $('.chatListModalBody').append(string);
-        }
 
         //chat messages functions
         function update_chat_history_data()
@@ -112,6 +80,9 @@
             })
         }
 
+//============================================================== =================================================/
+
+//==============================================================DISPLAY ONLINE OFFLINE CHATS =================================================/
         //updating last activity and retrieving it stuff.
         //Updates user activity every 5 seconds.
         function fetch_user()
@@ -122,19 +93,54 @@
                     var result = $.parseJSON(result);
                     console.log(result.length);
                     $('#onlineButton').html("Chat (" + result.length + " Online)");
-                    displayOnlineUsers(result)
+                    var onlineUserStrings = displayOnlineUsers(result);
+                    fetch_user_offline(onlineUserStrings);
                 });
         }
 
-        function fetch_user_offline()
+        function fetch_user_offline(onlineUserStrings)
         {
             $.post("ajax/fetchOffline.php",
                 {
                 },function(result){
                     var result = $.parseJSON(result);
-                    console.log(result.length);
-                    displayOfflineUsers(result)
+                    displayOfflineUsers(result, onlineUserStrings)
                 });
+        }
+
+        function displayOnlineUsers(onlineUsers){
+            var string = "";
+            string += '<div class="modal-header"> <h3 class="modal-title">Online Users</h3> <a class="btn btn-default" data-dismiss ="modal">Close</a></div>';
+            string += '<div class="modal-body">';
+            for(var i = 1; i <= onlineUsers.length; i++){
+                string += "<div class='row'>";
+                string += "<div class='col-lg-9' style='margin-top: 3px'>Name: " + onlineUsers[i-1].firstname + " " + onlineUsers[i-1].lastname + " </div>";
+                string += "<div class='col-lg-3'><button data-touserid='"+ onlineUsers[i-1].id + "' data-tousername='"+ onlineUsers[i-1].username + "' class='btn btn-outline-dark chatButton'>chat</button></div>";
+                string += "</div><hr>";
+            }
+            string += '</div>';
+            //$('.chatListModalBody').html(string);
+            return string;
+        }
+
+        function displayOfflineUsers(offlineUsers, onlineUserStrings){
+            var string = "";
+            string += onlineUserStrings;
+            string += '<div class="modal-header">\n' +
+                '                <h3 class="modal-title">Offline Users</h3>\n' +
+                '            </div>';
+            string += '<div class="modal-body">';
+            for(var i = 1; i <= offlineUsers.length; i++){
+                string += "<div class='row'>";
+                string += "<div class='col-lg-9' style='margin-top: 3px'>Name: " + offlineUsers[i-1].firstname + " " + offlineUsers[i-1].lastname + " </div>";
+                string += "<div class='col-lg-3' style='margin-top: 3px'><button data-touserid='"+ offlineUsers[i-1].id + "' data-tousername='"+ offlineUsers[i-1].username + "' class='btn btn-outline-dark chatButton'>chat</button></div>";
+                string += "</div><hr>";
+            }
+            string += '</div>';
+            // string += '<div class="modal-footer">\n' +
+            //     '                <a class="btn btn-default" data-dismiss ="modal">Close</a>\n' +
+            //     '            </div>';
+            $('.chatListModalBody').html(string);
         }
 
         function update_last_activity()
@@ -148,13 +154,9 @@
             })
         }
 
-        fetch_user();
-        fetch_user_offline();
-
         setInterval(function(){
             update_last_activity();
             fetch_user();
-            fetch_user_offline();
             update_chat_history_data();
         }, 5000);
     });
