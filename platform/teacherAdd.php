@@ -36,7 +36,7 @@ $studentsRecord = getByGradeClassStudent($grade,$class,$school);
         ?>
         <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="row" style="position: absolute; top: 50px">
-                <?php echo "<h1>{$schoolInfo['name']}</h1>" ?>
+                <?php echo "<h1>{$schoolInfo['name']}, {$grade}{$class}</h1>" ?>
             </div>
             <form style="position: absolute; top: 100px; width: 80%;">
                 <div class="form-row row">
@@ -58,16 +58,13 @@ $studentsRecord = getByGradeClassStudent($grade,$class,$school);
                 <hr>
             </form>
             <div clas="form-row" style="position: absolute; top: 225px; width: 80%; text-align: center;">
-                <button  id="addStudentButton" class="btn btn-primary mb-2" style="text-align: center">Confirm</button>
+                <button  id="addStudentButton" class="btn btn-primary mb-2" style="text-align: center">Add Student</button>
             </div>
 
             <div class="table-responsive" style="position: absolute; top: 300px; max-height: 30%; width: 80%;">
                 <table class="table table-striped table-sm">
                     <thead>
                     <tr>
-                        <th>
-                            Select
-                        </th>
                         <th>Username</th>
                         <th>Password</th>
                         <th>First Name</th>
@@ -149,9 +146,9 @@ $studentsRecord = getByGradeClassStudent($grade,$class,$school);
                     for(var i = 1; i <= result.length; i++){
                         string += "<tr>";
 
-                        string += "<td>";
-                        string += '<input type="checkbox" class="categoryIds" id="check1" name="category" value="' + result[i-1].id + '">';
-                        string += "</td>";
+                        // string += "<td>";
+                        // string += '<input type="checkbox" class="categoryIds" id="check1" name="category" value="' + result[i-1].id + '">';
+                        // string += "</td>";
 
                         string += "<td>";
                         string += result[i-1].username ;

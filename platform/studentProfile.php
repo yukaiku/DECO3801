@@ -53,7 +53,13 @@ $studentInfo = getByIdStudent($studentId);
                             <option>Idle</option>
                             <option>Invisible</option>
                         </select><br/><br/>
-                        <a type="button" style="font-size: 12px;" class="btn btn-dark" href="studentFriends.php">Friends List</a>
+                        <?php
+                         if ($status != "student"){
+                             echo "<br>";
+                         }else{
+                             echo '<a type="button" style="font-size: 12px;" class="btn btn-dark" href="studentFriends.php">Friends List</a>';
+                         }
+                        ?>
                     </div>
                 </div>
 
