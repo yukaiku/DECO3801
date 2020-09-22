@@ -91,7 +91,7 @@ public class IsResult : MonoBehaviour
                 // save player highest level
                 DataSystem.saveHighestLevel(DataStorage.getCurrentLevel());
                 // send data to database in server side
-                sender.sendData(nounTextList.Length);
+                sender.saveDataFromJS(nounTextList.Length);
                 // do something when triggered
                 doSomething();
             }

@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Runtime.InteropServices;
 
 public class ButtonUtility : MonoBehaviour
 {
     public GameObject PauseMenu;
     public GameObject OptionMenu;
+
+    [DllImport("__Internal")]
+    private static extern void QuitTab();
     
     public void doLoadScene(string sceneName)
     {
@@ -19,6 +23,7 @@ public class ButtonUtility : MonoBehaviour
     public void doQuit()
     {
         Application.Quit();
+        QuitTab();
         Debug.Log("Game quit.");
     }
 

@@ -44,3 +44,18 @@
 		if ($result) { exit("success"); } else { die("fail"); }
 	}
 ?>
+
+<html>
+   <body>
+   
+      <form action = "<?php $_PHP_SELF ?>" method = "POST">
+         Game: <input type = "text" name = "game_id" />
+         Player: <input type = "text" name = "player_id" />
+         Level: <input type = "text" name = "current_level" />
+         Score: <input type = "text" name = "score" />
+         Percent: <input type = "text" name = "noun_percentage" />
+         <input type = "submit" />
+      </form>
+   
+   </body>
+</html>

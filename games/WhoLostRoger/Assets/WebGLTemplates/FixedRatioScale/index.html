@@ -7,15 +7,15 @@
         <title>%UNITY_WEB_NAME%</title>
         <script src="%UNITY_WEBGL_LOADER_URL%"></script>
         <style>
-        	html, body {
-        		margin: 0;
-        		padding: 0;
+            html, body {
+                margin: 0;
+                padding: 0;
                 width: 100%;
                 height: 100%;
                 box-sizing: border-box;
                 background: rgba(255,255,255,1);
                 background: %UNITY_CUSTOM_BACKGROUND%;
-        	}
+            }
 
             .webgl-content {
                 position: absolute;
@@ -26,21 +26,32 @@
                 -webkit-transform: translate(-50%, -50%);
             }
 
-        	.webgl-content .onfullscreen {
-        		position: fixed;
-        		right: 0%;
-        		bottom: 0%;
-        		background: transparent center no-repeat;
+            .webgl-content .onfullscreen {
+                position: fixed;
+                right: 0%;
+                bottom: 0%;
+                background: transparent center no-repeat;
                 background-image: url('./TemplateData/fullscreen.png');
-        		width: 38px;
-        		height: 38px;
+                width: 38px;
+                height: 38px;
+        	}
+        	a.back-button {
+                text-decoration: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                background: rgba(255, 255, 255, 1.0);
+                z-index: 100;
+                padding: 5px 10px;
         	}
         </style>
     </head>
 
     <body>
+
         <div class="webgl-content">
             <div id="unityContainer" style="width: %UNITY_WIDTH%px; height: %UNITY_HEIGHT%px;"></div>
+            <a class="back-button" href="#" onclick="goBack()">Go Back</a>
             <div class="onfullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
         </div>
 
@@ -79,6 +90,9 @@
             		<?php echo $_SESSION['player_id']; ?>, 
             		<?php echo $_SESSION['highest_level']; ?>);
 
+            function goBack() {
+                window.history.back();
+            }
         </script>
     </body>
 </html>

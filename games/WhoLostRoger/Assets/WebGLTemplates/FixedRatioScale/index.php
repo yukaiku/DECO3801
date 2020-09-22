@@ -5,10 +5,10 @@
 	$platform_path = 'platform/index.php';
 
 	// faked data for testing functionality
-	$_SESSION['student'] = 1;
-	$_SESSION['player_id'] = 1;
-	$_SESSION['game_id'] = 1;
-	$_SESSION['highest_level'] = 1;
+	//$_SESSION['student'] = 1;
+	//$_SESSION['player_id'] = 1;
+	//$_SESSION['game_id'] = 1;
+	//$_SESSION['highest_level'] = 1;
 
 	if (!isset($_SESSION['student'])) {
 		$root_url = ((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://';

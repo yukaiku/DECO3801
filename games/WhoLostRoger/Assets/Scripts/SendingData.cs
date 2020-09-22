@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using System.Runtime.InteropServices;
 
 public class SendingData : MonoBehaviour
 {
+    [DllImport("__Internal")]
+    private static extern void SaveDataJS(string url, string fields);
+
     // it will send data when a level is completed or gameover
     public void sendData(int totalNounCount)
     {
-        string url = "https://localhost/games/GameExecutables/WhoLostRoger/saveData.php";
+        string url = "http://localhost/games/GameExecutables/WhoLostRoger/saveData.php";
 
         WWWForm formData = new WWWForm();
         int totalScore = DataSystem.calculateTotalScore(Mathf.RoundToInt(DataStorage.getTimeLeft()), DataStorage.getScorePoint(), 5);
@@ -36,6 +40,18 @@ public class SendingData : MonoBehaviour
         {
             Debug.Log("Form upload complete!");
         }
+    }
+
+    public void saveDataFromJS(int totalNounCount)
+    {
+        int totalScore = DataSystem.calculateTotalScore(Mathf.RoundToInt(DataStorage.getTimeLeft()), DataStorage.getScorePoint(), 5);
+        int percentage = DataSystem.calculateNounPercentage(totalNounCount, DataStorage.getScorePoint(), 1);
+
+        string url = "http://localhost/games/GameExecutables/WhoLostRoger/saveData.php";
+        string fields = "game_id=" + DataStorage.getGameId() + "&player_id=" + DataStorage.getPlayerId() + "&current_level="
+                + DataStorage.getCurrentLevel() + "&score=" + totalScore + "&noun_percentage=" + percentage;
+
+        SaveDataJS(url, fields);
     }
 
     // Start is called before the first frame update

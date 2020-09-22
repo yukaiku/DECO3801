@@ -69,7 +69,7 @@ public class IsGameover : MonoBehaviour
                 // save player time spent
                 DataSystem.saveTimeLeft(timer.timeStart);
                 // send data to database in server side
-                sender.sendData(nounTextList.Length);
+                sender.saveDataFromJS(nounTextList.Length);
                 // do something when timeout
                 doSomething();
             }
