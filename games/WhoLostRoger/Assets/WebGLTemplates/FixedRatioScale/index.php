@@ -14,7 +14,7 @@
 		$root_url = ((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://';
 		$server_url = $root_url . $_SERVER['SERVER_NAME'] . '/';
 		$location = $server_url . $platform_path;
-		header('Location: $location');
+		header('Location: ' . $location);
 	}
 
 	$game_id = $_SESSION['game_id'];
@@ -40,7 +40,7 @@
 		$root_url = ((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://';
 		$server_url = $root_url . $_SERVER['SERVER_NAME'] . '/';
 		$location = $server_url . $platform_path;
-		header('Location: $location');
+		header('Location: ' . $location);
 	}
 
 	// got this student progress here
