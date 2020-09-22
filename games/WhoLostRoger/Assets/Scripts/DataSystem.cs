@@ -20,6 +20,16 @@ public static class DataSystem
         DataStorage.setScorePoint(DataStorage.getScorePoint() + increment);
     }
 
+    public static void scoreDown(int decrement)
+    {
+        int scorePoint = DataStorage.getScorePoint() - decrement;
+        if (scorePoint < 0)
+        {
+            scorePoint = 0;
+        }
+        DataStorage.setScorePoint(scorePoint);
+    }
+
     public static void saveTimeLeft(float time)
     {
         DataStorage.setTimeLeft(time);

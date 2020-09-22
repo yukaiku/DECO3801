@@ -39,6 +39,15 @@ public class TimerUtility : MonoBehaviour
             timeStart += increment;
     }
 
+    public void timeDown(int decrement)
+    {
+        timeStart -= decrement;
+        if (timeStart <= 0)
+        {
+            timeStart = 0;
+        }
+    }
+
     private void isTimeBoxNull()
     {
         if (timeBox == null)
@@ -61,7 +70,7 @@ public class TimerUtility : MonoBehaviour
     private void showTime()
     {
         if (timeBox != null)
-            timeBox.text = Mathf.Round(timeStart).ToString();
+            timeBox.text = Mathf.CeilToInt(timeStart).ToString();
     }
 
     /* ********************************************************************************* *
