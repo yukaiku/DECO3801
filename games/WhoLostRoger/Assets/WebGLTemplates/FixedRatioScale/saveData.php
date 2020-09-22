@@ -13,7 +13,7 @@
 	    $database->connect();
 
 	    // sql query here to store data
-	    $query = "SELECT * FROM who_lost_roger WHERE studentid={$player_id} AND level={$current_level}";
+	    $query = "SELECT * FROM who_lost_roger WHERE studentid='$player_id' AND level='$current_level'";
 	    $result = $database->query($query);
 	    if (!$result) {
 	    	$database->disconnect();

@@ -2,7 +2,7 @@
 	session_start();
 	require("connectDB.php");
 
-	$platform_path = 'cats/platform/index.php';
+	$platform_path = 'platform/index.php';
 
 	// faked data for testing functionality
 	$_SESSION['student'] = 1;
@@ -23,9 +23,9 @@
 
 	$database = new MySQLDatabase();
 	$database->connect();
-	$query = "SELECT * FROM who_lost_orger WHERE studentid={$player_id} ORDER BY level DESC LIMIT 1";
+	$query = "SELECT * FROM who_lost_roger WHERE studentid='$player_id' ORDER BY level DESC LIMIT 1";
 	$result = $database->query($query);
-	if (!$reuslt) {
+	if (!$result) {
 		$database->disconnect();
 		die("sql statement query fail");
 	}

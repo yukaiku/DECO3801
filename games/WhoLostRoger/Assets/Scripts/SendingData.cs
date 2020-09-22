@@ -8,7 +8,7 @@ public class SendingData : MonoBehaviour
     // it will send data when a level is completed or gameover
     public void sendData(int totalNounCount)
     {
-        string url = "http://localhost/cats/games/wholostroger/saveData.php";
+        string url = "https://localhost/games/GameExecutables/WhoLostRoger/saveData.php";
 
         WWWForm formData = new WWWForm();
         int totalScore = DataSystem.calculateTotalScore(Mathf.RoundToInt(DataStorage.getTimeLeft()), DataStorage.getScorePoint(), 5);
@@ -20,12 +20,12 @@ public class SendingData : MonoBehaviour
         formData.AddField("score", totalScore);
         formData.AddField("noun_percentage", percentage);
 
-        UnityWebRequest www = UnityWebRequest.Post(url, formData);
-        StartCoroutine(sendRequest(www));
+        StartCoroutine(sendRequest(url, formData));
     }
 
-    IEnumerator sendRequest(UnityWebRequest www)
+    IEnumerator sendRequest(string url, WWWForm formData)
     {
+        UnityWebRequest www = UnityWebRequest.Post(url, formData);
         yield return www.SendWebRequest();
 
         if (www.isNetworkError || www.isHttpError)
