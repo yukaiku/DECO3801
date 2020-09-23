@@ -472,7 +472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textBox: {fileID: 164120181}
-  options: 2
+  options: 3
 --- !u!1 &516838458
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ public class ButtonUtility : MonoBehaviour
     public GameObject OptionMenu;
 
     [DllImport("__Internal")]
-    private static extern void QuitTab();
+    private static extern void BackTabJS();
     
     public void doLoadScene(string sceneName)
     {
@@ -23,7 +23,7 @@ public class ButtonUtility : MonoBehaviour
     public void doQuit()
     {
         Application.Quit();
-        QuitTab();
+        BackTabJS();
         Debug.Log("Game quit.");
     }
 

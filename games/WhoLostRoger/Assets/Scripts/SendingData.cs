@@ -4,27 +4,41 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System.Runtime.InteropServices;
 
+// it will send data when a level is completed or gameover
 public class SendingData : MonoBehaviour
 {
     [DllImport("__Internal")]
-    private static extern void SaveDataJS(string url, string fields);
+    private static extern void sendDataJS(string url, string fields);
 
-    // it will send data when a level is completed or gameover
-    public void sendData(int totalNounCount)
+    private string url = "http://localhost/games/GameExecutables/WhoLostRoger/saveData.php";
+
+    private int getTotalScore()
     {
-        string url = "http://localhost/games/GameExecutables/WhoLostRoger/saveData.php";
+        int totalScore = DataSystem.calculateTotalScore(Mathf.RoundToInt(DataStorage.getTimeLeft()), 
+                DataStorage.getScorePoint(), DataStorage.getTimePerScore());
+        return totalScore;
+    }
+
+    private int getPercentage()
+    {
+        int percentage = DataSystem.calculateNounPercentage(DataStorage.getCurrentNounCount(), DataStorage.getScorePoint(), 
+                DataStorage.getScorePerNoun());
+        return percentage;
+    }
+
+    public void sendData()
+    {
+        int totalScore = getTotalScore();
+        int percentage = getPercentage();
 
         WWWForm formData = new WWWForm();
-        int totalScore = DataSystem.calculateTotalScore(Mathf.RoundToInt(DataStorage.getTimeLeft()), DataStorage.getScorePoint(), 5);
-        int percentage = DataSystem.calculateNounPercentage(totalNounCount, DataStorage.getScorePoint(), 1);
-
         formData.AddField("game_id", DataStorage.getGameId());
         formData.AddField("player_id", DataStorage.getPlayerId());
         formData.AddField("current_level", DataStorage.getCurrentLevel());
         formData.AddField("score", totalScore);
         formData.AddField("noun_percentage", percentage);
 
-        StartCoroutine(sendRequest(url, formData));
+        StartCoroutine(sendRequest(this.url, formData));
     }
 
     IEnumerator sendRequest(string url, WWWForm formData)
@@ -42,22 +56,14 @@ public class SendingData : MonoBehaviour
         }
     }
 
-    public void saveDataFromJS(int totalNounCount)
+    public void saveDataFromJS()
     {
-        int totalScore = DataSystem.calculateTotalScore(Mathf.RoundToInt(DataStorage.getTimeLeft()), DataStorage.getScorePoint(), 5);
-        int percentage = DataSystem.calculateNounPercentage(totalNounCount, DataStorage.getScorePoint(), 1);
+        int totalScore = getTotalScore();
+        int percentage = getPercentage();
 
-        string url = "http://localhost/games/GameExecutables/WhoLostRoger/saveData.php";
         string fields = "game_id=" + DataStorage.getGameId() + "&player_id=" + DataStorage.getPlayerId() + "&current_level="
-                + DataStorage.getCurrentLevel() + "&score=" + totalScore + "&noun_percentage=" + percentage;
+                + DataStorage.getCurrentLevel() + "&score=" + totalScore + "&noun_percentage=" + percentage.ToString();
 
-        SaveDataJS(url, fields);
+        sendDataJS(this.url, fields);
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
 }

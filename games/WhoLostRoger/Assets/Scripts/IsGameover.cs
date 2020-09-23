@@ -54,6 +54,8 @@ public class IsGameover : MonoBehaviour
             }
         }
         nounTextList = nounTagList.ToArray();
+        // save the number of total nouns in this level
+        DataStorage.setCurrentNounCount(nounTextList.Length);
 
         Debug.Log(string.Format("In total '{0}' noun text box in this panel'", nounTextList.Length));
     }
@@ -69,7 +71,7 @@ public class IsGameover : MonoBehaviour
                 // save player time spent
                 DataSystem.saveTimeLeft(timer.timeStart);
                 // send data to database in server side
-                sender.saveDataFromJS(nounTextList.Length);
+                sender.sendData();
                 // do something when timeout
                 doSomething();
             }

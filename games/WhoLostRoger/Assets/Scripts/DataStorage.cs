@@ -11,6 +11,9 @@ public class DataStorage
     static private float screenRatio = screenWidth / screenHeight;
     static private int gameId;
     static private int currentLevel;
+    static private int currentNounCount;
+    static private int timePerScore = 5;
+    static private int scorePerNoun = 1;
 
     // the feature variables for player manual match (if implements)
     static private string selectedNounTag = "";
@@ -89,6 +92,21 @@ public class DataStorage
         Debug.Log(string.Format("Player select the noun object '{0}'", selectedNounObject));
     }
 
+    public static void setTimePerScore(int times)
+    {
+        timePerScore = times;
+    }
+
+    public static void setScorePerNoun(int scores)
+    {
+        scorePerNoun = scores;
+    }
+
+    public static void setCurrentNounCount(int count)
+    {
+        currentNounCount = count;
+    }
+
     /************************************ Divider ************************************/
 
     public static int getScreenWidth()
@@ -144,5 +162,20 @@ public class DataStorage
     public static string getSelectedNounObject()
     {
         return selectedNounObject;
+    }
+
+    public static int getTimePerScore()
+    {
+        return timePerScore;
+    }
+
+    public static int getScorePerNoun()
+    {
+        return scorePerNoun;
+    }
+
+    public static int getCurrentNounCount()
+    {
+        return currentNounCount;
     }
 }

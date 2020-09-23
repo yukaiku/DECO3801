@@ -29,6 +29,7 @@ public class TimePenality : MonoBehaviour
 
     private void OnMouseDown()
     {
+        // check if the mouse was clicked over a UI element
         if (EventSystem.current.IsPointerOverGameObject())
             return;
 

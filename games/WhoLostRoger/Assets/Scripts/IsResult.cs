@@ -60,6 +60,8 @@ public class IsResult : MonoBehaviour
             }
         }
         nounTextList = nounTagList.ToArray();
+        // save the number of total nouns in this level
+        DataStorage.setCurrentNounCount(nounTextList.Length);
 
         Debug.Log(string.Format("In total '{0}' noun text box in this panel'", nounTextList.Length));
     }
@@ -91,7 +93,7 @@ public class IsResult : MonoBehaviour
                 // save player highest level
                 DataSystem.saveHighestLevel(DataStorage.getCurrentLevel());
                 // send data to database in server side
-                sender.saveDataFromJS(nounTextList.Length);
+                sender.sendData();
                 // do something when triggered
                 doSomething();
             }

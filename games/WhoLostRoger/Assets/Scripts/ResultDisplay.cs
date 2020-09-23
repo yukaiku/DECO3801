@@ -10,6 +10,7 @@ public class ResultDisplay : MonoBehaviour
         currentLevel = 0,
         TimeLeft = 1,
         ScorePoint = 2,
+        FinalScore = 3,  // score point + bonus score from time left
     }
 
     public Text textBox;
@@ -38,6 +39,10 @@ public class ResultDisplay : MonoBehaviour
                 break;
             case Options.ScorePoint:
                 textBox.text = "Score Point : " + DataStorage.getScorePoint().ToString();
+                break;
+            case Options.FinalScore:
+                textBox.text = "Final Score : " + DataSystem.calculateTotalScore(Mathf.CeilToInt(DataStorage.getTimeLeft()), 
+                        DataStorage.getScorePoint(), DataStorage.getTimePerScore());
                 break;
         }
     }

@@ -7,6 +7,7 @@ public static class DataSystem
     public static void resetNewLevel(int currentLevel)
     {
         DataStorage.setCurrentLevel(currentLevel);
+        DataStorage.setCurrentNounCount(0);
         DataStorage.setTimeLeft(0);
         DataStorage.setScorePoint(0);
         DataStorage.setSelectedNounTag("");

@@ -43,7 +43,7 @@ public class NounLinkage : MonoBehaviour
             // this.gameObject.SetActive(false);
 
             // increase player score
-            DataSystem.scoreUp(1);
+            DataSystem.scoreUp(DataStorage.getScorePerNoun());
 
             // time bonus
             timer.timeUp(timeBonus);
