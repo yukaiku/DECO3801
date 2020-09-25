@@ -10,7 +10,7 @@ public class SendingData : MonoBehaviour
     [DllImport("__Internal")]
     private static extern void sendDataJS(string url, string fields);
 
-    private string url = "http://localhost/games/GameExecutables/WhoLostRoger/saveData.php";
+    private string urlLink = "https://deco3801-cats.uqcloud.net/games/GameExecutables/WhoLostRoger/saveData.php";
 
     private int getTotalScore()
     {
@@ -38,12 +38,12 @@ public class SendingData : MonoBehaviour
         formData.AddField("score", totalScore);
         formData.AddField("noun_percentage", percentage);
 
-        StartCoroutine(sendRequest(this.url, formData));
+        StartCoroutine(sendRequest(this.urlLink, formData));
     }
 
-    IEnumerator sendRequest(string url, WWWForm formData)
+    IEnumerator sendRequest(string urlLink, WWWForm formData)
     {
-        UnityWebRequest www = UnityWebRequest.Post(url, formData);
+        UnityWebRequest www = UnityWebRequest.Post(urlLink, formData);
         yield return www.SendWebRequest();
 
         if (www.isNetworkError || www.isHttpError)
@@ -56,7 +56,7 @@ public class SendingData : MonoBehaviour
         }
     }
 
-    public void saveDataFromJS()
+    public void sendDataByJS()
     {
         int totalScore = getTotalScore();
         int percentage = getPercentage();
@@ -64,6 +64,6 @@ public class SendingData : MonoBehaviour
         string fields = "game_id=" + DataStorage.getGameId() + "&player_id=" + DataStorage.getPlayerId() + "&current_level="
                 + DataStorage.getCurrentLevel() + "&score=" + totalScore + "&noun_percentage=" + percentage.ToString();
 
-        sendDataJS(this.url, fields);
+        sendDataJS(this.urlLink, fields);
     }
 }

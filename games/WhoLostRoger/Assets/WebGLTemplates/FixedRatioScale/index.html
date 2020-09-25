@@ -85,11 +85,6 @@
             window.addEventListener("resize", onResizeCanvas);
             onResizeCanvas();
 
-            unityInstance.SendMessage("UI Canvas", "loadData", 
-            		<?php echo $_SESSION['game_id']; ?>, 
-            		<?php echo $_SESSION['player_id']; ?>, 
-            		<?php echo $_SESSION['highest_level']; ?>);
-
             function goBack() {
                 window.history.back();
             }

@@ -1,3 +1,5 @@
+<?php header('Access-Control-Allow-Origin: https://deco3801-cats.uqcloud.net/'); ?>
+
 <?php
 	session_start();
 	require("connectDB.php");
@@ -34,6 +36,7 @@
 	if ($row != NULL){
 		$highest_level = $row['level'];
 	}
+	$_SESSION['highest_level'] = $highest_level;
 	$database->disconnect();
 
 	if (!isset($game_id) || !isset($player_id) || !isset($highest_level)) {

@@ -93,6 +93,7 @@ public class IsResult : MonoBehaviour
                 // save player highest level
                 DataSystem.saveHighestLevel(DataStorage.getCurrentLevel());
                 // send data to database in server side
+                // sender.sendDataByJS();
                 sender.sendData();
                 // do something when triggered
                 doSomething();
