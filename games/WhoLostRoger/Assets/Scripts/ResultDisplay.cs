@@ -8,9 +8,10 @@ public class ResultDisplay : MonoBehaviour
     public enum Options
     {
         currentLevel = 0,
-        TimeLeft = 1,
-        ScorePoint = 2,
-        FinalScore = 3,  // score point + bonus score from time left
+        TimeUsed = 1,
+        TimeLeft = 2,
+        ScorePoint = 3,
+        FinalScore = 4,  // score point + bonus score from time left
     }
 
     public Text textBox;
@@ -33,6 +34,9 @@ public class ResultDisplay : MonoBehaviour
         {
             case Options.currentLevel:
                 textBox.text = "Current Level : " + DataStorage.getCurrentLevel().ToString();
+                break;
+            case Options.TimeUsed:
+                textBox.text = "Time Used : " + Mathf.Round(DataStorage.getTimeUsed()).ToString();
                 break;
             case Options.TimeLeft:
                 textBox.text = "Time Left : " + Mathf.Round(DataStorage.getTimeLeft()).ToString();

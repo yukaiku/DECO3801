@@ -20,10 +20,12 @@ public class DataStorage
     static private string selectedNounObject = "";
 
     /*** Player Data ***/
-    static private int playerId;
+    static private int playerId = 0;
     static private int highestLevel;
-    static private float timeLeft;
+    static private float timeUsed;        // real time used for a level
+    static private float timeLeft;        // time left (possibly impacted by bonus) for a level
     static private int scorePoint;
+    static private string nounsClicked;   // current nouns clicked for a level
 
     /* ********************************************************************************* *
      * ************************* FUNCTIONS ARE SITUATED BELOW ************************** *
@@ -68,6 +70,12 @@ public class DataStorage
         Debug.Log(string.Format("PlayerData current highest Level '{0}'", highestLevel));
     }
 
+    public static void setTimeUsed(float time)
+    {
+        timeUsed = time;
+        Debug.Log(string.Format("PlayerData time used '{0}'", timeUsed));
+    }
+
     public static void setTimeLeft(float time)
     {
         timeLeft = time;
@@ -107,6 +115,11 @@ public class DataStorage
         currentNounCount = count;
     }
 
+    public static void setNounsClicked(string nouns)
+    {
+        nounsClicked = nouns;
+    }
+
     /************************************ Divider ************************************/
 
     public static int getScreenWidth()
@@ -144,6 +157,11 @@ public class DataStorage
         return highestLevel;
     }
 
+    public static float getTimeUsed()
+    {
+        return timeUsed;
+    }
+
     public static float getTimeLeft()
     {
         return timeLeft;
@@ -177,5 +195,10 @@ public class DataStorage
     public static int getCurrentNounCount()
     {
         return currentNounCount;
+    }
+
+    public static string getNounsClicked()
+    {
+        return nounsClicked;
     }
 }

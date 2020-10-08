@@ -8,6 +8,7 @@ public class TimerUtility : MonoBehaviour
     public float timeStart;                  // time provided to start count down
     [Tooltip("optional")]
     public Text timeBox;                     // show current time left
+    private float timeUsed;                  // time used
     private float timeStartSave;             // back up the start time
     private bool timerActive;
 
@@ -17,10 +18,21 @@ public class TimerUtility : MonoBehaviour
         Debug.Log(string.Format("Timer has been clicked"));
     }
 
+    public float getTimeUsed()
+    {
+        return timeUsed;
+    }
+
+    public float getTimeLeft()
+    {
+        return timeStart;
+    }
+
     public void resetDefault()
     {
         timerActive = true;
         timeStart = timeStartSave;
+        timeUsed = 0;
         if (timeBox != null)
             timeBox.text = Mathf.Round(timeStart).ToString();
     }
@@ -59,6 +71,7 @@ public class TimerUtility : MonoBehaviour
         if ((timerActive) && (timeStart >= 0))
         {
             timeStart -= Time.deltaTime;
+            timeUsed += Time.deltaTime;
             if (timeStart <= 0)
             {
                 timerActive = false;

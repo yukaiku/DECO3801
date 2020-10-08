@@ -8,8 +8,10 @@ public static class DataSystem
     {
         DataStorage.setCurrentLevel(currentLevel);
         DataStorage.setCurrentNounCount(0);
+        DataStorage.setTimeUsed(0);
         DataStorage.setTimeLeft(0);
         DataStorage.setScorePoint(0);
+        DataStorage.setNounsClicked("");
         DataStorage.setSelectedNounTag("");
         DataStorage.setSelectedNounObject("");
 
@@ -31,11 +33,6 @@ public static class DataSystem
         DataStorage.setScorePoint(scorePoint);
     }
 
-    public static void saveTimeLeft(float time)
-    {
-        DataStorage.setTimeLeft(time);
-    }
-
     public static void saveHighestLevel(int level)
     {
         int highest_level = DataStorage.getHighestLevel();
@@ -43,6 +40,24 @@ public static class DataSystem
         {
             DataStorage.setHighestLevel(level);
         }
+    }
+
+    public static void saveNounsClicked(string noun)
+    {
+        if (noun == null || noun == "")
+            return;
+
+        // uses "|" as the separator to store nouns
+        string nounList = DataStorage.getNounsClicked();
+        if (nounList == "")
+        {
+            nounList = noun;
+        }
+        else
+        {
+            nounList = nounList + "|" + noun;
+        }
+        DataStorage.setNounsClicked(nounList);
     }
 
     public static void resetDefault()

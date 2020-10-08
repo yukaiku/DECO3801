@@ -35,8 +35,10 @@ public class SendingData : MonoBehaviour
         formData.AddField("game_id", DataStorage.getGameId());
         formData.AddField("player_id", DataStorage.getPlayerId());
         formData.AddField("current_level", DataStorage.getCurrentLevel());
-        formData.AddField("score", totalScore);
+        formData.AddField("final_score", totalScore);
         formData.AddField("noun_percentage", percentage);
+        formData.AddField("time_used", Mathf.RoundToInt(DataStorage.getTimeUsed()));
+        formData.AddField("nouns_clicked", DataStorage.getNounsClicked());
 
         StartCoroutine(sendRequest(this.urlLink, formData));
     }

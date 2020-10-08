@@ -88,8 +88,10 @@ public class IsResult : MonoBehaviour
 
             if (trigger)
             {
-                // save player time spent
-                DataSystem.saveTimeLeft(timer.timeStart);
+                // save player real time spent
+                DataStorage.setTimeUsed(timer.getTimeUsed());
+                // save player time left
+                DataStorage.setTimeLeft(timer.getTimeLeft());
                 // save player highest level
                 DataSystem.saveHighestLevel(DataStorage.getCurrentLevel());
                 // send data to database in server side

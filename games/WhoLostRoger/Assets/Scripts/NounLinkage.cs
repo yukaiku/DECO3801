@@ -35,18 +35,24 @@ public class NounLinkage : MonoBehaviour
     {
         if (nounTag.activeSelf)
         {
+            // disable the noun tag/text
             nounTag.SetActive(false);
             Debug.Log(string.Format("Disable noun '{0}' text '{1}' successful",
                 this.gameObject.name, nounText.text));
 
-            // inactive the noun object
-            // this.gameObject.SetActive(false);
+            // save the name of a clicked noun object
+            string nounName = gameObject.GetComponent<Text>().text;
+            if (nounName != null && nounName != "")
+                DataSystem.saveNounsClicked(nounName);
 
             // increase player score
             DataSystem.scoreUp(DataStorage.getScorePerNoun());
 
             // time bonus
             timer.timeUp(timeBonus);
+
+            // inactive the noun object
+            // this.gameObject.SetActive(false);
 
             // destroy self
             Destroy(gameObject);

@@ -12,7 +12,7 @@
 	//$_SESSION['game_id'] = 1;
 	//$_SESSION['highest_level'] = 1;
 
-	if (!isset($_SESSION['student'])) {
+	if (!isset($_SESSION['student']) || !isset($_SESSION['player_id']) || !isset($_SESSION['game_id'])) {
 		$root_url = ((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://';
 		$server_url = $root_url . $_SERVER['SERVER_NAME'] . '/';
 		$location = $server_url . $platform_path;
@@ -31,20 +31,12 @@
 		$database->disconnect();
 		die("sql statement query fail");
 	}
-
-	$row = mysqli_fetch_array($result);
-	if ($row != NULL){
+	if (($row = mysqli_fetch_array($result)) != NULL) {
 		$highest_level = $row['level'];
 	}
-	$_SESSION['highest_level'] = $highest_level;
 	$database->disconnect();
 
-	if (!isset($game_id) || !isset($player_id) || !isset($highest_level)) {
-		$root_url = ((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://';
-		$server_url = $root_url . $_SERVER['SERVER_NAME'] . '/';
-		$location = $server_url . $platform_path;
-		header('Location: ' . $location);
-	}
+	$_SESSION['highest_level'] = $highest_level;
 
 	// got this student progress here
 	// going to send into the game

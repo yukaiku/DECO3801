@@ -73,8 +73,11 @@ public class LoadingData : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(loadDataRequest());
-        initData();
+        if (DataStorage.getPlayerId() == 0)
+        {
+            StartCoroutine(loadDataRequest());
+            initData();
+        }
     }
 
     // Update is called once per frame
