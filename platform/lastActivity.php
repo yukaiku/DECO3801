@@ -25,7 +25,7 @@
             $("#chatListModal").dialog({
                 autoOpen:false,
                 width:400,
-                title: "Friends List"
+                title: "Teachers List"
             });
             $("#chatListModal").dialog('open');
         });
@@ -75,7 +75,12 @@
                 success:function(data)
                 {
                     $('#chat_message_'+to_user_id).val('');
-                    $('#chat_history_'+to_user_id).html(data);
+                    if(data != "inserted"){
+                        console.log(data);
+                    }else{
+                        update_chat_history_data();
+                    }
+
                 }
             })
         });
@@ -96,6 +101,7 @@
                 method:"POST",
                 data:{to_user_id:to_user_id},
                 success:function(data){
+                    console.log(data);
                     $('#chat_history_'+to_user_id).html(data);
                 }
             })
@@ -112,7 +118,6 @@
                 {
                 },function(result){
                     var result = $.parseJSON(result);
-                    console.log(result.length);
                     $('#onlineButton').html("Chat (" + result.length + " Online)");
                     var onlineUserStrings = displayOnlineUsers(result);
                     fetch_user_offline(onlineUserStrings);
@@ -140,7 +145,6 @@
                 string += "</div><hr>";
             }
             string += '</div>';
-            //$('.chatListModalBody').html(string);
             return string;
         }
 
@@ -158,9 +162,6 @@
                 string += "</div><hr>";
             }
             string += '</div>';
-            // string += '<div class="modal-footer">\n' +
-            //     '                <a class="btn btn-default" data-dismiss ="modal">Close</a>\n' +
-            //     '            </div>';
             $('.chatListModalBody').html(string);
         }
 
@@ -174,7 +175,6 @@
                 }
             })
         }
-
         setInterval(function(){
             update_last_activity();
             fetch_user();

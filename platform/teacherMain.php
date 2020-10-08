@@ -185,7 +185,7 @@ include 'lastActivity.php';
                         string += "</tr>";
                     }
                     $("#classTableBody").append(string);
-                    console.log(string);
+                    //console.log(string);
 
                 });
         }

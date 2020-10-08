@@ -1,4 +1,10 @@
+<?php
+// start the session
+session_start();
 
+// destroy the session
+session_destroy();
+?>
 <!doctype html>
 <html lang="en">
 <head>
