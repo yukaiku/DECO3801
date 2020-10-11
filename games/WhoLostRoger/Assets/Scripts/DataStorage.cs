@@ -22,10 +22,10 @@ public class DataStorage
     /*** Player Data ***/
     static private int playerId = 0;
     static private int highestLevel;
-    static private float timeUsed;        // real time used for a level
-    static private float timeLeft;        // time left (possibly impacted by bonus) for a level
+    static private float timeUsed;             // real time used for a level
+    static private float timeLeft;             // time left (possibly impacted by bonus) for a level
     static private int scorePoint;
-    static private string nounsClicked;   // current nouns clicked for a level
+    static private string nounsClicked = "";   // current nouns clicked for a level
 
     /* ********************************************************************************* *
      * ************************* FUNCTIONS ARE SITUATED BELOW ************************** *

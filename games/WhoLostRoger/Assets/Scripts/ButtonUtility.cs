@@ -20,6 +20,11 @@ public class ButtonUtility : MonoBehaviour
         Debug.Log(string.Format("Load '{0}' scene", sceneName));
     }
 
+    public void doResetNewLevel(int level)
+    {
+        DataSystem.resetNewLevel(level);
+    }
+
     public void doQuit()
     {
         Application.Quit();
@@ -27,15 +32,20 @@ public class ButtonUtility : MonoBehaviour
         Debug.Log("Game quit.");
     }
 
-    public void doResetNewLevel(int level)
+    public void doAgain()
     {
-        DataSystem.resetNewLevel(level);
+        int currentLevel = DataStorage.getCurrentLevel();
+        DataSystem.resetNewLevel(currentLevel);
+        int currentSceneInd = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneInd);
     }
 
     public void doNextLevel()
     {
         int currentLevel = DataStorage.getCurrentLevel();
         DataSystem.resetNewLevel(currentLevel + 1);
+        int currentSceneInd = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneInd + 1);
     }
 
     public void doOption(){

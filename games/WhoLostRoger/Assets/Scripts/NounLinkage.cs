@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class NounLinkage : MonoBehaviour
 {
@@ -65,7 +66,11 @@ public class NounLinkage : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if(global.isPause == false){
+        // check if the mouse was clicked over a UI element
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
+        if (global.isPause == false){
             clickNounObject();
             resultTrigger.isAllNounClicked();
         }
