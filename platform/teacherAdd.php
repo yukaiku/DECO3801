@@ -35,7 +35,37 @@ $schoolInfo = getByIdSchool($user['school']);
             <div class="row" style="position: absolute; top: 50px">
                 <?php echo "<h1>{$schoolInfo['name']}, {$grade}{$class}</h1>" ?>
             </div>
-            <form style="position: absolute; top: 100px; width: 80%;">
+            <div clas="form-row" style="position: absolute; top: 150px; width: 80%; text-align: center;">
+                <form action="" method="post"
+                      name="frmExcelImport" id="frmExcelImport" enctype="multipart/form-data">
+                    <div>
+                        <label>Choose Excel
+                            File</label> <input type="file" name="file"
+                                                id="file" accept=".xls,.xlsx">
+                        <button type="submit" id="submit" name="import"
+                                class="btn btn-success btn-submit">Import</button>
+
+                    </div>
+
+                </form>
+            </div>
+            <div class="table-responsive" style="position: absolute; top: 200px; max-height: 30%; width: 80%;">
+                <table class="table table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Edit</th>
+                    </tr>
+                    </thead>
+                    <tbody id="studentTableBody">
+
+                    </tbody>
+                </table>
+            </div>
+            <form style="position: absolute; top: 500px; width: 80%;">
                 <div class="form-row row">
                     <div class="col-lg-6">
                         Username:
@@ -54,30 +84,14 @@ $schoolInfo = getByIdSchool($user['school']);
                 </div>
                 <hr>
             </form>
-            <div clas="form-row" style="position: absolute; top: 225px; width: 80%; text-align: center;">
+            <div clas="form-row" style="position: absolute; top: 625px; width: 80%; text-align: center;">
                 <button  id="addStudentButton" class="btn btn-primary mb-2" style="text-align: center">Add Student</button>
-            </div>
-
-            <div class="table-responsive" style="position: absolute; top: 300px; max-height: 30%; width: 80%;">
-                <table class="table table-striped table-sm">
-                    <thead>
-                    <tr>
-                        <th>Username</th>
-                        <th>Password</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Edit</th>
-                    </tr>
-                    </thead>
-                    <tbody id="studentTableBody">
-
-                    </tbody>
-                </table>
             </div>
             <div id="mainFooter" style="bottom:0; position: fixed;">
                 <a class="btn btn-primary mb-2" style="text-align: center" href="teacherMain.php">Back</a>
             </div>
         </div>
+
     </div>
 </div>
 
