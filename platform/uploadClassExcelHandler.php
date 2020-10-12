@@ -1,7 +1,7 @@
 <?php
 
 require_once 'includes/dbStudent.php';
-if(isset($_POST["import"]))
+if(isset($_POST["import"]) && isset($_POST['schoolId']))
 {
     echo $filename=$_FILES["file"]["tmp_name"];
     if($_FILES["file"]["size"] > 0)
@@ -11,14 +11,15 @@ if(isset($_POST["import"]))
         $count = 0;                                         // add this line
         while (($emapData = fgetcsv($file, 10000, ",")) !== FALSE)
         {
-            //print_r($emapData);
-            //exit();
+//            print_r($emapData[0]);
+//            exit();
             $count++;                                      // add this line
 
-            if($count>1){                                  // add this line
-                $studentArray = ["firstName" => "$emapData[0]","lastname"=>"$emapData[1]","username"=>"$emapData[2]","pwd"=>"$emapData[3]","grade"=>"$emapData[4]","class"=>"$emapData[5]"];
+            if($count>1){
+                $studentArray = ["school"=>$_POST['schoolId'],"firstname" => "$emapData[1]","lastname"=>"$emapData[2]","username"=>"$emapData[3]","pwd"=>"$emapData[4]","grade"=>"$emapData[5]","class"=>"$emapData[6]"];
                 $studentArray = setStudentAttributes($studentArray);
                 $studentCreationStatus = createStudent($studentArray);
+                //print_r($studentCreationStatus);
                 if($studentCreationStatus){
                     echo "Uploaded Students";
                 }else{

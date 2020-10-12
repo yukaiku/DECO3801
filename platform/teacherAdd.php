@@ -36,12 +36,13 @@ $schoolInfo = getByIdSchool($user['school']);
                 <?php echo "<h1>{$schoolInfo['name']}, {$grade}{$class}</h1>" ?>
             </div>
             <div clas="form-row" style="position: absolute; top: 150px; width: 80%; text-align: center;">
-                <form action="" method="post"
+                <form action="uploadClassExcelHandler.php" method="post"
                       name="frmExcelImport" id="frmExcelImport" enctype="multipart/form-data">
                     <div>
+                        <input type="hidden" name="schoolId" value="<?=$schoolInfo['id'];?>">
                         <label>Choose Excel
                             File</label> <input type="file" name="file"
-                                                id="file" accept=".xls,.xlsx">
+                                                id="file" accept=".xls,.xlsx,.csv">
                         <button type="submit" id="submit" name="import"
                                 class="btn btn-success btn-submit">Import</button>
 
