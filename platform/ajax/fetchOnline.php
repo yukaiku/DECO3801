@@ -9,16 +9,21 @@ if (isset($_SESSION['student'])) { // basicinfo exist in session // from handle 
 }else if(isset($_SESSION['teacher'])){
     $school = $_SESSION['teacher']['school'];
 }
-
+$searchName = isset($_POST['searchName']) ? $_POST['searchName'] : '';
+$searchSql = "";
+if($searchName != ""){
+    $searchSql = " && (firstname LIKE '%%{$searchName}%%' or lastname LIKE '%%{$searchName}%%' or username LIKE '%%{$searchName}%%') ";
+}
 
 date_default_timezone_set("Australia/Brisbane");
 
 
 If ($status == "student"){
-    $sql = "SELECT id, firstname, lastname, username FROM teacher where school = {$school} order by lastname desc";
+    $sql = "SELECT id, firstname, lastname, username FROM teacher where school = {$school} {$searchSql}  order by lastname desc";
 }else{
-    $sql = "SELECT id, firstname, lastname, username FROM student where school = {$school} order by grade desc, class desc";
+    $sql = "SELECT id, firstname, lastname, username FROM student where school = {$school} {$searchSql} order by grade desc, class desc";
 }
+
 $result = query($sql);
 $returnArray = array();
 foreach($result as $row)
