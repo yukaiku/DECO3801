@@ -22,6 +22,49 @@ $schoolInfo = getByIdSchool($user['school']);
     <?php
     include 'css.php';
     ?>
+    <style>
+        .hover-title {
+            font-weight: bold;
+            color: #0d6efd;
+            display: inline;
+            pointer-events: auto;
+            cursor: pointer;
+        }
+
+        .hover-image {
+            visibility: hidden;
+        }
+
+        body:not(.mobile) .hover-title:hover + .hover-image {
+            visibility: visible;
+            pointer-events: none;
+        }
+
+        .hover-image {
+            display: flex;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            pointer-events: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            /* Change width and height to scale images */
+            width: 90vw;
+            height: 90vh;
+        }
+
+        .hover-image img {
+            max-width: 100% !important;
+            max-height: 100% !important;
+            width: auto !important;
+            height: auto !important;
+            margin-bottom: 0;
+        }
+    </style>
 </head>
 
 <body>
@@ -39,10 +82,12 @@ $schoolInfo = getByIdSchool($user['school']);
                 <form action="uploadClassExcelHandler.php" method="post"
                       name="frmExcelImport" id="frmExcelImport" enctype="multipart/form-data">
                     <div>
+                        <p class="hover-title">CSV File only: </p>
+                        <div class="hover-image"><img src="img/excelSample.png"></div>
+
                         <input type="hidden" name="schoolId" value="<?=$schoolInfo['id'];?>">
-                        <label>Choose Excel
-                            File</label> <input type="file" name="file"
-                                                id="file" accept=".xls,.xlsx,.csv">
+                        <input type="file" name="file"
+                                                id="file" accept=".csv">
                         <button type="submit" id="submit" name="import"
                                 class="btn btn-success btn-submit">Import</button>
 
