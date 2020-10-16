@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class MapPointerUtility : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -11,6 +12,7 @@ public class MapPointerUtility : MonoBehaviour, IPointerEnterHandler, IPointerEx
     public Vector2 hotSpot = Vector2.zero;
 
     private GameObject levelNoter;
+    private Image pointerImage;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -32,6 +34,18 @@ public class MapPointerUtility : MonoBehaviour, IPointerEnterHandler, IPointerEx
         {
             Destroy(this);
             Debug.Log(string.Format("No noter attached to this map pointer and the component won't work"));
+        }
+
+        pointerImage = GetComponent<Image>();
+        if (pointerImage == null)
+        {
+            Destroy(this);
+            Debug.Log(string.Format("No image component attached to this map pointer and the component won't work"));
+        }
+
+        if (pointerImage.mainTexture.isReadable)
+        {
+            pointerImage.alphaHitTestMinimumThreshold = 0.5f;
         }
     }
 

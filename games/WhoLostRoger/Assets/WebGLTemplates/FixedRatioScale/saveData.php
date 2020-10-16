@@ -14,9 +14,12 @@
 		$time_used = $_POST['time_used'];
 		$nouns_clicked = $_POST['nouns_clicked'];
 
+		date_default_timezone_set('Australia/Brisbane');
+		$current_date = date('Y-m-d H:i:s');
+
 		$database = new MySQLDatabase();
 		$database->connect();
-		$query = "INSERT INTO who_lost_roger (studentid, score, level, percentage, timeUsed, nounsClicked, status) VALUES ('$player_id', '$final_score', '$current_level', '$noun_percentage', '$time_used', '$nouns_clicked', '0')";
+		$query = "INSERT INTO who_lost_roger (studentid, score, level, percentage, timeUsed, nounsClicked, dateTime, status) VALUES ('$player_id', '$final_score', '$current_level', '$noun_percentage', '$time_used', '$nouns_clicked', '$current_date', '0')";
 		$result = $database->query($query);
 		$database->disconnect();
 
