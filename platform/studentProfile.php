@@ -37,30 +37,22 @@ $studentInfo = getByIdStudent($studentId);
         include_once("sideBar.php");
         ?>
         <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-                <div style="float:left">
-                    <img width="150" height="150" src="img/<?=$studentInfo['profileImage'];?>"/><br/>
-                    <br>
-                </div>
-                <div style="padding-left:18%">
-                    <h4><?= $studentInfo['username']; ?></h4>
-                    <div style="margin:1% 0 0 0; font-size:15px;">
-                        <label for="selectStatus"><b>Status: </b></label>
-                        <select  name="class" id="selectStatus">
-                            <option>Online</option>
-                            <option>Idle</option>
-                            <option>Invisible</option>
-                        </select><br/><br/>
+            <div class="row">
+                <div class="col-lg-3">
+                    <img width="150" height="150" src="img/<?=$studentInfo['profileImage'];?>"/>
+                    <div class="form-row">
+                        <button style="font-size: 12px;" class="btn btn-outline-dark updateDetails" data-toggle="modal" data-target="#updateDetailsModal">Update Details</button>
                         <?php
-                         if ($status != "student"){
-                             echo "<br>";
-                         }else{
-                             echo '<a type="button" style="font-size: 12px;" class="btn btn-dark" href="studentFriends.php">Friends List</a>';
-                         }
+                        if($status == "teacher"){
+                            echo '<button style="font-size: 12px;" class="btn btn-outline-dark resetPassword" data-toggle="modal" data-target="#resetStudentPasswordModal">Reset Password</button><br/>';
+                        }
                         ?>
                     </div>
                 </div>
-
-                <div style="margin-top:3%; font-size:16px;">
+                <div class="col-lg-9" style="font-size: 16px">
+                    <div>
+                        <h4><?= $studentInfo['username']; ?></h4>
+                    </div>
                     <div class="form-row">
                         <br>
                         <b>Full Name</b><br/>
@@ -87,17 +79,14 @@ $studentInfo = getByIdStudent($studentId);
                         <b>School</b><br/>
                         <?= $schoolInfo['name']; ?><br/>
                     </div>
-                    <div class="form-row">
-                        <button style="font-size: 12px;" class="btn btn-outline-dark updateDetails" data-toggle="modal" data-target="#updateDetailsModal">Update Details</button>
-                        <?php
-                        if($status == "teacher"){
-                            echo '<button style="font-size: 12px;" class="btn btn-outline-dark resetPassword" data-toggle="modal" data-target="#resetStudentPasswordModal">Reset Password</button><br/>';
-                        }
-                        ?>
-                    </div>
                 </div>
+            </div>
+            <div class="row" style="margin-top:3%; font-size:16px;">
+
+            </div>
         </div>
     </div>
+</div>
 </div>
 
 <!-- Bootstrap core JavaScript
