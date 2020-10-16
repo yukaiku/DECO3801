@@ -51,7 +51,7 @@ function getStudentBySql($sql = "") {
 
 function fetchStudentLastActivity($id)
 {
-    $resultSet = getStudentBySql("SELECT * FROM student WHERE id = '$id' ORDER BY lastactivity DESC LIMIT 1");
+    $resultSet = getStudentBySql("SELECT * FROM {$GLOBALS['table_student']} WHERE {$GLOBALS['pk_student']} = '$id' ORDER BY lastactivity DESC LIMIT 1");
     foreach($resultSet as $row)
     {
         return $row['lastactivity'];

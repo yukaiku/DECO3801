@@ -19,39 +19,6 @@
     //display chat box stuff
     $(document).ready(function(){
 //============================================================== CHAT BOX STUFF =================================================/
-        //onclick stuff
-        $(document).on('click', '.onlineButton', function(){
-            makeOnlineDialogBox();
-            $("#chatListModal").dialog({
-                autoOpen:false,
-                width:400,
-                title: "Friends List"
-            });
-            $("#chatListModal").dialog('open');
-        });
-
-        function makeOnlineDialogBox()
-        {
-            var modal_content = '<div id= "chatListModal" class="user_dialog">';
-            modal_content += ' <div class="" style="overflow-y: scroll; max-height:100%;  margin-top: 50px; margin-bottom:50px;" >';
-            modal_content += '<div class="chatListModalBody">';
-            modal_content += '</div>';
-            modal_content += '</div>';
-            modal_content += '</div>';
-            $('#chatListModal').html(modal_content);
-        }
-
-        $(document).on('click', '.chatButton', function(){
-            $('#chatListModal').modal('hide');
-            var to_user_id = $(this).data('touserid');
-            var to_user_name = $(this).data('tousername');
-            makeChatDialogBox(to_user_id, to_user_name);
-            $("#user_dialog_"+to_user_id).dialog({
-                autoOpen:false,
-                width:400
-            });
-            $('#user_dialog_'+to_user_id).dialog('open');
-        });
 
         function makeChatDialogBox(to_user_id, to_user_name)
         {
@@ -75,7 +42,12 @@
                 success:function(data)
                 {
                     $('#chat_message_'+to_user_id).val('');
-                    $('#chat_history_'+to_user_id).html(data);
+                    if(data != "inserted"){
+                        console.log(data);
+                    }else{
+                        update_chat_history_data();
+                    }
+
                 }
             })
         });
@@ -96,6 +68,7 @@
                 method:"POST",
                 data:{to_user_id:to_user_id},
                 success:function(data){
+                    console.log(data);
                     $('#chat_history_'+to_user_id).html(data);
                 }
             })
@@ -104,26 +77,57 @@
 //============================================================== =================================================/
 
 //==============================================================DISPLAY ONLINE OFFLINE CHATS =================================================/
+        //onclick Open chat list
+        $(document).on('click', '.onlineButton', function(){
+            makeChatList();
+            $("#chatListModal").dialog({
+                autoOpen:false,
+                width:400,
+                title: "Chat List"
+            });
+            $("#chatListModal").dialog('open');
+        });
+
+        function makeChatList()
+        {
+            var modal_content = '<div id= "chatListContent" class="user_dialog">';
+            modal_content += '<input class="form-control" id="searchName" name="searchName" type="text" placeholder="Search..">';
+            modal_content += ' <div class="" style="overflow-y: scroll; max-height:100%;  margin-top: 50px; margin-bottom:50px;" >';
+            modal_content += '<div class="chatListModalBody">';
+            modal_content += '</div>';
+            modal_content += '</div>';
+            modal_content += '</div>';
+            $('#chatListModal').html(modal_content);
+        }
+        $(document).on('input', '#searchName', function() {
+            // Does some stuff and logs the event to the console
+            var searchName = $(this).val();
+            fetch_user(searchName);
+        });
+
         //updating last activity and retrieving it stuff.
         //Updates user activity every 5 seconds.
-        function fetch_user()
+        function fetch_user(searchName)
         {
             $.post("ajax/fetchOnline.php",
                 {
+                    searchName: searchName
                 },function(result){
+
                     var result = $.parseJSON(result);
-                    console.log(result.length);
                     $('#onlineButton').html("Chat (" + result.length + " Online)");
                     var onlineUserStrings = displayOnlineUsers(result);
-                    fetch_user_offline(onlineUserStrings);
+                    fetch_user_offline(onlineUserStrings, searchName);
                 });
         }
 
-        function fetch_user_offline(onlineUserStrings)
+        function fetch_user_offline(onlineUserStrings, searchName)
         {
             $.post("ajax/fetchOffline.php",
                 {
+                    searchName: searchName
                 },function(result){
+                    console.log(result);
                     var result = $.parseJSON(result);
                     displayOfflineUsers(result, onlineUserStrings)
                 });
@@ -140,7 +144,6 @@
                 string += "</div><hr>";
             }
             string += '</div>';
-            //$('.chatListModalBody').html(string);
             return string;
         }
 
@@ -158,11 +161,20 @@
                 string += "</div><hr>";
             }
             string += '</div>';
-            // string += '<div class="modal-footer">\n' +
-            //     '                <a class="btn btn-default" data-dismiss ="modal">Close</a>\n' +
-            //     '            </div>';
             $('.chatListModalBody').html(string);
         }
+
+        $(document).on('click', '.chatButton', function(){
+            $('#chatListModal').modal('hide');
+            var to_user_id = $(this).data('touserid');
+            var to_user_name = $(this).data('tousername');
+            makeChatDialogBox(to_user_id, to_user_name);
+            $("#user_dialog_"+to_user_id).dialog({
+                autoOpen:false,
+                width:400
+            });
+            $('#user_dialog_'+to_user_id).dialog('open');
+        });
 
         function update_last_activity()
         {
@@ -174,7 +186,6 @@
                 }
             })
         }
-
         setInterval(function(){
             update_last_activity();
             fetch_user();

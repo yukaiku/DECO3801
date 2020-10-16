@@ -9,32 +9,44 @@ if (isset($_SESSION['student'])) { // basicinfo exist in session // from handle 
     $user = $_SESSION['teacher'];
     $status = "teacher";
 }
-$receiverId = $_POST['to_user_id'];
-echo fetch_user_chat_history($user['id'], $receiverId);
+$receiverId = $_POST['to_user_id']; //receiver
+$senderId = $user['id']; //sender
+if($status == "student"){
+    $studentId = $user['id'];
+    $teacherId = $receiverId;
+}else{
+    $teacherId = $user['id'];
+    $studentId = $receiverId;
+}
+echo fetch_user_chat_history();
 
-function fetch_user_chat_history($from_user_id, $to_user_id)
+function fetch_user_chat_history()
 {
     $sql = "
  SELECT * FROM chat_message 
- WHERE (userId = '".$from_user_id."' 
- AND receiverId = '".$to_user_id."') 
- OR (receiverId = '".$from_user_id."' 
- AND userId = '".$to_user_id."') 
+ WHERE studentId = {$GLOBALS['studentId']} and teacherId = {$GLOBALS['teacherId']}
  ORDER BY timestamp asc
  ";
     $result = query($sql);
+
     $output = '<ul class="list-unstyled">';
     foreach($result as $row)
     {
         $user_name = '';
-        if($row["userId"] == $from_user_id) {
+        if($row["status"] == 0 && $GLOBALS['status'] == 'student') {
             $user_name = '<b class="text-success">You</b>';
-        } else {
-            $user_name = '<b class="text-danger">'.get_user_name($row['userId']).'</b>';
+        } else if($row["status"] == 1 && $GLOBALS['status'] == 'teacher') {
+            $user_name = '<b class="text-success">You</b>';
+        }else{
+            if($GLOBALS['status'] == "teacher"){
+                $user_name = '<b class="text-danger">'.getName($row['studentId'], "student").'</b>';
+            }else{
+                $user_name = '<b class="text-danger">'.getName($row['teacherId'], "teacher").'</b>';
+            }
         }
         $output .= '
           <li style="border-bottom:1px dotted #ccc">
-           <p>'.$user_name.' - '.$row["message"].'
+           <p>'.$user_name.' <br> '.$row["message"].'
             <div align="right">
              - <small><em>'.$row['timestamp'].'</em></small>
             </div>
@@ -43,20 +55,16 @@ function fetch_user_chat_history($from_user_id, $to_user_id)
           ';
     }
     $output .= '</ul>';
-    return $output;
+    echo $output;
 }
 
-function get_user_name($user_id)
+function getName($user_id, $status)
 {
-    $sql = "SELECT username, nickname FROM student WHERE id = '$user_id' limit 1";
+    $sql = "SELECT firstname, lastname FROM $status WHERE id = '$user_id' limit 1";
     $result = query($sql);
     foreach($result as $row)
     {
-        if($row['nickname']){
-            return $row['nickname'];
-        }else{
-            return $row['username'];
-        }
+        return $row['firstname'] . $row['lastname'];
 
     }
 }

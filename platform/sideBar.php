@@ -50,11 +50,7 @@ $games = getAllGame('subject');
                         Status
                     </div>
                     <div clas="row">
-                        <?php
-                        if($status == "student"){
-                            echo '<a class="onlineButton">Chat</a> |';
-                        }
-                        ?>
+                        <a class="onlineButton">Chat</a> |
                         <a href="logoutHandler.php">Log Out</a>
                     </div>
                 </div>

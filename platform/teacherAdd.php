@@ -22,6 +22,49 @@ $schoolInfo = getByIdSchool($user['school']);
     <?php
     include 'css.php';
     ?>
+    <style>
+        .hover-title {
+            font-weight: bold;
+            color: #0d6efd;
+            display: inline;
+            pointer-events: auto;
+            cursor: pointer;
+        }
+
+        .hover-image {
+            visibility: hidden;
+        }
+
+        body:not(.mobile) .hover-title:hover + .hover-image {
+            visibility: visible;
+            pointer-events: none;
+        }
+
+        .hover-image {
+            display: flex;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            pointer-events: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            /* Change width and height to scale images */
+            width: 90vw;
+            height: 90vh;
+        }
+
+        .hover-image img {
+            max-width: 100% !important;
+            max-height: 100% !important;
+            width: auto !important;
+            height: auto !important;
+            margin-bottom: 0;
+        }
+    </style>
 </head>
 
 <body>
@@ -35,7 +78,40 @@ $schoolInfo = getByIdSchool($user['school']);
             <div class="row" style="position: absolute; top: 50px">
                 <?php echo "<h1>{$schoolInfo['name']}, {$grade}{$class}</h1>" ?>
             </div>
-            <form style="position: absolute; top: 100px; width: 80%;">
+            <div clas="form-row" style="position: absolute; top: 150px; width: 80%; text-align: center;">
+                <form action="uploadClassExcelHandler.php" method="post"
+                      name="frmExcelImport" id="frmExcelImport" enctype="multipart/form-data">
+                    <div>
+                        <p class="hover-title">CSV File only: </p>
+                        <div class="hover-image"><img src="img/excelSample.png"></div>
+
+                        <input type="hidden" name="schoolId" value="<?=$schoolInfo['id'];?>">
+                        <input type="file" name="file"
+                                                id="file" accept=".csv">
+                        <button type="submit" id="submit" name="import"
+                                class="btn btn-success btn-submit">Import</button>
+
+                    </div>
+
+                </form>
+            </div>
+            <div class="table-responsive" style="position: absolute; top: 200px; max-height: 30%; width: 80%;">
+                <table class="table table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Edit</th>
+                    </tr>
+                    </thead>
+                    <tbody id="studentTableBody">
+
+                    </tbody>
+                </table>
+            </div>
+            <form style="position: absolute; top: 500px; width: 80%;">
                 <div class="form-row row">
                     <div class="col-lg-6">
                         Username:
@@ -54,30 +130,14 @@ $schoolInfo = getByIdSchool($user['school']);
                 </div>
                 <hr>
             </form>
-            <div clas="form-row" style="position: absolute; top: 225px; width: 80%; text-align: center;">
+            <div clas="form-row" style="position: absolute; top: 625px; width: 80%; text-align: center;">
                 <button  id="addStudentButton" class="btn btn-primary mb-2" style="text-align: center">Add Student</button>
-            </div>
-
-            <div class="table-responsive" style="position: absolute; top: 300px; max-height: 30%; width: 80%;">
-                <table class="table table-striped table-sm">
-                    <thead>
-                    <tr>
-                        <th>Username</th>
-                        <th>Password</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Edit</th>
-                    </tr>
-                    </thead>
-                    <tbody id="studentTableBody">
-
-                    </tbody>
-                </table>
             </div>
             <div id="mainFooter" style="bottom:0; position: fixed;">
                 <a class="btn btn-primary mb-2" style="text-align: center" href="teacherMain.php">Back</a>
             </div>
         </div>
+
     </div>
 </div>
 

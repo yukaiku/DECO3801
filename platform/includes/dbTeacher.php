@@ -2,7 +2,7 @@
 require_once 'dbFunction.php';
 
 $table_teacher = "teacher";
-$dbFields_teacher = ["id","school", "firstname", "lastname", "username", "pwd","status"];
+$dbFields_teacher = ["id","school", "firstname", "lastname", "username", "pwd","lastactivity","status"];
 $pk_teacher = "id";
 
 function getTeacher($like = "") {
@@ -48,6 +48,15 @@ function getTeacherBySql($sql = "") {
     return $resultArray;
 }
 
+function fetchTeacherLastActivity($id)
+{
+    $resultSet = getStudentBySql("SELECT * FROM {$GLOBALS['table_teacher']} WHERE {$GLOBALS['pk_teacher']} = '$id' ORDER BY lastactivity DESC LIMIT 1");
+    foreach($resultSet as $row)
+    {
+        return $row['lastactivity'];
+    }
+}
+
 function setTeacherAttributes($infoArr) { //set the fields //Gets the post data $infoArr is all the post data, [$fieldname] is the post names
     $newRecord = array();
     foreach ($GLOBALS['dbFields_teacher'] as $fieldName) {
@@ -67,6 +76,8 @@ function createTeacher($infoArr = array()) {
             } else {
                 $updateStrArr[] = "AES_ENCRYPT('{$value}','deco3801')";
                 $updateStrArrField[] = "{$field}";
+                $updateStrArr[] = "now()";
+                $updateStrArrField[] = "lastactivity";
                 $updateStrArr[] = "0";
                 $updateStrArrField[] = "status";
             }
