@@ -4,6 +4,11 @@ session_start();
 
 // destroy the session
 session_destroy();
+
+$errorMessage = "";
+if(isset($_GET['error'])){
+    $errorMessage = $_GET['error'];
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -25,7 +30,7 @@ session_destroy();
 <body class="text-center">
 <form class="form-signin" action="loginHandler.php" method="post">
     <img class="mb-4" src="img/logo.png" alt="" width="300" height="200">
-<!--    <h1 class="h3 mb-3 font-weight-normal">CatsEG</h1>-->
+    <!--    <h1 class="h3 mb-3 font-weight-normal">CatsEG</h1>-->
     <label for="inputUsername" class="sr-only" name="username">Username</label>
     <input type="text" id="inputUsername" class="form-control" placeholder="Username" name="username" required autofocus>
     <label for="inputPassword" class="sr-only">Password</label>
@@ -37,5 +42,13 @@ session_destroy();
     </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 </form>
+<script type="text/javascript">
+    <?php
+    if($errorMessage != ""){
+        echo "alert('{$errorMessage}');";
+    }
+    ?>
+</script>
 </body>
 </html>
+
