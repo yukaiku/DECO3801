@@ -85,6 +85,9 @@ $studentRecords = getHighScoreOfEachStudentByClassAndGrade($user['school'], $cla
                     ?>
                     </tbody>
                 </table>
+                <div style="text-align: center">
+                    <a class="btn btn-primary mb-2" style="text-align: center" href="">Overall Progress</a>
+                </div>
             </div>
             <div id="mainFooter" style="bottom:0; position: fixed;">
                 <a class="btn btn-primary mb-2" style="text-align: center" href="javascript:history.back()">Back</a>

@@ -68,7 +68,7 @@ $classRecords = getProgressByClass($user['school']);
                         echo "<td>";
                         echo round($record['averageScore'], 2, PHP_ROUND_HALF_UP);
                         echo "</td>";
-                        echo "<td><a href= 'teacherStudentProgressBySelectedClass.php?grade={$record['grade']}&class={$record['class']}'>";
+                        echo "<td><a href= 'studentsProgress.php?grade={$record['grade']}&class={$record['class']}'>";
                         echo "View</a></td>";
 
                         echo "</tr>";
