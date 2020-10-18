@@ -86,7 +86,7 @@ $studentRecords = getHighScoreOfEachStudentByClassAndGrade($user['school'], $cla
         <?php
         include_once("sideBar.php");
         ?>
-        <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4 overflow-auto">
             <div class="row" id="gameName">
                 <h1><?=$gameName?></h1>
             </div>
@@ -94,16 +94,16 @@ $studentRecords = getHighScoreOfEachStudentByClassAndGrade($user['school'], $cla
                 <h1>Class: <?=$grade ?><?=$class ?></h1>
                 <container>
                     <div class="tab">
-                        <button class="tablinks active" onclick="opeTab(event, 'concrete')">Concrete Nouns</button>
-                        <button class="tablinks" onclick="opeTab(event, 'collective')">Collective Nouns</button>
-                        <button class="tablinks" onclick="opeTab(event, 'countable')">Countable Nouns</button>
+                        <button class="tablinks active" onclick="openTab(event, 'concrete')">Concrete Nouns</button>
+                        <button class="tablinks" onclick="openTab(event, 'collective')">Collective Nouns</button>
+                        <button class="tablinks" onclick="openTab(event, 'countable')">Countable Nouns</button>
                     </div>
                     <?PHP
                     $concreteArr = playCount($user['school'], $class, $grade, 5,1);
                     $collectiveArr = playCount($user['school'], $class, $grade, 10,6);
                     $countableArr = playCount($user['school'], $class, $grade, 15,11);
                     ?>
-                    <div id="concrete" class="tabcontent" style="display: block">
+                    <div id="concrete" class="tabcontent overflow-auto" style="display: block">
                         <h4 style="padding-top: 2%">
                             Main Learning Objective: To learn concrete nouns
                         </h4>
@@ -113,6 +113,18 @@ $studentRecords = getHighScoreOfEachStudentByClassAndGrade($user['school'], $cla
                             </div>
                             <div class="playCounterBody" style="width: 50%">
                                 <canvas id= "concretePlayCountChart" class="playCountChart" width="50%" height="20%"></canvas>
+                            </div>
+                        </div>
+                        <div class="learningOutComes">
+                            <h5>Learning Outcomes</h5>
+                            <p>Please note that learning outcomes are determined by the consistency of the class’s learning through students of that class
+                                playing the game. The bar adjusts according to the child’s skill/knowledge that fulfills each outcome.</p>
+                            <div class="learningOutComesLevels" style="width: 80%">
+                                <canvas class= "outCome1" width="100%" height="50%"></canvas>
+                                <canvas class= "outCome2" width="100%" height="50%"></canvas>
+                                <canvas class= "outCome3" width="100%" height="50%"></canvas>
+                                <canvas class= "outCome4" width="100%" height="50%"></canvas>
+                                <canvas class= "outCome5" width="100%" height="50%"></canvas>
                             </div>
                         </div>
                     </div>
@@ -160,12 +172,6 @@ $studentRecords = getHighScoreOfEachStudentByClassAndGrade($user['school'], $cla
         var activeTab = "concrete";
         $(document).ready(function(){
             showGraph(activeTab);
-
-            var CPCCD = new Chart(concretePlayCountChart, {
-                type: 'bar',
-                data: data,
-                options: options
-            });
         });
         // PlayCount Chart
         function showGraph(activeTab) {
@@ -175,17 +181,15 @@ $studentRecords = getHighScoreOfEachStudentByClassAndGrade($user['school'], $cla
                 <?php
                 echo "var chartDataArr = ".json_encode($concreteArr).";";
                 ?>
-            }else if (activeTab == "countable"){
-                <?php
-                echo "var chartDataArr = ".json_encode($countableArr).";";
-                ?>
             }else if (activeTab == "collective"){
                 <?php
                 echo "var chartDataArr = ".json_encode($collectiveArr).";";
                 ?>
+            }else if (activeTab == "countable"){
+                <?php
+                echo "var chartDataArr = ".json_encode($countableArr).";";
+                ?>
             }
-
-            console.log(chartDataArr);
             for (var i in chartDataArr) {
                 month.push(chartDataArr[i].month);
                 playCount.push(chartDataArr[i].playCount);
@@ -218,9 +222,86 @@ $studentRecords = getHighScoreOfEachStudentByClassAndGrade($user['school'], $cla
                     }
                 }
             });
+            showOutComeGraph(activeTab);
+        }
+        function showOutComeGraph(activeTab) {
+            var maxLevel;
+            var lowestLevel;
+            if(activeTab == "concrete"){
+                <?php
+                $learningOutcomes = getLearningOutComes($user['school'], $class, $grade, 5,1);
+                $levelsArr = [];
+                $level = 1;
+                $aNoun = [];
+                $labelNames = [];
+                foreach($learningOutcomes as $learningOutcome){
+
+                    //print and reset nouns every level
+                    if($level != $learningOutcome['level']){
+                        $nounCount = (json_encode(array_values($aNoun)));
+                        echo " drawHorizontalGraph(". json_encode($labelNames) . "," . $nounCount . "," . $level . "); ";
+                        $level = $learningOutcome['level'];
+                        $aNoun = [];
+                        $labelNames = [];
+                    }
+                    $nounsClicked = explode("|",$learningOutcome['nounsClicked']);
+                    foreach ($nounsClicked as $key => $value) {
+                        if(!array_key_exists($value, $aNoun)){
+                            $aNoun[$value] = 1;
+                            array_push($labelNames,$value);
+                        }else{
+                            $aNoun[$value]++;
+                        }
+                    }
+                    //last level and row reached
+                    if( !next( $learningOutcomes ) ) {
+                        $nounCount = (json_encode(array_values($aNoun)));
+                        echo " drawHorizontalGraph(". json_encode($labelNames) . "," . $nounCount . "," . $level . "); ";
+                    }
+                }
+                ?>
+            }else if (activeTab == "collective"){
+               maxLevel = 10;
+               lowestLevel = 6;
+            }else if (activeTab == "countable"){
+                maxLevel = 15;
+                lowestLevel = 11;
+
+            }
         }
 
-        function opeTab(evt, tabType) {
+        function drawHorizontalGraph(labelName, nounCount ,level){
+            var chartdata = {
+                labels: labelName,
+                datasets: [
+                    {
+                        label: 'Times Clicked',
+                        backgroundColor: '#49e2ff',
+                        borderColor: '#46d5f1',
+                        hoverBackgroundColor: '#CCCCCC',
+                        hoverBorderColor: '#666666',
+                        data: nounCount
+                    }
+                ],
+            };
+            var graphTarget = $(".outCome"+level);
+
+            var barGraph = new Chart(graphTarget, {
+                type: 'horizontalBar',
+                data: chartdata,
+                options: {
+                    scales: {
+                        xAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+
+        function openTab(evt, tabType) {
             var i, tabcontent, tablinks;
             //Hides all tabs
             tabcontent = document.getElementsByClassName("tabcontent");

@@ -49,7 +49,7 @@ $classRecords = getProgressByClass($user['school']);
                     <tr>
                         <th>Grade</th>
                         <th>Class</th>
-                        <th>Total Score</th>
+                        <th>Avg Score</th>
                         <th>View</th>
                     </tr>
                     </thead>
