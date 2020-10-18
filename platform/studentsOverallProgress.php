@@ -99,10 +99,9 @@ $studentRecords = getHighScoreOfEachStudentByClassAndGrade($user['school'], $cla
                         <button class="tablinks" onclick="opeTab(event, 'countable')">Countable Nouns</button>
                     </div>
                     <?PHP
-                    print_r(playCount($user['school'], $class, $grade, 5,1));
                     $concreteArr = playCount($user['school'], $class, $grade, 5,1);
-//                    $collectiveArr = playCount($user['school'], $class, $grade, 10,6);
-//                    $countableArr = playCount($user['school'], $class, $grade, 15,11);
+                    $collectiveArr = playCount($user['school'], $class, $grade, 10,6);
+                    $countableArr = playCount($user['school'], $class, $grade, 15,11);
                     ?>
                     <div id="concrete" class="tabcontent" style="display: block">
                         <h4 style="padding-top: 2%">
@@ -110,18 +109,30 @@ $studentRecords = getHighScoreOfEachStudentByClassAndGrade($user['school'], $cla
                         </h4>
                         <div class="playCount">
                             <div class="playCountHeader">
-                                <h5>Play Count: </h5>
+                                <h5>Number of times played: </h5>
                             </div>
-                            <div class="playCounterBody">
-                                <canvas id= "concretePlayCountChart" class="playCountChart" width="400" height="400"></canvas>
+                            <div class="playCounterBody" style="width: 50%">
+                                <canvas id= "concretePlayCountChart" class="playCountChart" width="50%" height="20%"></canvas>
                             </div>
                         </div>
                     </div>
 
                     <div id="collective" class="tabcontent">
+                        <div class="playCountHeader">
+                            <h5>Number of times played: </h5>
+                        </div>
+                        <div class="playCounterBody" style="width: 50%">
+                            <canvas id= "collectivePlayCountChart" class="playCountChart" width="50%" height="20%"></canvas>
+                        </div>
                     </div>
 
                     <div id="countable" class="tabcontent">
+                        <div class="playCountHeader">
+                            <h5>Number of times played: </h5>
+                        </div>
+                        <div class="playCounterBody" style="width: 50%">
+                            <canvas id= "countablePlayCountChart" class="playCountChart" width="50%" height="20%"></canvas>
+                        </div>
                     </div>
 
                     <div style="text-align: center; padding-top: 5%">
@@ -148,10 +159,7 @@ $studentRecords = getHighScoreOfEachStudentByClassAndGrade($user['school'], $cla
     <script>
         var activeTab = "concrete";
         $(document).ready(function(){
-            showGraph();
-
-            var collectiblePlayCountChart = document.getElementById('collectiblePlayCountChart').getContext('2d');
-            var countablePlayCountChart = document.getElementById('countablePlayCountChart').getContext('2d');
+            showGraph(activeTab);
 
             var CPCCD = new Chart(concretePlayCountChart, {
                 type: 'bar',
@@ -160,33 +168,56 @@ $studentRecords = getHighScoreOfEachStudentByClassAndGrade($user['school'], $cla
             });
         });
         // PlayCount Chart
-        function showGraph() {
+        function showGraph(activeTab) {
             var month = [];
             var playCount = [];
-            var chartDataArr =  <?=$concreteArr ?>;
+            if(activeTab == "concrete"){
+                <?php
+                echo "var chartDataArr = ".json_encode($concreteArr).";";
+                ?>
+            }else if (activeTab == "countable"){
+                <?php
+                echo "var chartDataArr = ".json_encode($countableArr).";";
+                ?>
+            }else if (activeTab == "collective"){
+                <?php
+                echo "var chartDataArr = ".json_encode($collectiveArr).";";
+                ?>
+            }
+
+            console.log(chartDataArr);
             for (var i in chartDataArr) {
-                month.push(data[i].month);
-                playCount.push(data[i].playCount);
+                month.push(chartDataArr[i].month);
+                playCount.push(chartDataArr[i].playCount);
             }
             var chartdata = {
                 labels: month,
                 datasets: [
                     {
+                        label: 'Play Count',
                         backgroundColor: '#49e2ff',
                         borderColor: '#46d5f1',
                         hoverBackgroundColor: '#CCCCCC',
                         hoverBorderColor: '#666666',
                         data: playCount
                     }
-                ]
+                ],
             };
-            var graphTarget = $("#concretePlayCountChart");
+            var graphTarget = $("#" + activeTab + "PlayCountChart");
 
             var barGraph = new Chart(graphTarget, {
                 type: 'bar',
-                data: chartdata
+                data: chartdata,
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
             });
-            console.log("drawing");
         }
 
         function opeTab(evt, tabType) {
@@ -207,6 +238,7 @@ $studentRecords = getHighScoreOfEachStudentByClassAndGrade($user['school'], $cla
             //set active tab
             evt.currentTarget.className += " active";
             activeTab = tabType;
+            showGraph(activeTab);
         }
     </script>
 
