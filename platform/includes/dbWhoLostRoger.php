@@ -142,5 +142,28 @@ function getHighScoreOfEachStudentByClassAndGrade($school = "", $class = "", $gr
     return $result_array;
 }
 
+function playCount($school = "", $class = "", $grade = "", $maxLevel = "", $lowestLevel = "", $orderBy = "", $orderByType = "") {
+    $whereBySchool = strlen($class) > 0 ? "  s.school = {$school}" : "";
+    $whereByClass = strlen($class) > 0 ? "  s.class = '{$class}' " : "";
+    $whereByGrade = strlen($grade) > 0 ? "  s.grade = {$grade} " : "";
+    $whereMaxLevel = strlen($maxLevel) > 0 ? " AND sp.level <= {$maxLevel} " : "";
+    $whereLowestLevel = strlen($lowestLevel) > 0 ? " AND sp.level >= {$lowestLevel} " : "";
+    $orderBySql = " order by hiscore desc ";
+    if($orderBy != "" and $orderByType != "" ){
+        $orderBySql = "order by ". $orderBy . " " . $orderByType . " ";
+    }
+    $whereSql = "";
+    if($whereBySchool != "" && $whereByGrade != "" && $whereByClass != ""){
+        $whereSql .= " WHERE " . $whereByGrade . " AND " .  $whereByClass . " AND " . $whereBySchool . " ";
+    }
+    $sql = "select MONTHNAME(sp.dateTime) as month, count(*) as playCount
+                from who_lost_roger sp
+                where sp.dateTime >= DATE_SUB(NOW(),INTERVAL 1 YEAR) AND
+                studentid in (select id from student s {$whereSql} ) 
+                {$whereLowestLevel} {$whereMaxLevel} 
+                group by MONTH(dateTime)";
+    $result_array = getRogerBySql($sql);
+    return $result_array;
+}
 
 

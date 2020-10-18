@@ -43,7 +43,7 @@
                 {
                     $('#chat_message_'+to_user_id).val('');
                     if(data != "inserted"){
-                        console.log(data);
+                        // console.log(data);
                     }else{
                         update_chat_history_data();
                     }
@@ -127,7 +127,6 @@
                 {
                     searchName: searchName
                 },function(result){
-                    console.log(result);
                     var result = $.parseJSON(result);
                     displayOfflineUsers(result, onlineUserStrings)
                 });
