@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using DG.Tweening;
+
 
 public class NounLinkage : MonoBehaviour
 {
@@ -52,12 +54,23 @@ public class NounLinkage : MonoBehaviour
             // time bonus
             timer.timeUp(timeBonus);
 
+            objectAnimation(gameObject);
+
             // inactive the noun object
             // this.gameObject.SetActive(false);
 
             // destroy self
-            Destroy(gameObject);
+            
         }
+    }
+
+    private void objectAnimation(GameObject gameoObject){
+        gameObject.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f).OnComplete(() => 
+        {
+            gameObject.GetComponent<SpriteRenderer>().DOFade(0, 0.5f).OnComplete(() => {
+                   Destroy(gameObject);
+            });
+        });
     }
 
     /* ********************************************************************************* *
