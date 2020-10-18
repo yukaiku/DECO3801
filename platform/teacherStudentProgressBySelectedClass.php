@@ -2,18 +2,24 @@
 include_once 'includes/checkLoginStatusForBoth.php';
 include_once 'includes/dbGame.php';
 include_once 'includes/dbTeacher.php';
-include_once 'includes/dbStudent.php';
-include_once 'includes/dbStudentProgress.php';
+include_once 'includes/dbWhoLostRoger.php';
 $gameId = isset($_GET['gameId']) ? $_GET['gameId'] : "1";
+$class = isset($_GET['class']) ? $_GET['class'] : "1";
+$grade = isset($_GET['grade']) ? $_GET['grade'] : "A";
 $gameInfo = getByIdGame($gameId);
+if($gameInfo == ""){ //if id returns blank, load game 1
+    $gameInfo = getByIdGame(1);
+    $gameId = 1;
+}
+if($gameId == 1){
+    include_once 'includes/dbWhoLostRoger.php';
+}
 $gameName = $gameInfo['name'];
 $gameSubject = $gameInfo['subject'];
 $gameDescription = $gameInfo['description'];
 $gameGrade = $gameInfo['grade'];
 $gameGenre = $gameInfo['genre'];
-$class = isset($_GET['class']) ? $_GET['class'] : "1";
-$grade = isset($_GET['grade']) ? $_GET['grade'] : "A";
-$studentRecords = getStudentRecordsProgress($gameId, $user['school'], $class, $grade);
+$studentRecords = getHighScoreOfEachStudentByClassAndGrade($user['school'], $class, $grade);
 ?>
 <!doctype html>
 <html lang="en">
@@ -64,10 +70,10 @@ $studentRecords = getStudentRecordsProgress($gameId, $user['school'], $class, $g
                         echo $record['username'];
                         echo "</td>";
                         echo "<td>";
-                        echo $record['firstname'];
+                        echo $record['firstname'] . " " . $record['lastname'];
                         echo "</td>";
                         echo "<td>";
-                        echo $record['score'];
+                        echo $record['sumScore'];
                         echo "</td>";
                         echo "<td>";
                         echo $rank;

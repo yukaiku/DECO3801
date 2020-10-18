@@ -8,21 +8,21 @@ $pk_teacherProgress = "id";
 
 function getAllTeacherProgress($orderBy = "") { //get all non deleted rows
     $orderBy = strlen($orderBy) > 0 ? "ORDER BY {$orderBy}" : "";
-    return getTeacherProgressBySql("SELECT * FROM {$GLOBALS['table_teacherProgress']} WHERE status = 0 {$orderBy}");
+    return getRogerBySql("SELECT * FROM {$GLOBALS['table_teacherProgress']} WHERE status = 0 {$orderBy}");
 }
 
 function getAllTeacherProgresss($orderBy = "") { //get all rows
     $orderBy = strlen($orderBy) > 0 ? "ORDER BY {$orderBy}" : "";
-    return getTeacherProgressBySql("SELECT * FROM {$GLOBALS['table_teacherProgress']} {$orderBy}");
+    return getRogerBySql("SELECT * FROM {$GLOBALS['table_teacherProgress']} {$orderBy}");
 }
 
 function getByIdTeacherProgress($id = 0) { //get all the rows where record id = current id and not deleted
-    $result_array = getTeacherProgressBySql("SELECT * FROM {$GLOBALS['table_teacherProgress']} WHERE id= {$id} AND status = 0 LIMIT 1 ");
+    $result_array = getRogerBySql("SELECT * FROM {$GLOBALS['table_teacherProgress']} WHERE id= {$id} AND status = 0 LIMIT 1 ");
     return !empty($result_array) ? array_shift($result_array) : false;
 }
 
 function getByIdTeacherProgresss($id = 0) { //get all the rows where record id = current id
-    $result_array = getTeacherProgressBySql("SELECT * FROM {$GLOBALS['table_teacherProgress']} WHERE id= {$id} LIMIT 1 ");
+    $result_array = getRogerBySql("SELECT * FROM {$GLOBALS['table_teacherProgress']} WHERE id= {$id} LIMIT 1 ");
     return !empty($result_array) ? array_shift($result_array) : false;
 }
 

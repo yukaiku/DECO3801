@@ -1,17 +1,22 @@
 <?php
 include_once 'includes/checkLoginStatusForBoth.php';
 include_once 'includes/dbGame.php';
-include_once 'includes/dbStudent.php';
-include_once 'includes/dbStudentProgress.php';
 include_once 'includes/dbTeacher.php';
 $gameId = isset($_GET['gameId']) ? $_GET['gameId'] : "1";
 $gameInfo = getByIdGame($gameId);
+if($gameInfo == ""){ //if id returns blank, load game 1
+    $gameInfo = getByIdGame(1);
+    $gameId = 1;
+}
 $gameName = $gameInfo['name'];
 $gameSubject = $gameInfo['subject'];
 $gameDescription = $gameInfo['description'];
 $gameGrade = $gameInfo['grade'];
 $gameGenre = $gameInfo['genre'];
-$classRecords = getClassRecordsProgress($gameId, $user['school']);
+if($gameId == 1){
+    include_once 'includes/dbWhoLostRoger.php';
+}
+$classRecords = getProgressByClass($user['school']);
 ?>
 <!doctype html>
 <html lang="en">
@@ -61,7 +66,7 @@ $classRecords = getClassRecordsProgress($gameId, $user['school']);
                         echo $record['class'];
                         echo "</td>";
                         echo "<td>";
-                        echo $record['score'];
+                        echo round($record['averageScore'], 2, PHP_ROUND_HALF_UP);
                         echo "</td>";
                         echo "<td><a href= 'teacherStudentProgressBySelectedClass.php?grade={$record['grade']}&class={$record['class']}'>";
                         echo "View</a></td>";
