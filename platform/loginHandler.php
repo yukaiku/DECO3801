@@ -2,8 +2,10 @@
 
 // start a brand new session
 session_start();
+session_unset();
 session_destroy();
 session_start();
+$now = time();
 // require the dbfunction.php file
 require_once "includes/dbFunction.php";
 
