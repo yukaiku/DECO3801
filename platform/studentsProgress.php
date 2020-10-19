@@ -58,6 +58,7 @@ $gameGenre = $gameInfo['genre'];
                         <th>first Name</th>
                         <th>Score</th>
                         <th>Rank</th>
+                        <th>View</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -79,6 +80,9 @@ $gameGenre = $gameInfo['genre'];
                         echo "<td>";
                         echo $rank;
                         echo "</td>";
+                        echo "<td>";
+                        echo "<a href='studentIndividualProgress.php?studentId=" . $record['studentid'] . "&grade={$grade}&class={$class}&gameId={$gameId}'>View</a>";
+                        echo "</td>";
 
                         echo "</tr>";
                         $rank +=1;
@@ -91,7 +95,7 @@ $gameGenre = $gameInfo['genre'];
                 </div>
             </div>
             <div id="mainFooter" style="bottom:0; position: fixed;">
-                <a class="btn btn-primary mb-2" style="text-align: center" href="teacherMain.php">Back</a>
+                <a class="btn btn-primary mb-2" style="text-align: center" href="classesProgress.php?gameId=<?=$gameId?>">Back</a>
             </div>
         </div>
     </div>
