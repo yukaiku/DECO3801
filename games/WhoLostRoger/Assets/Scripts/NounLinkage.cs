@@ -25,6 +25,8 @@ public class NounLinkage : MonoBehaviour
     public IsResult resultTrigger;
     [Tooltip("Assign with TimerUtility Component")]
     public TimerUtility timer;
+
+    public AudioSource audioSound;
     public int timeBonus;
 
     private void isArgsNull()
@@ -64,20 +66,24 @@ public class NounLinkage : MonoBehaviour
             // time bonus
             timer.timeUp(timeBonus);
 
+            //play the sound of clicking the noun object
+            audioSound.Play(); 
+            
+            //play the animation of clicking the noun object
             objectAnimation(gameObject);
 
             // inactive the noun object
-            // this.gameObject.SetActive(false);
-
-            // destroy self
-            
+            // this.gameObject.SetActive(false);        
         }
     }
 
     private void objectAnimation(GameObject gameoObject){
+
+        //animation of grow
         gameObject.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.5f).OnComplete(() => 
-        {
+        {   //animation of faded disapperation
             gameObject.GetComponent<SpriteRenderer>().DOFade(0, 0.5f).OnComplete(() => {
+                   // destroy self
                    Destroy(gameObject);
             });
         });
