@@ -4,6 +4,11 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System.Runtime.InteropServices;
 
+/*
+ * This component script is used for loading player data before the game 
+ * start. It should be assigned to an active object in first scene.
+ * 
+ */
 public class LoadingData : MonoBehaviour
 {
 

@@ -4,6 +4,16 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+/*
+ * This component script is used for providing mouse pointer effects while 
+ * hovering on clickable objects in map-based and area-based selection scenes.
+ * 
+ * In Unity inspector.
+ * @require GameObject   levelNoter
+ * @require Texture2D    defaultTexture  (optional)
+ * @require Texture2D    hoverTexture    (optional)
+ * 
+ */
 public class MapPointerUtility : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public Texture2D defaultTexture;
@@ -43,7 +53,7 @@ public class MapPointerUtility : MonoBehaviour, IPointerEnterHandler, IPointerEx
             Debug.Log(string.Format("No image component attached to this map pointer and the component won't work"));
         }
 
-        if (pointerImage.mainTexture.isReadable)
+        if (pointerImage.mainTexture != null && pointerImage.mainTexture.isReadable)
         {
             pointerImage.alphaHitTestMinimumThreshold = 0.5f;
         }

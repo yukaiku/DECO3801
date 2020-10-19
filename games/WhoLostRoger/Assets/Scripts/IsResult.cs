@@ -7,6 +7,21 @@ using UnityEngine.SceneManagement;
     using UnityEditor;
 #endif
 
+/*
+ * This component script is used for checking whether a level is completed 
+ * or not while a player clicks on a correct noun object, and then providing 
+ * optional reactions when it is triggered.
+ * 
+ * @depend NounTagUtility component script  ->  finding noun tag objects
+ * @depend NounLinkage component script     ->  finding noun clickable objects
+ * @depend SendingData component script     ->  sending game data to server
+ * 
+ * In Unity inspector,
+ * @require TimerUtility        timer
+ * @require Options             option
+ * @require string              sceneName    (optional)
+ * 
+ */
 public class IsResult : MonoBehaviour
 {
     public enum Options

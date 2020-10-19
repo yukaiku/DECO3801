@@ -4,7 +4,11 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System.Runtime.InteropServices;
 
-// it will send data when a level is completed or gameover
+/*
+ * This component script is used for sending game data to the server 
+ * while a level is completed or game over by a player.
+ * 
+ */
 public class SendingData : MonoBehaviour
 {
     [DllImport("__Internal")]

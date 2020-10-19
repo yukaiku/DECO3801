@@ -5,7 +5,17 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 
-
+/*
+ * This component script is used for providing interactions between a noun 
+ * object and a noun tag in one level.
+ * 
+ * In Unity inspector,
+ * @require NounTagUtility      nounTag
+ * @require IsResult            resultTrigger
+ * @require TimerUtility        timer
+ * @require int                 timeBonus
+ * 
+ */
 public class NounLinkage : MonoBehaviour
 {
     [Tooltip("The corresponding Noun Tag.")]

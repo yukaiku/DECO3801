@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * This component script is used for displaying the result while a level 
+ * is completed or game over.
+ * 
+ * In Unity inspector,
+ * @require Text       textBox
+ * @require Options    options
+ * 
+ */
 public class ResultDisplay : MonoBehaviour
 {
     public enum Options

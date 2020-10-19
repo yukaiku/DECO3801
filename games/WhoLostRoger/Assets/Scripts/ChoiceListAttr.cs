@@ -7,7 +7,11 @@ using System.Linq;
 using UnityEditor;
 #endif
 
-/* This script is used for convenient input in the inspector. */
+/*
+ * This script is a customized attribute for string options which is used in Unity 
+ * inspector to select one of options. It is convenient for input in the inspector.
+ * 
+ */
 public class ChoiceList : PropertyAttribute
 {
     public delegate string[] GetChoiceList();

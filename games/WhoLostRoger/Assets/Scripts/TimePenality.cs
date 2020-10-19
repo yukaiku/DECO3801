@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+/*
+ * This component script is used for providing time penality while a player 
+ * clicks a noun object wrongly in one level.
+ * 
+ * In Unity inspecter,
+ * @require TimerUtility        timer
+ * 
+ */
 public class TimePenality : MonoBehaviour
 {
     public TimerUtility timer;

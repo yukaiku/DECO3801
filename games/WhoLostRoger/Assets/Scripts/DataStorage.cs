@@ -2,7 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Only involve basice set/get functions
+/*
+ * This C# class file is used for getting/setting data acrossing the 
+ * whole game and only providing get/set property functions for game 
+ * objects to make changes on data.
+ * 
+ */
 public class DataStorage
 {
     /*** Game Data ***/

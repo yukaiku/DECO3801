@@ -3,7 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-// provide score penality when wrong clicking
+/*
+ * This component script is used for providing score penality while a player 
+ * clicks a noun object wrongly in one level.
+ * 
+ * @depend "NounLinkage" component script -> finding noun objects
+ * 
+ */
 public class ScorePenality : MonoBehaviour
 {
     private GameObject[] nounObjectList;

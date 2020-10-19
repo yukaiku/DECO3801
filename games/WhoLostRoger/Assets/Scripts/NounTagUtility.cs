@@ -3,6 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * This component script is used for identifying whether a game object is noun 
+ * tag object, which corresponding to a noun object, or not.
+ * 
+ * @inside "IsResult" component script
+ * @inside "IsGameover" component script
+ * 
+ * In Unity inspector,
+ * @require Text      nounText
+ * 
+ */
 public class NounTagUtility : MonoBehaviour
 {
     // instead of TAG component defined in Unity

@@ -4,6 +4,21 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/*
+ * This component script is used for checking whether a level is game over 
+ * or not according to a timer, and then providing optional reactions when 
+ * it is triggered.
+ * 
+ * @depend NounTagUtility component script  ->  finding noun tag objects
+ * @depend SendingData component script     ->  sending game data to server
+ * 
+ * In Unity inspector,
+ * @require TimerUtility           timer
+ * @require TimeroutOptions        timeoutOption
+ * @require GameObject             gameoverMenu
+ * @require string                 sceneName      (optional)
+ * 
+ */
 public class IsGameover : MonoBehaviour
 {
 

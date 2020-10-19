@@ -3,6 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * This component script is used for providing timer utilities assigned to a 
+ * game object generally a button object which can pause and resume timer. If 
+ * a Text object is assigned with the timer object, it will display time.
+ * 
+ * In Unity inspecter,
+ * @require float        timeStart
+ * @require Text         timeBox      (optional)
+ * 
+ */
 public class TimerUtility : MonoBehaviour
 {
     public float timeStart;                  // time provided to start count down

@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * This C# class file is used for handing data acrossing the whole game and 
+ * providing functionalities for game objects to make changes on data.
+ * 
+ */
 public static class DataSystem
 {
     public static void resetNewLevel(int currentLevel)

@@ -4,6 +4,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Runtime.InteropServices;
 
+/*
+ * This component script is used for providing UI button utilties while a 
+ * button object is clicked. There are many events for such trigger.
+ * 
+ * In Unity inspector,
+ * @require GameObject           PauseMenu    (optional)
+ * @require GameObject           OptionMenu   (optional)
+ * 
+ */
 public class ButtonUtility : MonoBehaviour
 {
     public GameObject PauseMenu;
