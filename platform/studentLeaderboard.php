@@ -1,10 +1,9 @@
 <?php
 include_once 'includes/checkLoginStatusForBoth.php';
 include_once 'includes/dbGame.php';
-include_once 'includes/dbStudent.php';
-include_once 'includes/dbStudentProgress.php';
+include_once 'includes/dbWhoLostRoger.php';
 $gameId = isset($_GET['gameId']) ? $_GET['gameId'] : "1";
-$studentRecords = getStudentRecordsProgress($gameId, $user['school']);
+$studentRecords = getLeaderboard();
 ?>
 <!doctype html>
 <html lang="en">
@@ -39,7 +38,6 @@ $studentRecords = getStudentRecordsProgress($gameId, $user['school']);
                     <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Percentage</th>
                         <th>Total Score</th>
                         <th>Rank</th>
                     </tr>
@@ -55,10 +53,7 @@ $studentRecords = getStudentRecordsProgress($gameId, $user['school']);
                         echo $record['firstname'] . " " . $record['lastname'];
                         echo "</td>";
                         echo "<td>";
-                        echo round($record['percentage'],2) . "%";
-                        echo "</td>";
-                        echo "<td>";
-                        echo $record['score'];
+                        echo $record['hiscore'];
                         echo "</td>";
                         echo "<td>";
                         echo $rank;

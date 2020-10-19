@@ -13,10 +13,12 @@ $gameSubject = $gameInfo['subject'];
 $gameDescription = $gameInfo['description'];
 $gameGrade = $gameInfo['grade'];
 $gameGenre = $gameInfo['genre'];
+$classRecords = [];
 if($gameId == 1){
     include_once 'includes/dbWhoLostRoger.php';
+    $classRecords = getProgressByClass($user['school']);
 }
-$classRecords = getProgressByClass($user['school']);
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -68,7 +70,7 @@ $classRecords = getProgressByClass($user['school']);
                         echo "<td>";
                         echo round($record['averageScore'], 2, PHP_ROUND_HALF_UP);
                         echo "</td>";
-                        echo "<td><a href= 'studentsProgress.php?grade={$record['grade']}&class={$record['class']}'>";
+                        echo "<td><a href= 'studentsProgress.php?grade={$record['grade']}&class={$record['class']}&gameId={$gameId}'>";
                         echo "View</a></td>";
 
                         echo "</tr>";
