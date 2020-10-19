@@ -2,7 +2,6 @@
 include_once 'includes/checkLoginStatusForBoth.php';
 include_once 'includes/dbGame.php';
 include_once 'includes/dbTeacher.php';
-include_once 'includes/dbWhoLostRoger.php';
 $gameId = isset($_GET['gameId']) ? $_GET['gameId'] : "1";
 $class = isset($_GET['class']) ? $_GET['class'] : "1";
 $grade = isset($_GET['grade']) ? $_GET['grade'] : "A";
@@ -11,15 +10,12 @@ if($gameInfo == ""){ //if id returns blank, load game 1
     $gameInfo = getByIdGame(1);
     $gameId = 1;
 }
-if($gameId == 1){
-    include_once 'includes/dbWhoLostRoger.php';
-}
 $gameName = $gameInfo['name'];
 $gameSubject = $gameInfo['subject'];
 $gameDescription = $gameInfo['description'];
 $gameGrade = $gameInfo['grade'];
 $gameGenre = $gameInfo['genre'];
-$studentRecords = getHighScoreOfEachStudentByClassAndGrade($user['school'], $class, $grade);
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -34,7 +30,7 @@ $studentRecords = getHighScoreOfEachStudentByClassAndGrade($user['school'], $cla
     <?php
     include 'css.php';
     ?>
-<!--    Charts CSS -->
+    <!--    Charts CSS -->
     <link href="css/Chart.min.css" rel="stylesheet">
     <style>
 
@@ -99,9 +95,12 @@ $studentRecords = getHighScoreOfEachStudentByClassAndGrade($user['school'], $cla
                         <button class="tablinks" onclick="openTab(event, 'countable')">Countable Nouns</button>
                     </div>
                     <?PHP
-                    $concreteArr = playCount($user['school'], $class, $grade, 5,1);
-                    $collectiveArr = playCount($user['school'], $class, $grade, 10,6);
-                    $countableArr = playCount($user['school'], $class, $grade, 15,11);
+                    if(function_exists ( "playCount" )){
+                        $concreteArr = playCount($user['school'], $class, $grade, 5,1);
+                        $collectiveArr = playCount($user['school'], $class, $grade, 10,6);
+                        $countableArr = playCount($user['school'], $class, $grade, 15,11);
+                    }
+
                     ?>
                     <div id="concrete" class="tabcontent overflow-auto" style="display: block">
                         <h4 style="padding-top: 2%">
@@ -166,7 +165,7 @@ $studentRecords = getHighScoreOfEachStudentByClassAndGrade($user['school'], $cla
     <?php
     include 'lastActivity.php';
     ?>
-<!--    Charts JS-->
+    <!--    Charts JS-->
     <script src="js/Chart.min.js"></script>
     <script>
         var activeTab = "concrete";
@@ -177,19 +176,21 @@ $studentRecords = getHighScoreOfEachStudentByClassAndGrade($user['school'], $cla
         function showGraph(activeTab) {
             var month = [];
             var playCount = [];
-            if(activeTab == "concrete"){
-                <?php
+            <?php
+            echo 'if(activeTab == "concrete"){';
+            if(isset($concreteArr)){
                 echo "var chartDataArr = ".json_encode($concreteArr).";";
-                ?>
-            }else if (activeTab == "collective"){
-                <?php
-                echo "var chartDataArr = ".json_encode($collectiveArr).";";
-                ?>
-            }else if (activeTab == "countable"){
-                <?php
-                echo "var chartDataArr = ".json_encode($countableArr).";";
-                ?>
             }
+            echo '}else if (activeTab == "collective"){';
+            if(isset($collectiveArr)){
+                echo "var chartDataArr = ".json_encode($collectiveArr).";";
+            }
+            echo '}else if (activeTab == "countable"){';
+            if(isset($countableArr)){
+                echo "var chartDataArr = ".json_encode($countableArr).";";
+            }
+            echo "}";
+            ?>
             for (var i in chartDataArr) {
                 month.push(chartDataArr[i].month);
                 playCount.push(chartDataArr[i].playCount);
@@ -229,45 +230,51 @@ $studentRecords = getHighScoreOfEachStudentByClassAndGrade($user['school'], $cla
             var lowestLevel;
             if(activeTab == "concrete"){
                 <?php
-                $learningOutcomes = getLearningOutComes($user['school'], $class, $grade, 5,1);
-                $levelsArr = [];
-                $level = 1;
-                $aNoun = [];
-                $labelNames = [];
-                foreach($learningOutcomes as $learningOutcome){
-
-                    //print and reset nouns every level
-                    if($level != $learningOutcome['level']){
-                        $nounCount = (json_encode(array_values($aNoun)));
-                        echo " drawHorizontalGraph(". json_encode($labelNames) . "," . $nounCount . "," . $level . "); ";
-                        $level = $learningOutcome['level'];
-                        $aNoun = [];
-                        $labelNames = [];
+                    if(function_exists('getLearningOutComes')){
+                        $learningOutcomes = getLearningOutComes($user['school'], $class, $grade, 5,1);
                     }
-                    $nounsClicked = explode("|",$learningOutcome['nounsClicked']);
-                    foreach ($nounsClicked as $key => $value) {
-                        if(!array_key_exists($value, $aNoun)){
-                            $aNoun[$value] = 1;
-                            array_push($labelNames,$value);
-                        }else{
-                            $aNoun[$value]++;
-                        }
-                    }
-                    //last level and row reached
-                    if( !next( $learningOutcomes ) ) {
-                        $nounCount = (json_encode(array_values($aNoun)));
-                        echo " drawHorizontalGraph(". json_encode($labelNames) . "," . $nounCount . "," . $level . "); ";
-                    }
-                }
                 ?>
             }else if (activeTab == "collective"){
-               maxLevel = 10;
-               lowestLevel = 6;
+                maxLevel = 10;
+                lowestLevel = 6;
             }else if (activeTab == "countable"){
                 maxLevel = 15;
                 lowestLevel = 11;
 
             }
+            <?php
+                if(function_exists('getLearningOutComes')){
+                    $levelsArr = [];
+                    $level = 1;
+                    $aNoun = [];
+                    $labelNames = [];
+                    foreach($learningOutcomes as $learningOutcome){
+
+                        //print and reset nouns every level
+                        if($level != $learningOutcome['level']){
+                            $nounCount = (json_encode(array_values($aNoun)));
+                            echo " drawHorizontalGraph(". json_encode($labelNames) . "," . $nounCount . "," . $level . "); ";
+                            $level = $learningOutcome['level'];
+                            $aNoun = [];
+                            $labelNames = [];
+                        }
+                        $nounsClicked = explode("|",$learningOutcome['nounsClicked']);
+                        foreach ($nounsClicked as $key => $value) {
+                            if(!array_key_exists($value, $aNoun)){
+                                $aNoun[$value] = 1;
+                                array_push($labelNames,$value);
+                            }else{
+                                $aNoun[$value]++;
+                            }
+                        }
+                        //last level and row reached
+                        if( !next( $learningOutcomes ) ) {
+                            $nounCount = (json_encode(array_values($aNoun)));
+                            echo " drawHorizontalGraph(". json_encode($labelNames) . "," . $nounCount . "," . $level . "); ";
+                        }
+                    }
+                }
+            ?>
         }
 
         function drawHorizontalGraph(labelName, nounCount ,level){

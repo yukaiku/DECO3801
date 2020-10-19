@@ -93,9 +93,16 @@ function getProgressByClass($school = "") {
     return $result_array;
 }
 
-function getHighScoreOfEachPlayer(){
+function getHighScoreOfEachPlayer(){ //Get hiscore of each player per level
     $sql = "SELECT studentid, MAX(score) AS hiscore, level, nounsClicked, dateTime FROM who_lost_roger GROUP BY studentid, level ORDER BY hiscore DESC";
     return $sql;
+}
+
+function getLeaderboard(){
+    $highScoreOfEachPlayerSql = getHighScoreOfEachPlayer();
+    $sql = "select sp.studentid, sum(sp.hiscore) as hiscore, s.username, s.firstname, s.lastname from ({$highScoreOfEachPlayerSql}) sp, student s where s.id = sp.studentid group by sp.studentid order by hiscore desc";
+    $result_array = getRogerBySql($sql);
+    return $result_array;
 }
 
 function getHighScoreOfEachStudentByClassAndGrade($school = "", $class = "", $grade = "", $orderBy = "", $orderByType = "") {
