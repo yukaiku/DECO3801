@@ -10,6 +10,11 @@ if($gameInfo == ""){ //if id returns blank, load game 1
     $gameInfo = getByIdGame(1);
     $gameId = 1;
 }
+$studentRecords = [];
+if($gameId == 1){ //one new if for each game id
+    include_once 'includes/dbWhoLostRoger.php';
+    $studentRecords = getHighScoreOfEachStudentByClassAndGrade($user['school'], $class, $grade);
+}
 $gameName = $gameInfo['name'];
 $gameSubject = $gameInfo['subject'];
 $gameDescription = $gameInfo['description'];
@@ -100,7 +105,6 @@ $gameGenre = $gameInfo['genre'];
                         $collectiveArr = playCount($user['school'], $class, $grade, 10,6);
                         $countableArr = playCount($user['school'], $class, $grade, 15,11);
                     }
-
                     ?>
                     <div id="concrete" class="tabcontent overflow-auto" style="display: block">
                         <h4 style="padding-top: 2%">
@@ -176,6 +180,7 @@ $gameGenre = $gameInfo['genre'];
         function showGraph(activeTab) {
             var month = [];
             var playCount = [];
+            var chartDataArr = [];
             <?php
             echo 'if(activeTab == "concrete"){';
             if(isset($concreteArr)){
