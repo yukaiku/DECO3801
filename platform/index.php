@@ -39,17 +39,17 @@ if(isset($_COOKIE["student"]) && $_COOKIE['student'] != "") {
     <link href="css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/signin.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
-<body class="text-center">
+<body class="text-center" style="background-color: #effffd">
 <form class="form-signin" action="loginHandler.php" method="post">
     <img class="mb-4" src="img/logo.png" alt="" width="300" height="200">
     <!--    <h1 class="h3 mb-3 font-weight-normal">CatsEG</h1>-->
     <label for="inputUsername" class="sr-only" name="username">Username</label>
-    <input type="text" id="inputUsername" class="form-control" placeholder="Username" name="username" value = "<?= $username ?>" required autofocus>
+    <input style="margin-bottom: 10px; background-color: #BCE8E3" type="text" id="inputUsername" class="form-control" placeholder="Username" name="username" value = "<?= $username ?>" required autofocus>
     <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="pwd" value = "<?= $password ?>" required>
+    <input style="background-color: #BCE8E3" type="password" id="inputPassword" class="form-control" placeholder="Password" name="pwd" value = "<?= $password ?>" required>
     <div class="checkbox mb-3">
         <label>
             <?php
@@ -62,7 +62,7 @@ if(isset($_COOKIE["student"]) && $_COOKIE['student'] != "") {
 
         </label>
     </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <button style="background-color: #D55464; color: #ffffff" class="btn btn-lg btn-block" type="submit">Sign in</button>
 </form>
 <script type="text/javascript">
     <?php
