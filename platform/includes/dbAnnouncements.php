@@ -3,7 +3,7 @@ require_once 'dbFunction.php';
 
 $table_announcements = "announcements";
 $dbFields_announcements = ["id", "title", "message", "timeStamp", "teacherId", "status"];
-$pk_user = "id";
+$pk_announcement = "id";
 
 function getAnnouncementsBySql($sql = "") {
     $resultSet = query($sql);
@@ -86,7 +86,7 @@ function getAllAnnouncementWithTeacherName($timeStamp = "", $status = "", $limit
     $limitSql = " limit {$limit} ";
     $sql = " SELECT a.title, a.message, a.timeStamp, a.id, t.firstname, t.lastname ";
     $sql .= " from ({$announcementSql}) a, teacher t ";
-    $sql .= " WHERE a.teacherid = t.id order by a.timeStamp desc";
+    $sql .= " WHERE a.teacherid = t.id and a.status = 0 order by a.timeStamp desc ";
     $sql .= $limitSql;
     return $sql;
 }

@@ -3,7 +3,6 @@ include_once 'includes/checkLoginStatusForBoth.php';
 include_once 'includes/dbAnnouncements.php';
 $announcementSql = getAllAnnouncementWithTeacherName("","","10");
 $announcementArr = getAnnouncementsBySql($announcementSql);
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -46,8 +45,8 @@ $announcementArr = getAnnouncementsBySql($announcementSql);
                 <?php
                 foreach($announcementArr as $key => $value) {
                     ?>
-                    <div class="row border rounded">
-                        <div class="text-left">
+                    <div class="row border rounded" name="row<?=$value['id']?>">
+                        <div class="text-left col-lg-10">
                             <h3><?php
                                 echo $value['title'];
                                 ?></h3>
@@ -62,6 +61,14 @@ $announcementArr = getAnnouncementsBySql($announcementSql);
 
                             </span>
                         </div>
+                        <?php
+                        if($status == "teacher"){?>
+                            <div class="col-lg-2">
+                                <button class="btn-primary border rounded deleteAnnouncementButton" name="<?=$value['id']?>">Delete</button>
+                            </div>
+                            <?php
+                        }
+                        ?>
                     </div>
                     <?php
                 }
@@ -78,6 +85,30 @@ $announcementArr = getAnnouncementsBySql($announcementSql);
 include 'lastActivity.php';
 include 'modals/newAnnouncementModal.php';
 ?>
+<script type="text/javascript">
+    $(document).ready(function() {
+        addListener();
+    });
+
+    function addListener() {
+        $('body').on('click', '.deleteAnnouncementButton', function() {
+            deleteAnnouncement(this.name)
+        });
+    }
+
+    function deleteAnnouncement(id){
+        $.ajax({
+            url:"ajax/deleteAnnouncement.php",
+            method:"POST",
+            data:{id:id},
+            success:function(data)
+            {
+                var nameid = id;
+                    $( "[name =row"+ nameid +"]" ).remove();
+            }
+        })
+    }
+</script>
 
 </body>
 </html>
