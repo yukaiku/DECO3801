@@ -24,6 +24,54 @@ function setAnnouncementAttributes($infoArr) { //set the fields //Gets the post 
     return $newRecord;
 }
 
+function createAnnouncements($infoArr = array()) {
+    foreach ($infoArr as $field => $value) {
+        if ($value != "") {
+            $updateStrArr[] = "'{$value}'";
+            $updateStrArrField[] = "{$field}";
+            if ($field === array_key_last($infoArr)){
+                $updateStrArr[] = "now()";
+                $updateStrArrField[] = "timeStamp";
+            }
+
+        }
+
+    }
+    $updateStr = join(", ", array_values($updateStrArr));
+    $updateStrField = join(", ", array_values($updateStrArrField));
+    $sql = "INSERT INTO {$GLOBALS['table_announcements']} ";
+    $sql .= "({$updateStrField}) VALUES ({$updateStr})";
+    if (query($sql)) {
+        return insert_id();
+    } else {
+        return false;
+    }
+}
+
+function updateAnnouncement($infoArr = array()) {
+    if (array_key_exists($GLOBALS['pk_announcement'], $infoArr)) {
+        $pkStr = "{$GLOBALS['pk_announcement']} = '{$infoArr[$GLOBALS['pk_announcement']]}'";
+        unset($infoArr[$GLOBALS['pk_announcement']]);
+        $updateStrArr = array();
+        foreach ($infoArr as $field => $value) {
+            if ($value != "") {
+                    $updateStrArr[] = "{$field}='{$value}'";
+
+            }
+        }
+        $updateStr = join(", ", array_values($updateStrArr));
+
+        $sql = "UPDATE {$GLOBALS['table_announcements']} ";
+        $sql .= "SET {$updateStr} ";
+        $sql .= "WHERE {$pkStr}";
+        query($sql);
+        if (affected_rows() > 0) {
+            return true;
+        }
+    }
+    return false;
+}
+
 function getAllAnnouncements($timeStamp = "", $status = ""){
     $whereTimeStamp = strlen($timeStamp) > 0 ? " and timeStamp = {$timeStamp} " : "";
     $whereStatus = strlen($status) > 0 ? " and status = {$status} " : "";

@@ -1,7 +1,7 @@
 <div class="modal fade" id="newAnnouncementModal" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form id="addAnnouncementForm" class ="form-horizontal" action="addAnnouncementHandler.php" method="post" enctype="multipart/form-data">
+            <form id="addAnnouncementForm" class ="form-horizontal" action="modals/addAnnouncementHandler.php" method="post" enctype="multipart/form-data">
                 <div class="modal-header">
                     <h4>Add Announcement</h4>
                 </div>
@@ -9,7 +9,7 @@
 
 
                     <div class="form-group">
-                        <input type="hidden" name="teacherId" value="<?=user['id'];?>">
+                        <input type="hidden" name="teacherId" value="<?=$user['id'];?>">
                         <input type="hidden" name="status" value="0">
                     </div>
                     <div class="form-group">
