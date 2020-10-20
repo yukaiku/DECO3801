@@ -81,11 +81,13 @@ function getAllAnnouncements($timeStamp = "", $status = ""){
     return $sql;
 }
 
-function getAllAnnouncementWithTeacherName($timeStamp = "", $status = "" ){
+function getAllAnnouncementWithTeacherName($timeStamp = "", $status = "", $limit = ""){
     $announcementSql = getAllAnnouncements($timeStamp, $status);
+    $limitSql = " limit {$limit} ";
     $sql = " SELECT a.title, a.message, a.timeStamp, a.id, t.firstname, t.lastname ";
     $sql .= " from ({$announcementSql}) a, teacher t ";
-    $sql .= " WHERE a.teacherid = t.id";
+    $sql .= " WHERE a.teacherid = t.id order by a.timeStamp desc";
+    $sql .= $limitSql;
     return $sql;
 }
 

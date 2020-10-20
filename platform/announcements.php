@@ -1,7 +1,7 @@
 <?php
 include_once 'includes/checkLoginStatusForBoth.php';
 include_once 'includes/dbAnnouncements.php';
-$announcementSql = getAllAnnouncementWithTeacherName();
+$announcementSql = getAllAnnouncementWithTeacherName("","","10");
 $announcementArr = getAnnouncementsBySql($announcementSql);
 
 ?>
@@ -34,7 +34,7 @@ $announcementArr = getAnnouncementsBySql($announcementSql);
                     <?php
                     if($status == "teacher"){?>
                         <div class="col-lg-2">
-                                <button class="btn-primary border rounded" data-toggle="modal" data-target="#newAnnouncementModal">Add Announcements</button>
+                            <button class="btn-primary border rounded" data-toggle="modal" data-target="#newAnnouncementModal">Add Announcements</button>
                         </div>
                         <?php
                     }
@@ -49,11 +49,18 @@ $announcementArr = getAnnouncementsBySql($announcementSql);
                     <div class="row border rounded">
                         <div class="text-left">
                             <h3><?php
-                                    echo $value['title'];
+                                echo $value['title'];
                                 ?></h3>
                             <p><?php
                                 echo $value['message'];
                                 ?></p>
+                            <span>
+                                    <?php
+                                    echo $value['timeStamp'];
+                                    ?>
+                                </span>
+
+                            </span>
                         </div>
                     </div>
                     <?php
