@@ -96,7 +96,8 @@ public static class DataSystem
 
     public static int calculateNounPercentage(int totalNounCount, int scorePoint, int scorePerNoun)
     {
-        int percentage = Mathf.RoundToInt(((scorePoint / scorePerNoun) / totalNounCount) * 100);
+        int percentage = Mathf.RoundToInt(((float)(scorePoint / scorePerNoun) / totalNounCount) * 100);
+        Debug.Log(string.Format("In total '{0}' percentage completion in this level", percentage));
         return percentage;
     }
 }
