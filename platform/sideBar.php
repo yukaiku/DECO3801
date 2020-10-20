@@ -7,6 +7,9 @@ $games = getAllGame('subject');
         <ul>
             <h2>Hi <?= $user['firstname']; ?></h2>
         </ul>
+        <ul style="background-color: grey; padding-top: 10%; padding-bottom: 10%; margin-bottom: 0">
+            <a href="announcement.php" style="color: white !important;">Announcements</a>
+        </ul>
         <?php
         if($status == "teacher"){
             echo '<ul style="background-color: grey; padding-top: 10%; padding-bottom: 10%; margin-bottom: 0">
@@ -14,8 +17,6 @@ $games = getAllGame('subject');
                   </ul>';
         }
         ?>
-
-
         <?php
         $subject = "";
         $loopCount = 0;
