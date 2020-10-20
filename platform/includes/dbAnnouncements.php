@@ -77,7 +77,15 @@ function getAllAnnouncements($timeStamp = "", $status = ""){
     $whereStatus = strlen($status) > 0 ? " and status = {$status} " : "";
     $whereSql = " where timeStamp >= DATE_SUB(NOW(),INTERVAL 1 YEAR) and status = 0 ";
     $whereSql .= $whereTimeStamp . $whereStatus;
-    $sql = "SELECT * FROM {$GLOBALS['table_announcements']} {$whereSql} orderBy timeStamp desc";
+    $sql = "SELECT * FROM {$GLOBALS['table_announcements']} {$whereSql}  order By timeStamp desc";
+    return $sql;
+}
+
+function getAllAnnouncementWithTeacherName($timeStamp = "", $status = "" ){
+    $announcementSql = getAllAnnouncements($timeStamp, $status);
+    $sql = " SELECT a.title, a.message, a.timeStamp, a.id, t.firstname, t.lastname ";
+    $sql .= " from ({$announcementSql}) a, teacher t ";
+    $sql .= " WHERE a.teacherid = t.id";
     return $sql;
 }
 

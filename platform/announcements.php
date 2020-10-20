@@ -1,6 +1,9 @@
 <?php
 include_once 'includes/checkLoginStatusForBoth.php';
 include_once 'includes/dbAnnouncements.php';
+$announcementSql = getAllAnnouncementWithTeacherName();
+$announcementArr = getAnnouncementsBySql($announcementSql);
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -40,21 +43,22 @@ include_once 'includes/dbAnnouncements.php';
                 </div>
             </div>
             <div class="container">
-                <div class="row border rounded">
-                    <div class="text-left">
-                        <h3>Column 1</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+                <?php
+                foreach($announcementArr as $key => $value) {
+                    ?>
+                    <div class="row border rounded">
+                        <div class="text-left">
+                            <h3><?php
+                                    echo $value['title'];
+                                ?></h3>
+                            <p><?php
+                                echo $value['message'];
+                                ?></p>
+                        </div>
                     </div>
-                </div>
-                <div class="row border rounded">
-                    <div class="text-left">
-                        <h3>Column 1</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-                    </div>
-                </div>
-
+                    <?php
+                }
+                ?>
             </div>
         </div>
     </div>
