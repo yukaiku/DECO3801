@@ -12,6 +12,7 @@ html, body {
     font-size: .875rem;
     height: 100%;
     font-family: 'Armata', sans-serif;
+    width: 100%;
 }
 
 .btn-all{
@@ -173,6 +174,7 @@ html, body {
     border-bottom: solid;
     border-bottom-color: #91889A;
     border-bottom-width: thin;
+    text-transform: uppercase;
 }
 
 .active, .collapsible:hover {

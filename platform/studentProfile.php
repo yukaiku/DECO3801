@@ -36,7 +36,7 @@ $studentInfo = getByIdStudent($studentId);
         <?php
         include_once("sideBar.php");
         ?>
-        <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        <div role="main" class=" main col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="row">
                 <div class="col-lg-3">
                     <img width="150" height="150" src="img/<?=$studentInfo['profileImage'];?>"/>
