@@ -4,3 +4,4 @@
 
 <!-- Custom styles for this template -->
 <link href="css/style.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Armata&display=swap" rel="stylesheet">

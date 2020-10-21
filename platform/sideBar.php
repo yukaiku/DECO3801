@@ -2,7 +2,7 @@
 include_once "includes/dbGame.php";
 $games = getAllGame('subject');
 ?>
-<nav class="col-md-2 d-none d-md-block bg-light ">
+<nav class="col-md-2 d-none d-md-block" style="background-color: #96DFD8; padding: 0px">
     <div class="sidebar-sticky">
         <ul>
             <h2>Hi <?= $user['firstname']; ?></h2>
@@ -23,9 +23,10 @@ $games = getAllGame('subject');
             if($rowDetails['subject'] != $subject){
                 $subject = $rowDetails['subject'];
                 echo "<button class='collapsible'>{$rowDetails['subject']}</button>";
+                //echo "<div class='breakline'></div>";
             }
-            echo '<div class="content" style ="background-color: darkgrey;">';
-            echo "<a href='gameInfo.php?gameId={$rowDetails['id']}'>{$rowDetails['name']}</a>";
+            echo '<div class="content" style ="background-color: #D55464;">';
+            echo "<a href='gameInfo.php?gameId={$rowDetails['id']}' class='btn' style='color: white'>{$rowDetails['name']}</a>";
             echo '</div>';
 
 

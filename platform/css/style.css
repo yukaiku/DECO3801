@@ -1,9 +1,4 @@
-html,
-body {
-    height: 100%;
-}
-
-body {
+html, body {
     display: -ms-flexbox;
     display: -webkit-box;
     display: flex;
@@ -13,12 +8,36 @@ body {
     align-items: center;
     -webkit-box-pack: center;
     justify-content: center;
-    padding-top: 40px;
-    padding-bottom: 40px;
     background-color: #effffd;
+    font-size: .875rem;
+    height: 100%;
+    font-family: 'Armata', sans-serif;
+}
+
+.btn-all{
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    background-color: #D55464;
+    color: white;
+    text-align: center;
+}
+
+.main{
+    padding: 1% 0 1% 0;
 }
 
 
+/*Sign In*/
 .form-signin {
     width: 100%;
     max-width: 330px;
@@ -55,11 +74,6 @@ body {
  * Teacher
  */
 
-body {
-    font-size: .875rem;
-}
-
-
 #searchbar-row{
     padding-top: 5%;
     padding-bottom: 5%;
@@ -67,7 +81,7 @@ body {
 
 .bottom-navbar{
     padding-top: 5%;
-    bottom: 0;
+    bottom: 10px;
     width: 100%;
     position: absolute;
     text-align: center;
@@ -102,8 +116,8 @@ body {
     position: -webkit-sticky;
     position: sticky;
     top: 48px; /* Height of navbar */
-    height: calc(100vh - 48px);
-    padding-top: .5rem;
+    height: 100vh;
+    padding-top: 1rem;
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 }
@@ -133,6 +147,7 @@ body {
 }
 
 
+
 /*
  * Utilities
  */
@@ -146,7 +161,7 @@ body {
  * Student
  */
 .collapsible {
-    background-color: #777;
+    background-color: #62C7BE;
     color: white;
     cursor: pointer;
     padding: 18px;
@@ -155,10 +170,13 @@ body {
     text-align: left;
     outline: none;
     font-size: 15px;
+    border-bottom: solid;
+    border-bottom-color: #91889A;
+    border-bottom-width: thin;
 }
 
 .active, .collapsible:hover {
-    background-color: #555;
+    background-color: #489B94;
 }
 
 .collapsible:after {

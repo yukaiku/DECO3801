@@ -35,14 +35,12 @@ if(isset($_COOKIE["student"]) && $_COOKIE['student'] != "") {
 
     <title>Signin</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet">
+    <?php
+    include 'css.php';
+    ?>
 </head>
 
-<body class="text-center" style="background-color: #effffd">
+<body class="text-center" >
 <form class="form-signin" action="loginHandler.php" method="post">
     <img class="mb-4" src="img/logo.png" alt="" width="300" height="200">
     <!--    <h1 class="h3 mb-3 font-weight-normal">CatsEG</h1>-->
@@ -62,7 +60,7 @@ if(isset($_COOKIE["student"]) && $_COOKIE['student'] != "") {
 
         </label>
     </div>
-    <button style="background-color: #D55464; color: #ffffff" class="btn btn-lg btn-block" type="submit">Sign in</button>
+    <button class="btn-all btn-lg btn-block" type="submit">SIGN IN</button>
 </form>
 <script type="text/javascript">
     <?php
