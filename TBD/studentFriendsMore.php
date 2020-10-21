@@ -27,7 +27,7 @@ include_once "includes/checkLoginStatusForBoth.php";
     <?php
     include_once("sideBar.php");
     ?>
-        <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        <div role="main" class="main col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="row">
                 <b style="float:left;width:80%"><h4>Friends</h4></b>
                 <button class="onlineButton" style="float:right; width:auto;font-size: 15px;" class="btn btn-outline-dark" id="onlineButton">Chat (1 online)</button>
