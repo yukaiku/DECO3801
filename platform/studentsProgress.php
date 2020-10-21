@@ -2,7 +2,6 @@
 include_once 'includes/checkLoginStatusForBoth.php';
 include_once 'includes/dbGame.php';
 include_once 'includes/dbTeacher.php';
-include_once 'includes/dbWhoLostRoger.php';
 $gameId = isset($_GET['gameId']) ? $_GET['gameId'] : "1";
 $class = isset($_GET['class']) ? $_GET['class'] : "1";
 $grade = isset($_GET['grade']) ? $_GET['grade'] : "A";
@@ -11,15 +10,17 @@ if($gameInfo == ""){ //if id returns blank, load game 1
     $gameInfo = getByIdGame(1);
     $gameId = 1;
 }
-if($gameId == 1){
+$studentRecords = [];
+if($gameId == 1){ //one new if for each game id
     include_once 'includes/dbWhoLostRoger.php';
+    $studentRecords = getHighScoreOfEachStudentByClassAndGrade($user['school'], $class, $grade);
 }
 $gameName = $gameInfo['name'];
 $gameSubject = $gameInfo['subject'];
 $gameDescription = $gameInfo['description'];
 $gameGrade = $gameInfo['grade'];
 $gameGenre = $gameInfo['genre'];
-$studentRecords = getHighScoreOfEachStudentByClassAndGrade($user['school'], $class, $grade);
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -57,6 +58,7 @@ $studentRecords = getHighScoreOfEachStudentByClassAndGrade($user['school'], $cla
                         <th>first Name</th>
                         <th>Score</th>
                         <th>Rank</th>
+                        <th>View</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -78,6 +80,9 @@ $studentRecords = getHighScoreOfEachStudentByClassAndGrade($user['school'], $cla
                         echo "<td>";
                         echo $rank;
                         echo "</td>";
+                        echo "<td>";
+                        echo "<a href='studentIndividualProgress.php?studentId=" . $record['studentid'] . "&grade={$grade}&class={$class}&gameId={$gameId}'>View</a>";
+                        echo "</td>";
 
                         echo "</tr>";
                         $rank +=1;
@@ -86,11 +91,11 @@ $studentRecords = getHighScoreOfEachStudentByClassAndGrade($user['school'], $cla
                     </tbody>
                 </table>
                 <div style="text-align: center">
-                    <a class="btn btn-primary mb-2" style="text-align: center" href="studentsOverallProgress.php?grade=<?=$grade?>&class=<?=$class?>">Overall Progress</a>
+                    <a class="btn btn-primary mb-2" style="text-align: center" href="studentsOverallProgress.php?grade=<?=$grade?>&class=<?=$class?>&gameId=<?=$gameId?>">Overall Progress</a>
                 </div>
             </div>
             <div id="mainFooter" style="bottom:0; position: fixed;">
-                <a class="btn btn-primary mb-2" style="text-align: center" href="teacherMain.php">Back</a>
+                <a class="btn btn-primary mb-2" style="text-align: center" href="classesProgress.php?gameId=<?=$gameId?>">Back</a>
             </div>
         </div>
     </div>

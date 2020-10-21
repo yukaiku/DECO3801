@@ -30,12 +30,12 @@ function getAllFriendship($orderBy = "") {
 }
 
 function getByUserIdFriendship($id = 0) { //get all the rows where record id = current id
-    $result_array = getFriendshipBySql("select * from {$GLOBALS['table_student']} where id in (select f.friend from {$GLOBALS['table_friend']} f where f.user = {$id} and f.relationship = 0) or id in (select f.user from {$GLOBALS['table_friend']} f where f.friend = {$id} and f.relationship = 0) ");
+    $result_array = getAnnouncementsBySql("select * from {$GLOBALS['table_student']} where id in (select f.friend from {$GLOBALS['table_friend']} f where f.user = {$id} and f.relationship = 0) or id in (select f.user from {$GLOBALS['table_friend']} f where f.friend = {$id} and f.relationship = 0) ");
     return $result_array;
 }
 
 function getStudentTeacher($id = 0) { //get all the rows where record id = current id
-    $result_array = getFriendshipBySql("select * from {$GLOBALS['table_teacher']} where id in (select f.friend from {$GLOBALS['table_friend']} f where f.user = {$id} and f.relationship = 1)");
+    $result_array = getAnnouncementsBySql("select * from {$GLOBALS['table_teacher']} where id in (select f.friend from {$GLOBALS['table_friend']} f where f.user = {$id} and f.relationship = 1)");
     return $result_array;
 }
 

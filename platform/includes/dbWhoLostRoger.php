@@ -93,22 +93,31 @@ function getProgressByClass($school = "") {
     return $result_array;
 }
 
-function getHighScoreOfEachPlayer(){
+function getHighScoreOfEachPlayer(){ //Get hiscore of each player per level
     $sql = "SELECT studentid, MAX(score) AS hiscore, level, nounsClicked, dateTime FROM who_lost_roger GROUP BY studentid, level ORDER BY hiscore DESC";
     return $sql;
 }
 
-function getHighScoreOfEachStudentByClassAndGrade($school = "", $class = "", $grade = "", $orderBy = "", $orderByType = "") {
+function getLeaderboard(){
+    $highScoreOfEachPlayerSql = getHighScoreOfEachPlayer();
+    $sql = "select sp.studentid, sum(sp.hiscore) as hiscore, s.username, s.firstname, s.lastname from ({$highScoreOfEachPlayerSql}) sp, student s where s.id = sp.studentid group by sp.studentid order by hiscore desc";
+    $result_array = getRogerBySql($sql);
+    return $result_array;
+}
+
+
+function getHighScoreOfEachStudentByClassAndGrade($school = "", $class = "", $grade = "", $orderBy = "", $orderByType = "", $studentId = ""){
     $whereBySchool = strlen($class) > 0 ? " AND s.school = {$school}" : "";
     $whereByClass = strlen($class) > 0 ? " AND s.class = '{$class}' " : "";
     $whereByGrade = strlen($grade) > 0 ? " AND s.grade = {$grade} " : "";
+    $whereByStudentId = strlen($studentId) > 0 ? " AND s.id = {$studentId} " : "";
     $orderBySql = " order by hiscore desc ";
     if($orderBy != "" and $orderByType != "" ){
         $orderBySql = "order by ". $orderBy . " " . $orderByType . " ";
     }
     $whereSql = "Where sp.studentid = s.id ";
     if($whereBySchool != ""|| $whereByGrade != "" || $whereByClass != ""){
-        $whereSql .= " " . $whereByGrade . $whereByClass . $whereBySchool;
+        $whereSql .= " " . $whereByGrade . $whereByClass . $whereBySchool . $whereByStudentId . " ";
     }
     $highScoreOfEachPlayerSql = getHighScoreOfEachPlayer();
     $sql = "select sp.studentid, sum(sp.hiscore) as 'sumScore', max(sp.level) as 'maxLevel', s.username, s.firstname, s.lastname from ({$highScoreOfEachPlayerSql}) as sp, student s {$whereSql} group by sp.studentid {$orderBySql}";
@@ -116,35 +125,37 @@ function getHighScoreOfEachStudentByClassAndGrade($school = "", $class = "", $gr
     return $result_array;
 }
 
-function playCount($school = "", $class = "", $grade = "", $maxLevel = "", $lowestLevel = "") {
-    $whereBySchool = strlen($class) > 0 ? "  s.school = {$school}" : "";
-    $whereByClass = strlen($class) > 0 ? "  s.class = '{$class}' " : "";
-    $whereByGrade = strlen($grade) > 0 ? "  s.grade = {$grade} " : "";
+function playCount($school = "", $class = "", $grade = "", $maxLevel = "", $lowestLevel = "", $studentId = "") {
+    $whereBySchool = strlen($class) > 0 ? " AND s.school = {$school}" : "";
+    $whereByClass = strlen($class) > 0 ? " AND s.class = '{$class}' " : "";
+    $whereByGrade = strlen($grade) > 0 ? " s.grade = {$grade} " : "";
     $whereMaxLevel = strlen($maxLevel) > 0 ? " AND sp.level <= {$maxLevel} " : "";
     $whereLowestLevel = strlen($lowestLevel) > 0 ? " AND sp.level >= {$lowestLevel} " : "";
+    $whereByStudentId = strlen($studentId) > 0 ? " AND sp.studentid = {$studentId} " : "";
     $whereSql = "";
     if($whereBySchool != "" && $whereByGrade != "" && $whereByClass != ""){
-        $whereSql .= " WHERE " . $whereByGrade . " AND " .  $whereByClass . " AND " . $whereBySchool . " ";
+        $whereSql .= " Where " . $whereByGrade . $whereByClass . $whereBySchool . " ";
     }
     $sql = "select MONTHNAME(sp.dateTime) as month, count(*) as playCount
                 from who_lost_roger sp
                 where sp.dateTime >= DATE_SUB(NOW(),INTERVAL 1 YEAR) AND
                 studentid in (select id from student s {$whereSql} ) 
-                {$whereLowestLevel} {$whereMaxLevel} 
+                {$whereLowestLevel} {$whereMaxLevel} {$whereByStudentId}
                 group by MONTH(dateTime) ";
     $result_array = getRogerBySql($sql);
     return $result_array;
 }
 
-function getLearningOutComes($school = "", $class = "", $grade = "", $maxLevel = "", $lowestLevel = ""){
+function getLearningOutComes($school = "", $class = "", $grade = "", $maxLevel = "", $lowestLevel = "", $studentId = ""){
     $whereBySchool = strlen($class) > 0 ? "  s.school = {$school}" : "";
     $whereByClass = strlen($class) > 0 ? "  s.class = '{$class}' " : "";
     $whereByGrade = strlen($grade) > 0 ? "  s.grade = {$grade} " : "";
     $whereMaxLevel = strlen($maxLevel) > 0 ? " AND sp.level <= {$maxLevel} " : "";
     $whereLowestLevel = strlen($lowestLevel) > 0 ? " AND sp.level >= {$lowestLevel} " : "";
+    $whereByStudentId = strlen($studentId) > 0 ? " AND sp.studentid = {$studentId} " : "";
     $whereSql = "";
     if($whereBySchool != "" && $whereByGrade != "" && $whereByClass != ""){
-        $whereSql .= " WHERE " . $whereByGrade . " AND " .  $whereByClass . " AND " . $whereBySchool . " ";
+        $whereSql .= " WHERE " . $whereByGrade . " AND " .  $whereByClass . " AND " . $whereBySchool . $whereByStudentId . " ";
     }
     $highScoreOfEachPlayerSql = getHighScoreOfEachPlayer();
     $sql = "SELECT nounsClicked, level from ({$highScoreOfEachPlayerSql}) sp where sp.dateTime >= DATE_SUB(NOW(),INTERVAL 1 YEAR) AND studentid in (select id from student s {$whereSql} ) {$whereLowestLevel} {$whereMaxLevel} order by level asc";

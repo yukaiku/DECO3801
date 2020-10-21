@@ -2,9 +2,14 @@
 include_once 'includes/checkLoginStatusForBoth.php';
 include_once 'includes/dbGame.php';
 include_once 'includes/dbTeacher.php';
+include_once 'includes/dbStudent.php';
 $gameId = isset($_GET['gameId']) ? $_GET['gameId'] : "1";
 $class = isset($_GET['class']) ? $_GET['class'] : "1";
 $grade = isset($_GET['grade']) ? $_GET['grade'] : "A";
+$studentId = isset($_GET['studentId']) ? $_GET['studentId'] : 0;
+if($studentId == 0 || sizeof(getByIdStudent($studentId)) == 0){
+    header("Location: studentsProgress.php?class={$class}&grade={$grade}&gameId={$gameId}"); // redirect to the login page.
+}
 $gameInfo = getByIdGame($gameId);
 if($gameInfo == ""){ //if id returns blank, load game 1
     $gameInfo = getByIdGame(1);
@@ -18,7 +23,6 @@ $gameSubject = $gameInfo['subject'];
 $gameDescription = $gameInfo['description'];
 $gameGrade = $gameInfo['grade'];
 $gameGenre = $gameInfo['genre'];
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -99,9 +103,9 @@ $gameGenre = $gameInfo['genre'];
                     </div>
                     <?PHP
                     if(function_exists ( "playCount" )){
-                        $concreteArr = playCount($user['school'], $class, $grade, 5,1);
-                        $collectiveArr = playCount($user['school'], $class, $grade, 10,6);
-                        $countableArr = playCount($user['school'], $class, $grade, 15,11);
+                        $concreteArr = playCount($user['school'], $class, $grade, 5,1, $studentId);
+                        $collectiveArr = playCount($user['school'], $class, $grade, 10,6, $studentId);
+                        $countableArr = playCount($user['school'], $class, $grade, 15,11, $studentId);
                     }
                     ?>
                     <div id="concrete" class="tabcontent overflow-auto" style="display: block">
@@ -148,7 +152,7 @@ $gameGenre = $gameInfo['genre'];
                         </div>
                     </div>
                     <div style="text-align: center; padding-top: 5%">
-                        <a class="btn btn-primary mb-2" style="text-align: center" href="studentsProgress.php?grade=<?=$grade?>&class=<?=$class?>&gameId=<?=$gameId?>">Overall Progress</a>
+                        <a class="btn btn-primary mb-2" style="text-align: center" href="studentsProgress.php?grade=<?=$grade?>&class=<?=$class?>&gameId=<?=$gameId?>">Back</a>
                     </div>
                 </container>
 
@@ -229,9 +233,9 @@ $gameGenre = $gameInfo['genre'];
             var lowestLevel;
             if(activeTab == "concrete"){
                 <?php
-                    if(function_exists('getLearningOutComes')){
-                        $learningOutcomes = getLearningOutComes($user['school'], $class, $grade, 5,1);
-                    }
+                if(function_exists('getLearningOutComes')){
+                    $learningOutcomes = getLearningOutComes($user['school'], $class, $grade, 5,1, $studentId);
+                }
                 ?>
             }else if (activeTab == "collective"){
                 maxLevel = 10;
@@ -242,37 +246,37 @@ $gameGenre = $gameInfo['genre'];
 
             }
             <?php
-                if(function_exists('getLearningOutComes')){
-                    $levelsArr = [];
-                    $level = 1;
-                    $aNoun = [];
-                    $labelNames = [];
-                    foreach($learningOutcomes as $learningOutcome){
+            if(function_exists('getLearningOutComes')){
+                $levelsArr = [];
+                $level = 1;
+                $aNoun = [];
+                $labelNames = [];
+                foreach($learningOutcomes as $learningOutcome){
 
-                        //print and reset nouns every level
-                        if($level != $learningOutcome['level']){
-                            $nounCount = (json_encode(array_values($aNoun)));
-                            echo " drawHorizontalGraph(". json_encode($labelNames) . "," . $nounCount . "," . $level . "); ";
-                            $level = $learningOutcome['level'];
-                            $aNoun = [];
-                            $labelNames = [];
-                        }
-                        $nounsClicked = explode("|",$learningOutcome['nounsClicked']);
-                        foreach ($nounsClicked as $key => $value) {
-                            if(!array_key_exists($value, $aNoun)){
-                                $aNoun[$value] = 1;
-                                array_push($labelNames,$value);
-                            }else{
-                                $aNoun[$value]++;
-                            }
-                        }
-                        //last level and row reached
-                        if( !next( $learningOutcomes ) ) {
-                            $nounCount = (json_encode(array_values($aNoun)));
-                            echo " drawHorizontalGraph(". json_encode($labelNames) . "," . $nounCount . "," . $level . "); ";
+                    //print and reset nouns every level
+                    if($level != $learningOutcome['level']){
+                        $nounCount = (json_encode(array_values($aNoun)));
+                        echo " drawHorizontalGraph(". json_encode($labelNames) . "," . $nounCount . "," . $level . "); ";
+                        $level = $learningOutcome['level'];
+                        $aNoun = [];
+                        $labelNames = [];
+                    }
+                    $nounsClicked = explode("|",$learningOutcome['nounsClicked']);
+                    foreach ($nounsClicked as $key => $value) {
+                        if(!array_key_exists($value, $aNoun)){
+                            $aNoun[$value] = 1;
+                            array_push($labelNames,$value);
+                        }else{
+                            $aNoun[$value]++;
                         }
                     }
+                    //last level and row reached
+                    if( !next( $learningOutcomes ) ) {
+                        $nounCount = (json_encode(array_values($aNoun)));
+                        echo " drawHorizontalGraph(". json_encode($labelNames) . "," . $nounCount . "," . $level . "); ";
+                    }
                 }
+            }
             ?>
         }
 
