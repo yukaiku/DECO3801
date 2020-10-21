@@ -41,7 +41,7 @@ $studentInfo = getByIdStudent($studentId);
                 <div class="col-lg-3">
                     <img width="150" height="150" src="img/<?=$studentInfo['profileImage'];?>"/>
                     <div class="form-row">
-                        <button style="font-size: 12px;" class="btn btn-outline-dark updateDetails" data-toggle="modal" data-target="#updateDetailsModal">Update Details</button>
+                        <button style="font-size: 12px; position: relative; left: 7%;" class="btn-all" data-toggle="modal" data-target="#updateDetailsModal">Update Details</button>
                         <?php
                         if($status == "teacher"){
                             echo '<button style="font-size: 12px;" class="btn btn-outline-dark resetPassword" data-toggle="modal" data-target="#resetStudentPasswordModal">Reset Password</button><br/>';
@@ -59,7 +59,7 @@ $studentInfo = getByIdStudent($studentId);
                         <?= $studentInfo['firstname'].' '.$studentInfo['lastname']; ?><br/>
                     </div>
                     <div class="form-row">
-                        <b>Nickname</b>
+                        <b>Nickname</b><br/>
                         <?= $studentInfo['nickname']; ?><br/>
                     </div>
                     <?php

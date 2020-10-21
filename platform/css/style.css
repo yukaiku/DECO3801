@@ -31,6 +31,7 @@ html, body {
     background-color: #D55464;
     color: white;
     text-align: center;
+    text-transform: uppercase;
 }
 
 .main{

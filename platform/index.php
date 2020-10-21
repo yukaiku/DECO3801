@@ -60,7 +60,7 @@ if(isset($_COOKIE["student"]) && $_COOKIE['student'] != "") {
 
         </label>
     </div>
-    <button class="btn-all btn-lg btn-block" type="submit">SIGN IN</button>
+    <button class="btn-all btn-lg btn-block" type="submit">Sign In</button>
 </form>
 <script type="text/javascript">
     <?php
