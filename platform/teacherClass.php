@@ -32,7 +32,7 @@ if($grade == "" || $class == "" || $school == ""){
         <?php
         include_once("sideBar.php");
         ?>
-        <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        <div role="main" class="main col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="row" id="schoolName" style="position: absolute; top: 75px">
                 <?php echo "<h1>Class {$grade}{$class} </h1>"?>
             </div>

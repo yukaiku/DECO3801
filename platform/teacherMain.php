@@ -28,7 +28,7 @@ $schoolInfo = getByIdSchool($user['school']);
         include_once("sideBar.php");
         ?>
 
-        <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        <div role="main" class="main col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="row" style="position: absolute; top: 25px">
                 <?php echo "<h1>{$schoolInfo['name']}</h1>" ?>
             </div>
