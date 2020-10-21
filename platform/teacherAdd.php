@@ -75,10 +75,10 @@ $schoolInfo = getByIdSchool($user['school']);
         include_once("sideBar.php");
         ?>
         <div role="main" class="main col-md-9 ml-sm-auto col-lg-10 px-4">
-            <div class="row" style="position: absolute; top: 50px">
+            <div class="row" >
                 <?php echo "<h1>{$schoolInfo['name']}, {$grade}{$class}</h1>" ?>
             </div>
-            <div clas="form-row" style="position: absolute; top: 150px; width: 80%; text-align: center;">
+            <div clas="form-row" style="margin-top: 5%">
                 <form action="uploadClassExcelHandler.php" method="post"
                       name="frmExcelImport" id="frmExcelImport" enctype="multipart/form-data">
                     <div>
@@ -89,13 +89,13 @@ $schoolInfo = getByIdSchool($user['school']);
                         <input type="file" name="file"
                                                 id="file" accept=".csv">
                         <button type="submit" id="submit" name="import"
-                                class="btn btn-success btn-submit">Import</button>
+                                class="btn-all">Import</button>
 
                     </div>
 
                 </form>
             </div>
-            <div class="table-responsive" style="position: absolute; top: 200px; max-height: 30%; width: 80%;">
+            <div class="table-responsive" style="position: absolute; margin-top: 2%; width: 80%;">
                 <table class="table table-striped table-sm">
                     <thead>
                     <tr>
@@ -111,7 +111,7 @@ $schoolInfo = getByIdSchool($user['school']);
                     </tbody>
                 </table>
             </div>
-            <form style="position: absolute; top: 500px; width: 80%;">
+            <form style="position: absolute; top: 75%; width: 80%;">
                 <div class="form-row row">
                     <div class="col-lg-6">
                         Username:
@@ -130,11 +130,11 @@ $schoolInfo = getByIdSchool($user['school']);
                 </div>
                 <hr>
             </form>
-            <div clas="form-row" style="position: absolute; top: 625px; width: 80%; text-align: center;">
-                <button  id="addStudentButton" class="btn btn-primary mb-2" style="text-align: center">Add Student</button>
+            <div clas="form-row" style="position: absolute; bottom: 1%; width: 80%; text-align: center;">
+                <button  id="addStudentButton" class="btn-all">Add Student</button>
             </div>
             <div id="mainFooter" style="bottom:0; position: fixed;">
-                <a class="btn btn-primary mb-2" style="text-align: center" href="teacherMain.php">Back</a>
+                <a class="btn-all mb-2" href="teacherMain.php">Back</a>
             </div>
         </div>
 
