@@ -7,12 +7,12 @@ $games = getAllGame('subject');
         <ul>
             <h2>Hi <?= $user['firstname']; ?></h2>
         </ul>
-        <ul style="background-color: grey; padding-top: 10%; padding-bottom: 10%; margin-bottom: 0">
+        <ul style="background-color: #22605B; padding-top: 10%; padding-bottom: 10%; margin-bottom: 0; font-size: 15px;">
             <a href="announcements.php" style="color: white !important;">Announcements</a>
         </ul>
         <?php
         if($status == "teacher"){
-            echo '<ul style="background-color: grey; padding-top: 10%; padding-bottom: 10%; margin-bottom: 0">
+            echo '<ul style="background-color: #22605B; padding-top: 10%; padding-bottom: 10%; margin-bottom: 0; font-size: 15px;">
                         <a href="teacherMain.php" style="color:white !important;">DashBoard</a>
                   </ul>';
         }
@@ -26,7 +26,7 @@ $games = getAllGame('subject');
                 echo "<button class='collapsible'>{$rowDetails['subject']}</button>";
                 //echo "<div class='breakline'></div>";
             }
-            echo '<div class="content" style ="background-color: #D55464;">';
+            echo '<div class="content">';
             echo "<a href='gameInfo.php?gameId={$rowDetails['id']}' class='btn' style='color: white'>{$rowDetails['name']}</a>";
             echo '</div>';
 

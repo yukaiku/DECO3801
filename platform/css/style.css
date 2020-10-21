@@ -161,10 +161,10 @@ html, body {
  * Student
  */
 .collapsible {
-    background-color: #62C7BE;
+    background-color: #48BEB5;
     color: white;
     cursor: pointer;
-    padding: 18px;
+    padding: 10%;
     width: 100%;
     border: none;
     text-align: left;
@@ -176,7 +176,7 @@ html, body {
 }
 
 .active, .collapsible:hover {
-    background-color: #489B94;
+    background-color: #1D9B91;
 }
 
 .collapsible:after {
@@ -196,7 +196,7 @@ html, body {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
-    background-color: #f1f1f1;
+    background-color: #D27580;
 }
 
 #sub-heading{
