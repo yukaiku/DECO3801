@@ -26,7 +26,7 @@ $announcementArr = getAnnouncementsBySql($announcementSql);
         <?php
         include_once("sideBar.php");
         ?>
-        <div class="col-lg-10 border rounded">
+        <div role="main" class="main col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="jumbotron text-left">
                 <div class="row">
                     <h1 class="col-lg-10">Announcements</h1>

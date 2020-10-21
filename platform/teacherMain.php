@@ -38,14 +38,13 @@ $schoolInfo = getByIdSchool($user['school']);
                 </div>
                 <div class="col-lg-3"></div>
                 <div class="col-lg-3">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addClassModal">Add Class</button>
-<!--                            <a type="button" class="btn btn-primary" href="teacherAdd.php">Add Class</a>-->
+                            <button type="button" class="btn-all" data-toggle="modal" data-target="#addClassModal">Add Class</button>
                 </div>
             </div>
 
             <div class = "row" style="position: absolute; top: 200px; width: 80%">
                 <div class="col-lg-3">
-                    <a type="button" class="btn btn-danger" id="deleteClassButton">Delete Class</a>
+                    <a type="button" class="btn-all" id="deleteClassButton">Delete Class</a>
                 </div>
             </div>
             <div class="table-responsive" style="position: absolute; max-height: 30%; top: 250px; width: 80%">
@@ -110,8 +109,8 @@ $schoolInfo = getByIdSchool($user['school']);
                         </select>
                     </div>
                     <br>
-                    <button type="submit" class="btn btn-primary">Add</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn-all">Add</button>
+                    <button type="button" class="btn-all" data-dismiss="modal">Close</button>
                 </form>
             </div>
         </div>
