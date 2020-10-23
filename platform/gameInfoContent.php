@@ -41,7 +41,6 @@ $_SESSION['game_id'] = $gameId;
     }elseif($status == "student"){
         echo '<a class="btn-all mb-2" href="' . $wholostroger_url . '">PLAY</a><br/>';
         echo '<a class="btn-all mb-2" href="studentLeaderboard.php?gameId='.$gameId.'">LEADERBOARD</a><br/>';
-        echo '<a class="btn-all mb-2" href="gameInfo.php?gameId='.$gameId.'">ACHIEVEMENTS</a>';
     }
     ?>
 </div>

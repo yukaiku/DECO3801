@@ -34,7 +34,7 @@ $schoolInfo = getByIdSchool($user['school']);
             </div>
             <div class="row" id="searchbar-row" style="position: absolute; top: 50px; width: 80%">
                 <div class="col-lg-6">
-                    <input id='searchClass' name='search_name' class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+                    <input id='searchClass' name='search_name' style= "background-color: #BCE8E3" class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
                 </div>
                 <div class="col-lg-3"></div>
                 <div class="col-lg-3">
