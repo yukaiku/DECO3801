@@ -7,14 +7,13 @@ $games = getAllGame('subject');
         <ul>
             <h2>Hi <?= $user['firstname']; ?></h2>
         </ul>
-        <ul style="background-color: #22605B; padding-top: 10%; padding-bottom: 10%; margin-bottom: 0; font-size: 15px;">
-            <a href="announcements.php" style="color: white !important;">Announcements</a>
+            <a href="announcements.php" id="sidebar-button"><ul class="sidebar-button-ul">Announcements</ul></a>
         </ul>
         <?php
         if($status == "teacher"){
-            echo '<ul style="background-color: #22605B; padding-top: 10%; padding-bottom: 10%; margin-bottom: 0; font-size: 15px;">
-                        <a href="teacherMain.php" style="color:white !important;">DashBoard</a>
-                  </ul>';
+            echo '<a href="teacherMain.php" id="sidebar-button"><ul class="sidebar-button-ul">
+                        DashBoard
+                        </ul></a>';
         }
         ?>
         <?php
@@ -26,8 +25,8 @@ $games = getAllGame('subject');
                 echo "<button class='collapsible'>{$rowDetails['subject']}</button>";
                 //echo "<div class='breakline'></div>";
             }
-            echo '<div class="content">';
-            echo "<a href='gameInfo.php?gameId={$rowDetails['id']}' class='btn' style='color: white'>{$rowDetails['name']}</a>";
+            echo '<div class="content" onclick="selected(this)">';
+            echo "<a href='gameInfo.php?gameId={$rowDetails['id']}' class='btn contentbtn'>{$rowDetails['name']}</a>";
             echo '</div>';
 
 
@@ -60,3 +59,21 @@ $games = getAllGame('subject');
         </ul>
     </div>
 </nav>
+
+<script>
+    var divItems = document.getElementsByClassName("content");
+
+    //if "content" is clicked/selected
+    function selected(item) {
+        this.clear();
+        item.style.backgroundColor = '#d55464';
+    }
+
+    //if "content" is not clicked/selected, clearup
+    function clear() {
+        for(var i=0; i < divItems.length; i++) {
+            var item = divItems[i];
+            item.style.backgroundColor = '#96DFD8';
+        }
+    }
+</script>
