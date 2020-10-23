@@ -9,8 +9,8 @@
 
 
                     <div class="form-group">
-                        <input type="hidden" name="id" value="<?=$studentInfo['id'];?>">
-                        <input type="hidden" name="statustype" value="<?=$status?>">
+                        <input type="hidden" style="background-color: #BCE8E3" name="id" value="<?=$studentInfo['id'];?>">
+                        <input type="hidden" style="background-color: #BCE8E3" name="statustype" value="<?=$status?>">
                     </div>
                     <div class="form-group">
 
