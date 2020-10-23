@@ -1,8 +1,8 @@
 <div class="modal fade" id="updateDetailsModal" role="dialog">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content"  style="background-color: #effffd">
             <form class ="form-horizontal" action="updateStudentHandler.php" method="post" enctype="multipart/form-data">
-                <div class="modal-header">
+                <div class="modal-header" style="background-color: #48BEB5; color: white">
                     <h4>Update Details</h4>
                 </div>
                 <div class="modal-body">
@@ -19,7 +19,7 @@
                         </label>
                         <div class="col-lg-10">
 
-                            <input type="text" class="form-control" placeholder="nick name" name="nickname" value="<?= $studentInfo['nickname']; ?>">
+                            <input type="text" class="form-control" style="background-color: #BCE8E3" placeholder="nick name" name="nickname" value="<?= $studentInfo['nickname']; ?>">
 
                         </div>
 
@@ -31,7 +31,7 @@
                         </label>
                         <div class="col-lg-10">
 
-                            <input type="text" class="form-control" placeholder="password" name="pwd" value="<?= $studentInfo['password']; ?>">
+                            <input type="text" class="form-control" style="background-color: #BCE8E3" placeholder="password" name="pwd" value="<?= $studentInfo['password']; ?>">
 
                         </div>
 
@@ -52,8 +52,8 @@
 
                 </div>
                 <div class="modal-footer">
-                    <a class="btn btn-default" data-dismiss ="modal">Close</a>
-                    <button class="btn btn-primary" type="submit" name="update" value="Submit">Update</button>
+                    <a class="btn-all" data-dismiss ="modal">Close</a>
+                    <button class="btn-all" type="submit" name="update" value="Submit">Update</button>
                 </div>
             </form>
 

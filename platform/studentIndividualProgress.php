@@ -152,7 +152,7 @@ $gameGenre = $gameInfo['genre'];
                         </div>
                     </div>
                     <div style="text-align: center; padding-top: 5%">
-                        <a class="btn btn-primary mb-2" style="text-align: center" href="studentsProgress.php?grade=<?=$grade?>&class=<?=$class?>&gameId=<?=$gameId?>">Back</a>
+                        <a class="btn-all" href="studentsProgress.php?grade=<?=$grade?>&class=<?=$class?>&gameId=<?=$gameId?>">Back</a>
                     </div>
                 </container>
 

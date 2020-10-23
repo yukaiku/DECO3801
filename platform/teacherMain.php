@@ -29,7 +29,7 @@ $schoolInfo = getByIdSchool($user['school']);
         ?>
 
         <div role="main" class="main col-md-9 ml-sm-auto col-lg-10 px-4">
-            <div class="row" style="position: absolute; top: 25px">
+            <div class="row">
                 <?php echo "<h1>{$schoolInfo['name']}</h1>" ?>
             </div>
             <div class="row" id="searchbar-row" style="position: absolute; top: 50px; width: 80%">
