@@ -1,16 +1,16 @@
 <div class="modal fade" id="newAnnouncementModal" role="dialog">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" style="background-color: #effffd">
             <form id="addAnnouncementForm" class ="form-horizontal" action="modals/addAnnouncementHandler.php" method="post" enctype="multipart/form-data">
-                <div class="modal-header">
+                <div class="modal-header" style="background-color: #48BEB5; color: white">
                     <h4>Add Announcement</h4>
                 </div>
                 <div class="modal-body">
 
 
                     <div class="form-group">
-                        <input type="hidden" name="teacherId" value="<?=$user['id'];?>">
-                        <input type="hidden" name="status" value="0">
+                        <input type="hidden" style="background-color: #BCE8E3"  name="teacherId" value="<?=$user['id'];?>">
+                        <input type="hidden" style="background-color: #BCE8E3" name="status" value="0">
                     </div>
                     <div class="form-group">
 
@@ -19,7 +19,7 @@
                         </label>
                         <div class="col-lg-10">
 
-                            <input type="text" class="form-control" placeholder="Title" name="title" value="">
+                            <input type="text" style="background-color: #BCE8E3" class="form-control" placeholder="Title" name="title" value="">
 
                         </div>
 
@@ -31,7 +31,7 @@
                         </label>
                         <div class="col-lg-10">
 
-                            <textarea form="addAnnouncementForm" type="text" class="form-control" placeholder="Message" name="message" value=""></textarea>
+                            <textarea style="background-color: #BCE8E3" form="addAnnouncementForm" type="text" class="form-control" placeholder="Message" name="message" value=""></textarea>
 
                         </div>
 
@@ -39,8 +39,8 @@
 
                 </div>
                 <div class="modal-footer">
-                    <a class="btn btn-default" data-dismiss ="modal">Close</a>
-                    <button class="btn btn-primary" type="submit" name="submit" value="Submit">Enter</button>
+                    <a class="btn-all" data-dismiss ="modal">Close</a>
+                    <button class="btn-all" type="submit" name="submit" value="Submit">Enter</button>
                 </div>
             </form>
 
