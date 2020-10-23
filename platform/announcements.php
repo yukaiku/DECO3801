@@ -33,7 +33,7 @@ $announcementArr = getAnnouncementsBySql($announcementSql);
                     <?php
                     if($status == "teacher"){?>
                         <div class="col-lg-2">
-                            <button class="btn-primary border rounded" data-toggle="modal" data-target="#newAnnouncementModal">Add Announcements</button>
+                            <button class="btn-all" style="white-space: nowrap" data-toggle="modal" data-target="#newAnnouncementModal">Add Announcements</button>
                         </div>
                         <?php
                     }
@@ -64,7 +64,7 @@ $announcementArr = getAnnouncementsBySql($announcementSql);
                         <?php
                         if($status == "teacher"){?>
                             <div class="col-lg-2">
-                                <button class="btn-primary border rounded deleteAnnouncementButton" name="<?=$value['id']?>">Delete</button>
+                                <button class="btn-all deleteAnnouncementButton" name="<?=$value['id']?>">Delete</button>
                             </div>
                             <?php
                         }

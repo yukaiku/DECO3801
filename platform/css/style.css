@@ -15,6 +15,9 @@ html, body {
     width: 100%;
 }
 
+.sidebarbutton a {
+
+}
 .btn-all{
     display: inline-block;
     font-weight: 400;
@@ -219,4 +222,16 @@ html, body {
     float: left;
     width: 10%;
     height: auto;
+}
+
+
+/*Chatbox*/
+#chatListModal{
+    background-color: #effffd;
+    color: white;
+}
+
+.chatListModalBody{
+    height: 400px;
+    overflow-y: auto;
 }

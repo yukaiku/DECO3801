@@ -1965,7 +1965,7 @@ progress {
   font-weight: 400;
   line-height: 1.5;
   color: #495057;
-  background-color: #fff;
+  background-color: #BCE8E3;
   background-clip: padding-box;
   border: 1px solid #ced4da;
   -webkit-appearance: none;
@@ -1983,7 +1983,7 @@ progress {
 
 .form-control:focus {
   color: #495057;
-  background-color: #fff;
+  background-color: #BCE8E3;
   border-color: #8bbafe;
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);

@@ -39,9 +39,9 @@ $_SESSION['game_id'] = $gameId;
     if($status == "teacher"){
         echo '<a class="btn btn-primary mb-2" style="text-align: center" href="classesProgress.php?gameId='.$gameId.'">Student\'s Progress</a>';
     }elseif($status == "student"){
+
         echo '<a class="btn-all mb-2" href="' . $wholostroger_url . '">Play</a><br/>';
         echo '<a class="btn-all mb-2" href="studentLeaderboard.php?gameId='.$gameId.'">Leaderboard</a><br/>';
-        echo '<a class="btn-all mb-2" href="gameInfo.php?gameId='.$gameId.'">Achievements</a>';
     }
     ?>
 </div>
