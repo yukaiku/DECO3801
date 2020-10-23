@@ -67,7 +67,7 @@ $studentRecords = getLeaderboard();
                 </table>
             </div>
             <div id="mainFooter" style="bottom:0; position: fixed;">
-                <a class="btn btn-primary mb-2" style="text-align: center" href="javascript:history.back()">Back</a>
+                <a class="btn-all" href="javascript:history.back()">Back</a>
             </div>
         </div>
     </div>
