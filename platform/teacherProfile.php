@@ -42,7 +42,7 @@ $schoolInfo = getByIdSchool($user['school']);
                         <option>Invisible</option>
                     </select><br><br>
                 </div>
-                <button style="font-size: 12px;" class="btn btn-outline-dark updateDetails" data-toggle="modal" data-target="#updateDetailsModal">Update Details</button><br><br><br>
+                <button style="font-size: 12px;" class="btn-all updateDetails" data-toggle="modal" data-target="#updateDetailsModal">Update Details</button><br><br><br>
 
             </div>
 

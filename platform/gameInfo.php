@@ -11,7 +11,7 @@ $gameId = isset($_GET['gameId']) ? $_GET['gameId'] : "1";
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Game Name here</title>
+    <title>CatsEG</title>
     <?php
     include 'css.php';
     ?>

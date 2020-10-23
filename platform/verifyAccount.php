@@ -30,7 +30,7 @@ if(isset($_GET['error'])){
     <input type="hidden" name="username" value="<? echo $_GET['username'];?>" >
     <input type="hidden" name="status" value="0">
     <label for="inputPassword" class="sr-only">New Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="pwd" required>
+    <input type="password" style="background-color: #BCE8E3" id="inputPassword" class="form-control" placeholder="Password" name="pwd" required>
     <input type="hidden" value="<?echo $_GET['id'];?>" name="id"">
     <button class="btn btn-lg btn-primary btn-block" name= "update" type="submit">Verify</button>
 </form>

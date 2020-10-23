@@ -115,17 +115,17 @@ $schoolInfo = getByIdSchool($user['school']);
                 <div class="form-row row">
                     <div class="col-lg-6">
                         Username:
-                        <input type="text" class="text-input--underbar width-half" name="username" id="usernameInput" placeholder="Username" value="">
+                        <input type="text" style="background-color: #BCE8E3" class="text-input--underbar width-half" name="username" id="usernameInput" placeholder="Username" value="">
                     </div>
                 </div>
                 <div class="form-row row">
                     <div class="col-lg-6">
                         First Name:
-                        <input type="text" class="text-input--underbar width-half" name="firstName" id="firstnameInput" placeholder="First" value="">
+                        <input type="text" style="background-color: #BCE8E3" class="text-input--underbar width-half" name="firstName" id="firstnameInput" placeholder="First" value="">
                     </div>
                     <div class="col-lg-6">
                         Last Name:
-                        <input type="text" class="text-input--underbar width-half" name="lastName" id="lastnameInput" placeholder="Last" value="" style="border-width-left: 1px">
+                        <input type="text" style="background-color: #BCE8E3" class="text-input--underbar width-half" name="lastName" id="lastnameInput" placeholder="Last" value="" style="border-width-left: 1px">
                     </div>
                 </div>
                 <hr>

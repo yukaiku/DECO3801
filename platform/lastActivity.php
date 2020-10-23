@@ -5,14 +5,13 @@
 <!--ALL JS SCRIPTS -->
 <div id="chatListModal"></div> <!-- MODAL FOR CHATLIST -->
 <div id="chatBoxModal"></div> <!-- MODAL FOR CHATBOX -->
+<?php
+include 'css.php';
+?>
 <style type="text/css">
     /* CSS used here will be applied after bootstrap.css */
     .modal-dialog{
         overflow-y: initial !important
-    }
-    .chatListModalBody{
-        height: 400px;
-        overflow-y: auto;
     }
 </style>
 <script type="text/javascript">
@@ -22,7 +21,7 @@
 
         function makeChatDialogBox(to_user_id, to_user_name)
         {
-            var modal_content = '<div id="user_dialog_'+to_user_id+'" class="user_dialog" title="You have chat with '+to_user_name+'">';
+            var modal_content = '<div id="user_dialog_'+to_user_id+'" class="user_dialog" title="You havfe chat with '+to_user_name+'">';
             modal_content += '<div style="height:400px; border:1px solid #ccc; overflow-y: scroll; margin-bottom:24px; padding:16px;" class="chat_history" data-touserid="'+to_user_id+'" id="chat_history_'+to_user_id+'">';
             modal_content += '</div>';
             modal_content += '<div class="form-group">';
@@ -92,7 +91,7 @@
         {
             var modal_content = '<div id= "chatListContent" class="user_dialog">';
             modal_content += '<input class="form-control" id="searchName" name="searchName" type="text" placeholder="Search..">';
-            modal_content += ' <div class="" style="overflow-y: scroll; max-height:100%;  margin-top: 50px; margin-bottom:50px;" >';
+            modal_content += ' <div class="" style="max-height:100%;  margin-top: 50px; margin-bottom:50px;" >';
             modal_content += '<div class="chatListModalBody">';
             modal_content += '</div>';
             modal_content += '</div>';
@@ -139,7 +138,7 @@
             for(var i = 1; i <= onlineUsers.length; i++){
                 string += "<div class='row'>";
                 string += "<div class='col-lg-9' style='margin-top: 3px'>Name: " + onlineUsers[i-1].username + " </div>";
-                string += "<div class='col-lg-3'><button data-touserid='"+ onlineUsers[i-1].id + "' data-tousername='"+ onlineUsers[i-1].username + "' class='btn btn-outline-dark chatButton'>chat</button></div>";
+                string += "<div class='col-lg-3'><button data-touserid='"+ onlineUsers[i-1].id + "' data-tousername='"+ onlineUsers[i-1].username + "' class='btn-all'>chat</button></div>";
                 string += "</div><hr>";
             }
             string += '</div>';
@@ -156,7 +155,7 @@
             for(var i = 1; i <= offlineUsers.length; i++){
                 string += "<div class='row'>";
                 string += "<div class='col-lg-9' style='margin-top: 3px'>Name: " + offlineUsers[i-1].username + " </div>";
-                string += "<div class='col-lg-3' style='margin-top: 3px'><button data-touserid='"+ offlineUsers[i-1].id + "' data-tousername='"+ offlineUsers[i-1].username + "' class='btn btn-outline-dark chatButton'>chat</button></div>";
+                string += "<div class='col-lg-3' style='margin-top: 3px'><button data-touserid='"+ offlineUsers[i-1].id + "' data-tousername='"+ offlineUsers[i-1].username + "' class='btn-all'>chat</button></div>";
                 string += "</div><hr>";
             }
             string += '</div>';

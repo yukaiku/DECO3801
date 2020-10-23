@@ -29,12 +29,12 @@ $schoolInfo = getByIdSchool($user['school']);
         ?>
 
         <div role="main" class="main col-md-9 ml-sm-auto col-lg-10 px-4">
-            <div class="row" style="position: absolute; top: 25px">
+            <div class="row">
                 <?php echo "<h1>{$schoolInfo['name']}</h1>" ?>
             </div>
             <div class="row" id="searchbar-row" style="position: absolute; top: 50px; width: 80%">
                 <div class="col-lg-6">
-                    <input id='searchClass' name='search_name' class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+                    <input id='searchClass' name='search_name' style= "background-color: #BCE8E3" class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
                 </div>
                 <div class="col-lg-3"></div>
                 <div class="col-lg-3">
@@ -68,8 +68,8 @@ $schoolInfo = getByIdSchool($user['school']);
 <div id="addClassModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content" style="background-color: #effffd">
+            <div class="modal-header" style="background-color: #48BEB5; color: white">
                 <h4 class="modal-title">Add Class</h4>
             </div>
             <div class="modal-body">
@@ -77,7 +77,7 @@ $schoolInfo = getByIdSchool($user['school']);
                     <div class="form-group">
                         <div class="form-group">
                             <label for="selectClass">Grade</label>
-                            <select class="form-control" name="grade" id="selectGrade">
+                            <select class="form-control" style="background-color: #BCE8E3" name="grade" id="selectGrade">
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
@@ -94,7 +94,7 @@ $schoolInfo = getByIdSchool($user['school']);
                         </div>
                         <br>
                         <label for="selectClass">Class</label>
-                        <select class="form-control" name="class" id="selectClass">
+                        <select class="form-control" name="class" style="background-color: #BCE8E3" id="selectClass">
                             <option>A</option>
                             <option>B</option>
                             <option>C</option>
