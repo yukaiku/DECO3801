@@ -225,8 +225,6 @@ a :hover {
     text-transform: uppercase;
 }
 
-.active, .collapsible:hover {
-}
 
 .collapsible:after {
     content: '\002B';

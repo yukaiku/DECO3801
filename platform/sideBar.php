@@ -25,7 +25,7 @@ $games = getAllGame('subject');
                 echo "<button class='collapsible'>{$rowDetails['subject']}</button>";
                 //echo "<div class='breakline'></div>";
             }
-            echo '<div class="content">';
+            echo '<div class="content" onclick="selected(this)">';
             echo "<a href='gameInfo.php?gameId={$rowDetails['id']}' class='btn contentbtn'>{$rowDetails['name']}</a>";
             echo '</div>';
 
@@ -59,3 +59,21 @@ $games = getAllGame('subject');
         </ul>
     </div>
 </nav>
+
+<script>
+    var divItems = document.getElementsByClassName("content");
+
+    //if "content" is clicked/selected
+    function selected(item) {
+        this.clear();
+        item.style.backgroundColor = '#d55464';
+    }
+
+    //if "content" is not clicked/selected, clearup
+    function clear() {
+        for(var i=0; i < divItems.length; i++) {
+            var item = divItems[i];
+            item.style.backgroundColor = '#96DFD8';
+        }
+    }
+</script>
