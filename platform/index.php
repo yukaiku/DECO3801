@@ -44,10 +44,11 @@ if(isset($_COOKIE["student"]) && $_COOKIE['student'] != "") {
 <form class="form-signin" action="loginHandler.php" method="post">
     <img class="mb-4" src="img/logo.png" alt="" width="300" height="200">
     <!--    <h1 class="h3 mb-3 font-weight-normal">CatsEG</h1>-->
-    <label for="inputUsername" class="sr-only" name="username">Username</label>
-    <input style="margin-bottom: 10px; background-color: #BCE8E3" type="text" id="inputUsername" class="form-control" placeholder="Username" name="username" value = "<?= $username ?>" required autofocus>
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input style="background-color: #BCE8E3" type="password" id="inputPassword" class="form-control" placeholder="Password" name="pwd" value = "<?= $password ?>" required>
+    <h4>Educational Games for kids</h4>
+    <label for="inputUsername" class = "userlabel" name="username">Username</label>
+    <input class="userfields" type="text" id="inputUsername" class="form-control" name="username" value = "<?= $username ?>" required autofocus>
+    <label for="inputPassword" class = "userlabel" name="password">Password</label>
+    <input class="userfields" type="password" id="inputPassword" class="form-control" name="pwd" value = "<?= $password ?>" required>
     <div class="checkbox mb-3">
         <label>
             <?php
@@ -60,7 +61,7 @@ if(isset($_COOKIE["student"]) && $_COOKIE['student'] != "") {
 
         </label>
     </div>
-    <button class="btn-all btn-lg btn-block" type="submit">SIGN IN</button>
+    <button class="btn-signin" type="submit">SIGN IN</button>
 </form>
 <script type="text/javascript">
     <?php
