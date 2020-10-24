@@ -18,6 +18,8 @@ public class ButtonUtility : MonoBehaviour
     public GameObject PauseMenu;
     public GameObject OptionMenu;
 
+    public GameObject ButtonGroup;
+
     [DllImport("__Internal")]
     private static extern void BackTabJS();
     
@@ -57,6 +59,20 @@ public class ButtonUtility : MonoBehaviour
         SceneManager.LoadScene(currentSceneInd + 1);
     }
 
+    public void doMainOption(){
+        ButtonGroup = GameObject.Find("ButtonGroup");
+        OptionMenu = GameObject.Find("MainOptionMenu");
+        ButtonGroup.transform.position =  new Vector3(-5000, -5000,0);
+        OptionMenu.GetComponent<RectTransform>().anchoredPosition =  new Vector3(0,0,0);
+    }
+
+    public void doMainback(){
+        ButtonGroup = GameObject.Find("ButtonGroup");
+        OptionMenu = GameObject.Find("MainOptionMenu");
+        OptionMenu.transform.position =  new Vector3(-5000, -5000,0);
+        ButtonGroup.GetComponent<RectTransform>().anchoredPosition =  new Vector3(0,112,0);
+    } 
+
     public void doOption(){
         PauseMenu = GameObject.Find("MainPauseMenu");
         OptionMenu = GameObject.Find("MainOptionMenu");
@@ -94,7 +110,7 @@ public class ButtonUtility : MonoBehaviour
     }
 
     public void doExitLevel(string sceneName){
-        global.isPause = true;
+        global.isPause = false;
         SceneManager.LoadScene(sceneName);
         Debug.Log(string.Format("Load '{0}' scene", sceneName));
     }
