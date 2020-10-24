@@ -28,11 +28,11 @@ $schoolInfo = getByIdSchool($user['school']);
         include_once("sideBar.php");
         ?>
         <div role="main" class="main col-md-9 ml-sm-auto col-lg-10 px-4">
-            <div style="float:left">
+            <div style="float:left; padding-top: 4em">
                 <img width="150" height="150" src="img/<?= $user['profileImage']; ?>"/><br/>
                 <br>
             </div>
-            <div style="padding-left:18%">
+            <div style="padding-left:18%; padding-top: 4em">
                 <h4><?= $user['username']; ?></h4>
                 <div style="margin:1% 0 0 0; font-size:15px;">
                     <label for="selectStatus"><b>Status: </b></label>

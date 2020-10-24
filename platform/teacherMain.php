@@ -34,7 +34,7 @@ $schoolInfo = getByIdSchool($user['school']);
             </div>
             <div class="row" id="searchbar-row" style="position: absolute; top: 50px; width: 80%">
                 <div class="col-lg-6">
-                    <input id='searchClass' name='search_name' style= "background-color: #BCE8E3" class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+                    <input id='searchClass' name='search_name' style= "background-color: #fff" class="form-control" type="text" placeholder="Search" aria-label="Search">
                 </div>
                 <div class="col-lg-3"></div>
                 <div class="col-lg-3">
@@ -44,7 +44,7 @@ $schoolInfo = getByIdSchool($user['school']);
 
             <div class = "row" style="position: absolute; top: 200px; width: 80%">
                 <div class="col-lg-3">
-                    <a type="button" class="btn-all" id="deleteClassButton">Delete Class</a>
+                    <a type="button" class="btn-all" id="deleteClassButton" style='color: white; text-decoration: none;'>Delete Class</a>
                 </div>
             </div>
             <div class="table-responsive" style="position: absolute; max-height: 30%; top: 250px; width: 80%">
@@ -142,12 +142,14 @@ include 'lastActivity.php';
                 deleteArray.push($(this).val());
             });
             deleteClass(deleteArray);
+
         });
 
         function deleteClass(deleteArray){
             $.post("ajax/deleteClass.php",
                 {
                     deleteArray: deleteArray
+                    
                 },
                 function(result){
                     alert(result);

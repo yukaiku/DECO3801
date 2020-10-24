@@ -5,7 +5,7 @@ $games = getAllGame('subject');
 <nav class="col-md-2 d-none d-md-block" style="background-color: #96DFD8; padding: 0px">
     <div class="sidebar-sticky">
         <ul>
-            <h2>Hi <?= $user['firstname']; ?></h2>
+            <h2>Welcome <?= $user['firstname']; ?>!</h2>
         </ul>
         <a href="announcements.php" id="sidebar-button"><ul class="sidebar-button-ul">Announcements</ul></a>
         </ul>
@@ -28,8 +28,8 @@ $games = getAllGame('subject');
             }
 
             if(isset($gameId) && $gameId == $rowDetails['id']){//selected page
-                echo '<div class="content" style="padding: 10%; max-height:20%;" onclick="selected(this)">';
-                echo "<a href='gameInfo.php?gameId={$rowDetails['id']}' class='btn contentbtn' style='color: red'>{$rowDetails['name']}</a>";
+                echo '<div class="content sidebar-button-collapsible" style="padding: 10%; max-height:20%;" onclick="selected(this)">';
+                echo "<a href='gameInfo.php?gameId={$rowDetails['id']}' style='color: white;'>{$rowDetails['name']}</a>";
                 echo '</div>';
             }else{
                 echo '<div class="content" onclick="selected(this)">';
@@ -48,9 +48,9 @@ $games = getAllGame('subject');
                 </div>
                 <div class="col-lg-9">
                     <?php if ($status == "student"){
-                        echo '<a type="button" class="btn" href="studentProfile.php?id='.$user['id'].'">';
+                        echo '<a type="button" class="" href="studentProfile.php?id='.$user['id'].'">';
                     }else{
-                        echo '<a type="button" class="btn" href="teacherProfile.php">';
+                        echo '<a type="button" class="" href="teacherProfile.php">';
                     }
                     echo "<b>{$user['username']}</b>";
                     ?>

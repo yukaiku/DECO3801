@@ -38,7 +38,7 @@ $studentInfo = getByIdStudent($studentId);
         ?>
         <div role="main" class=" main col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-3" style="margin-top:4em">
                     <img width="150" height="150" src="img/<?=$studentInfo['profileImage'];?>"/>
                     <div class="form-row">
                         <button style="font-size: 12px;" class="btn-all updateDetails" data-toggle="modal" data-target="#updateDetailsModal">Update Details</button>
@@ -49,7 +49,7 @@ $studentInfo = getByIdStudent($studentId);
                         ?>
                     </div>
                 </div>
-                <div class="col-lg-9" style="font-size: 16px">
+                <div class="col-lg-9" style="padding-top: 4em; font-size: 16px">
                     <div>
                         <h4><?= $studentInfo['username']; ?></h4>
                     </div>

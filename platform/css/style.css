@@ -15,6 +15,11 @@ html, body {
     width: 100%;
 }
 
+h2 {
+    padding-top: 1.5em;
+    padding-bottom: 1em;
+    font-size: 2em;
+}
 a:hover, a:visited, a:link, a:active
 {
     text-decoration: none;
@@ -34,6 +39,10 @@ a:hover, a:visited, a:link, a:active
     text-transform: uppercase;
 }
 
+.btn-all:hover {
+    color:white;
+}
+
 .btn-signin {
     padding: .5rem .9rem;
     font-size: 1.5rem;
@@ -42,6 +51,7 @@ a:hover, a:visited, a:link, a:active
     padding: .5rem .9rem;
     font-size: 1rem;
 }
+
 
 .userfields{
     margin-bottom: 10px;
@@ -74,7 +84,7 @@ a:hover, a:visited, a:link, a:active
     box-sizing: border-box;
     height: auto;
     padding: 10px;
-    font-size: 16px;
+    font-size: 2em;
 }
 .form-signin .form-control:focus {
     z-index: 2;
@@ -105,6 +115,7 @@ a:hover, a:visited, a:link, a:active
 /*
  * Teacher
  */
+
 
 #searchbar-row{
     padding-top: 5%;
@@ -165,7 +176,7 @@ a:hover, a:visited, a:link, a:active
 }
 
 .sidebar .nav-link.active {
-    color: #007bff;
+    color: #000;
 }
 
 .sidebar .nav-link:hover .feather,
@@ -178,17 +189,28 @@ a:hover, a:visited, a:link, a:active
     text-transform: uppercase;
 }
 
-.sidebar-button-ul {
+.sidebar-button-ul, .sidebar-button-collapsible {
     padding-top: 10%;
     padding-bottom: 10%;
     margin-bottom: 0;
-    font-size: 15px;
+    font-size: 1.3em;
 }
 
-.sidebar-button-ul a, a:visited {
+.sidebar-button-ul a {
     color: #000;
 }
 
+#sidebar-button {
+    color: #000;
+}
+
+.sidebar-button-collapsible {
+    color: #fff;
+    background-color: #D55464;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    margin-bottom: 0;
+}
 
 a :hover {
      background-color: #22605B;
@@ -268,6 +290,40 @@ a :hover {
     height: auto;
 }
 
+#gameName, #subject {
+    padding-top: 5em;
+    
+}
+
+#gameName, #subject, #description {
+    margin-left: 3em;
+}
+
+#anntitle {
+    margin-top: 2.5em;
+    margin-bottom: 1em;
+}
+
+#annbox {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+#annbutton {
+    margin-top: 5em;
+    margin-left: -4em;
+}
+#subject, #description, #announcements {
+    padding-top: 2em;
+}
+
+#description {
+    width: 40em;
+    font-size: 1.2em;
+}
+
+.deleteAnnouncementButton {
+    margin-top: 2em;
+}
 
 /*Chatbox*/
 #chatListModal{

@@ -33,15 +33,15 @@ $_SESSION['game_id'] = $gameId;
         <p id="grade">
             Grade: <?=$gameGrade;?>
         </p>
-
+    
     </div>
     <?php
     if($status == "teacher"){
-        echo '<a class="btn-all mb-2" style="text-align: center" href="classesProgress.php?gameId='.$gameId.'">Student\'s Progress</a>';
+        echo '<a class="btn-all mb-2" style="margin-left: 4em; margin-top: 3em;" href="classesProgress.php?gameId='.$gameId.'">Student\'s Progress</a>';
     }elseif($status == "student"){
 
-        echo '<a class="btn-all mb-2" href="' . $wholostroger_url . '">Play</a><br/>';
-        echo '<a class="btn-all mb-2" href="studentLeaderboard.php?gameId='.$gameId.'">Leaderboard</a><br/>';
+        echo '<a class="btn-all mb-2" style="margin-left: 4em; margin-top: 3em;" href="' . $wholostroger_url . '">Play</a><br/>';
+        echo '<a class="btn-all mb-2" style="margin-left: 4em;" href="studentLeaderboard.php?gameId='.$gameId.'">Leaderboard</a><br/>';
     }
     ?>
 </div>

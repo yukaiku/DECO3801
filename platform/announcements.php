@@ -29,11 +29,11 @@ $announcementArr = getAnnouncementsBySql($announcementSql);
         <div role="main" class="main col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="jumbotron text-left">
                 <div class="row">
-                    <h1 class="col-lg-10">Announcements</h1>
+                    <h1 class="col-lg-10" id="anntitle">Announcements</h1>
                     <?php
                     if($status == "teacher"){?>
-                        <div class="col-lg-2">
-                            <button class="btn-all" style="white-space: nowrap" data-toggle="modal" data-target="#newAnnouncementModal">Add Announcements</button>
+                        <div class="col-lg-2" id="announcements">
+                            <button class="btn-all" id="annbutton" style="white-space: nowrap" data-toggle="modal" data-target="#newAnnouncementModal">Add Announcements</button>
                         </div>
                         <?php
                     }
@@ -46,7 +46,7 @@ $announcementArr = getAnnouncementsBySql($announcementSql);
                 foreach($announcementArr as $key => $value) {
                     ?>
                     <div class="row border rounded" name="row<?=$value['id']?>">
-                        <div class="text-left col-lg-10">
+                        <div class="text-left col-lg-10" id="annbox">
                             <h3><?php
                                 echo $value['title'];
                                 ?></h3>
