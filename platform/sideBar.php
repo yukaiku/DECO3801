@@ -7,7 +7,7 @@ $games = getAllGame('subject');
         <ul>
             <h2>Hi <?= $user['firstname']; ?></h2>
         </ul>
-            <a href="announcements.php" id="sidebar-button"><ul class="sidebar-button-ul">Announcements</ul></a>
+        <a href="announcements.php" id="sidebar-button"><ul class="sidebar-button-ul">Announcements</ul></a>
         </ul>
         <?php
         if($status == "teacher"){
@@ -18,16 +18,24 @@ $games = getAllGame('subject');
         ?>
         <?php
         $subject = "";
-        $loopCount = 0;
         foreach($games as $row => $rowDetails ){
             if($rowDetails['subject'] != $subject){
-                $subject = $rowDetails['subject'];
-                echo "<button class='collapsible'>{$rowDetails['subject']}</button>";
-                //echo "<div class='breakline'></div>";
+                if(isset($gameId) && $gameId == $rowDetails['id']){ // selected language
+                    echo "<button id='game" .$rowDetails['id']. "' class='collapsible active'>{$rowDetails['subject']}</button>";
+                }else{
+                    echo "<button class='collapsible'>{$rowDetails['subject']}</button>";
+                }
             }
-            echo '<div class="content" onclick="selected(this)">';
-            echo "<a href='gameInfo.php?gameId={$rowDetails['id']}' class='btn contentbtn'>{$rowDetails['name']}</a>";
-            echo '</div>';
+
+            if(isset($gameId) && $gameId == $rowDetails['id']){//selected page
+                echo '<div class="content" style="padding: 10%; max-height:20%;" onclick="selected(this)">';
+                echo "<a href='gameInfo.php?gameId={$rowDetails['id']}' class='btn contentbtn' style='color: red'>{$rowDetails['name']}</a>";
+                echo '</div>';
+            }else{
+                echo '<div class="content" onclick="selected(this)">';
+                echo "<a href='gameInfo.php?gameId={$rowDetails['id']}' class='btn contentbtn'>{$rowDetails['name']}</a>";
+                echo '</div>';
+            }
 
 
         }
