@@ -39,6 +39,7 @@ a:hover, a:visited, a:link, a:active
     text-transform: uppercase;
 }
 
+
 .btn-all:hover {
     color:white;
 }
@@ -212,11 +213,23 @@ a:hover, a:visited, a:link, a:active
     margin-bottom: 0;
 }
 
-a :hover {
-     background-color: #22605B;
-    color: #fff;
+
+.profiletxt a:link {
+    color: #000;
 }
 
+.profiletxt a:hover{
+    background-color: #fff;
+}
+
+a :hover {
+    background-color: #22605B;
+   color: #fff;
+}
+
+.onlineButton {
+    color: #000;
+}
 
 
 /*
@@ -290,12 +303,12 @@ a :hover {
     height: auto;
 }
 
-#gameName, #subject {
+#gameName, #className, #subject {
     padding-top: 5em;
     
 }
 
-#gameName, #subject, #description {
+#gameName, #className, #subject, #description {
     margin-left: 3em;
 }
 

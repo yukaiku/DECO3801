@@ -91,11 +91,11 @@ $gameGenre = $gameInfo['genre'];
                     </tbody>
                 </table>
                 <div style="text-align: center">
-                    <a class="btn btn-primary mb-2" style="text-align: center" href="studentsOverallProgress.php?grade=<?=$grade?>&class=<?=$class?>&gameId=<?=$gameId?>">Overall Progress</a>
+                    <a class="btn-all" style="text-align: center" href="studentsOverallProgress.php?grade=<?=$grade?>&class=<?=$class?>&gameId=<?=$gameId?>">Overall Progress</a>
                 </div>
             </div>
             <div id="mainFooter" style="bottom:0; position: fixed;">
-                <a class="btn btn-primary mb-2" style="text-align: center" href="classesProgress.php?gameId=<?=$gameId?>">Back</a>
+                <a class="btn-all" style="text-align: center" href="classesProgress.php?gameId=<?=$gameId?>">Back</a>
             </div>
         </div>
     </div>

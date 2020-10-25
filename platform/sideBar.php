@@ -12,7 +12,7 @@ $games = getAllGame('subject');
         <?php
         if($status == "teacher"){
             echo '<a href="teacherMain.php" id="sidebar-button"><ul class="sidebar-button-ul">
-                        DashBoard
+                        Classes
                         </ul></a>';
         }
         ?>
@@ -48,9 +48,9 @@ $games = getAllGame('subject');
                 </div>
                 <div class="col-lg-9">
                     <?php if ($status == "student"){
-                        echo '<a type="button" class="" href="studentProfile.php?id='.$user['id'].'">';
+                        echo '<a class="profiletxt" href="studentProfile.php?id='.$user['id'].'">';
                     }else{
-                        echo '<a type="button" class="" href="teacherProfile.php">';
+                        echo '<a class="profiletxt" href="teacherProfile.php">';
                     }
                     echo "<b>{$user['username']}</b>";
                     ?>

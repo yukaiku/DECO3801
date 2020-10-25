@@ -36,7 +36,7 @@ $schoolInfo = getByIdSchool($user['school']);
                 <h4><?= $user['username']; ?></h4>
                 <div style="margin:1% 0 0 0; font-size:15px;">
                     <label for="selectStatus"><b>Status: </b></label>
-                    <select  name="class" id="selectStatus">
+                    <select name="class" id="selectStatus">
                         <option>Online</option>
                         <option>Idle</option>
                         <option>Invisible</option>

@@ -38,7 +38,7 @@ if($grade == "" || $class == "" || $school == ""){
             </div>
             <div class="row" id="searchbar-row">
                 <div class="col-lg-6">
-                    <input id='searchClass' name='search_name' style="background-color: #BCE8E3" class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+                    <input id='searchClass' name='search_name' style="background-color: #fff" class="form-control form-control-dark w-100" type="text" placeholder="Search students..." aria-label="Search">
                 </div>
             </div>
             <div class="row" style="position: absolute; width: fit-content;">
@@ -73,17 +73,17 @@ if($grade == "" || $class == "" || $school == ""){
                         <input type="hidden" name="school" value ="<?php $school ?>">
                         <div class="col-lg-3">
                             Username:
-                            <input type="text" style="background-color: #BCE8E3" class="text-input--underbar width-half" name="username" id="usernameInput" placeholder="Username" value="">
+                            <input type="text" style="background-color: #fff;" class="text-input--underbar width-half" name="username" id="usernameInput" placeholder="Username" value="">
                         </div>
                     </div>
                     <div class="form-row row">
                         <div class="col-lg-3">
                             First Name:
-                            <input type="text" style="background-color: #BCE8E3" class="text-input--underbar width-half" name="firstName" id="firstnameInput" placeholder="First" value="">
+                            <input type="text" style="background-color: #fff;" class="text-input--underbar width-half" name="firstName" id="firstnameInput" placeholder="First Name" value="">
                         </div>
                         <div class="col-lg-3">
                             Last Name:
-                            <input type="text" style="background-color: #BCE8E3" class="text-input--underbar width-half" name="lastName" id="lastnameInput" placeholder="Last" value="" style="border-width-left: 1px">
+                            <input type="text" style="background-color: #fff;" class="text-input--underbar width-half" name="lastName" id="lastnameInput" placeholder="Last Name" value="" style="border-width-left: 1px">
                         </div>
                         <div class="col-lg-3">
                             <button type="submit" class="btn-all" id="addStudentButton">Confirm</button>

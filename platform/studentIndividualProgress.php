@@ -44,8 +44,8 @@ $gameGenre = $gameInfo['genre'];
         /* Style the tab */
         .tab {
             overflow: hidden;
-            border: 1px solid #ccc;
-            background-color: #f1f1f1;
+            border: 1px solid #96DFD8;
+            background-color: #fff;
         }
 
         /* Style the buttons inside the tab */
@@ -62,20 +62,21 @@ $gameGenre = $gameInfo['genre'];
 
         /* Change background color of buttons on hover */
         .tab button:hover {
-            background-color: #ddd;
+            background-color: #d3f9f5;
         }
 
         /* Create an active/current tablink class */
         .tab button.active {
-            background-color: #ccc;
+            background-color: #96DFD8;
         }
 
         /* Style the tab content */
         .tabcontent {
             display: none;
             padding: 6px 12px;
-            border: 1px solid #ccc;
+            border: 1px solid #96DFD8;
             border-top: none;
+            background-color: #fff;
         }
         .tab button.active:after{
             content: "";
@@ -90,6 +91,7 @@ $gameGenre = $gameInfo['genre'];
         include_once("sideBar.php");
         ?>
         <div role="main" class="main col-md-9 ml-sm-auto col-lg-10 px-4 overflow-auto">
+        <div style="padding-top: 80em;">
             <div class="row" id="gameName">
                 <h1><?=$gameName?></h1>
             </div>
@@ -155,7 +157,7 @@ $gameGenre = $gameInfo['genre'];
                         <a class="btn-all" href="studentsProgress.php?grade=<?=$grade?>&class=<?=$class?>&gameId=<?=$gameId?>">Back</a>
                     </div>
                 </container>
-
+                </div>
             </div>
         </div>
     </div>
@@ -203,10 +205,10 @@ $gameGenre = $gameInfo['genre'];
                 datasets: [
                     {
                         label: 'Play Count',
-                        backgroundColor: '#49e2ff',
-                        borderColor: '#46d5f1',
-                        hoverBackgroundColor: '#CCCCCC',
-                        hoverBorderColor: '#666666',
+                        backgroundColor: '#96DFD8',
+                        borderColor: '#96DFD8',
+                        hoverBackgroundColor: '#D55464',
+                        hoverBorderColor: '#D55464',
                         data: playCount
                     }
                 ],
@@ -286,10 +288,10 @@ $gameGenre = $gameInfo['genre'];
                 datasets: [
                     {
                         label: 'Times Clicked',
-                        backgroundColor: '#49e2ff',
-                        borderColor: '#46d5f1',
-                        hoverBackgroundColor: '#CCCCCC',
-                        hoverBorderColor: '#666666',
+                        backgroundColor: '#96DFD8',
+                        borderColor: '#96DFD8',
+                        hoverBackgroundColor: '#D55464',
+                        hoverBorderColor: '#D55464',
                         data: nounCount
                     }
                 ],
