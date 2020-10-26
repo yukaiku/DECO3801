@@ -9,7 +9,6 @@ if($status == "student"){
 $announcementSql = getAllAnnouncementWithTeacherName("",$announcementType,"0", "10");
 $announcementArr = getAnnouncementsBySql($announcementSql);
 $classArr = getClassList();
-print_r($announcementSql);
 ?>
 <!doctype html>
 <html lang="en">
