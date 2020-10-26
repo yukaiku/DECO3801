@@ -97,9 +97,9 @@ $gameGenre = $gameInfo['genre'];
                     <h1>Class: <?=$grade ?><?=$class ?></h1>
                     <container>
                         <div class="tab">
-                            <button id="concreteNounsTabButton" class="tablinks" onclick="openTab(event, 'concrete')">Concrete Nouns</button>
-                            <button id="collectiveNounsTabButton" class="tablinks" onclick="openTab(event, 'collective')">Collective Nouns</button>
-                            <button id="countableNounsTabButton" class="tablinks" onclick="openTab(event, 'countable')">Countable Nouns</button>
+                            <button id="concreteNounsTabButton" class="tablinks" onclick="openTab(event, 'concrete')"><?=ucfirst($activeTab)?> Nouns</button>
+                            <button id="collectiveNounsTabButton" class="tablinks" onclick="openTab(event, 'collective')"><?=ucfirst($activeTab)?> Nouns</button>
+                            <button id="countableNounsTabButton" class="tablinks" onclick="openTab(event, 'countable')"><?=ucfirst($activeTab)?> Nouns</button>
                         </div>
                         <?PHP
                         if(function_exists ( "playCount" )){
