@@ -28,32 +28,22 @@ $schoolInfo = getByIdSchool($user['school']);
         include_once("sideBar.php");
         ?>
         <div role="main" class="main col-md-9 ml-sm-auto col-lg-10 px-4">
-            <div style="float:left; padding-top: 4em">
-                <img width="150" height="150" src="img/<?= $user['profileImage']; ?>"/><br/>
-                <br>
-            </div>
-            <div style="padding-left:18%; padding-top: 4em">
-                <h4><?= $user['username']; ?></h4>
-                <div style="margin:1% 0 0 0; font-size:15px;">
-                    <label for="selectStatus"><b>Status: </b></label>
-                    <select name="class" id="selectStatus">
-                        <option>Online</option>
-                        <option>Idle</option>
-                        <option>Invisible</option>
-                    </select><br><br>
+            <div class="row">
+                <div class="col-lg-3" style="margin-top:4em">
+                    <img width="150" height="150" src="img/<?=$user['profileImage'];?>"/>
+                    <div class="form-row">
+                        <button style="font-size: 12px;" class="btn-all updateDetails" data-toggle="modal" data-target="#updateDetailsModal">Update Details</button>
+                    </div>
                 </div>
-                <button style="font-size: 12px;" class="btn-all updateDetails" data-toggle="modal" data-target="#updateDetailsModal">Update Details</button><br><br><br>
-
-            </div>
-
-            <div style="margin-top:3%; font-size:16px;">
-                <div class="form-row">
-                    <b>Full Name</b><br/>
-                    <?= $user['firstname'].' '.$user['lastname']; ?><br/>
-                </div>
-                <div class="form-row">
-                    <b>School</b><br/>
-                    <?= $schoolInfo['name']; ?><br/>
+                <div class="col-lg-9" style="padding-top: 4em; font-size: 16px">
+                    <div>
+                        <h4><?= $user['username']; ?></h4>
+                    </div>
+                    <div class="form-row">
+                        <br>
+                        <b>Full Name</b><br/>
+                        <?= $user['firstname'].' '.$user['lastname']; ?><br/>
+                    </div>
                 </div>
             </div>
         </div>
@@ -65,7 +55,7 @@ $schoolInfo = getByIdSchool($user['school']);
 <!-- Placed at the end of the document so the pages load faster -->
 <?php
 include 'lastActivity.php';
-include "updateTeacherModal.php";
+include "modals/updateTeacherModal.php";
 ?>
 </body>
 </html>

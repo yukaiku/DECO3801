@@ -7,6 +7,7 @@ $gameId = isset($_GET['gameId']) ? $_GET['gameId'] : "1";
 $class = isset($_GET['class']) ? $_GET['class'] : "1";
 $grade = isset($_GET['grade']) ? $_GET['grade'] : "A";
 $studentId = isset($_GET['studentId']) ? $_GET['studentId'] : 0;
+$activeTab = isset($_GET['activeTab']) ? $_GET['activeTab'] : "concrete";
 if($studentId == 0 || sizeof(getByIdStudent($studentId)) == 0){
     header("Location: studentsProgress.php?class={$class}&grade={$grade}&gameId={$gameId}"); // redirect to the login page.
 }
@@ -91,7 +92,7 @@ $gameGenre = $gameInfo['genre'];
         include_once("sideBar.php");
         ?>
         <div role="main" class="main col-md-9 ml-sm-auto col-lg-10 px-4 overflow-auto">
-        <div style="padding-top: 80em;">
+            <div class="row" style="overflow-y: scroll; width: 80%; position: absolute; margin-top: -3%">
             <div class="row" id="gameName">
                 <h1><?=$gameName?></h1>
             </div>
@@ -99,9 +100,9 @@ $gameGenre = $gameInfo['genre'];
                 <h1>Class: <?=$grade ?><?=$class ?></h1>
                 <container>
                     <div class="tab">
-                        <button class="tablinks active" onclick="openTab(event, 'concrete')">Concrete Nouns</button>
-                        <button class="tablinks" onclick="openTab(event, 'collective')">Collective Nouns</button>
-                        <button class="tablinks" onclick="openTab(event, 'countable')">Countable Nouns</button>
+                        <button id="concreteNounsTabButton" class="tablinks" onclick="openTab(event, 'concrete')">Concrete Nouns</button>
+                        <button id="collectiveNounsTabButton" class="tablinks" onclick="openTab(event, 'collective')">Collective Nouns</button>
+                        <button id="countableNounsTabButton" class="tablinks" onclick="openTab(event, 'countable')">Countable Nouns</button>
                     </div>
                     <?PHP
                     if(function_exists ( "playCount" )){
@@ -172,12 +173,18 @@ $gameGenre = $gameInfo['genre'];
     <!--    Charts JS-->
     <script src="js/Chart.min.js"></script>
     <script>
-        var activeTab = "concrete";
+        let activeTab = "<?=$activeTab?>";
         $(document).ready(function(){
-            showGraph(activeTab);
+            $("#<?=$activeTab?>NounsTabButton")[0].className += " active";
+            showGraph();
         });
-        // PlayCount Chart
-        function showGraph(activeTab) {
+        // Chart Loading
+        function showGraph() {
+            drawBarGraph();
+            drawHorizontalGraphs();
+        }
+
+        function drawBarGraph(){
             var month = [];
             var playCount = [];
             var chartDataArr = [];
@@ -213,9 +220,10 @@ $gameGenre = $gameInfo['genre'];
                     }
                 ],
             };
+
             var graphTarget = $("#" + activeTab + "PlayCountChart");
 
-            var barGraph = new Chart(graphTarget, {
+            barGraph = new Chart(graphTarget, {
                 type: 'bar',
                 data: chartdata,
                 options: {
@@ -228,16 +236,20 @@ $gameGenre = $gameInfo['genre'];
                     }
                 }
             });
-            showOutComeGraph(activeTab);
         }
-        function showOutComeGraph(activeTab) {
+
+        function drawHorizontalGraphs() {
             var maxLevel;
             var lowestLevel;
+            <?php
+            $learningOutcomes = [];
+            ?>
             if(activeTab == "concrete"){
                 <?php
-                if(function_exists('getLearningOutComes')){
-                    $learningOutcomes = getLearningOutComes($user['school'], $class, $grade, 5,1, $studentId);
+                if(function_exists('getLearningOutComes') && $activeTab == "concrete"){
+                    $learningOutcomes = getLearningOutComes($user['school'], $class, $grade, 5,1);
                 }
+                //print_r($learningOutcomes);
                 ?>
             }else if (activeTab == "collective"){
                 maxLevel = 10;
@@ -254,7 +266,7 @@ $gameGenre = $gameInfo['genre'];
                 $aNoun = [];
                 $labelNames = [];
                 foreach($learningOutcomes as $learningOutcome){
-
+//                    echo "alert('hello')";
                     //print and reset nouns every level
                     if($level != $learningOutcome['level']){
                         $nounCount = (json_encode(array_values($aNoun)));
@@ -311,27 +323,14 @@ $gameGenre = $gameInfo['genre'];
                     }
                 }
             });
+            horizontalGraphs.push(barGraph);
         }
 
         function openTab(evt, tabType) {
-            var i, tabcontent, tablinks;
-            //Hides all tabs
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            //get all tab links
-            tablinks = document.getElementsByClassName("tablinks");
-            //remove all active tabs
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            //
-            document.getElementById(tabType).style.display = "block";
             //set active tab
             evt.currentTarget.className += " active";
             activeTab = tabType;
-            showGraph(activeTab);
+            window.parent.location = "studentIndividualProgress.php?studentId=<?=$studentId?>&grade=<?=$grade?>&class=<?=$class?>&gameId=<?=$gameId?>&activeTab="+activeTab;
         }
     </script>
 

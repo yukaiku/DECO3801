@@ -95,7 +95,7 @@ $studentInfo = getByIdStudent($studentId);
 <?php
 
 include "updateStudentModal.php";
-include "resetStudentPasswordModal.php";
+include "modals/resetStudentPasswordModal.php";
 include "lastActivity.php";
 ?>
 </body>
