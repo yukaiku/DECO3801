@@ -9,7 +9,6 @@ $school = isset($_GET['school']) ? $_GET['school'] : '';
 if($grade == "" || $class == "" || $school == ""){
     header('Location: teacherMain.php'); // redirect to the login page.
 }
-$studentsRecord = getByGradeClassStudent($grade, $class, $school);
 ?>
 <!doctype html>
 <html lang="en">
@@ -21,11 +20,9 @@ $studentsRecord = getByGradeClassStudent($grade, $class, $school);
 
     <title>Teacher Class</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet">
+    <?php
+    include 'css.php';
+    ?>
 </head>
 
 <body>
@@ -35,19 +32,19 @@ $studentsRecord = getByGradeClassStudent($grade, $class, $school);
         <?php
         include_once("sideBar.php");
         ?>
-        <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-            <div class="row" id="schoolName" style="position: absolute; top: 75px">
+        <div role="main" class="main col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="row" id="schoolName">
                 <?php echo "<h1>Class {$grade}{$class} </h1>"?>
             </div>
-            <div class="row" id="searchbar-row" style="position: absolute; top: 100px; width: 80%">
+            <div class="row" id="searchbar-row">
                 <div class="col-lg-6">
-                    <input id='searchClass' name='search_name' class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+                    <input id='searchClass' name='search_name' style="background-color: #fff" class="form-control form-control-dark w-100" type="text" placeholder="Search students..." aria-label="Search">
                 </div>
             </div>
-            <div class="row" style="position: absolute; top: 250px; width: fit-content;">
-                <button class="btn btn-primary" style="text-align: center" id="deleteStudentButton" >Delete</button>
+            <div class="row" style="position: absolute; width: fit-content;">
+                <button class="btn-all" id="deleteStudentButton" >Delete</button>
             </div>
-            <div class="row" style=" overflow-y: auto; max-height: 30%; width: 80%; position:absolute; top:300px;">
+            <div class="row" style=" overflow-y: auto; max-height: 30%; width: 80%; position:absolute; top:38%;">
                     <table class="table table-striped table-sm">
                         <thead>
                         <tr>
@@ -68,7 +65,7 @@ $studentsRecord = getByGradeClassStudent($grade, $class, $school);
             </div>
 
 
-            <div class="row" style="position: absolute; top: 520px; width: 80%">
+            <div class="row" style="position: absolute; top: 65%; width: 80%">
                 <hr>
                 <h2>Add new class member</h2>
                 <form action="addNewStudent.php" method="post">
@@ -76,26 +73,26 @@ $studentsRecord = getByGradeClassStudent($grade, $class, $school);
                         <input type="hidden" name="school" value ="<?php $school ?>">
                         <div class="col-lg-3">
                             Username:
-                            <input type="text" class="text-input--underbar width-half" name="username" id="usernameInput" placeholder="Username" value="">
+                            <input type="text" style="background-color: #fff;" class="text-input--underbar width-half" name="username" id="usernameInput" placeholder="Username" value="">
                         </div>
                     </div>
                     <div class="form-row row">
                         <div class="col-lg-3">
                             First Name:
-                            <input type="text" class="text-input--underbar width-half" name="firstName" id="firstnameInput" placeholder="First" value="">
+                            <input type="text" style="background-color: #fff;" class="text-input--underbar width-half" name="firstName" id="firstnameInput" placeholder="First Name" value="">
                         </div>
                         <div class="col-lg-3">
                             Last Name:
-                            <input type="text" class="text-input--underbar width-half" name="lastName" id="lastnameInput" placeholder="Last" value="" style="border-width-left: 1px">
+                            <input type="text" style="background-color: #fff;" class="text-input--underbar width-half" name="lastName" id="lastnameInput" placeholder="Last Name" value="" style="border-width-left: 1px">
                         </div>
                         <div class="col-lg-3">
-                            <button type="submit" class="btn btn-primary mb-2" style="text-align: center" id="addStudentButton">Confirm</button>
+                            <button type="submit" class="btn-all" id="addStudentButton">Confirm</button>
                         </div>
                     </div>
                     <hr>
 
                 </form>
-                <a class="btn btn-primary mb-2" style="text-align: center" href="teacherMain.php">Back</a>
+                <a class="btn-all" style="width: auto" href="teacherMain.php">Back</a>
             </div>
         </div>
     </div>
@@ -104,9 +101,9 @@ $studentsRecord = getByGradeClassStudent($grade, $class, $school);
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="js/jquery-3.5.0.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/collapsibleSideBar.js"></script>
+<?php
+include 'lastActivity.php';
+?>
 <script type="text/javascript">
 
     $(document).ready(function() {
@@ -207,7 +204,7 @@ $studentsRecord = getByGradeClassStudent($grade, $class, $school);
                         string += result[i-1].lastname ;
                         string += "</td>";
                         string += "<td>";
-                        string += "<a href='teacherStudent.php?id="+ result[i-1].id +"'>Edit</a>";
+                        string += "<a href='studentProfile.php?id="+ result[i-1].id +"'>Edit</a>";
                         string += "</td>";
                         string += "</tr>";
                     }

@@ -1,9 +1,4 @@
-html,
-body {
-    height: 100%;
-}
-
-body {
+html, body {
     display: -ms-flexbox;
     display: -webkit-box;
     display: flex;
@@ -13,11 +8,69 @@ body {
     align-items: center;
     -webkit-box-pack: center;
     justify-content: center;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    background-color: #f5f5f5;
+    background-color: #effffd;
+    font-size: .875rem;
+    height: 100%;
+    font-family: 'Armata', sans-serif;
+    width: 100%;
 }
 
+h2 {
+    padding-top: 1.5em;
+    padding-bottom: 1em;
+    font-size: 2em;
+}
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+}
+
+.btn-signin, .btn-all{
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid transparent;
+    background-color: #D55464;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+
+.btn-all:hover {
+    color:white;
+}
+
+.btn-signin {
+    padding: .5rem .9rem;
+    font-size: 1.5rem;
+}
+.btn-all{
+    padding: .5rem .9rem;
+    font-size: 1rem;
+}
+
+
+.userfields{
+    margin-bottom: 10px;
+    background-color: rgb(255, 255, 255);
+    font-size: 1.5em;
+    padding: 0.5em;
+    box-sizing: border-box;
+    display: inline-block;
+    border: 3px solid rgb(113, 161, 156);
+    color: #000;
+}
+
+.main{
+    padding: 1% 0 1% 0;
+}
+
+
+/*Sign In*/
 .form-signin {
     width: 100%;
     max-width: 330px;
@@ -32,15 +85,15 @@ body {
     box-sizing: border-box;
     height: auto;
     padding: 10px;
-    font-size: 16px;
+    font-size: 2em;
 }
 .form-signin .form-control:focus {
     z-index: 2;
 }
 .form-signin input[type="email"] {
-    margin-bottom: -1px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
 .form-signin input[type="password"] {
     margin-bottom: 10px;
@@ -48,15 +101,21 @@ body {
     border-top-right-radius: 0;
 }
 
+.userlabel {
+    margin-top: 0.5em;
+    font-size: 1.5em;
+    text-align: right;
+    clear: both;
+    float:left;
+    margin-right:15px;
+}
+
+
 
 
 /*
  * Teacher
  */
-
-body {
-    font-size: .875rem;
-}
 
 
 #searchbar-row{
@@ -66,7 +125,7 @@ body {
 
 .bottom-navbar{
     padding-top: 5%;
-    bottom: 0;
+    bottom: 10px;
     width: 100%;
     position: absolute;
     text-align: center;
@@ -101,8 +160,8 @@ body {
     position: -webkit-sticky;
     position: sticky;
     top: 48px; /* Height of navbar */
-    height: calc(100vh - 48px);
-    padding-top: .5rem;
+    height: 100vh;
+    padding-top: 1rem;
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 }
@@ -118,7 +177,7 @@ body {
 }
 
 .sidebar .nav-link.active {
-    color: #007bff;
+    color: #000;
 }
 
 .sidebar .nav-link:hover .feather,
@@ -129,6 +188,47 @@ body {
 .sidebar-heading {
     font-size: .75rem;
     text-transform: uppercase;
+}
+
+.sidebar-button-ul, .sidebar-button-collapsible {
+    padding-top: 10%;
+    padding-bottom: 10%;
+    margin-bottom: 0;
+    font-size: 1.3em;
+}
+
+.sidebar-button-ul a {
+    color: #000;
+}
+
+#sidebar-button {
+    color: #000;
+}
+
+.sidebar-button-collapsible {
+    color: #fff;
+    background-color: #D55464;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    margin-bottom: 0;
+}
+
+
+.profiletxt a:link {
+    color: #000;
+}
+
+.profiletxt a:hover{
+    background-color: #fff;
+}
+
+a :hover {
+    background-color: #22605B;
+   color: #fff;
+}
+
+.onlineButton {
+    color: #000;
 }
 
 
@@ -145,24 +245,25 @@ body {
  * Student
  */
 .collapsible {
-    background-color: #777;
-    color: white;
+    background-color: #96DFD8;
+    color: #000;
     cursor: pointer;
-    padding: 18px;
+    padding: 10%;
     width: 100%;
     border: none;
     text-align: left;
     outline: none;
     font-size: 15px;
+    border-bottom: solid;
+    border-bottom-color: #000;
+    border-bottom-width: thin;
+    text-transform: uppercase;
 }
 
-.active, .collapsible:hover {
-    background-color: #555;
-}
 
 .collapsible:after {
     content: '\002B';
-    color: white;
+    color: #000;
     font-weight: bold;
     float: right;
     margin-left: 5px;
@@ -177,7 +278,10 @@ body {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
-    background-color: #f1f1f1;
+}
+
+a :hover {
+    color: #fff;
 }
 
 #sub-heading{
@@ -197,4 +301,49 @@ body {
     float: left;
     width: 10%;
     height: auto;
+}
+
+#gameName, #className, #subject {
+    padding-top: 5em;
+    
+}
+
+#gameName, #className, #subject, #description {
+    margin-left: 3em;
+}
+
+#anntitle {
+    margin-top: 2.5em;
+    margin-bottom: 1em;
+}
+
+#annbox {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+#annbutton {
+    margin-top: 5em;
+    margin-left: -4em;
+}
+#subject, #description, #announcements {
+    padding-top: 2em;
+}
+
+#description {
+    width: 40em;
+    font-size: 1.2em;
+}
+
+.deleteAnnouncementButton {
+    margin-top: 2em;
+}
+
+/*Chatbox*/
+#chatListModal{
+    background-color: #effffd;
+}
+
+.chatListModalBody{
+    height: 400px;
+    overflow-y: auto;
 }

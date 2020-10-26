@@ -1,12 +1,21 @@
 <?php
+
 $gameInfo = getByIdGame($gameId);
 $gameName = $gameInfo['name'];
 $gameSubject = $gameInfo['subject'];
 $gameDescription = $gameInfo['description'];
 $gameGrade = $gameInfo['grade'];
 $gameGenre = $gameInfo['genre'];
+
+$wholostroger_url = '../games/GameExecutables/WhoLostRoger/index.php';
+
+$_SESSION['player_id'] = $user['id'];
+$_SESSION['game_id'] = $gameId;
+
+
 ?>
-<div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+
+<div role="main" class="main col-md-9 ml-sm-auto col-lg-10 px-4">
     <div class="row" id="gameName">
         <h1><?= $gameName;?></h1>
     </div>
@@ -24,15 +33,15 @@ $gameGenre = $gameInfo['genre'];
         <p id="grade">
             Grade: <?=$gameGrade;?>
         </p>
-
+    
     </div>
     <?php
     if($status == "teacher"){
-        echo '<a class="btn btn-primary mb-2" style="text-align: center" href="teacherStudentProgressByClass.php?gameId='.$gameId.'">Student\'s Progress</a>';
+        echo '<a class="btn-all mb-2" style="margin-left: 4em; margin-top: 3em;" href="classesProgress.php?gameId='.$gameId.'">Student\'s Progress</a>';
     }elseif($status == "student"){
-        echo '<a class="btn btn-success mb-2" style="text-align: center" href="gameInfo.php?gameId='.$gameId.'">Play</a><br/>';
-        echo '<a class="btn btn-primary mb-2" style="text-align: center" href="studentLeaderboard.php">Leaderboard</a><br/>';
-        echo '<a class="btn btn-primary mb-2" style="text-align: center" href="gameInfo.php?gameId='.$gameId.'">Achievements</a>';
+
+        echo '<a class="btn-all mb-2" style="margin-left: 4em; margin-top: 3em;" href="' . $wholostroger_url . '">Play</a><br/>';
+        echo '<a class="btn-all mb-2" style="margin-left: 4em;" href="studentLeaderboard.php?gameId='.$gameId.'">Leaderboard</a><br/>';
     }
     ?>
 </div>

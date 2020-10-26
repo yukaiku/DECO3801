@@ -1,0 +1,443 @@
+-- phpMyAdmin SQL Dump
+-- version 5.0.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Generation Time: Sep 21, 2020 at 10:34 AM
+-- Server version: 5.7.31-0ubuntu0.18.04.1
+-- PHP Version: 7.2.24-0ubuntu0.18.04.6
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `catseg`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chat_message`
+--
+
+CREATE TABLE `chat_message` (
+  `recordId` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `receiverId` int(11) NOT NULL,
+  `message` text NOT NULL,
+  `timestamp` datetime NOT NULL,
+  `status` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `chat_message`
+--
+
+INSERT INTO `chat_message` (`recordId`, `userId`, `receiverId`, `message`, `timestamp`, `status`) VALUES
+(3, 19, 23, 'hello tooo you tooooooo', '2020-09-20 17:34:43', 0),
+(10, 19, 23, 'hello tooo you tooooooo', '2020-09-20 17:43:00', 0),
+(11, 19, 23, 'hello tooo you tooooooo', '2020-09-20 17:43:01', 0),
+(12, 19, 23, 'hello tooo you tooooooo', '2020-09-20 17:43:54', 0),
+(13, 19, 23, 'hello tooo you tooooooo', '2020-09-20 17:44:01', 0),
+(14, 19, 23, 'hello tooo you tooooooo', '2020-09-20 17:44:26', 0),
+(15, 19, 23, 'hello tooo you tooooooo', '2020-09-20 17:44:56', 0),
+(16, 19, 23, 'hello tooo you tooooooo', '2020-09-20 17:45:39', 0),
+(17, 19, 23, 'hello tooo you tooooooo', '2020-09-20 17:47:29', 0),
+(18, 19, 23, 'hello', '2020-09-20 17:52:58', 0),
+(19, 19, 23, 'hello', '2020-09-20 17:53:03', 0),
+(20, 19, 23, 'hello', '2020-09-20 17:53:22', 0),
+(21, 23, 19, 'hello', '2020-09-20 17:53:58', 0),
+(22, 19, 23, 'hello\n', '2020-09-21 10:03:03', 0),
+(23, 23, 19, 'yo', '2020-09-21 10:03:12', 0),
+(24, 19, 23, 'hello', '2020-09-21 10:10:26', 0),
+(25, 23, 19, 'obj', '2020-09-21 10:43:09', 0),
+(26, 23, 19, 'hi', '2020-09-21 18:40:24', 0),
+(27, 19, 23, 'hi\n', '2020-09-21 18:40:30', 0),
+(28, 19, 23, 'hi3', '2020-09-21 18:40:36', 0),
+(29, 23, 19, 'hello:)', '2020-09-21 18:40:50', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `friendship`
+--
+
+CREATE TABLE `friendship` (
+  `id` int(11) NOT NULL,
+  `user` int(10) UNSIGNED NOT NULL,
+  `friend` int(10) UNSIGNED NOT NULL,
+  `relationship` int(1) NOT NULL COMMENT '0 is for student to student relationship, 1 is for student to teacher relationship',
+  `status` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `friendship`
+--
+
+INSERT INTO `friendship` (`id`, `user`, `friend`, `relationship`, `status`) VALUES
+(8, 24, 25, 0, 0),
+(9, 26, 24, 0, 0),
+(10, 26, 24, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `game`
+--
+
+CREATE TABLE `game` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `subject` varchar(50) NOT NULL,
+  `description` longtext NOT NULL,
+  `genre` text NOT NULL,
+  `grade` int(11) NOT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `game`
+--
+
+INSERT INTO `game` (`id`, `name`, `subject`, `description`, `genre`, `grade`, `status`) VALUES
+(1, 'Who Lost Roger', 'English', 'Your name is Roger ... that\'s all you know. You wake up in an unknown room, and you don\'t know who you are, or where you came from. The house you are in has a weird vibe, and you need to find out who you are, and escape the house before it\'s too late ...', 'Thriller, Hidden Objects', 6, 0),
+(2, 'Puzzle Master', 'Mathematics', 'Stuff', 'Mystery', 5, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `school`
+--
+
+CREATE TABLE `school` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(40) NOT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `school`
+--
+
+INSERT INTO `school` (`id`, `name`, `status`) VALUES
+(1, 'Ironside State School', 0),
+(2, 'Holy Family Primary School', 0),
+(3, 'St Ignatius School', 0),
+(4, 'West End State School', 0),
+(5, 'Toowong State School', 0),
+(6, 'St Ita\'s Regional Primary School', 0),
+(7, 'Dutton Park State School', 0),
+(8, 'Milton State School', 0),
+(9, 'Petrie Terrace State School', 0),
+(10, 'Brisbane Central State School', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student`
+--
+
+CREATE TABLE `student` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `school` int(10) UNSIGNED NOT NULL,
+  `firstname` varchar(20) NOT NULL,
+  `lastname` varchar(20) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `nickname` varchar(20) DEFAULT NULL,
+  `profileImage` varchar(100) NOT NULL,
+  `pwd` varchar(100) NOT NULL,
+  `grade` int(1) UNSIGNED NOT NULL,
+  `class` varchar(1) NOT NULL,
+  `lastactivity` datetime NOT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `student`
+--
+
+INSERT INTO `student` (`id`, `school`, `firstname`, `lastname`, `username`, `nickname`, `profileImage`, `pwd`, `grade`, `class`, `lastactivity`, `status`) VALUES
+(1, 1, 'German', 'Shephard', 'cleverpuppy', 'puppy', '', 'GS1234', 5, 'E', '0000-00-00 00:00:00', 1),
+(2, 1, 'Daniel', 'Radcliffe', 'mercyHEALPLS', 'Dan', '', 'DR1111', 6, 'E', '0000-00-00 00:00:00', 0),
+(3, 1, 'Trevor', 'MacDonald', 'fortnite3', 'Trev', '', 'TM0987', 6, 'E', '0000-00-00 00:00:00', 0),
+(4, 1, 'Rebecca', 'Cooper', 'sunshinegal08', 'Becky', '', 'Bec0808', 6, 'E', '0000-00-00 00:00:00', 0),
+(5, 1, 'Bob', 'Keller', 'bobbyBOB', 'bob', '', 'Bob6666', 6, 'E', '0000-00-00 00:00:00', 0),
+(6, 1, 'Cheryl', 'Tan', 'Dreamland', 'barbie', '', 'Ct0123', 6, 'E', '0000-00-00 00:00:00', 0),
+(7, 1, 'Ariel', 'Melton', 'schoolsux111', NULL, '', 'Am4567', 6, 'E', '0000-00-00 00:00:00', 0),
+(8, 1, 'Steven', 'McCoy', 'ihatevapour', 'steve', '', 'Sm8888', 6, 'E', '0000-00-00 00:00:00', 0),
+(9, 1, 'Reggie', 'Mantle', 'MasterR', NULL, '', 'Rm6753', 6, 'F', '0000-00-00 00:00:00', 0),
+(10, 1, 'Clay', 'Jensen', 'DJCJ', 'clay', '', 'Cj5548', 6, 'F', '0000-00-00 00:00:00', 0),
+(11, 1, 'Nora', 'Walker', 'princessNora', NULL, '', 'Nw25796', 6, 'F', '0000-00-00 00:00:00', 0),
+(12, 1, 'Winston', 'Williams', '', NULL, '', 'Wwh7654', 6, 'F', '0000-00-00 00:00:00', 1),
+(13, 1, 'Reena', 'Dawn', 'rainbowD', 'nana', '', '1867rD', 6, 'F', '0000-00-00 00:00:00', 0),
+(14, 1, 'Diego', 'Torres', 'CaptainD', 'DD', '', '9754Dd', 6, 'F', '0000-00-00 00:00:00', 0),
+(15, 1, 'Ani', 'Achola', 'ocean8', 'ani', '', 'Ani2190', 6, 'F', '0000-00-00 00:00:00', 0),
+(16, 1, 'Martin', 'Addison', 'hackerMA', 'Ad', '', '67856290Mh', 6, 'F', '0000-00-00 00:00:00', 0),
+(19, 1, 'theo3', 'theo3', 'theo', 'theo', '19_1600075204.jpg', 'z³Œøç¿÷êl#Wø', 6, 'E', '2020-09-21 19:55:04', 0),
+(21, 1, 'theotheo', 'theotheo', 'theodore', 'garet', '21_1600074771.jpg', 'ôœÏ—:\"RëpXkD', 1, 'B', '2020-09-13 05:37:34', 0),
+(22, 1, 'theotheo', 'theotheo', 'theodore2', NULL, 'dummy.jpg', '\nk5­}ÝÎªUIºr<õW4ñÛpù‘o*¯Ñ', 1, 'B', '2020-09-13 05:38:13', 0),
+(23, 1, 'theo', 'theo', 'theo3', 'theo3', 'dummy.jpg', 'z³Œøç¿÷êl#Wø', 6, 'F', '2020-09-21 18:43:41', 0),
+(24, 1, 'studentfirstname1', 'studentlastname1', 'student1', 'student1', 'dummy.jpg', '×.tâé«04¸ŠÚ®oõ	', 6, 'F', '2020-09-21 20:34:28', 0),
+(25, 1, 'studentfirstname2', 'studentlastname2', 'student2', 'student2', 'dummy.jpg', 'o[$	{çk„?2Dý«V-', 6, 'F', '2020-09-21 18:43:41', 0),
+(26, 1, 'studentfirstname3', 'studentlastname3', 'student3', 'student3', 'dummy.jpg', 'È­òCi…Ykm#V)', 6, 'F', '2020-09-21 18:43:41', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_progress`
+--
+
+CREATE TABLE `student_progress` (
+  `id` int(11) NOT NULL,
+  `game` int(10) UNSIGNED NOT NULL,
+  `student` int(10) UNSIGNED NOT NULL,
+  `percentage` int(3) NOT NULL,
+  `score` int(6) NOT NULL,
+  `level` int(2) NOT NULL,
+  `rank` int(2) NOT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `student_progress`
+--
+
+INSERT INTO `student_progress` (`id`, `game`, `student`, `percentage`, `score`, `level`, `rank`, `status`) VALUES
+(1, 1, 4, 60, 40202, 10, 1, 0),
+(2, 1, 5, 53, 40015, 10, 2, 0),
+(3, 1, 3, 47, 30926, 10, 3, 0),
+(4, 1, 1, 40, 30878, 9, 4, 0),
+(5, 1, 7, 39, 30000, 8, 5, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `teacher`
+--
+
+CREATE TABLE `teacher` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `school` int(10) UNSIGNED NOT NULL,
+  `firstname` varchar(20) NOT NULL,
+  `lastname` varchar(20) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `profileImage` varchar(100) NOT NULL,
+  `pwd` varchar(100) NOT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `teacher`
+--
+
+INSERT INTO `teacher` (`id`, `school`, `firstname`, `lastname`, `username`, `profileImage`, `pwd`, `status`) VALUES
+(1, 1, 'Santana', 'Lopez', 'mrsapplepie', '', 'AES_ENCRYPT(\'mrsapplepie\',\'deco2800\')', 0),
+(3, 1, 'Santana', 'Lopez Sir', 'mrapplepie2', '3_1600070135.jpg', 'AD(Áážzïð2\"%Ü˜T\\', 0),
+(4, 1, 'Theodoric', 'Theo', 'mrTheo', '3_1599974146.jpg', 'AD(Áážzïð2\"%Ü˜T\\', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `teacher_progress`
+--
+
+CREATE TABLE `teacher_progress` (
+  `id` int(11) NOT NULL,
+  `game` int(10) UNSIGNED NOT NULL,
+  `teacher` int(10) UNSIGNED NOT NULL,
+  `percentage` int(3) NOT NULL,
+  `score` int(5) NOT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `teacher_progress`
+--
+
+INSERT INTO `teacher_progress` (`id`, `game`, `teacher`, `percentage`, `score`, `status`) VALUES
+(1, 1, 1, 100, 49782, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `who_lost_roger`
+--
+
+CREATE TABLE `who_lost_roger` (
+  `recordid` int(11) NOT NULL,
+  `studentid` int(10) NOT NULL,
+  `score` int(6) NOT NULL,
+  `level` int(2) NOT NULL,
+  `percentage` int(3) NOT NULL,
+  `status` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `chat_message`
+--
+ALTER TABLE `chat_message`
+  ADD PRIMARY KEY (`recordId`);
+
+--
+-- Indexes for table `friendship`
+--
+ALTER TABLE `friendship`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user` (`user`,`friend`);
+
+--
+-- Indexes for table `game`
+--
+ALTER TABLE `game`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id` (`id`);
+
+--
+-- Indexes for table `school`
+--
+ALTER TABLE `school`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id` (`id`);
+
+--
+-- Indexes for table `student`
+--
+ALTER TABLE `student`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD KEY `school` (`school`);
+
+--
+-- Indexes for table `student_progress`
+--
+ALTER TABLE `student_progress`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `game` (`game`),
+  ADD KEY `student` (`student`);
+
+--
+-- Indexes for table `teacher`
+--
+ALTER TABLE `teacher`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD KEY `school` (`school`);
+
+--
+-- Indexes for table `teacher_progress`
+--
+ALTER TABLE `teacher_progress`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `game` (`game`),
+  ADD KEY `teacher` (`teacher`);
+
+--
+-- Indexes for table `who_lost_roger`
+--
+ALTER TABLE `who_lost_roger`
+  ADD PRIMARY KEY (`recordid`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `chat_message`
+--
+ALTER TABLE `chat_message`
+  MODIFY `recordId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `friendship`
+--
+ALTER TABLE `friendship`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `game`
+--
+ALTER TABLE `game`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `school`
+--
+ALTER TABLE `school`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `student`
+--
+ALTER TABLE `student`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `student_progress`
+--
+ALTER TABLE `student_progress`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `teacher`
+--
+ALTER TABLE `teacher`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `teacher_progress`
+--
+ALTER TABLE `teacher_progress`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `who_lost_roger`
+--
+ALTER TABLE `who_lost_roger`
+  MODIFY `recordid` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `student`
+--
+ALTER TABLE `student`
+  ADD CONSTRAINT `fk_school` FOREIGN KEY (`school`) REFERENCES `school` (`id`);
+
+--
+-- Constraints for table `student_progress`
+--
+ALTER TABLE `student_progress`
+  ADD CONSTRAINT `fk_game` FOREIGN KEY (`game`) REFERENCES `game` (`id`),
+  ADD CONSTRAINT `fk_student` FOREIGN KEY (`student`) REFERENCES `student` (`id`);
+
+--
+-- Constraints for table `teacher`
+--
+ALTER TABLE `teacher`
+  ADD CONSTRAINT `fk_school2` FOREIGN KEY (`school`) REFERENCES `school` (`id`);
+
+--
+-- Constraints for table `teacher_progress`
+--
+ALTER TABLE `teacher_progress`
+  ADD CONSTRAINT `fk_game2` FOREIGN KEY (`game`) REFERENCES `game` (`id`),
+  ADD CONSTRAINT `fk_teacher` FOREIGN KEY (`teacher`) REFERENCES `teacher` (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

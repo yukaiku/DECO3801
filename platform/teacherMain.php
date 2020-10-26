@@ -15,11 +15,9 @@ $schoolInfo = getByIdSchool($user['school']);
 
     <title>Teacher Home</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet">
+    <?php
+    include 'css.php';
+    ?>
 </head>
 
 <body>
@@ -30,24 +28,23 @@ $schoolInfo = getByIdSchool($user['school']);
         include_once("sideBar.php");
         ?>
 
-        <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-            <div class="row" style="position: absolute; top: 25px">
+        <div role="main" class="main col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="row">
                 <?php echo "<h1>{$schoolInfo['name']}</h1>" ?>
             </div>
             <div class="row" id="searchbar-row" style="position: absolute; top: 50px; width: 80%">
                 <div class="col-lg-6">
-                    <input id='searchClass' name='search_name' class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+                    <input id='searchClass' name='search_name' style= "background-color: #fff" class="form-control" type="text" placeholder="Search classes/students..." aria-label="Search">
                 </div>
                 <div class="col-lg-3"></div>
                 <div class="col-lg-3">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addClassModal">Add Class</button>
-<!--                            <a type="button" class="btn btn-primary" href="teacherAdd.php">Add Class</a>-->
+                            <button type="button" class="btn-all" data-toggle="modal" data-target="#addClassModal">Add Class</button>
                 </div>
             </div>
 
             <div class = "row" style="position: absolute; top: 200px; width: 80%">
                 <div class="col-lg-3">
-                    <a type="button" class="btn btn-danger" id="deleteClassButton">Delete Class</a>
+                    <a type="button" class="btn-all" id="deleteClassButton" style='color: white; text-decoration: none;'>Delete Class</a>
                 </div>
             </div>
             <div class="table-responsive" style="position: absolute; max-height: 30%; top: 250px; width: 80%">
@@ -71,8 +68,8 @@ $schoolInfo = getByIdSchool($user['school']);
 <div id="addClassModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content" style="background-color: #effffd">
+            <div class="modal-header" style="background-color: #48BEB5; color: white">
                 <h4 class="modal-title">Add Class</h4>
             </div>
             <div class="modal-body">
@@ -80,7 +77,7 @@ $schoolInfo = getByIdSchool($user['school']);
                     <div class="form-group">
                         <div class="form-group">
                             <label for="selectClass">Grade</label>
-                            <select class="form-control" name="grade" id="selectClass">
+                            <select class="form-control" style="background-color: #BCE8E3" name="grade" id="selectGrade">
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
@@ -97,7 +94,7 @@ $schoolInfo = getByIdSchool($user['school']);
                         </div>
                         <br>
                         <label for="selectClass">Class</label>
-                        <select class="form-control" name="class" id="selectClass">
+                        <select class="form-control" name="class" style="background-color: #BCE8E3" id="selectClass">
                             <option>A</option>
                             <option>B</option>
                             <option>C</option>
@@ -112,8 +109,8 @@ $schoolInfo = getByIdSchool($user['school']);
                         </select>
                     </div>
                     <br>
-                    <button type="submit" class="btn btn-primary">Add</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn-all">Add</button>
+                    <button type="button" class="btn-all" data-dismiss="modal">Close</button>
                 </form>
             </div>
         </div>
@@ -125,9 +122,9 @@ $schoolInfo = getByIdSchool($user['school']);
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="js/jquery-3.5.0.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/collapsibleSideBar.js"></script>
+<?php
+include 'lastActivity.php';
+?>
 <script type="text/javascript">
 
     $(document).ready(function() {
@@ -145,12 +142,14 @@ $schoolInfo = getByIdSchool($user['school']);
                 deleteArray.push($(this).val());
             });
             deleteClass(deleteArray);
+
         });
 
         function deleteClass(deleteArray){
             $.post("ajax/deleteClass.php",
                 {
                     deleteArray: deleteArray
+                    
                 },
                 function(result){
                     alert(result);
@@ -187,7 +186,7 @@ $schoolInfo = getByIdSchool($user['school']);
                         string += "</tr>";
                     }
                     $("#classTableBody").append(string);
-                    console.log(string);
+                    //console.log(string);
 
                 });
         }

@@ -2,7 +2,7 @@
 require_once 'dbFunction.php';
 
 $table_teacher = "teacher";
-$dbFields_teacher = ["id","school", "firstname", "lastname", "username", "pwd","status"];
+$dbFields_teacher = ["id","school", "firstname", "lastname", "username", "pwd","lastactivity","status"];
 $pk_teacher = "id";
 
 function getTeacher($like = "") {
@@ -25,8 +25,12 @@ function getAllTeachers($orderBy = "") {
     return getTeacherBySql("SELECT * FROM {$GLOBALS['table_teacher']} {$orderBy}");
 }
 
+function getBySchoolTeacher($school = 0) { //get all the rows where record id = current id
+    return getTeacherBySql("SELECT *, aes_decrypt(pwd, 'deco3801') as password FROM {$GLOBALS['table_teacher']} WHERE school = {$school} AND status = 0 ");
+}
+
 function getByIdTeacher($id = 0) { //get all the rows where record id = current id
-    $result_array = getTeacherBySql("SELECT * FROM {$GLOBALS['table_teacher']} WHERE {$GLOBALS['pk_teacher']}= {$id} AND status = 0 LIMIT 1 ");
+    $result_array = getTeacherBySql("SELECT *, aes_decrypt(pwd, 'deco3801') as password FROM {$GLOBALS['table_teacher']} WHERE {$GLOBALS['pk_teacher']}= {$id} AND status = 0 LIMIT 1 ");
     return !empty($result_array) ? array_shift($result_array) : false;
 }
 
@@ -42,6 +46,15 @@ function getTeacherBySql($sql = "") {
         $resultArray[] = $row;
     }
     return $resultArray;
+}
+
+function fetchTeacherLastActivity($id)
+{
+    $resultSet = getStudentBySql("SELECT * FROM {$GLOBALS['table_teacher']} WHERE {$GLOBALS['pk_teacher']} = '$id' ORDER BY lastactivity DESC LIMIT 1");
+    foreach($resultSet as $row)
+    {
+        return $row['lastactivity'];
+    }
 }
 
 function setTeacherAttributes($infoArr) { //set the fields //Gets the post data $infoArr is all the post data, [$fieldname] is the post names
@@ -63,6 +76,8 @@ function createTeacher($infoArr = array()) {
             } else {
                 $updateStrArr[] = "AES_ENCRYPT('{$value}','deco3801')";
                 $updateStrArrField[] = "{$field}";
+                $updateStrArr[] = "now()";
+                $updateStrArrField[] = "lastactivity";
                 $updateStrArr[] = "0";
                 $updateStrArrField[] = "status";
             }

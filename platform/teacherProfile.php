@@ -13,13 +13,11 @@ $schoolInfo = getByIdSchool($user['school']);
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Student Profile</title>
+    <title>Profile</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet">
+    <?php
+    include 'css.php';
+    ?>
 </head>
 
 <body>
@@ -29,23 +27,23 @@ $schoolInfo = getByIdSchool($user['school']);
         <?php
         include_once("sideBar.php");
         ?>
-        <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-            <div style="float:left">
-                <img width="135" height="150" src="#"/><br/>
-                <a style="font-size: 12px;" href="includes/uploadImageFunction.php">Change Profile Picture</a>
+        <div role="main" class="main col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div style="float:left; padding-top: 4em">
+                <img width="150" height="150" src="img/<?= $user['profileImage']; ?>"/><br/>
+                <br>
             </div>
-            <div style="padding-left:18%">
+            <div style="padding-left:18%; padding-top: 4em">
                 <h4><?= $user['username']; ?></h4>
-                <a type="button" style="font-size: 12px;" class="btn btn-outline-dark" href="#">Change Username</a><br/>
                 <div style="margin:1% 0 0 0; font-size:15px;">
                     <label for="selectStatus"><b>Status: </b></label>
-                    <select  name="class" id="selectStatus">
+                    <select name="class" id="selectStatus">
                         <option>Online</option>
                         <option>Idle</option>
                         <option>Invisible</option>
-                    </select><br/><br/>
-                    <a type="button" style="font-size: 12px;" class="btn btn-dark" href="studentFriends.php">Friends List</a>
+                    </select><br><br>
                 </div>
+                <button style="font-size: 12px;" class="btn-all updateDetails" data-toggle="modal" data-target="#updateDetailsModal">Update Details</button><br><br><br>
+
             </div>
 
             <div style="margin-top:3%; font-size:16px;">
@@ -65,9 +63,9 @@ $schoolInfo = getByIdSchool($user['school']);
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="js/jquery-3.5.0.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/collapsibleSideBar.js"></script>
-
+<?php
+include 'lastActivity.php';
+include "updateTeacherModal.php";
+?>
 </body>
 </html>

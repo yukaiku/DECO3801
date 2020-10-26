@@ -8,7 +8,6 @@ $grade = isset($_GET['grade']) ? $_GET['grade'] : '';
 $class = isset($_GET['class']) ? $_GET['class'] : '';
 $school = $user['school'];
 $schoolInfo = getByIdSchool($user['school']);
-$studentsRecord = getByGradeClassStudent($grade,$class,$school);
 ?>
 <!doctype html>
 <html lang="en">
@@ -20,11 +19,52 @@ $studentsRecord = getByGradeClassStudent($grade,$class,$school);
 
     <title>Teacher Add Class</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <?php
+    include 'css.php';
+    ?>
+    <style>
+        .hover-title {
+            font-weight: bold;
+            color: #0d6efd;
+            display: inline;
+            pointer-events: auto;
+            cursor: pointer;
+        }
 
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet">
+        .hover-image {
+            visibility: hidden;
+        }
+
+        body:not(.mobile) .hover-title:hover + .hover-image {
+            visibility: visible;
+            pointer-events: none;
+        }
+
+        .hover-image {
+            display: flex;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            pointer-events: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            /* Change width and height to scale images */
+            width: 90vw;
+            height: 90vh;
+        }
+
+        .hover-image img {
+            max-width: 100% !important;
+            max-height: 100% !important;
+            width: auto !important;
+            height: auto !important;
+            margin-bottom: 0;
+        }
+    </style>
 </head>
 
 <body>
@@ -34,40 +74,31 @@ $studentsRecord = getByGradeClassStudent($grade,$class,$school);
         <?php
         include_once("sideBar.php");
         ?>
-        <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-            <div class="row" style="position: absolute; top: 50px">
-                <?php echo "<h1>{$schoolInfo['name']}</h1>" ?>
+        <div role="main" class="main col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="row" >
+                <?php echo "<h1>{$schoolInfo['name']}, {$grade}{$class}</h1>" ?>
             </div>
-            <form style="position: absolute; top: 100px; width: 80%;">
-                <div class="form-row row">
-                    <div class="col-lg-6">
-                        Username:
-                        <input type="text" class="text-input--underbar width-half" name="username" id="usernameInput" placeholder="Username" value="">
-                    </div>
-                </div>
-                <div class="form-row row">
-                    <div class="col-lg-6">
-                        First Name:
-                        <input type="text" class="text-input--underbar width-half" name="firstName" id="firstnameInput" placeholder="First" value="">
-                    </div>
-                    <div class="col-lg-6">
-                        Last Name:
-                        <input type="text" class="text-input--underbar width-half" name="lastName" id="lastnameInput" placeholder="Last" value="" style="border-width-left: 1px">
-                    </div>
-                </div>
-                <hr>
-            </form>
-            <div clas="form-row" style="position: absolute; top: 225px; width: 80%; text-align: center;">
-                <button  id="addStudentButton" class="btn btn-primary mb-2" style="text-align: center">Confirm</button>
-            </div>
+            <div clas="form-row" style="margin-top: 5%">
+                <form action="uploadClassExcelHandler.php" method="post"
+                      name="frmExcelImport" id="frmExcelImport" enctype="multipart/form-data">
+                    <div>
+                        <p class="hover-title">CSV File only: </p>
+                        <div class="hover-image"><img src="img/excelSample.png"></div>
 
-            <div class="table-responsive" style="position: absolute; top: 300px; max-height: 30%; width: 80%;">
+                        <input type="hidden" name="schoolId" value="<?=$schoolInfo['id'];?>">
+                        <input type="file" name="file"
+                                                id="file" accept=".csv">
+                        <button type="submit" id="submit" name="import"
+                                class="btn-all">Import</button>
+
+                    </div>
+
+                </form>
+            </div>
+            <div class="table-responsive" style="position: absolute; margin-top: 2%; width: 80%;">
                 <table class="table table-striped table-sm">
                     <thead>
                     <tr>
-                        <th>
-                            Select
-                        </th>
                         <th>Username</th>
                         <th>Password</th>
                         <th>First Name</th>
@@ -80,19 +111,42 @@ $studentsRecord = getByGradeClassStudent($grade,$class,$school);
                     </tbody>
                 </table>
             </div>
+            <form style="position: absolute; top: 75%; width: 80%;">
+                <div class="form-row row">
+                    <div class="col-lg-6">
+                        Username:
+                        <input type="text" style="background-color: #fff" class="text-input--underbar width-half" name="username" id="usernameInput" placeholder="Username" value="">
+                    </div>
+                </div>
+                <div class="form-row row">
+                    <div class="col-lg-6">
+                        First Name:
+                        <input type="text" style="background-color: #fff" class="text-input--underbar width-half" name="firstName" id="firstnameInput" placeholder="First Name" value="">
+                    </div>
+                    <div class="col-lg-6">
+                        Last Name:
+                        <input type="text" style="background-color: #fff" class="text-input--underbar width-half" name="lastName" id="lastnameInput" placeholder="Last Name" value="" style="border-width-left: 1px">
+                    </div>
+                </div>
+                <hr>
+            </form>
+            <div clas="form-row" style="position: absolute; bottom: 1%; width: 80%; text-align: center;">
+                <button  id="addStudentButton" class="btn-all">Add Student</button>
+            </div>
             <div id="mainFooter" style="bottom:0; position: fixed;">
-                <a class="btn btn-primary mb-2" style="text-align: center" href="teacherMain.php">Back</a>
+                <a class="btn-all mb-2" href="teacherMain.php">Back</a>
             </div>
         </div>
+
     </div>
 </div>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="js/jquery-3.5.0.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/collapsibleSideBar.js"></script>
+<?php
+include 'lastActivity.php';
+?>
 <script type="text/javascript">
 
     $(document).ready(function() {
@@ -128,7 +182,7 @@ $studentsRecord = getByGradeClassStudent($grade,$class,$school);
                     profileImage: "dummy.jpg"
                 },
                 function(result){
-                    alert(result)
+                    alert(result);
                     refreshData();
                 });
         }
@@ -149,9 +203,9 @@ $studentsRecord = getByGradeClassStudent($grade,$class,$school);
                     for(var i = 1; i <= result.length; i++){
                         string += "<tr>";
 
-                        string += "<td>";
-                        string += '<input type="checkbox" class="categoryIds" id="check1" name="category" value="' + result[i-1].id + '">';
-                        string += "</td>";
+                        // string += "<td>";
+                        // string += '<input type="checkbox" class="categoryIds" id="check1" name="category" value="' + result[i-1].id + '">';
+                        // string += "</td>";
 
                         string += "<td>";
                         string += result[i-1].username ;
@@ -166,7 +220,7 @@ $studentsRecord = getByGradeClassStudent($grade,$class,$school);
                         string += result[i-1].lastname ;
                         string += "</td>";
                         string += "<td>";
-                        string += "<a href='teacher.php?grade="+ result[i-1].grade + "&class=" + result[i-1].class + "&school=" + result[i-1].school + "'>Edit</a>";
+                        string += "<a href='studentProfile.php?id="+ result[i-1].id +"'>Edit</a>";
                         string += "</td>";
                         string += "</tr>";
                     }

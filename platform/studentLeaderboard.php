@@ -1,4 +1,10 @@
-
+<?php
+include_once 'includes/checkLoginStatusForBoth.php';
+include_once 'includes/dbGame.php';
+include_once 'includes/dbWhoLostRoger.php';
+$gameId = isset($_GET['gameId']) ? $_GET['gameId'] : "1";
+$studentRecords = getLeaderboard();
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,13 +13,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Student Home</title>
+    <title>Leaderboard</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet">
+    <?php
+    include 'css.php';
+    ?>
 </head>
 <body>
 <div class="container-fluid">
@@ -21,7 +25,7 @@
         <?php
         include_once("sideBar.php");
         ?>
-        <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        <div role="main" class="main col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="row">
                 <h1><b>Who Lost Roger?</b></h1>
             </div>
@@ -34,31 +38,44 @@
                     <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Current Level</th>
                         <th>Total Score</th>
                         <th>Rank</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1,001</td>
-                        <td>Lorem</td>
-                        <td>ipsum</td>
-                        <td>dolor</td>
-                    </tr>
-                    <tr>
-                        <td>1,001</td>
-                        <td>Lorem</td>
-                        <td>ipsum</td>
-                        <td>dolor</td>
-                    </tr>
+                    <?php
+                    $rank = 1;
+                    foreach ($studentRecords as $student => $record){
+
+                        echo "<tr>";
+
+                        echo "<td>";
+                        echo $record['firstname'] . " " . $record['lastname'];
+                        echo "</td>";
+                        echo "<td>";
+                        echo $record['hiscore'];
+                        echo "</td>";
+                        echo "<td>";
+                        echo $rank;
+                        echo "</td>";
+
+                        echo "</tr>";
+                        $rank +=1;
+                    }
+                    ?>
                     </tbody>
                 </table>
             </div>
             <div id="mainFooter" style="bottom:0; position: fixed;">
-                <a class="btn btn-primary mb-2" style="text-align: center" href="javascript:history.back()">Back</a>
+                <a class="btn-all" href="javascript:history.back()">Back</a>
             </div>
         </div>
     </div>
+    <!-- Bootstrap core JavaScript
+================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <?php
+    include 'lastActivity.php';
+    ?>
 </body>
 </html>

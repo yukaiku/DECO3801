@@ -1,4 +1,30 @@
+<?php
+// start the session
+session_start();
 
+// destroy the session
+session_destroy();
+
+$errorMessage = "";
+if(isset($_GET['error'])){
+    $errorMessage = $_GET['error'];
+}
+$rememberMe = 1;
+if(isset($_COOKIE["student"]) && $_COOKIE['student'] != "") {
+    $user = json_decode($_COOKIE['student']);
+    $username = $user->username;
+    $password = $user->password;
+}else if(isset($_COOKIE["teacher"]) && $_COOKIE['teacher'] != "") {
+    $user = json_decode($_COOKIE['teacher']);
+    $username = $user->username;
+    $password = $user->password;
+
+}else{
+    $rememberMe = 0;
+    $username = "";
+    $password = "";
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,27 +35,41 @@
 
     <title>Signin</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/signin.css" rel="stylesheet">
+    <?php
+    include 'css.php';
+    ?>
 </head>
 
-<body class="text-center">
+<body class="text-center" >
 <form class="form-signin" action="loginHandler.php" method="post">
     <img class="mb-4" src="img/logo.png" alt="" width="300" height="200">
-<!--    <h1 class="h3 mb-3 font-weight-normal">CatsEG</h1>-->
-    <label for="inputUsername" class="sr-only" name="username">Username</label>
-    <input type="text" id="inputUsername" class="form-control" placeholder="Username" name="username" required autofocus>
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="pwd" required>
+    <!--    <h1 class="h3 mb-3 font-weight-normal">CatsEG</h1>-->
+    <h4>Educational Games for kids</h4>
+    <label for="inputUsername" class = "userlabel" name="username">Username</label>
+    <input class="userfields" type="text" id="inputUsername" class="form-control" name="username" value = "<?= $username ?>" required autofocus>
+    <label for="inputPassword" class = "userlabel" name="password">Password</label>
+    <input class="userfields" type="password" id="inputPassword" class="form-control" name="pwd" value = "<?= $password ?>" required>
     <div class="checkbox mb-3">
         <label>
-            <input type="checkbox" value="remember-me"> Remember me
+            <?php
+            if ($rememberMe == 1){
+                echo '<input type="checkbox" name="rememberMe" value="remember-me" checked> Remember me';
+            }else{
+                echo '<input type="checkbox" name="rememberMe" value="remember-me"> Remember me';
+            }
+            ?>
+
         </label>
     </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <button class="btn-signin" type="submit">Sign In</button>
 </form>
+<script type="text/javascript">
+    <?php
+    if($errorMessage != ""){
+        echo "alert('{$errorMessage}');";
+    }
+    ?>
+</script>
 </body>
 </html>
+

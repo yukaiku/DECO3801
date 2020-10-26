@@ -2,7 +2,7 @@
 require_once 'dbFunction.php';
 
 $table_student = "student";
-$dbFields_student = ["id","school", "firstname", "lastname", "username", "nickname","profileImage", "pwd", "grade", "class", "status"];
+$dbFields_student = ["id","school", "firstname", "lastname", "username", "nickname","profileImage", "pwd", "grade", "class","lastactivity", "status"];
 $pk_student = "id";
 
 function getStudent($like = "") {
@@ -13,6 +13,10 @@ function getStudent($like = "") {
     } else {
         return false;
     }
+}
+function getClassList($orderBy = ""){
+    $orderBy = strlen($orderBy) > 0 ? "ORDER BY {$orderBy}" : "";
+    return getStudentBySql("SELECT * FROM {$GLOBALS['table_student']} WHERE status = 0 group by grade, class {$orderBy}");
 }
 
 function getAllStudent($orderBy = "") {
@@ -26,13 +30,13 @@ function getAllStudents($orderBy = "") {
 }
 
 function getByIdStudent($id = 0) { //get all the rows where record id = current id
-    $result_array = getStudentBySql("SELECT * FROM {$GLOBALS['table_student']} WHERE {$GLOBALS['pk_student']}= {$id} AND status = 0 LIMIT 1 ");
+    $result_array = getStudentBySql("SELECT *, aes_decrypt(pwd, 'deco3801') as password FROM {$GLOBALS['table_student']} WHERE {$GLOBALS['pk_student']}= {$id} AND status = 0 LIMIT 1 ");
     return !empty($result_array) ? array_shift($result_array) : false;
 }
 
 function getByGradeClassStudent($grade, $class, $school) { //get all the rows by class
-    $result_array = getStudentBySql("SELECT * FROM {$GLOBALS['table_student']} WHERE grade = '{$grade}' AND class = '{$class}' AND school = {$school} AND status = 0 order by username, firstname, lastname ");
-    return !empty($result_array) ? array_shift($result_array) : false;
+    return getStudentBySql("SELECT * FROM {$GLOBALS['table_student']} WHERE grade = '{$grade}' AND class = '{$class}' AND school = {$school} AND status = 0 order by username, firstname, lastname ");
+
 }
 
 function getByIdStudents($id = 0) { //get all the rows where record id = current id
@@ -47,6 +51,15 @@ function getStudentBySql($sql = "") {
         $resultArray[] = $row;
     }
     return $resultArray;
+}
+
+function fetchStudentLastActivity($id)
+{
+    $resultSet = getStudentBySql("SELECT * FROM {$GLOBALS['table_student']} WHERE {$GLOBALS['pk_student']} = '$id' ORDER BY lastactivity DESC LIMIT 1");
+    foreach($resultSet as $row)
+    {
+        return $row['lastactivity'];
+    }
 }
 
 function setStudentAttributes($infoArr) { //set the fields //Gets the post data $infoArr is all the post data, [$fieldname] is the post names
@@ -70,6 +83,8 @@ function createStudent($infoArr = array()) {
                 $updateStrArrField[] = "{$field}";
                 $updateStrArr[] = "0";
                 $updateStrArrField[] = "status";
+                $updateStrArr[] = "now()";
+                $updateStrArrField[] = "lastactivity";
             }
         } else {
             $updateStrArr[] = "'{$value}'";
