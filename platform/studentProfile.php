@@ -39,9 +39,11 @@ $studentInfo = getByIdStudent($studentId);
         <div role="main" class=" main col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="row">
                 <div class="col-lg-3" style="margin-top:4em">
-                    <img width="150" height="150" src="img/<?=$studentInfo['profileImage'];?>"/>
+                    <img width="150" height="150" src="img/<?=$studentInfo['profileImage'];?>" onerror="this.onerror=null; this.src='img/dummyimg.png'"/>
                     <div class="form-row">
                         <button style="font-size: 12px;" class="btn-all updateDetails" data-toggle="modal" data-target="#updateDetailsModal">Update Details</button>
+                        <br>
+                        <br>
                         <?php
                         if($status == "teacher"){
                             echo '<button style="font-size: 12px;" class="btn-all resetPassword" data-toggle="modal" data-target="#resetStudentPasswordModal">Reset Password</button><br/>';
@@ -94,7 +96,7 @@ $studentInfo = getByIdStudent($studentId);
 <!-- Placed at the end of the document so the pages load faster -->
 <?php
 
-include "updateStudentModal.php";
+include "modals/updateStudentModal.php";
 include "modals/resetStudentPasswordModal.php";
 include "lastActivity.php";
 ?>

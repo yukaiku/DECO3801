@@ -44,7 +44,8 @@ $games = getAllGame('subject');
         <ul>
             <div class="row bottom-navbar">
                 <div class="col-lg-3">
-                    <img src="img/<?=$user['profileImage'];?>" style="width: 50px; height: 50px;" >
+
+                    <img src="img/<?=$user['profileImage'];?>" onerror="this.onerror=null; this.src='img/dummyimg.png'" style="width: 50px; height: 50px;" >
                 </div>
                 <div class="col-lg-9">
                     <?php if ($status == "student"){
