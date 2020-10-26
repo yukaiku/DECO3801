@@ -220,16 +220,19 @@ a:hover, a:visited, a:link, a:active
     margin-bottom: 0;
 }
 
-b{
+a.profiletxt{
     color: #22605B;
+    font-size: 15px;
 }
 
-.profiletxt a :hover {
+a.profiletxt :hover {
     color: #D55464;
 }
 
-.onlineButton {
-    color: #000;
+a.onlineButton {
+    color: #D55464;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 
