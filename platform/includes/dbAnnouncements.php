@@ -1,10 +1,19 @@
 <?php
+/***
+ * Database functions for table announcements
+ * Always require main db function first
+ */
 require_once 'dbFunction.php';
 
 $table_announcements = "announcements";
 $dbFields_announcements = ["id", "title", "message", "timeStamp", "teacherId","announcementType", "status"];
 $pk_announcement = "id";
 
+/***
+ * Gets announcements through the sql
+ * @param string $sql
+ * @return array of announcement results
+ */
 function getAnnouncementsBySql($sql = "") {
     $resultSet = query($sql);
     $resultArray = array();
@@ -14,6 +23,11 @@ function getAnnouncementsBySql($sql = "") {
     return $resultArray;
 }
 
+/***
+ * Sets the attributes to be sent run in the sql
+ * @param $infoArr
+ * @return array array of values with key as field name value as input values
+ */
 function setAnnouncementAttributes($infoArr) { //set the fields //Gets the post data $infoArr is all the post data, [$fieldname] is the post names
     $newRecord = array();
     foreach ($GLOBALS['dbFields_announcements'] as $fieldName) {
@@ -24,6 +38,11 @@ function setAnnouncementAttributes($infoArr) { //set the fields //Gets the post 
     return $newRecord;
 }
 
+/***
+ * Creates a new announcement with attribute from param and returns the unique ID or false if fail
+ * @param array $infoArr
+ * @return bool|int|string
+ */
 function createAnnouncements($infoArr = array()) {
     foreach ($infoArr as $field => $value) {
         if ($value != "") {
@@ -48,6 +67,11 @@ function createAnnouncements($infoArr = array()) {
     }
 }
 
+/***
+ * Updates the announcement details
+ * @param array $infoArr
+ * @return bool
+ */
 function updateAnnouncement($infoArr = array()) {
     if (array_key_exists($GLOBALS['pk_announcement'], $infoArr)) {
         $pkStr = "{$GLOBALS['pk_announcement']} = '{$infoArr[$GLOBALS['pk_announcement']]}'";
@@ -72,6 +96,13 @@ function updateAnnouncement($infoArr = array()) {
     return false;
 }
 
+/***
+ * Gets the sql for getting all announcements
+ * @param string $timeStamp
+ * @param string $announcementType
+ * @param string $status
+ * @return string
+ */
 function getAllAnnouncements($timeStamp = "", $announcementType = "",$status = ""){
     $whereAnnouncement = strlen($announcementType) > 0 ? " and (announcementType = '{$announcementType}' or announcementType = '0') " : "";
     $whereTimeStamp = strlen($timeStamp) > 0 ? " and timeStamp = {$timeStamp} " : "";
@@ -82,6 +113,14 @@ function getAllAnnouncements($timeStamp = "", $announcementType = "",$status = "
     return $sql;
 }
 
+/***
+ * Gets the sql of announcement with teacher name
+ * @param string $timeStamp
+ * @param string $announcementType
+ * @param string $status
+ * @param string $limit
+ * @return string
+ */
 function getAllAnnouncementWithTeacherName($timeStamp = "", $announcementType = "",$status = "", $limit = ""){
     $announcementSql = getAllAnnouncements($timeStamp, $announcementType, $status);
     $limitSql = " limit {$limit} ";

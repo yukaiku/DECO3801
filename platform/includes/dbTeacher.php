@@ -1,44 +1,40 @@
 <?php
+/***
+ * Database functions for table teacher
+ * Always require main db function first
+ */
 require_once 'dbFunction.php';
 
 $table_teacher = "teacher";
 $dbFields_teacher = ["id","school", "firstname", "lastname", "username", "pwd","lastactivity","status"];
 $pk_teacher = "id";
 
-function getTeacher($like = "") {
-    $like = strlen($like) > 0 ? "LIKE '{$like}'" : "";
-    $string = getTeacherBySql("SELECT {$GLOBALS['pk_teacher']} FROM {$GLOBALS['table_teacher']} WHERE  {$GLOBALS['pk_teacher']} {$like}");
-    if (empty($string)) {
-        return true;
-    } else {
-        return false;
-    }
-}
 
-function getAllTeacher($orderBy = "") {
-    $orderBy = strlen($orderBy) > 0 ? "ORDER BY {$orderBy}" : "";
-    return getTeacherBySql("SELECT * FROM {$GLOBALS['table_teacher']} WHERE status = 0 {$orderBy}");
-}
-
+/***
+ * Gets all teachers
+ * @param string $orderBy
+ * @return array
+ */
 function getAllTeachers($orderBy = "") {
     $orderBy = strlen($orderBy) > 0 ? "ORDER BY {$orderBy}" : "";
     return getTeacherBySql("SELECT * FROM {$GLOBALS['table_teacher']} {$orderBy}");
 }
 
-function getBySchoolTeacher($school = 0) { //get all the rows where record id = current id
-    return getTeacherBySql("SELECT *, aes_decrypt(pwd, 'deco3801') as password FROM {$GLOBALS['table_teacher']} WHERE school = {$school} AND status = 0 ");
-}
-
+/***
+ * Gets teacher by Id
+ * @param int $id
+ * @return bool|mixed
+ */
 function getByIdTeacher($id = 0) { //get all the rows where record id = current id
     $result_array = getTeacherBySql("SELECT *, aes_decrypt(pwd, 'deco3801') as password FROM {$GLOBALS['table_teacher']} WHERE {$GLOBALS['pk_teacher']}= {$id} AND status = 0 LIMIT 1 ");
     return !empty($result_array) ? array_shift($result_array) : false;
 }
 
-function getByIdTeachers($id = 0) { //get all the rows where record id = current id
-    $result_array = getTeacherBySql("SELECT * FROM {$GLOBALS['table_teacher']} WHERE {$GLOBALS['pk_teacher']}= {$id} LIMIT 1 ");
-    return !empty($result_array) ? array_shift($result_array) : false;
-}
-
+/***
+ * Gets teacher by SQL
+ * @param string $sql
+ * @return array
+ */
 function getTeacherBySql($sql = "") {
     $resultSet = query($sql);
     $resultArray = array();
@@ -48,6 +44,11 @@ function getTeacherBySql($sql = "") {
     return $resultArray;
 }
 
+/***
+ * Fetch the last activity of students
+ * @param $id
+ * @return mixed
+ */
 function fetchTeacherLastActivity($id)
 {
     $resultSet = getStudentBySql("SELECT * FROM {$GLOBALS['table_teacher']} WHERE {$GLOBALS['pk_teacher']} = '$id' ORDER BY lastactivity DESC LIMIT 1");
@@ -57,6 +58,11 @@ function fetchTeacherLastActivity($id)
     }
 }
 
+/***
+ * Sets the field and value to be inserted or updated into table
+ * @param $infoArr
+ * @return array
+ */
 function setTeacherAttributes($infoArr) { //set the fields //Gets the post data $infoArr is all the post data, [$fieldname] is the post names
     $newRecord = array();
     foreach ($GLOBALS['dbFields_teacher'] as $fieldName) {
@@ -67,37 +73,11 @@ function setTeacherAttributes($infoArr) { //set the fields //Gets the post data 
     return $newRecord;
 }
 
-function createTeacher($infoArr = array()) {
-    foreach ($infoArr as $field => $value) {
-        if ($value != "") {
-            if ($field != 'pwd') {
-                $updateStrArr[] = "'{$value}'";
-                $updateStrArrField[] = "{$field}";
-            } else {
-                $updateStrArr[] = "AES_ENCRYPT('{$value}','deco3801')";
-                $updateStrArrField[] = "{$field}";
-                $updateStrArr[] = "now()";
-                $updateStrArrField[] = "lastactivity";
-                $updateStrArr[] = "0";
-                $updateStrArrField[] = "status";
-            }
-        } else {
-            $updateStrArr[] = "'{$value}'";
-            $updateStrArrField[] = "{$field}";
-        }
-    }
-    $updateStr = join(", ", array_values($updateStrArr));
-    $updateStrField = join(", ", array_values($updateStrArrField));
-    $sql = "INSERT INTO {$GLOBALS['table_teacher']} ";
-    $sql .= "({$updateStrField}) VALUES ({$updateStr})";
-    if (query($sql)) {
-
-        return insert_id();
-    } else {
-        return false;
-    }
-}
-
+/***
+ * Updates teacher record
+ * @param array $infoArr
+ * @return bool
+ */
 function updateTeacher($infoArr = array()) {
     if (array_key_exists($GLOBALS['pk_teacher'], $infoArr)) {
         $pkStr = "{$GLOBALS['pk_teacher']} = '{$infoArr[$GLOBALS['pk_teacher']]}'";

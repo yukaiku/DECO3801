@@ -1,5 +1,11 @@
 <?php
-
+/***
+ * Uploads new image to the server and update profileimage record for user
+ * @param $newFile
+ * @param string $folder
+ * @param string $recordid
+ * @return string
+ */
 function handleImageUpload($newFile, $folder = "", $recordid = "") {
     $result = false;
     

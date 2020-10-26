@@ -1,49 +1,49 @@
 <?php
+/***
+ * Database functions for table student
+ * Always require main db function first
+ */
 require_once 'dbFunction.php';
 
 $table_student = "student";
 $dbFields_student = ["id","school", "firstname", "lastname", "username", "nickname","profileImage", "pwd", "grade", "class","lastactivity", "status"];
 $pk_student = "id";
 
-function getStudent($like = "") {
-    $like = strlen($like) > 0 ? "LIKE '{$like}'" : "";
-    $string = getStudentBySql("SELECT {$GLOBALS['pk_student']} FROM {$GLOBALS['table_student']} WHERE  {$GLOBALS['pk_student']} {$like}");
-    if (empty($string)) {
-        return true;
-    } else {
-        return false;
-    }
-}
+/***
+ * Get all classes
+ * @param string $orderBy
+ * @return array
+ */
 function getClassList($orderBy = ""){
     $orderBy = strlen($orderBy) > 0 ? "ORDER BY {$orderBy}" : "";
     return getStudentBySql("SELECT * FROM {$GLOBALS['table_student']} WHERE status = 0 group by grade, class {$orderBy}");
 }
 
-function getAllStudent($orderBy = "") {
-    $orderBy = strlen($orderBy) > 0 ? "ORDER BY {$orderBy}" : "";
-    return getStudentBySql("SELECT * FROM {$GLOBALS['table_student']} WHERE status = 0 {$orderBy}");
-}
-
+/***
+ * Get all students
+ * @param string $orderBy
+ * @return array
+ */
 function getAllStudents($orderBy = "") {
     $orderBy = strlen($orderBy) > 0 ? "ORDER BY {$orderBy}" : "";
     return getStudentBySql("SELECT * FROM {$GLOBALS['table_student']} {$orderBy}");
 }
 
+/***
+ * Get students by unique id
+ * @param int $id
+ * @return bool|mixed
+ */
 function getByIdStudent($id = 0) { //get all the rows where record id = current id
     $result_array = getStudentBySql("SELECT *, aes_decrypt(pwd, 'deco3801') as password FROM {$GLOBALS['table_student']} WHERE {$GLOBALS['pk_student']}= {$id} AND status = 0 LIMIT 1 ");
     return !empty($result_array) ? array_shift($result_array) : false;
 }
 
-function getByGradeClassStudent($grade, $class, $school) { //get all the rows by class
-    return getStudentBySql("SELECT * FROM {$GLOBALS['table_student']} WHERE grade = '{$grade}' AND class = '{$class}' AND school = {$school} AND status = 0 order by username, firstname, lastname ");
-
-}
-
-function getByIdStudents($id = 0) { //get all the rows where record id = current id
-    $result_array = getStudentBySql("SELECT * FROM {$GLOBALS['table_student']} WHERE {$GLOBALS['pk_student']}= {$id} LIMIT 1 ");
-    return !empty($result_array) ? array_shift($result_array) : false;
-}
-
+/***
+ * Get student by sql
+ * @param string $sql
+ * @return array
+ */
 function getStudentBySql($sql = "") {
     $resultSet = query($sql);
     $resultArray = array();
@@ -53,6 +53,11 @@ function getStudentBySql($sql = "") {
     return $resultArray;
 }
 
+/***
+ * Gets the last activity of students
+ * @param $id
+ * @return mixed
+ */
 function fetchStudentLastActivity($id)
 {
     $resultSet = getStudentBySql("SELECT * FROM {$GLOBALS['table_student']} WHERE {$GLOBALS['pk_student']} = '$id' ORDER BY lastactivity DESC LIMIT 1");
@@ -62,6 +67,11 @@ function fetchStudentLastActivity($id)
     }
 }
 
+/***
+ * Sets the field and value for student to be inserted or updated
+ * @param $infoArr
+ * @return array
+ */
 function setStudentAttributes($infoArr) { //set the fields //Gets the post data $infoArr is all the post data, [$fieldname] is the post names
     $newRecord = array();
     foreach ($GLOBALS['dbFields_student'] as $fieldName) {
@@ -72,6 +82,11 @@ function setStudentAttributes($infoArr) { //set the fields //Gets the post data 
     return $newRecord;
 }
 
+/***
+ * Creates a new student record
+ * @param array $infoArr
+ * @return bool|int|string
+ */
 function createStudent($infoArr = array()) {
     foreach ($infoArr as $field => $value) {
         if ($value != "") {
@@ -103,6 +118,11 @@ function createStudent($infoArr = array()) {
     }
 }
 
+/***
+ * Updates student record
+ * @param array $infoArr
+ * @return bool
+ */
 function updateStudent($infoArr = array()) {
     if (array_key_exists($GLOBALS['pk_student'], $infoArr)) {
         $pkStr = "{$GLOBALS['pk_student']} = '{$infoArr[$GLOBALS['pk_student']]}'";
