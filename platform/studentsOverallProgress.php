@@ -184,6 +184,9 @@ $gameGenre = $gameInfo['genre'];
             drawHorizontalGraphs();
         }
 
+        /***
+         * Draws the bar graph
+         */
         function drawBarGraph(){
             var month = [];
             var playCount = [];
@@ -238,6 +241,9 @@ $gameGenre = $gameInfo['genre'];
             });
         }
 
+        /***
+         * Draws the horizontal graphs
+         */
         function drawHorizontalGraphs() {
             var maxLevel;
             var lowestLevel;
@@ -294,6 +300,12 @@ $gameGenre = $gameInfo['genre'];
             ?>
         }
 
+        /***
+         * Draws the individual horizontal graph from info from in the parameters
+         * @param labelName
+         * @param nounCount
+         * @param level
+         */
         function drawHorizontalGraph(labelName, nounCount ,level){
             var chartdata = {
                 labels: labelName,
@@ -328,22 +340,6 @@ $gameGenre = $gameInfo['genre'];
 
 
         function openTab(evt, tabType) {
-            var i, tabcontent, tablinks;
-            //Hides all tabs
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            //get all tab links
-            tablinks = document.getElementsByClassName("tablinks");
-            //remove all active tabs
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            //
-            document.getElementById(tabType).style.display = "block";
-            //set active tab
-            evt.currentTarget.className += " active";
             activeTab = tabType;
             window.parent.location = "studentsOverallProgress.php?grade=<?=$grade?>&class=<?=$class?>&gameId=<?=$gameId?>&activeTab="+activeTab;
         }
