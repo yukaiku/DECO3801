@@ -14,6 +14,10 @@ function getStudent($like = "") {
         return false;
     }
 }
+function getClassList($orderBy = ""){
+    $orderBy = strlen($orderBy) > 0 ? "ORDER BY {$orderBy}" : "";
+    return getStudentBySql("SELECT * FROM {$GLOBALS['table_student']} WHERE status = 0 group by grade, class {$orderBy}");
+}
 
 function getAllStudent($orderBy = "") {
     $orderBy = strlen($orderBy) > 0 ? "ORDER BY {$orderBy}" : "";

@@ -2,7 +2,7 @@
 require_once 'dbFunction.php';
 
 $table_announcements = "announcements";
-$dbFields_announcements = ["id", "title", "message", "timeStamp", "teacherId", "status"];
+$dbFields_announcements = ["id", "title", "message", "timeStamp", "teacherId","announcementType", "status"];
 $pk_announcement = "id";
 
 function getAnnouncementsBySql($sql = "") {
@@ -72,17 +72,18 @@ function updateAnnouncement($infoArr = array()) {
     return false;
 }
 
-function getAllAnnouncements($timeStamp = "", $status = ""){
+function getAllAnnouncements($timeStamp = "", $announcementType = "",$status = ""){
+    $whereAnnouncement = strlen($announcementType) > 0 ? " and (announcementType = '{$announcementType}' or announcementType = '0') " : "";
     $whereTimeStamp = strlen($timeStamp) > 0 ? " and timeStamp = {$timeStamp} " : "";
-    $whereStatus = strlen($status) > 0 ? " and status = {$status} " : "";
-    $whereSql = " where timeStamp >= DATE_SUB(NOW(),INTERVAL 1 YEAR) and status = 0 ";
-    $whereSql .= $whereTimeStamp . $whereStatus;
+    $whereStatus = strlen($status) > 0 ? " and status = {$status} " : " and status = 0 ";
+    $whereSql = " where timeStamp >= DATE_SUB(NOW(),INTERVAL 1 YEAR) ";
+    $whereSql .= $whereTimeStamp . $whereStatus . $whereAnnouncement;
     $sql = "SELECT * FROM {$GLOBALS['table_announcements']} {$whereSql}  order By timeStamp desc";
     return $sql;
 }
 
-function getAllAnnouncementWithTeacherName($timeStamp = "", $status = "", $limit = ""){
-    $announcementSql = getAllAnnouncements($timeStamp, $status);
+function getAllAnnouncementWithTeacherName($timeStamp = "", $announcementType = "",$status = "", $limit = ""){
+    $announcementSql = getAllAnnouncements($timeStamp, $announcementType, $status);
     $limitSql = " limit {$limit} ";
     $sql = " SELECT a.title, a.message, a.timeStamp, a.id, t.firstname, t.lastname ";
     $sql .= " from ({$announcementSql}) a, teacher t ";

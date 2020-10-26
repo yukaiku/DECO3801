@@ -1,8 +1,15 @@
 <?php
 include_once 'includes/checkLoginStatusForBoth.php';
 include_once 'includes/dbAnnouncements.php';
-$announcementSql = getAllAnnouncementWithTeacherName("","","10");
+include_once 'includes/dbStudent.php';
+$announcementType = "";
+if($status == "student"){
+    $announcementType = $user['grade'] . $user['class'];
+}
+$announcementSql = getAllAnnouncementWithTeacherName("",$announcementType,"0", "10");
 $announcementArr = getAnnouncementsBySql($announcementSql);
+$classArr = getClassList();
+print_r($announcementSql);
 ?>
 <!doctype html>
 <html lang="en">
@@ -36,6 +43,7 @@ $announcementArr = getAnnouncementsBySql($announcementSql);
                             <button class="btn-all" id="annbutton" style="white-space: nowrap" data-toggle="modal" data-target="#newAnnouncementModal">Add Announcements</button>
                         </div>
                         <?php
+                        include 'modals/newAnnouncementModal.php';
                     }
                     ?>
                     <hr>
@@ -54,12 +62,17 @@ $announcementArr = getAnnouncementsBySql($announcementSql);
                                 echo $value['message'];
                                 ?></p>
                             <span>
+                                By:
+                                <?php
+                                echo $value['firstname'] . " " . $value['lastname'];
+                                ?>
+                            </span>
+                            <br>
+                            <span>
                                     <?php
                                     echo $value['timeStamp'];
                                     ?>
                                 </span>
-
-                            </span>
                         </div>
                         <?php
                         if($status == "teacher"){?>
@@ -83,7 +96,6 @@ $announcementArr = getAnnouncementsBySql($announcementSql);
 <!-- Placed at the end of the document so the pages load faster -->
 <?php
 include 'lastActivity.php';
-include 'modals/newAnnouncementModal.php';
 ?>
 <script type="text/javascript">
     $(document).ready(function() {

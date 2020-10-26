@@ -34,6 +34,26 @@
                             <textarea style="background-color: #BCE8E3" form="addAnnouncementForm" type="text" class="form-control" placeholder="Message" name="message" value=""></textarea>
 
                         </div>
+                    </div>
+                    <div class="form-group">
+
+                        <label for ="announcementType" class="col-lg-2 control-label">
+                            Send To:
+                        </label>
+                        <div class="col-lg-10">
+                            <select name="announcementType" class="custom-select" id="inputGroupSelect01">
+                                <option selected value = "0">All</option>
+                                <?php
+                                foreach ($classArr as $class => $values){
+                                    ?>
+                                    <option value="<?=$values['grade']?><?=$values['class']?>"><?=$values['grade']?><?=$values['class']?></option>
+                                <?php
+                                }
+                                ?>
+
+                            </select>
+
+                        </div>
 
                     </div>
 

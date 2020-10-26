@@ -4,7 +4,6 @@
 require_once '../includes/dbAnnouncements.php';
 
 $newAnnouncements = setAnnouncementAttributes($_POST);
-
 $resultId = createAnnouncements($newAnnouncements);
 
 close_connection();
