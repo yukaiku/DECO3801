@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class ActivateHintScript : MonoBehaviour
 {
-    private string[] hintString = new string[]{
+//  hintString is used to store strings of each hint
+    public string[] hintString = new string[]{
         "Carafe – Used to hold beverages",
         "Cloud – Droplets formed in the sky",
         "Framed Art – Somewhere in drawers",
@@ -14,27 +15,17 @@ public class ActivateHintScript : MonoBehaviour
         "Memoir – It has words in it",
         "Spume – Usually found in water",
         "Swan – A bird",
-        "Valise – Travellers carry it"
+        "Valise – Travellers carry it",
+        "Each click outside of the objects will have a time penalty.",
+        "If you click on the text, you can hear what they sound like."
         };
     private string hintStringOne;
     private Text hintText;
-    //public string Text hintText;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-//        hintText=GetComponent<Text>();
-    }
-
+//  Method is invoked using an OnClick function to generate a random number assigned to hintString and display the string
     public void clickHint(Text hintText) {
         int hintIndex = Random.Range(0, hintString.Length);
         hintStringOne= hintString[hintIndex];
         hintText.text = hintStringOne;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

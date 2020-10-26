@@ -11,6 +11,15 @@ using UnityEngine.SceneManagement;
  * In Unity inspector,
  * @require AudioSource           BGSound   
  * @require AudioSource           EFSound
+ * @require AudioSource           carafeSound
+ * @require AudioSource           cloudSound
+ * @require AudioSource           framedArtSound
+ * @require AudioSource           futonSound
+ * @require AudioSource           marigoldSound
+ * @require AudioSource           memoirSound
+ * @require AudioSource           spumeSound
+ * @require AudioSource           swanSound
+ * @require AudioSource           valiseSound
  * @require Slider                MainBGSlider
  * @require Slider                MainEFSlider
  * @require Slider                MenuBGSlider
@@ -20,6 +29,15 @@ public class SoundControl : MonoBehaviour
 {
     public AudioSource BGSound;
     public AudioSource EFSound;
+    public AudioSource carafeSound;
+    public AudioSource cloudSound;
+    public AudioSource framedArtSound;
+    public AudioSource futonSound;
+    public AudioSource marigoldSound;
+    public AudioSource memoirSound;
+    public AudioSource spumeSound;
+    public AudioSource swanSound;
+    public AudioSource valiseSound;
     
     public Slider MainBGSlider;
     public Slider MainEFSlider;
@@ -48,6 +66,36 @@ public class SoundControl : MonoBehaviour
        global.soundVolumn = MenuEFSlider.value;
        Debug.Log(global.soundVolumn);
     }
+    //subsequent void methods before Start() are playing voiceover sounds
+    public void playCarafeSound() {
+        carafeSound.Play();
+    }
+    public void playCloudSound() {
+        cloudSound.Play();
+    }
+    public void playFramedArtSound() {
+        framedArtSound.Play();
+    }
+    public void playFutonSound() {
+        futonSound.Play();
+    }
+    public void playMarigoldSound() {
+        marigoldSound.Play();
+    }
+    public void playMemoirSound() {
+        memoirSound.Play();
+    }
+    public void playSpumeSound() {
+        spumeSound.Play();
+    }
+    public void playSwanSound() {
+        swanSound.Play();
+    }
+    public void playValiseSound() {
+        valiseSound.Play();
+    }
+
+    
 
     void Start()
     {  
