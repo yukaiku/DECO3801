@@ -55,7 +55,7 @@ $schoolInfo = getByIdSchool($user['school']);
 <!-- Placed at the end of the document so the pages load faster -->
 <?php
 include 'lastActivity.php';
-include "updateTeacherModal.php";
+include "modals/updateTeacherModal.php";
 ?>
 </body>
 </html>

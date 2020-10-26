@@ -14,7 +14,7 @@ if (isset($_POST["update"])) {
             $studentDetails = getByIdStudent($id);
             $updatingImage = 1;
         }else{
-            header("Location: studentProfile.php?id={$id}&error=Upload {$uploadResult} failed");
+            header("Location: ../studentProfile.php?id={$id}&error=Upload {$uploadResult} failed");
         }
     }
     $updateResult = updateStudent($updateDetails);
@@ -26,14 +26,14 @@ if (isset($_POST["update"])) {
         if (file_exists("img/" . $studentDetails['profileImage']) && $updatingImage == 1) {
             unlink("img/" . $studentDetails['profileImage']);
         }
-        header("Location: studentProfile.php?id={$id}");
+        header("Location: ../studentProfile.php?id={$id}");
     }else{
-        header("Location: studentProfile.php?id={$id}&error=Update Failed, nothing to update.");
+        header("Location: ../studentProfile.php?id={$id}&error=Update Failed, nothing to update.");
     }
 
 } else {
     $id = $_POST['id'];
-    header("Location: studentProfile.php?id={$id}&error=Status Error Unable to update now, please relogin and try again");
+    header("Location: ../studentProfile.php?id={$id}&error=Status Error Unable to update now, please relogin and try again");
 }
 
 
