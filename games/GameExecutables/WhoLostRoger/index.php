@@ -1,78 +1,44 @@
-<!DOCTYPE html>
-<html lang="en-us">
+<?php header('Access-Control-Allow-Origin: https://deco3801-cats.uqcloud.net/'); ?>
 
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>WhoLostRoger</title>
-        <script src="Build/UnityLoader.js"></script>
-        <style>
-        	html, body {
-        		margin: 0;
-        		padding: 0;
-                width: 100%;
-                height: 100%;
-                box-sizing: border-box;
-                background: rgba(255,255,255,1);
-                background: ;
-        	}
+<?php
+	session_start();
+	require("connectDB.php");
 
-            .webgl-content {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                border: 0;
-                transform: translate(-50%, -50%);
-                -webkit-transform: translate(-50%, -50%);
-            }
+	$platform_path = 'platform/index.php';
 
-        	.webgl-content .onfullscreen {
-        		position: fixed;
-        		right: 0%;
-        		bottom: 0%;
-        		background: transparent center no-repeat;
-                background-image: url('./TemplateData/fullscreen.png');
-        		width: 38px;
-        		height: 38px;
-        	}
-        </style>
-    </head>
+	// faked data for testing functionality
+	//$_SESSION['student'] = 1;
+	//$_SESSION['player_id'] = 1;
+	//$_SESSION['game_id'] = 1;
+	//$_SESSION['highest_level'] = 1;
 
-    <body>
-        <div class="webgl-content">
-            <div id="unityContainer" style="width: 1280px; height: 800px;"></div>
-            <div class="onfullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
-        </div>
+	if (!isset($_SESSION['student']) || !isset($_SESSION['player_id']) || !isset($_SESSION['game_id'])) {
+		$root_url = ((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://';
+		$server_url = $root_url . $_SERVER['SERVER_NAME'] . '/';
+		$location = $server_url . $platform_path;
+		header('Location: ' . $location);
+	}
 
-        <script type="application/javascript">
-            var unityInstance = UnityLoader.instantiate("unityContainer", "Build/GameExecutables.json");
+	$game_id = $_SESSION['game_id'];
+	$player_id = $_SESSION['player_id'];
+	$highest_level = 1;
 
-            function onResizeUnity() {
-                unityInstance.SendMessage("DataStorage", "setScreenWidth", window.innerWidth);
-                unityInstance.SendMessage("DataStorage", "setScreenHeight", window.innerHeight);
-                unityInstance.SendMessage("DataSystem", "onResize");
-            }
+	$database = new MySQLDatabase();
+	$database->connect();
+	$query = "SELECT * FROM who_lost_roger WHERE studentid='$player_id' ORDER BY level DESC LIMIT 1";
+	$result = $database->query($query);
+	if (!$result) {
+		$database->disconnect();
+		die("sql statement query fail");
+	}
+	if (($row = mysqli_fetch_array($result)) != NULL) {
+		$highest_level = $row['level'];
+	}
+	$database->disconnect();
 
-            function onResizeCanvas() {
-                var canvas = unityInstance.Module.canvas;
-                var container = unityInstance.container;
-                var width = window.innerWidth;
-                var height = window.innerHeight;
-                var ratio = 1280 / 800;
+	$_SESSION['highest_level'] = $highest_level;
 
-                if (height * ratio > width) {
-                    height = Math.min(height, Math.ceil(width / ratio));
-                }
-                width = Math.floor(height * ratio);
-
-                canvas.style.width = width + "px";
-                canvas.style.height = height + "px";
-                container.style.width = width + "px";
-                container.style.height = height + "px";
-            }
-
-            window.addEventListener("resize", onResizeCanvas);
-            onResizeCanvas();
-        </script>
-    </body>
-</html>
+	// got this student progress here
+	// going to send into the game
+	include("index.html");
+?>
