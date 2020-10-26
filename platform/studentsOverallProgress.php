@@ -87,7 +87,7 @@ $gameGenre = $gameInfo['genre'];
         <?php
         include_once("sideBar.php");
         ?>
-        <div role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4 overflow-auto">
+        <div role="main" class="main col-md-9 ml-sm-auto col-lg-10 px-4 overflow-auto">
             <div style="padding-top: 80em;">
             <div class="row" id="gameName">
                 <h1><?=$gameName?></h1>

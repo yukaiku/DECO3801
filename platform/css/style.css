@@ -142,10 +142,12 @@ a:hover, a:visited, a:link, a:active
     padding-bottom: 1% !important;
 }
 
+
+
+
 /*
  * Sidebar
  */
-
 .sidebar {
     position: fixed;
     top: 0;
@@ -159,7 +161,7 @@ a:hover, a:visited, a:link, a:active
 .sidebar-sticky {
     position: -webkit-sticky;
     position: sticky;
-    top: 48px; /* Height of navbar */
+    top: 0.5%; /* Height of navbar */
     height: 100vh;
     padding-top: 1rem;
     overflow-x: hidden;
@@ -201,6 +203,11 @@ a:hover, a:visited, a:link, a:active
     color: #000;
 }
 
+.sidebar-button-ul:hover{
+    background-color: #22605B;
+    color: #fff;
+}
+
 #sidebar-button {
     color: #000;
 }
@@ -213,18 +220,12 @@ a:hover, a:visited, a:link, a:active
     margin-bottom: 0;
 }
 
-
-.profiletxt a:link {
-    color: #000;
+b{
+    color: #22605B;
 }
 
-.profiletxt a:hover{
-    background-color: #fff;
-}
-
-a :hover {
-    background-color: #22605B;
-   color: #fff;
+.profiletxt a :hover {
+    color: #D55464;
 }
 
 .onlineButton {
