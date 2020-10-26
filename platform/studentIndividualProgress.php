@@ -100,9 +100,9 @@ $gameGenre = $gameInfo['genre'];
                 <h1>Class: <?=$grade ?><?=$class ?></h1>
                 <container>
                     <div class="tab">
-                        <button class="tablinks active" onclick="openTab(event, 'concrete')">Concrete Nouns</button>
-                        <button class="tablinks" onclick="openTab(event, 'collective')">Collective Nouns</button>
-                        <button class="tablinks" onclick="openTab(event, 'countable')">Countable Nouns</button>
+                        <button id="concreteNounsTabButton" class="tablinks" onclick="openTab(event, 'concrete')">Concrete Nouns</button>
+                        <button id="collectiveNounsTabButton" class="tablinks" onclick="openTab(event, 'collective')">Collective Nouns</button>
+                        <button id="countableNounsTabButton" class="tablinks" onclick="openTab(event, 'countable')">Countable Nouns</button>
                     </div>
                     <?PHP
                     if(function_exists ( "playCount" )){
@@ -330,7 +330,7 @@ $gameGenre = $gameInfo['genre'];
             //set active tab
             evt.currentTarget.className += " active";
             activeTab = tabType;
-            window.parent.location = "studentIndividualProgress.php?grade=<?=$grade?>&class=<?=$class?>&gameId=<?=$gameId?>&activeTab="+activeTab;
+            window.parent.location = "studentIndividualProgress.php?studentId=<?=$studentId?>&grade=<?=$grade?>&class=<?=$class?>&gameId=<?=$gameId?>&activeTab="+activeTab;
         }
     </script>
 
