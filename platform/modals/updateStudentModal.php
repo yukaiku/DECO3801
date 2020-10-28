@@ -1,7 +1,7 @@
 <div class="modal fade" id="updateDetailsModal" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content"  style="background-color: #effffd">
-            <form class ="form-horizontal" action="updateStudentHandler.php" method="post" enctype="multipart/form-data">
+            <form class ="form-horizontal" action="modals/updateStudentHandler.php" method="post" enctype="multipart/form-data">
                 <div class="modal-header" style="background-color: #48BEB5; color: white">
                     <h4>Update Details</h4>
                 </div>

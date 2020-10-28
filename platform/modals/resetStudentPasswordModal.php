@@ -1,7 +1,7 @@
 <div class="modal fade" id="resetStudentPasswordModal" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form class ="form-horizontal" action="updateStudentHandler.php" method="post" enctype="multipart/form-data">
+            <form class ="form-horizontal" action="modals/updateStudentHandler.php" method="post" enctype="multipart/form-data">
                 <div class="modal-header">
                     <h4>Reset Password</h4>
                 </div>

@@ -32,11 +32,11 @@ if($status == "teacher"){
         }
 
     } else {
-        header("Location: teacherProfile.php?error=Update Failed");
+        header("Location: ../teacherProfile.php?error=Update Failed");
     }
 }else {
     $id = $_POST['id'];
-    header("Location: teacherProfile.php?error=Update Failed session error");
+    header("Location: ../teacherProfile.php?error=Update Failed session error");
 }
 
 
