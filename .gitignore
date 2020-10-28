@@ -11,7 +11,7 @@ out/
 *.class
 
 # Gradle
-build
+# build
 .gradle
 
 # Eclipse
