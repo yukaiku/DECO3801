@@ -44,10 +44,10 @@ if (!mysqli_connect_errno()) { // connection to database is successful
                     setcookie("student", json_encode(""), time()-3600, "/");
                 }
                 mysqli_close($connection); // close database connection
-                header('Location: studentMain.php?welcomeMessage=Welcome '. $row['firstName']); // redirect to the homepage.
+                header('Location: announcements.php'); // redirect to the homepage.
             } else {
                 mysqli_close($connection); // close database connection
-                header('Location: index.php?error=Invalid username or password for student'); // redirect to the login page.
+                header('Location: index.php?error=Invalid username or password'); // redirect to the login page.
             }
         }
         /*====================================TEACHER LOGIN HANDLER=============================================*/
@@ -82,10 +82,10 @@ if (!mysqli_connect_errno()) { // connection to database is successful
                         setcookie("teacher", json_encode(""), time()-3600, "/");
                     }
                     mysqli_close($connection); // close database connection
-                    header('Location: teacherMain.php?welcomeMessage=Welcome '. $row['firstName']); // redirect to the homepage.
+                    header('Location: announcements.php'); // redirect to the homepage.
                 } else {
                     mysqli_close($connection); // close database connection
-                    header('Location: index.php?error=Invalid username or password teacher'); // redirect to the login page.
+                    header('Location: index.php?error=Invalid username or password'); // redirect to the login page.
                 }
             }
         }else{

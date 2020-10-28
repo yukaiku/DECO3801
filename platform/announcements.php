@@ -9,6 +9,12 @@ if($status == "student"){
 $announcementSql = getAllAnnouncementWithTeacherName("",$announcementType,"0", "10");
 $announcementArr = getAnnouncementsBySql($announcementSql);
 $classArr = getClassList();
+if(isset($_GET['error']) && $_GET['error'] != ""){
+    echo "<script type='text/javascript'>";
+    echo "alert('{$_GET['error']}')";
+    echo "</script>";
+}
+
 ?>
 <!doctype html>
 <html lang="en">

@@ -4,6 +4,11 @@ include_once 'includes/dbGame.php';
 include_once 'includes/dbTeacher.php';
 include_once  'includes/dbSchool.php';
 $schoolInfo = getByIdSchool($user['school']);
+if(isset($_GET['error']) && $_GET['error'] != ""){
+    echo "<script type='text/javascript'>";
+    echo "alert('{$_GET['error']}')";
+    echo "</script>";
+}
 ?>
 <!doctype html>
 <html lang="en">

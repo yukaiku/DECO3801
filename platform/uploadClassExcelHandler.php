@@ -1,7 +1,9 @@
 <?php
 
 require_once 'includes/dbStudent.php';
-if(isset($_POST["import"]) && isset($_POST['schoolId']))
+$grade = isset($_POST['grade']) ? $_POST['grade'] : "";
+$class = isset($_POST['class']) ? $_POST['class'] : "";
+if(isset($_POST["import"]) && isset($_POST['schoolId']) && isset($_POST['grade']) && isset($_POST['class']) !="")
 {
     echo $filename=$_FILES["file"]["tmp_name"];
     if($_FILES["file"]["size"] > 0)
@@ -27,11 +29,13 @@ if(isset($_POST["import"]) && isset($_POST['schoolId']))
             }
         }
         fclose($file);
-        echo 'CSV File has been successfully Imported';
+        header("Location: teacherAdd.php?grade={$grade}&class={$class}&error=CSV File has been successfully Imported");
     }
-    else
-        echo 'Invalid File:Please Upload CSV File';
+    else{
+        header("Location: teacherAdd.php?grade={$grade}&class={$class}&error=Invalid File:Please Upload CSV File");
+    }
 
-
+}else{
+    header("Location: teacherMain.php?error=Upload Error");
 }
 ?>

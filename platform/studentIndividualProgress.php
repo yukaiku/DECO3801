@@ -24,6 +24,7 @@ $gameSubject = $gameInfo['subject'];
 $gameDescription = $gameInfo['description'];
 $gameGrade = $gameInfo['grade'];
 $gameGenre = $gameInfo['genre'];
+$studentInfo = getByIdStudent($studentId);
 ?>
 <!doctype html>
 <html lang="en">
@@ -97,7 +98,7 @@ $gameGenre = $gameInfo['genre'];
                 <h1><?=$gameName?></h1>
             </div>
             <div class="row" id="className">
-                <h1>Class: <?=$grade ?><?=$class ?></h1>
+                <h1>Name: <?=$studentInfo['firstname'] ?> <?=$studentInfo['lastname'] ?></h1>
                 <container>
                     <div class="tab">
                         <button id="concreteNounsTabButton" class="tablinks" onclick="openTab(event, 'concrete')">Concrete Nouns</button>

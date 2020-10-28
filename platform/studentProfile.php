@@ -58,6 +58,7 @@ $studentInfo = getByIdStudent($studentId);
                 </div>
                 <div class="col-lg-9" style="padding-top: 4em; font-size: 16px">
                     <div>
+                        <b>Username:</b>
                         <h4><?= $studentInfo['username']; ?></h4>
                     </div>
                     <div class="form-row">

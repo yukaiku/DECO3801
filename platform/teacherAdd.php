@@ -8,6 +8,11 @@ $grade = isset($_GET['grade']) ? $_GET['grade'] : '';
 $class = isset($_GET['class']) ? $_GET['class'] : '';
 $school = $user['school'];
 $schoolInfo = getByIdSchool($user['school']);
+if(isset($_GET['error']) && $_GET['error'] != ""){
+    echo "<script type='text/javascript'>";
+    echo "alert('{$_GET['error']}')";
+    echo "</script>";
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -84,7 +89,8 @@ $schoolInfo = getByIdSchool($user['school']);
                     <div>
                         <p class="hover-title">CSV File only: </p>
                         <div class="hover-image"><img src="img/excelSample.png"></div>
-
+                        <input type="hidden" name="class" value="<?=$class?>">
+                        <input type="hidden" name="grade" value="<?=$grade?>">
                         <input type="hidden" name="schoolId" value="<?=$schoolInfo['id'];?>">
                         <input type="file" name="file"
                                                 id="file" accept=".csv">

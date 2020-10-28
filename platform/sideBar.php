@@ -5,7 +5,7 @@ $games = getAllGame('subject');
 <nav class="col-md-2 d-none d-md-block" style="background-color: #96DFD8; padding: 0px">
     <div class="sidebar-sticky">
         <ul>
-            <h2>Welcome <?= $user['firstname']; ?>!</h2>
+            <h2 style="overflow-wrap: break-word;">Welcome <?= $user['firstname']; ?>!</h2>
         </ul>
         <a href="announcements.php" id="sidebar-button"><ul class="sidebar-button-ul">Announcements</ul></a>
         </ul>
