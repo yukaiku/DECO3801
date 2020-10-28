@@ -39,7 +39,7 @@ if(isset($_GET['error']) && $_GET['error'] != ""){
         include_once("sideBar.php");
         ?>
         <div role="main" class="main col-md-9 ml-sm-auto col-lg-10 px-4" >
-            <div style="overflow-y: scroll; width: 80%; position: absolute; margin-top: -3%">
+            <div style="overflow-y: scroll; overflow-x: hidden; width: 80%; position: absolute; margin-top: -3%">
                 <div class="jumbotron text-left">
                     <div class="row">
                         <h1 class="col-lg-10" id="anntitle">Announcements</h1>
