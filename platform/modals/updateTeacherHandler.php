@@ -1,7 +1,7 @@
 <?php
-require_once 'includes/checkLoginStatusForBoth.php';
-require_once 'includes/uploadImageFunction.php';
-require_once 'includes/dbTeacher.php';
+require_once '../includes/checkLoginStatusForBoth.php';
+require_once '../includes/uploadImageFunction.php';
+require_once '../includes/dbTeacher.php';
 if($status == "teacher"){
     if (isset($_POST["update"])) {
         $id = $_POST['id'];
@@ -10,9 +10,9 @@ if($status == "teacher"){
 
         $updateDetails = setTeacherAttributes($_POST);
         if($profileImage != ""){
-            $uploadResult = handleImageUpload($profileImage, FOLDER_IMG, $id);
+            $uploadResult = handleImageUpload($profileImage, "../".FOLDER_IMG, $id);
             if ($uploadResult) {
-                $updateDetails['profileimage'] = $uploadResult;
+                $updateDetails['profileImage'] = $uploadResult;
                 $teacherDetails = getByIdTeacher($id);
                 $updatingImage = 1;
             }else{

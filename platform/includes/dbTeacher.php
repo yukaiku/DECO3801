@@ -6,7 +6,7 @@
 require_once 'dbFunction.php';
 
 $table_teacher = "teacher";
-$dbFields_teacher = ["id","school", "firstname", "lastname", "username", "pwd","lastactivity","status"];
+$dbFields_teacher = ["id","school", "firstname", "lastname", "username","profileImage", "pwd","lastactivity","status"];
 $pk_teacher = "id";
 
 

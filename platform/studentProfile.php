@@ -5,6 +5,10 @@ include_once 'includes/dbStudent.php';
 include_once  'includes/dbSchool.php';
 $schoolInfo = getByIdSchool($user['school']);
 $studentId = isset($_GET['id']) ? $_GET['id'] : 0;
+$error = isset($_GET['error']) ? $_GET['error'] : "";
+if($error != ""){
+    echo "<script type='text/javascript'>alert('{$error}')</script>";
+}
 $string = "";
 if($studentId == 0){
     echo "<script type='text/javascript'>history.back();</script>";
@@ -13,6 +17,7 @@ if($studentId == 0){
 if($status == "student" and $user['id'] != $studentId){
     echo "<script type='text/javascript'>history.back();</script>";
 }
+
 $studentInfo = getByIdStudent($studentId);
 ?>
 <!doctype html>

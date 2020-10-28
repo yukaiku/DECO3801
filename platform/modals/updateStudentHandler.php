@@ -1,16 +1,16 @@
 <?php
-require_once 'includes/checkLoginStatusForBoth.php';
-require_once 'includes/uploadImageFunction.php';
-require_once 'includes/dbStudent.php';
+require_once '../includes/checkLoginStatusForBoth.php';
+require_once '../includes/uploadImageFunction.php';
+require_once '../includes/dbStudent.php';
 if (isset($_POST["update"])) {
     $id = $_POST['id'];
     $profileImage = $_FILES['profileImage'];
 
     $updateDetails = setStudentAttributes($_POST);
     if($profileImage != ""){
-        $uploadResult = handleImageUpload($profileImage, FOLDER_IMG, $id);
+        $uploadResult = handleImageUpload($profileImage, "../".FOLDER_IMG, $id);
         if ($uploadResult) {
-            $updateDetails['profileimage'] = $uploadResult;
+            $updateDetails['profileImage'] = $uploadResult;
             $studentDetails = getByIdStudent($id);
             $updatingImage = 1;
         }else{
