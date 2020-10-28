@@ -251,28 +251,6 @@ INSERT INTO `teacher` (`id`, `school`, `firstname`, `lastname`, `username`, `pro
 -- --------------------------------------------------------
 
 --
--- Table structure for table `teacher_progress`
---
-
-CREATE TABLE `teacher_progress` (
-  `id` int(11) NOT NULL,
-  `game` int(10) UNSIGNED NOT NULL,
-  `teacher` int(10) UNSIGNED NOT NULL,
-  `percentage` int(3) NOT NULL,
-  `score` int(5) NOT NULL,
-  `status` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `teacher_progress`
---
-
-INSERT INTO `teacher_progress` (`id`, `game`, `teacher`, `percentage`, `score`, `status`) VALUES
-(1, 1, 1, 100, 49782, 0);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `who_lost_roger`
 --
 
