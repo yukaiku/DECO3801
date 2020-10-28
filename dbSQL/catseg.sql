@@ -44,13 +44,7 @@ CREATE TABLE `announcements` (
 
 INSERT INTO `announcements` (`id`, `title`, `message`, `timeStamp`, `teacherId`, `announcementType`, `status`) VALUES
 (1, 'test', 'testh', '2020-10-20 02:33:21', 5, '0', 0),
-(2, 'test', 'testh', '2020-10-20 02:35:06', 5, '0', 1),
-(10, 'test', 'testtest', '2020-10-24 07:30:19', 5, '0', 1),
-(11, 'test', 'test', '2020-10-24 07:40:37', 5, '0', 0),
-(12, 'hello', 'hello\r\n', '2020-10-24 07:40:45', 5, '0', 1),
-(13, 'test', 'test', '2020-10-26 00:30:48', 5, '6f', 0),
-(14, 'test', 'test', '2020-10-26 00:42:50', 5, '0', 0),
-(15, 'test', 'test', '2020-10-26 00:43:12', 5, '6E', 0);
+(15, 'test', '6emessage', '2020-10-26 00:43:12', 5, '6E', 0);
 
 -- --------------------------------------------------------
 
@@ -78,8 +72,7 @@ INSERT INTO `chat_message` (`id`, `studentId`, `teacherId`, `message`, `timestam
 (41, 24, 5, 'student1', '2020-10-08 21:18:38', 0),
 (42, 24, 5, 'student1', '2020-10-08 21:22:33', 0),
 (43, 24, 5, 'student1', '2020-10-08 21:24:40', 0),
-(46, 24, 5, 'teacher1', '2020-10-08 22:07:51', 1),
-(47, 24, 5, 'teachertoo', '2020-10-08 22:25:12', 1);
+(46, 24, 5, 'teacher1', '2020-10-08 22:07:51', 1);
 
 -- --------------------------------------------------------
 
@@ -159,39 +152,9 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`id`, `school`, `firstname`, `lastname`, `username`, `nickname`, `profileImage`, `pwd`, `grade`, `class`, `lastactivity`, `status`) VALUES
-(1, 1, 'German', 'Shephard', 'cleverpuppy', 'puppy', '', '#JóQ¼R!\Z¯°Åà¿A¼', 5, 'E', '0000-00-00 00:00:00', 0),
-(2, 1, 'Daniel', 'Radcliffe', 'mercyHEALPLS', 'Dan', '', 'DR1111', 6, 'E', '0000-00-00 00:00:00', 0),
-(3, 1, 'Trevor', 'MacDonald', 'fortnite3', 'Trev', '', 'TM0987', 6, 'E', '0000-00-00 00:00:00', 0),
-(4, 1, 'Rebecca', 'Cooper', 'sunshinegal08', 'Becky', '', 'Bec0808', 6, 'E', '0000-00-00 00:00:00', 0),
-(6, 1, 'Cheryl', 'Tan', 'Dreamland', 'barbie', '', 'Ct0123', 6, 'E', '0000-00-00 00:00:00', 0),
-(7, 1, 'Ariel', 'Melton', 'schoolsux111', NULL, '', 'Am4567', 6, 'E', '0000-00-00 00:00:00', 0),
-(8, 1, 'Steven', 'McCoy', 'ihatevapour', 'steve', '', 'Sm8888', 6, 'E', '0000-00-00 00:00:00', 0),
-(9, 1, 'Reggie', 'Mantle', 'MasterR', NULL, '', 'Rm6753', 6, 'F', '0000-00-00 00:00:00', 0),
-(10, 1, 'Clay', 'Jensen', 'DJCJ', 'clay', '', 'Cj5548', 6, 'F', '0000-00-00 00:00:00', 0),
-(11, 1, 'Nora', 'Walker', 'princessNora', NULL, '', 'Nw25796', 6, 'F', '0000-00-00 00:00:00', 0),
-(12, 1, 'Winston', 'Williams', '', NULL, '', 'Wwh7654', 6, 'F', '0000-00-00 00:00:00', 0),
-(13, 1, 'Reena', 'Dawn', 'rainbowD', 'nana', '', '1867rD', 6, 'F', '0000-00-00 00:00:00', 0),
-(14, 1, 'Diego', 'Torres', 'CaptainD', 'DD', '', '9754Dd', 6, 'F', '0000-00-00 00:00:00', 0),
-(15, 1, 'Ani', 'Achola', 'ocean8', 'ani', '', ')`§1´îHüî\0¸Ôœ`', 6, 'F', '0000-00-00 00:00:00', 0),
-(16, 1, 'Martin', 'Addison', 'hackerMA', 'Ad', '', '67856290Mh', 6, 'F', '0000-00-00 00:00:00', 0),
-(19, 1, 'theo3', 'theo3', 'theo', 'theo', '19_1600075204.jpg', 'z³Œøç¿÷êl#Wø', 6, 'E', '2020-09-21 19:55:04', 0),
-(21, 1, 'theotheo', 'theotheo', 'theodore', 'Theo', '21_1600074771.jpg', 'N§U2Z\"„”\nÁ%Ý\Zó »', 1, 'B', '2020-09-13 05:37:34', 1),
-(22, 1, 'theotheo', 'theotheo', 'theodore2', NULL, 'dummy.jpg', '\nk5­}ÝÎªUIºr<õW4ñÛpù‘o*¯Ñ', 1, 'B', '2020-09-13 05:38:13', 1),
-(23, 1, 'theo', 'theo', 'theo3', 'theo3', 'dummy.jpg', 'z³Œøç¿÷êl#Wø', 6, 'F', '2020-09-21 18:43:41', 0),
 (24, 1, 'studentfirstname1', 'studentlastname1', 'student1', 'student1', 'dummy.jpg', '×.tâé«04¸ŠÚ®oõ	', 6, 'F', '2020-10-26 00:48:24', 0),
 (25, 1, 'studentfirstname2', 'studentlastname2', 'student2', 'student2', 'dummy.jpg', 'o[$	{çk„?2Dý«V-', 6, 'F', '2020-09-21 18:43:41', 0),
-(26, 1, 'studentfirstname3', 'studentlastname3', 'student3', 'student3', 'dummy.jpg', 'È­òCi…Ykm#V)', 6, 'F', '2020-10-17 01:14:21', 0),
-(27, 1, 'Tania', 'McIntosh', 'mum', NULL, 'dummy.jpg', '”$%!\rûr\néºnAH¤HC<Šn/°q¡\rL«{H¿', 9, 'H', '2020-09-23 16:31:02', 0),
-(28, 1, 'arnold', 'schwarz', '1232', NULL, 'dummy.jpg', 'å	á’¸“JUøQé\\·', 1, 'A', '2020-09-24 15:12:32', 0),
-(29, 1, 'vk', 'j', 'jvk', NULL, 'dummy.jpg', 'µ*ÇXåhwJÝ¶•ßzýs\Zl`œN=š€2ùØ7Ùd', 7, 'B', '2020-09-27 17:01:45', 0),
-(30, 1, 'Fion', 'Jong', 'ApplePIE', NULL, 'dummy.jpg', '¯^ÿsn„µ…íáa<;8&	7_ŸCï|¶-«<ìCÒ€', 6, 'E', '2020-09-27 17:09:10', 0),
-(31, 1, 'Briana', 'Briana', 'Br792', NULL, 'dummy.jpg', ')‡¡|¹…lYû‘µ·-í', 9, 'F', '2020-09-28 11:36:02', 0),
-(32, 1, 'test1', 'test1', 'test1', NULL, NULL, 'Tbˆ	¬Ó>ûç“„ÒÞ)', 1, 'A', '2020-10-12 03:48:34', 0),
-(35, 1, 'test2', 'test2', 'test2', NULL, NULL, 'Ü\\mÌ®iOJŠk5•u“S', 2, 'B', '2020-10-12 03:50:10', 0),
-(36, 1, 'test3', 'test3', 'test3', NULL, NULL, '¢€6ÝÙ]@.·ŒÁ±(', 3, 'C', '2020-10-12 03:50:10', 0),
-(37, 1, 'test4', 'test4', 'test4', NULL, NULL, 'ËjÇ‚Æ®ü*(ÏÍ>', 4, 'D', '2020-10-12 03:50:10', 0),
-(38, 1, 'test5', 'test5', 'test5', NULL, NULL, 'Ã†Ék˜fq?\0V±lgÓéc', 5, 'E', '2020-10-12 03:50:10', 0),
-(39, 1, 'test6', 'test6', 'test6', NULL, NULL, '`b1)’|üÈ1¤“†¬£\0', 6, 'F', '2020-10-12 03:50:10', 0);
+(26, 1, 'studentfirstname3', 'studentlastname3', 'student3', 'student3', 'dummy.jpg', 'È­òCi…Ykm#V)', 6, 'F', '2020-10-17 01:14:21', 0);
 
 -- --------------------------------------------------------
 
