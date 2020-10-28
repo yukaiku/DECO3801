@@ -235,6 +235,18 @@ a.onlineButton {
     text-decoration: none;
 }
 
+a.logout{
+    color: #D55464;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a.logout :hover{
+    color: #D55464;
+    font-weight: bold;
+    text-decoration: none;
+}
+
 
 /*
  * Utilities

@@ -61,7 +61,7 @@ $games = getAllGame('subject');
                     </div>
                     <div clas="row">
                         <a class="onlineButton">Chat</a> |
-                        <a class="onlineButton" href="logoutHandler.php">Log Out</a>
+                        <a class="logout" href="logoutHandler.php">Log Out</a>
                     </div>
                 </div>
             </div>
