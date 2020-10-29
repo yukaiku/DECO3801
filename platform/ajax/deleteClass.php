@@ -23,7 +23,7 @@ if($deleteArray != ""){
                 $deleteSql .= " Where (grade = {$studentColumn['grade']} and class = '{$studentColumn['class']}') ";
             }
         }
-        $sql = "Update student set status = 1 {$deleteSql}";
+        $sql = "Delete from student {$deleteSql}";
         $result = query ($sql); // execute the SQL query
         print_r("Record Updated");
         close_connection();
