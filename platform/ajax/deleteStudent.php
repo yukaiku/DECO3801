@@ -11,7 +11,7 @@ if($deleteArray != ""){
             $deleteSql .= " Where id = {$deleteId} ";
         }
     }
-    $sql = "UPDATE student SET status = 1 {$deleteSql}";
+    $sql = "Delete from student {$deleteSql}";
     if (!mysqli_connect_errno()) {
         $result = query ($sql); // execute the SQL query
         print_r("Record Updated");
