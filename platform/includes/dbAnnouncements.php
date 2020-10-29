@@ -97,6 +97,26 @@ function updateAnnouncement($infoArr = array()) {
 }
 
 /***
+* Deletes Announcements
+* @param array $infoArr
+* @return bool
+*/
+function deleteAnnouncement($infoArr = array()) {
+    if (array_key_exists($GLOBALS['pk_announcement'], $infoArr)) {
+        $pkStr = "{$GLOBALS['pk_announcement']} = '{$infoArr[$GLOBALS['pk_announcement']]}'";
+        unset($infoArr[$GLOBALS['pk_announcement']]);
+
+        $sql = "Delete From {$GLOBALS['table_announcements']} ";
+        $sql .= "WHERE {$pkStr}";
+        query($sql);
+        if (affected_rows() > 0) {
+            return true;
+        }
+    }
+    return false;
+}
+
+/***
  * Gets the sql for getting all announcements
  * @param string $timeStamp
  * @param string $announcementType
