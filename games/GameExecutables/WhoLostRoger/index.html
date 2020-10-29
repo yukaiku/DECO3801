@@ -4,8 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>%UNITY_WEB_NAME%</title>
-        <script src="%UNITY_WEBGL_LOADER_URL%"></script>
+        <title>WhoLostRoger</title>
         <style>
             html, body {
                 margin: 0;
@@ -14,7 +13,7 @@
                 height: 100%;
                 box-sizing: border-box;
                 background: rgba(255,255,255,1);
-                background: %UNITY_CUSTOM_BACKGROUND%;
+                background: #fff;
             }
 
             .webgl-content {
@@ -28,62 +27,92 @@
 
             .webgl-content .onfullscreen {
                 position: fixed;
-                right: 0%;
-                bottom: 0%;
+                top: 0;
+                left: 60px;
                 background: transparent center no-repeat;
                 background-image: url('./TemplateData/fullscreen.png');
                 width: 38px;
                 height: 38px;
-        	}
-        	a.back-button {
+                cursor: pointer;
+            }
+
+            a.back-button {
                 text-decoration: none;
                 position: fixed;
                 top: 0;
                 left: 0;
-                background: rgba(255, 255, 255, 1.0);
                 z-index: 100;
                 padding: 5px 10px;
-        	}
+                background: rgba(255, 255, 255, 1.0);
+                background-image: url('./TemplateData/goback.png');
+                box-sizing: border-box;
+                text-align: center;
+                width: 60px;
+                height: 38px;
+            }
         </style>
     </head>
 
     <body>
-
         <div class="webgl-content">
-            <div id="unityContainer" style="width: %UNITY_WIDTH%px; height: %UNITY_HEIGHT%px;"></div>
-            <a class="back-button" href="#" onclick="goBack()">Go Back</a>
-            <div class="onfullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+            <canvas id="unity-canvas"></canvas>
+            <a class="back-button" href="#" onclick="goBack()">BACK</a>
+            <div class="onfullscreen"></div>
         </div>
 
+        <script src="Build/WhoLostRoger_v2020_0.5.loader.js"></script>
         <script type="application/javascript">
-            var unityInstance = UnityLoader.instantiate("unityContainer", "%UNITY_WEBGL_BUILD_URL%");
+            createUnityInstance(document.querySelector("#unity-canvas"), {
+                dataUrl: "Build/WhoLostRoger_v2020_0.5.data",
+                frameworkUrl: "Build/WhoLostRoger_v2020_0.5.framework.js",
+                codeUrl: "Build/WhoLostRoger_v2020_0.5.wasm",
+                streamingAssetsUrl: "StreamingAssets",
+                companyName: "Cats",
+                productName: "WhoLostRoger",
+                productVersion: "0.2.1",
+            }).then(function (instance) {
+                var canvas = instance.Module.canvas;
+                var container = canvas.parentElement;
+                var fullscreenButton = document.querySelector(".onfullscreen");
 
-            function onResizeUnity() {
-                unityInstance.SendMessage("DataStorage", "setScreenWidth", window.innerWidth);
-                unityInstance.SendMessage("DataStorage", "setScreenHeight", window.innerHeight);
-                unityInstance.SendMessage("DataSystem", "onResize");
-            }
+                function onResize() {
+                    var width;
+                    var height;
+                    var ratio;
 
-            function onResizeCanvas() {
-                var canvas = unityInstance.Module.canvas;
-                var container = unityInstance.container;
-                var width = window.innerWidth;
-                var height = window.innerHeight;
-                var ratio = %UNITY_WIDTH% / %UNITY_HEIGHT%;
+                    if (scaleToFit) {
+                        width = window.innerWidth;
+                        height = window.innerHeight;
+                        ratio = 1280 / 800;
 
-                if (height * ratio > width) {
-                    height = Math.min(height, Math.ceil(width / ratio));
+                        if (height * ratio > width) {
+                            height = Math.min(height, Math.ceil(width / ratio));
+                        }
+                        width = Math.floor(height * ratio);
+
+                    } else {
+                        width = 1280;
+                        height = 800;
+                    }
+
+                    container.style.width = canvas.style.width = width + "px";
+                    container.style.height = canvas.style.height = height + "px";
                 }
-                width = Math.floor(height * ratio);
 
-                canvas.style.width = width + "px";
-                canvas.style.height = height + "px";
-                container.style.width = width + "px";
-                container.style.height = height + "px";
-            }
+                var scaleToFit;
+                try {
+                    scaleToFit = !!JSON.parse("");
+                } catch (e) {
+                    scaleToFit = true;
+                }
 
-            window.addEventListener("resize", onResizeCanvas);
-            onResizeCanvas();
+                window.addEventListener('resize', onResize);
+                onResize();
+
+                fullscreenButton.onclick = () => {
+                    instance.SetFullscreen(1);
+                };
+            });
 
             function goBack() {
                 window.history.back();
