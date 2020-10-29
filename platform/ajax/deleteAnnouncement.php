@@ -5,7 +5,7 @@ $deleteId = isset($_POST['id']) ? $_POST['id'] : "";
 $_POST['status'] = isset($_POST['status']) ? $_POST['status'] : 1;
 if($deleteId != ""){
     $announcementArr = setAnnouncementAttributes($_POST);
-    $announcementStatus = updateAnnouncement($announcementArr);
+    $announcementStatus = deleteAnnouncement($announcementArr);
     if($announcementStatus){
         echo "deleted";
     }else{
