@@ -4,10 +4,25 @@ A web based application integrating a educational platform with different games 
 
 ## Installation
 
-1. Download the platform and games folder and put it in the same directory
+1. Open Unity Source Code Folder
+2. Go to files --> Build Settings (Make sure under Platform, WebGl is ticked AND Make sure all scences are ticked) --> Do not click development build under WebGL --> Once that is done click build
+3. Paste the Game into Game Executable folder and make sure it is named as Who_Lost_Roger
 2. Update your local database with the DBsql file in DBsql file
 3. Set read write permission on your folders for image upload function to work
-4. Games src code is located in Game Folder
+4. Notes
+    a. Under Assets -> WebGlTemplates->FixedRatioScale->Index.php
+
+        - On line 1 change it to Access-Control-Allow-Origin: * if url is unkown
+
+    b. Update the db fields on platform/includes dbconfig.php and unity source code/assests/webgltemplates/fixedratioscale/connectdb.php with your own database name
+    
+        - CatsEg Db host: localhost
+
+        - CatsEg Db username: catseg
+
+        - CatsEg Db password: catsegdeco3801
+
+        - CatsEg Db name: catseg
 
 ## Contributors
 - [Yu Kai Ku](@yukaiku)
