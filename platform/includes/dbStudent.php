@@ -16,7 +16,7 @@ $pk_student = "id";
  */
 function getClassList($orderBy = ""){
     $orderBy = strlen($orderBy) > 0 ? "ORDER BY {$orderBy}" : "";
-    return getStudentBySql("SELECT * FROM {$GLOBALS['table_student']} WHERE status = 0 group by grade, class {$orderBy}");
+    return getStudentBySql("SELECT grade,class FROM {$GLOBALS['table_student']} WHERE status = 0 group by grade, class {$orderBy}");
 }
 
 /***
